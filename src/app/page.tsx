@@ -14,9 +14,24 @@ export default function Home() {
   return (
     <main>
       <Navbar />
-      <HeroSection />
-      <StatsSection />
-      <ProgramsSection />
+
+      {/* ── Mobile first fold: clipped to exactly one screen ── */}
+      <div
+        className="md:hidden overflow-hidden"
+        style={{ maxHeight: 'calc(100svh - 60px - 56px)' }}
+      >
+        <HeroSection />
+        <StatsSection />
+        <ProgramsSection />
+      </div>
+
+      {/* ── Desktop: normal flow ── */}
+      <div className="hidden md:block">
+        <HeroSection />
+        <StatsSection />
+        <ProgramsSection />
+      </div>
+
       <ExamsSection />
       <FeaturedServices />
       <TestimonialsSection />
