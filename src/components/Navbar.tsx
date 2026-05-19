@@ -6,21 +6,21 @@ const navLinks = [
   {
     label: 'Courses', href: '/courses/offline',
     sub: [
-      { label: 'Offline Course', href: '/courses/offline' },
-      { label: 'Online Course', href: '/courses/online' },
-      { label: 'OLET Program', href: '/courses/mentorship' },
-      { label: 'Mock Tests', href: '/courses/mock-tests' },
+      { label: '🏫 Offline Course', href: '/courses/offline' },
+      { label: '💻 Online Course', href: '/courses/online' },
+      { label: '🎯 OLET Program', href: '/courses/mentorship' },
+      { label: '📝 Mock Tests', href: '/courses/mock-tests' },
     ],
   },
   {
     label: 'Exams', href: '/exams/clat',
     sub: [
-      { label: 'CLAT', href: '/exams/clat' },
-      { label: 'AILET', href: '/exams/ailet' },
-      { label: 'MH-CET Law', href: '/exams/mh-cet-law' },
-      { label: 'CUET', href: '/exams/cuet' },
-      { label: 'AIL-LET', href: '/exams/ail-let' },
-      { label: 'LSAT India', href: '/exams/lsat' },
+      { label: '🏛️ CLAT', href: '/exams/clat' },
+      { label: '⚖️ AILET', href: '/exams/ailet' },
+      { label: '📍 MH-CET Law', href: '/exams/mh-cet-law' },
+      { label: '🎓 CUET', href: '/exams/cuet' },
+      { label: '🎖️ AIL-LET', href: '/exams/ail-let' },
+      { label: '🌐 LSAT India', href: '/exams/lsat' },
     ],
   },
   { label: 'Admission', href: '/admission' },
@@ -45,36 +45,45 @@ export default function Navbar() {
     <>
       {/* ─── Desktop Navbar ─────────────────────────────────── */}
       <nav
-        style={{ background: 'white' }}
-        className="sticky top-0 z-50 shadow-sm border-b border-gray-100 hidden md:block"
+        className="sticky top-0 z-50 hidden md:block"
+        style={{ background: 'white', borderBottom: '1px solid #E9EEF2', boxShadow: '0 1px 8px rgba(0,0,0,0.06)' }}
       >
-        {/* Top bar */}
-        <div className="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+
           {/* Logo */}
-          <a href="/" className="flex items-center group">
-            <img src="/logo.png" alt="CLATians" className="h-10 w-auto object-contain" />
+          <a href="/" className="flex items-center flex-shrink-0">
+            <img src="/logo.png" alt="CLATians" className="h-11 w-auto object-contain" />
           </a>
 
           {/* Nav Links */}
-          <ul className="flex items-center gap-1">
+          <ul className="flex items-center gap-0.5 flex-1 justify-center">
             {navLinks.map((link) => (
               <li key={link.label} className="relative group">
                 <a
                   href={link.href}
-                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-700 rounded-md hover:bg-blue-50 transition-all"
-                  onClick={() => setOpenSub(openSub === link.label ? null : link.label)}
+                  className="flex items-center gap-1 px-3.5 py-2 text-sm font-semibold rounded-lg transition-all"
+                  style={{ color: '#3C4852' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#08BD80'; (e.currentTarget as HTMLElement).style.background = '#F0FDF9'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#3C4852'; (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
                 >
                   {link.label}
                   {link.sub && (
-                    <svg className="w-3.5 h-3.5 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <svg className="w-3 h-3 opacity-50 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
                     </svg>
                   )}
                 </a>
+
+                {/* Dropdown */}
                 {link.sub && (
-                  <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="absolute top-full left-0 mt-1 w-52 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 py-1">
                     {link.sub.map((s) => (
-                      <a key={s.label} href={s.href} className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 first:rounded-t-xl last:rounded-b-xl transition-colors">
+                      <a key={s.label} href={s.href}
+                        className="flex items-center px-4 py-2.5 text-sm font-medium transition-colors"
+                        style={{ color: '#3C4852' }}
+                        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#08BD80'; (e.currentTarget as HTMLElement).style.background = '#F0FDF9'; }}
+                        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#3C4852'; (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+                      >
                         {s.label}
                       </a>
                     ))}
@@ -85,50 +94,41 @@ export default function Navbar() {
           </ul>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-3">
-            <a href="tel:8507700177" className="flex items-center gap-1.5 text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <a href="tel:8507700177"
+              className="flex items-center gap-1.5 text-sm font-medium px-3 py-2 rounded-lg transition-colors"
+              style={{ color: '#5a6a75' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#08BD80'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#5a6a75'; }}
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               8507700177
             </a>
-            <a href="/college-predictor" className="text-sm font-semibold px-4 py-2 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 transition-all">
+            <a href="/college-predictor"
+              className="text-sm font-semibold px-4 py-2 rounded-lg border transition-all"
+              style={{ borderColor: '#E9EEF2', color: '#3C4852' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#08BD80'; (e.currentTarget as HTMLElement).style.color = '#08BD80'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#E9EEF2'; (e.currentTarget as HTMLElement).style.color = '#3C4852'; }}
+            >
               College Predictor
             </a>
-            <a href="/admission" style={{ background: '#f97316' }} className="text-sm font-semibold px-4 py-2 rounded-lg text-white hover:opacity-90 transition-opacity shadow-md">
+            <a href="/admission"
+              className="text-sm font-bold px-5 py-2 rounded-lg text-white transition-opacity hover:opacity-90"
+              style={{ background: '#f97316' }}
+            >
               Admission 2026
             </a>
           </div>
         </div>
       </nav>
 
-      {/* ─── Sub Navigation Bar (Unacademy style) ─── */}
-      <div className="hidden md:block bg-white border-b border-gray-100 sticky top-[60px] z-40">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
-            {[
-              { label: 'Get Started', href: '#courses' },
-              { label: 'Courses', href: '/courses/offline' },
-              { label: 'Exams', href: '/exams/clat' },
-              { label: 'Mock Tests', href: '/courses/mock-tests' },
-              { label: 'Faculty', href: '#faculty' },
-              { label: 'Results', href: '/about' },
-              { label: 'About CLAT', href: '/exams/clat' },
-            ].map((item) => (
-              <a key={item.label} href={item.href}
-                className="flex-shrink-0 px-4 py-3 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-900 transition-all whitespace-nowrap">
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* ─── Mobile Navbar ──────────────────────────────────── */}
-      <nav className="sticky top-0 z-50 md:hidden bg-white border-b border-gray-100 shadow-sm">
-        <div className="flex items-center justify-between px-3 py-2.5">
+      <nav className="sticky top-0 z-50 md:hidden bg-white shadow-sm" style={{ borderBottom: '1px solid #E9EEF2' }}>
+        <div className="flex items-center justify-between px-4 h-14">
           {/* Hamburger */}
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="p-1.5 rounded-lg text-gray-700">
+          <button onClick={() => setMobileOpen(!mobileOpen)} className="p-1.5 rounded-lg" style={{ color: '#3C4852' }}>
             {mobileOpen ? (
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -141,56 +141,56 @@ export default function Navbar() {
           </button>
 
           {/* Logo center */}
-          <a href="/" className="flex items-center">
-            <img src="/logo.png" alt="CLATians" className="h-10 w-auto object-contain" />
+          <a href="/" className="absolute left-1/2 -translate-x-1/2">
+            <img src="/logo.png" alt="CLATians" className="h-9 w-auto object-contain" />
           </a>
 
-          {/* Right CTAs */}
-          <div className="flex flex-col gap-1 items-end">
-            <a href="/college-predictor"
-              className="flex items-center gap-1 px-2.5 py-1 rounded-full text-white text-[10px] font-bold"
-              style={{ background: '#08BD80' }}>
-              ⚡ College Predictor
-            </a>
-            <a href="/admission"
-              className="px-2.5 py-1 rounded-lg text-white text-[10px] font-bold"
-              style={{ background: '#0D1837' }}>
-              Admission 2026
-            </a>
-          </div>
+          {/* Right CTA */}
+          <a href="/admission"
+            className="px-3 py-1.5 rounded-lg text-white text-xs font-bold"
+            style={{ background: '#f97316' }}>
+            Admission 2026
+          </a>
         </div>
 
         {/* Mobile Menu Drawer */}
         {mobileOpen && (
-          <div className="bg-white border-t border-gray-100 shadow-xl animate-fade-in">
-            <div className="px-4 py-3 space-y-1">
+          <div className="bg-white border-t shadow-lg" style={{ borderColor: '#E9EEF2' }}>
+            <div className="px-4 py-3 space-y-0.5">
               {navLinks.map((link) => (
                 <div key={link.label}>
                   <a href={link.href} onClick={() => setMobileOpen(false)}
-                    className="block py-3 px-3 rounded-lg font-semibold text-gray-800 hover:bg-cyan-50 hover:text-cyan-700 transition-colors border-b border-gray-50">
+                    className="flex items-center justify-between py-3 px-3 rounded-xl font-semibold text-sm transition-colors"
+                    style={{ color: '#3C4852' }}>
                     {link.label}
+                    {link.sub && (
+                      <svg className="w-3.5 h-3.5 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    )}
                   </a>
                   {link.sub && (
-                    <div className="pl-4 space-y-1 mt-1">
+                    <div className="pl-4 pb-1 space-y-0.5">
                       {link.sub.map((s) => (
                         <a key={s.label} href={s.href} onClick={() => setMobileOpen(false)}
-                          className="block py-2 px-3 text-sm text-gray-600 hover:text-cyan-700">
-                          → {s.label}
+                          className="block py-2 px-3 text-sm rounded-lg transition-colors"
+                          style={{ color: '#7A8B94' }}>
+                          {s.label}
                         </a>
                       ))}
                     </div>
                   )}
                 </div>
               ))}
-              <div className="pt-3 pb-1 flex gap-2">
+              <div className="pt-3 pb-1 flex gap-2 border-t mt-2" style={{ borderColor: '#E9EEF2' }}>
                 <a href="/college-predictor" onClick={() => setMobileOpen(false)}
-                  style={{ borderColor: '#0D1837', color: '#0D1837' }}
-                  className="flex-1 text-center py-2.5 rounded-lg border-2 font-semibold text-sm">
+                  className="flex-1 text-center py-2.5 rounded-xl border-2 font-semibold text-sm transition-colors"
+                  style={{ borderColor: '#08BD80', color: '#08BD80' }}>
                   College Predictor
                 </a>
                 <a href="/admission" onClick={() => setMobileOpen(false)}
-                  style={{ background: '#08BD80' }}
-                  className="flex-1 text-center py-2.5 rounded-lg text-white font-semibold text-sm">
+                  className="flex-1 text-center py-2.5 rounded-xl text-white font-semibold text-sm"
+                  style={{ background: '#08BD80' }}>
                   Admission 2026
                 </a>
               </div>
@@ -203,7 +203,8 @@ export default function Navbar() {
       <div className="mobile-bottom-nav md:hidden">
         {mobileNavItems.map((item) => (
           <a key={item.label} href={item.href}
-            className="flex flex-col items-center gap-0.5 py-1 flex-1 text-gray-400 hover:text-blue-600 transition-colors">
+            className="flex flex-col items-center gap-0.5 py-1 flex-1 transition-colors"
+            style={{ color: '#9CA3AF' }}>
             <span className="w-5 h-5">{item.icon}</span>
             <span className="text-[9px] font-semibold leading-tight">{item.label}</span>
           </a>
@@ -231,13 +232,6 @@ function GradIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
       <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" />
-    </svg>
-  );
-}
-function UserIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
-      <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" /><circle cx="12" cy="7" r="4" />
     </svg>
   );
 }
