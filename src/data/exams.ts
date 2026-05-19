@@ -327,7 +327,7 @@ export const exams: Exam[] = [
     ],
   },
   {
-    slug: 'cuet-law',
+    slug: 'cuet',
     code: 'CUET',
     name: 'CUET-LAW',
     fullName: 'Common University Entrance Test for Law',
