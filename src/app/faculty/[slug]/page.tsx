@@ -32,7 +32,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
 
         {/* ── Hero ──────────────────────────────────── */}
         <div className="relative overflow-hidden py-14 md:py-20"
-          style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+          style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full opacity-10"
             style={{ background: f.color }} />
           <div className="max-w-7xl mx-auto px-4">
@@ -90,13 +90,13 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
 
               {/* Bio */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>About {f.name}</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>About {f.name}</h2>
                 <p className="text-gray-600 leading-relaxed">{f.bio}</p>
               </section>
 
               {/* Education */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Education</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Education</h2>
                 <div className="space-y-3">
                   {f.education.map((e, i) => (
                     <div key={i} className="flex items-start gap-3 p-4 bg-white border border-gray-100 rounded-xl">
@@ -109,7 +109,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
 
               {/* Expertise */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Areas of Expertise</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Areas of Expertise</h2>
                 <div className="space-y-4">
                   {f.expertise.map((e) => (
                     <div key={e.area} className="bg-white border border-gray-100 rounded-xl p-4">
@@ -128,7 +128,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
 
               {/* Achievements */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Key Achievements</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Key Achievements</h2>
                 <div className="space-y-3">
                   {f.achievements.map((a, i) => (
                     <div key={i} className="flex items-start gap-3 p-4 bg-white border border-gray-100 rounded-xl">
@@ -144,7 +144,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
 
               {/* Courses */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Teaches In</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Teaches In</h2>
                 <div className="flex flex-wrap gap-3">
                   {f.courses.map((c) => (
                     <a key={c} href={`/courses/${c.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '')}`}
@@ -167,7 +167,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
                     style={{ background: f.color }}>
                     {f.avatar}
                   </div>
-                  <h3 className="font-black text-base" style={{ color: 'var(--navy)' }}>Book a Session</h3>
+                  <h3 className="font-black text-base" style={{ color: '#0D1837' }}>Book a Session</h3>
                   <p className="text-sm text-gray-500 mt-1 mb-4">
                     Get personalized guidance from {f.name}.
                   </p>
@@ -200,7 +200,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
 
                 {/* Other Faculty */}
                 <div className="bg-white border border-gray-100 rounded-2xl p-5">
-                  <h3 className="font-bold text-sm mb-3" style={{ color: 'var(--navy)' }}>Other Faculty</h3>
+                  <h3 className="font-bold text-sm mb-3" style={{ color: '#0D1837' }}>Other Faculty</h3>
                   <div className="space-y-3">
                     {otherFaculty.map((m) => (
                       <a key={m.slug} href={`/faculty/${m.slug}`}

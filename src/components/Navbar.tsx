@@ -149,12 +149,12 @@ export default function Navbar() {
           <div className="flex flex-col gap-1 items-end">
             <a href="/college-predictor"
               className="flex items-center gap-1 px-2.5 py-1 rounded-full text-white text-[10px] font-bold"
-              style={{ background: 'var(--cyan)' }}>
+              style={{ background: '#08BD80' }}>
               ⚡ College Predictor
             </a>
             <a href="/admission"
               className="px-2.5 py-1 rounded-lg text-white text-[10px] font-bold"
-              style={{ background: 'var(--navy)' }}>
+              style={{ background: '#0D1837' }}>
               Admission 2026
             </a>
           </div>
@@ -184,12 +184,12 @@ export default function Navbar() {
               ))}
               <div className="pt-3 pb-1 flex gap-2">
                 <a href="/college-predictor" onClick={() => setMobileOpen(false)}
-                  style={{ borderColor: 'var(--navy)', color: 'var(--navy)' }}
+                  style={{ borderColor: '#0D1837', color: '#0D1837' }}
                   className="flex-1 text-center py-2.5 rounded-lg border-2 font-semibold text-sm">
                   College Predictor
                 </a>
                 <a href="/admission" onClick={() => setMobileOpen(false)}
-                  style={{ background: 'var(--cyan)' }}
+                  style={{ background: '#08BD80' }}
                   className="flex-1 text-center py-2.5 rounded-lg text-white font-semibold text-sm">
                   Admission 2026
                 </a>

@@ -29,7 +29,7 @@ export default function AdmissionPage() {
 
         {/* Hero */}
         <div className="relative overflow-hidden py-14 md:py-20"
-          style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+          style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-10" style={{ background: '#06b6d4' }} />
           <div className="max-w-7xl mx-auto px-4 text-center">
             <span className="inline-block text-xs font-bold px-3 py-1.5 rounded-full text-white mb-4"
@@ -41,7 +41,7 @@ export default function AdmissionPage() {
               Enroll in India's most trusted CLAT coaching. Limited seats in offline batch — apply now.
             </p>
             <div className="flex justify-center gap-4 mt-6 flex-wrap">
-              <a href="tel:8507700177" style={{ background: 'var(--cyan)' }}
+              <a href="tel:8507700177" style={{ background: '#08BD80' }}
                 className="px-7 py-3.5 rounded-xl font-bold text-white text-sm">
                 📞 Call to Apply
               </a>
@@ -65,7 +65,7 @@ export default function AdmissionPage() {
               {steps.map((s) => (
                 <div key={s.step} className="text-center">
                   <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-black text-xl mx-auto mb-4"
-                    style={{ background: 'var(--navy)' }}>
+                    style={{ background: '#0D1837' }}>
                     {s.step}
                   </div>
                   <h3 className="font-bold text-gray-900 mb-2">{s.title}</h3>
@@ -86,7 +86,7 @@ export default function AdmissionPage() {
                   className="bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover relative">
                   {p.popular && (
                     <div className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full text-white"
-                      style={{ background: 'var(--cyan)' }}>
+                      style={{ background: '#08BD80' }}>
                       Most Popular
                     </div>
                   )}
@@ -119,7 +119,7 @@ export default function AdmissionPage() {
           {/* Application Form */}
           <div id="form" className="grid md:grid-cols-2 gap-8 items-start">
             <div>
-              <h2 className="text-2xl font-black mb-3" style={{ color: 'var(--navy)' }}>Online Application Form</h2>
+              <h2 className="text-2xl font-black mb-3" style={{ color: '#0D1837' }}>Online Application Form</h2>
               <p className="text-gray-500 mb-6 text-sm">Fill in your details and our admission counsellor will call you within 24 hours.</p>
 
               <form className="space-y-4">
@@ -157,7 +157,7 @@ export default function AdmissionPage() {
                 </div>
                 <button type="submit"
                   className="w-full py-4 rounded-xl font-bold text-white text-sm"
-                  style={{ background: 'var(--navy)' }}>
+                  style={{ background: '#0D1837' }}>
                   Submit Application →
                 </button>
               </form>
@@ -165,7 +165,7 @@ export default function AdmissionPage() {
 
             {/* Why CLATians */}
             <div className="bg-white border border-gray-100 rounded-2xl p-6">
-              <h3 className="text-xl font-black mb-5" style={{ color: 'var(--navy)' }}>Why Choose CLATians?</h3>
+              <h3 className="text-xl font-black mb-5" style={{ color: '#0D1837' }}>Why Choose CLATians?</h3>
               <div className="space-y-4">
                 {[
                   { icon: '🏆', title: '5000+ NLU Selections', desc: 'Track record speaks for itself. Students from every batch have cracked top NLUs.' },
@@ -185,7 +185,7 @@ export default function AdmissionPage() {
                 ))}
               </div>
               <div className="mt-6 pt-5 border-t border-gray-50 text-center">
-                <a href="tel:8507700177" style={{ background: 'var(--cyan)' }}
+                <a href="tel:8507700177" style={{ background: '#08BD80' }}
                   className="inline-block px-6 py-3 rounded-xl font-bold text-white text-sm">
                   📞 Call: 8507700177
                 </a>

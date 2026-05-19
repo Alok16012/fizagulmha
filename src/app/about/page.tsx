@@ -139,14 +139,14 @@ export default function AboutPage() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 md:py-28">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 mb-5">
-                <span className="w-8 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
-                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: 'var(--cyan)' }}>
+                <span className="w-8 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
+                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#08BD80' }}>
                   About CLATians
                 </span>
               </div>
               <h1 className="text-4xl md:text-6xl font-black text-white leading-tight">
                 India's Most Trusted<br />
-                <span style={{ color: 'var(--cyan)' }}>Law Entrance</span> Institute
+                <span style={{ color: '#08BD80' }}>Law Entrance</span> Institute
               </h1>
               <p className="text-white/60 mt-5 text-lg leading-relaxed max-w-xl">
                 Born in Patna, built for every CLAT aspirant across India. 12 years of turning dreams into NLU seats — one student at a time.
@@ -154,7 +154,7 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-3 mt-8">
                 <a href="/admission"
                   className="px-7 py-3.5 rounded-xl font-bold text-white text-sm"
-                  style={{ background: 'var(--cyan)' }}>
+                  style={{ background: '#08BD80' }}>
                   Join CLATians →
                 </a>
                 <a href="tel:8507700177"
@@ -167,7 +167,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── Stats Bar ─────────────────────────────────── */}
-        <section style={{ background: 'var(--navy)' }} className="py-6 border-y border-white/5">
+        <section style={{ background: '#0D1837' }} className="py-6 border-y border-white/5">
           <div className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-0 md:divide-x md:divide-white/10">
               {stats.map((s) => (
@@ -188,12 +188,12 @@ export default function AboutPage() {
               {/* Text */}
               <div>
                 <div className="inline-flex items-center gap-2 mb-4">
-                  <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
-                  <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: 'var(--cyan)' }}>
+                  <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
+                  <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#08BD80' }}>
                     Our Story
                   </span>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-black leading-tight mb-5" style={{ color: 'var(--navy)' }}>
+                <h2 className="text-3xl md:text-4xl font-black leading-tight mb-5" style={{ color: '#0D1837' }}>
                   From a Classroom in Patna to India's #1 CLAT Institute
                 </h2>
                 <div className="space-y-4 text-gray-600 leading-relaxed">
@@ -209,7 +209,7 @@ export default function AboutPage() {
                 </div>
                 <div className="mt-7 flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-black"
-                    style={{ background: 'var(--cyan)' }}>
+                    style={{ background: '#08BD80' }}>
                     RK
                   </div>
                   <div>
@@ -222,19 +222,19 @@ export default function AboutPage() {
               {/* Visual card grid */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-2xl p-6 flex flex-col gap-2"
-                  style={{ background: 'linear-gradient(135deg, var(--navy), var(--navy-light))' }}>
+                  style={{ background: 'linear-gradient(135deg, #0D1837, #1f3160)' }}>
                   <div className="text-4xl">🏛️</div>
                   <div className="text-3xl font-black text-white">5000+</div>
                   <div className="text-white/60 text-sm">NLU Selections in 12 years</div>
                 </div>
                 <div className="rounded-2xl p-6 flex flex-col gap-2 bg-white border border-gray-100 shadow-sm">
                   <div className="text-4xl">👥</div>
-                  <div className="text-3xl font-black" style={{ color: 'var(--navy)' }}>1.25L+</div>
+                  <div className="text-3xl font-black" style={{ color: '#0D1837' }}>1.25L+</div>
                   <div className="text-gray-500 text-sm">Students trained nationally</div>
                 </div>
                 <div className="rounded-2xl p-6 flex flex-col gap-2 bg-white border border-gray-100 shadow-sm">
                   <div className="text-4xl">👨‍🏫</div>
-                  <div className="text-3xl font-black" style={{ color: 'var(--navy)' }}>20+</div>
+                  <div className="text-3xl font-black" style={{ color: '#0D1837' }}>20+</div>
                   <div className="text-gray-500 text-sm">NLU Alumni faculty members</div>
                 </div>
                 <div className="rounded-2xl p-6 flex flex-col gap-2"
@@ -249,15 +249,15 @@ export default function AboutPage() {
         </section>
 
         {/* ── Mission & Vision ──────────────────────────── */}
-        <section className="py-14 md:py-20" style={{ background: 'var(--bg)' }}>
+        <section className="py-14 md:py-20" style={{ background: '#FCFCFC' }}>
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 mb-3">
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
-                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: 'var(--cyan)' }}>
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
+                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#08BD80' }}>
                   What Drives Us
                 </span>
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
               </div>
               <h2 className="section-title">Mission & Vision</h2>
             </div>
@@ -265,7 +265,7 @@ export default function AboutPage() {
               <div className="bg-white border border-gray-100 rounded-2xl p-8 md:p-10">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5"
                   style={{ background: '#e0f9ff' }}>🎯</div>
-                <h3 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Our Mission</h3>
+                <h3 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Our Mission</h3>
                 <p className="text-gray-600 leading-relaxed text-base">
                   To provide every CLAT aspirant — regardless of their background, city, or financial situation — access to the same quality of preparation that was once only available to a privileged few.
                 </p>
@@ -276,7 +276,7 @@ export default function AboutPage() {
               <div className="bg-white border border-gray-100 rounded-2xl p-8 md:p-10">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5"
                   style={{ background: '#eef2ff' }}>🔭</div>
-                <h3 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Our Vision</h3>
+                <h3 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Our Vision</h3>
                 <p className="text-gray-600 leading-relaxed text-base">
                   To become India's most trusted law entrance preparation institute — where every student who walks in with a dream walks out with a plan, a rank, and a seat at a top National Law University.
                 </p>
@@ -293,11 +293,11 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 mb-3">
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
-                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: 'var(--cyan)' }}>
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
+                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#08BD80' }}>
                   What We Stand For
                 </span>
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
               </div>
               <h2 className="section-title">Our Core Values</h2>
               <p className="section-subtitle max-w-lg mx-auto">Four principles that guide every decision we make at CLATians.</p>
@@ -310,7 +310,7 @@ export default function AboutPage() {
                   <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-4 bg-white shadow-sm">
                     {v.icon}
                   </div>
-                  <h3 className="font-black text-lg mb-2" style={{ color: 'var(--navy)' }}>{v.title}</h3>
+                  <h3 className="font-black text-lg mb-2" style={{ color: '#0D1837' }}>{v.title}</h3>
                   <p className="text-sm text-gray-600 leading-relaxed flex-1">{v.desc}</p>
                   <div className="mt-4 w-8 h-1 rounded-full" style={{ background: v.color }} />
                 </div>
@@ -320,15 +320,15 @@ export default function AboutPage() {
         </section>
 
         {/* ── Timeline ──────────────────────────────────── */}
-        <section className="py-14 md:py-20" style={{ background: 'var(--bg)' }}>
+        <section className="py-14 md:py-20" style={{ background: '#FCFCFC' }}>
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 mb-3">
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
-                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: 'var(--cyan)' }}>
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
+                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#08BD80' }}>
                   Our Journey
                 </span>
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
               </div>
               <h2 className="section-title">12 Years of Excellence</h2>
               <p className="section-subtitle">From a single classroom in Patna to a national platform.</p>
@@ -348,7 +348,7 @@ export default function AboutPage() {
                         <div className="flex items-center gap-2 mb-2 justify-end" style={{ flexDirection: i % 2 === 0 ? 'row-reverse' : 'row' }}>
                           <span className="text-xl">{m.icon}</span>
                           <span className="text-xs font-bold px-2.5 py-1 rounded-full text-white"
-                            style={{ background: 'var(--cyan)' }}>
+                            style={{ background: '#08BD80' }}>
                             {m.year}
                           </span>
                         </div>
@@ -360,7 +360,7 @@ export default function AboutPage() {
                     {/* Center dot */}
                     <div className="w-20 flex-shrink-0 flex justify-center z-10">
                       <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-xs shadow-lg"
-                        style={{ background: 'linear-gradient(135deg, var(--navy), var(--cyan))' }}>
+                        style={{ background: 'linear-gradient(135deg, #0D1837, #08BD80)' }}>
                         {m.year.slice(2)}
                       </div>
                     </div>
@@ -373,17 +373,17 @@ export default function AboutPage() {
             </div>
 
             {/* Mobile timeline */}
-            <div className="md:hidden relative pl-6 border-l-2" style={{ borderColor: 'var(--cyan)' }}>
+            <div className="md:hidden relative pl-6 border-l-2" style={{ borderColor: '#08BD80' }}>
               <div className="space-y-5">
                 {milestones.map((m) => (
                   <div key={m.year} className="relative pl-5">
                     <span className="absolute -left-[21px] top-2 w-4 h-4 rounded-full border-2 border-white shadow"
-                      style={{ background: 'var(--cyan)' }} />
+                      style={{ background: '#08BD80' }} />
                     <div className="bg-white border border-gray-100 rounded-xl p-4">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-lg">{m.icon}</span>
                         <span className="text-xs font-bold px-2 py-0.5 rounded-full text-white"
-                          style={{ background: 'var(--navy)' }}>
+                          style={{ background: '#0D1837' }}>
                           {m.year}
                         </span>
                       </div>
@@ -402,11 +402,11 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 mb-3">
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
-                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: 'var(--cyan)' }}>
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
+                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#08BD80' }}>
                   The People Behind CLATians
                 </span>
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
               </div>
               <h2 className="section-title">Our Leadership Team</h2>
               <p className="section-subtitle max-w-lg mx-auto">
@@ -438,7 +438,7 @@ export default function AboutPage() {
             <div className="text-center mt-8">
               <a href="/#faculty"
                 className="inline-flex items-center gap-2 font-semibold text-sm px-6 py-3 rounded-xl border-2 transition-all hover:bg-green-50"
-                style={{ borderColor: 'var(--cyan)', color: 'var(--cyan)' }}>
+                style={{ borderColor: '#08BD80', color: '#08BD80' }}>
                 View All 20+ Faculty Members →
               </a>
             </div>
@@ -446,15 +446,15 @@ export default function AboutPage() {
         </section>
 
         {/* ── Why CLATians ──────────────────────────────── */}
-        <section className="py-14 md:py-20" style={{ background: 'var(--bg)' }}>
+        <section className="py-14 md:py-20" style={{ background: '#FCFCFC' }}>
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 mb-3">
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
-                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: 'var(--cyan)' }}>
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
+                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#08BD80' }}>
                   Why 1.25 Lakh Students Choose Us
                 </span>
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
               </div>
               <h2 className="section-title">What Makes CLATians Different</h2>
             </div>
@@ -477,11 +477,11 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 mb-3">
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
-                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: 'var(--cyan)' }}>
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
+                <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: '#08BD80' }}>
                   Find Us
                 </span>
-                <span className="w-6 h-0.5 rounded-full" style={{ background: 'var(--cyan)' }} />
+                <span className="w-6 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
               </div>
               <h2 className="section-title">Visit Us in Patna</h2>
             </div>
@@ -497,7 +497,7 @@ export default function AboutPage() {
                   <p className="text-gray-500 text-sm">Boring Rd, Patna, Bihar 800001</p>
                   <a href="https://maps.google.com" target="_blank" rel="noreferrer"
                     className="mt-4 inline-block px-5 py-2 rounded-xl font-semibold text-white text-sm"
-                    style={{ background: 'var(--navy)' }}>
+                    style={{ background: '#0D1837' }}>
                     Open in Google Maps
                   </a>
                 </div>
@@ -537,7 +537,7 @@ export default function AboutPage() {
                       <h4 className="font-bold text-gray-900 text-sm">{c.title}</h4>
                       {c.lines.map((l, i) => (
                         c.href ? (
-                          <a key={i} href={c.href} className="block text-sm font-semibold mt-0.5" style={{ color: 'var(--cyan)' }}>
+                          <a key={i} href={c.href} className="block text-sm font-semibold mt-0.5" style={{ color: '#08BD80' }}>
                             {l}
                           </a>
                         ) : (
@@ -554,12 +554,12 @@ export default function AboutPage() {
 
         {/* ── Final CTA ─────────────────────────────────── */}
         <section className="py-14 md:py-20"
-          style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+          style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="max-w-3xl mx-auto px-4 text-center">
             <div className="text-5xl mb-5">🚀</div>
             <h2 className="text-3xl md:text-4xl font-black text-white leading-tight">
               Ready to Write Your<br />
-              <span style={{ color: 'var(--cyan)' }}>NLU Success Story?</span>
+              <span style={{ color: '#08BD80' }}>NLU Success Story?</span>
             </h2>
             <p className="text-white/60 mt-4 text-base md:text-lg max-w-xl mx-auto">
               Join 1.25 lakh+ students who chose CLATians. Our experts are ready to guide you every step of the way.
@@ -567,7 +567,7 @@ export default function AboutPage() {
             <div className="flex justify-center gap-4 mt-8 flex-wrap">
               <a href="/admission"
                 className="px-8 py-4 rounded-xl font-bold text-white text-base"
-                style={{ background: 'var(--cyan)' }}>
+                style={{ background: '#08BD80' }}>
                 Start Your Journey →
               </a>
               <a href="tel:8507700177"

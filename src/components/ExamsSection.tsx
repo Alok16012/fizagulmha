@@ -153,13 +153,13 @@ export default function ExamsSection() {
       </section>
 
       {/* ─── Mobile Exams Section ─────────────────────────── */}
-      <section className="md:hidden py-6 px-4" style={{ background: 'var(--navy)' }}>
+      <section className="md:hidden py-6 px-4" style={{ background: '#0D1837' }}>
         {/* Header row */}
         <div className="flex items-start justify-between mb-4">
           <div>
             <span
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-white mb-2"
-              style={{ background: 'var(--orange)' }}
+              style={{ background: '#f97316' }}
             >
               🏛 LAW ENTRANCE
             </span>
@@ -169,7 +169,7 @@ export default function ExamsSection() {
           <a
             href="/exams/clat"
             className="text-xs font-bold flex items-center gap-1 mt-8 flex-shrink-0"
-            style={{ color: 'var(--orange)' }}
+            style={{ color: '#f97316' }}
           >
             View All →
           </a>

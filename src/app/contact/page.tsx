@@ -15,7 +15,7 @@ export default function ContactPage() {
 
         {/* Hero */}
         <div className="relative overflow-hidden py-14 md:py-20"
-          style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+          style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h1 className="text-3xl md:text-4xl font-black text-white">Get in Touch</h1>
             <p className="text-white/60 mt-3 max-w-xl mx-auto">
@@ -43,7 +43,7 @@ export default function ContactPage() {
                   ))}
                   <a href={c.href}
                     className="mt-3 inline-block text-sm font-semibold"
-                    style={{ color: 'var(--cyan)' }}>
+                    style={{ color: '#08BD80' }}>
                     {c.cta} →
                   </a>
                 </div>
@@ -53,7 +53,7 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="md:col-span-2">
               <div className="bg-white border border-gray-100 rounded-2xl p-6 md:p-8">
-                <h2 className="text-2xl font-black mb-2" style={{ color: 'var(--navy)' }}>Send Us a Message</h2>
+                <h2 className="text-2xl font-black mb-2" style={{ color: '#0D1837' }}>Send Us a Message</h2>
                 <p className="text-gray-500 text-sm mb-6">Our team will respond within 24 hours.</p>
 
                 <form className="space-y-4">
@@ -103,7 +103,7 @@ export default function ContactPage() {
                   </div>
                   <button type="submit"
                     className="w-full py-4 rounded-xl font-bold text-white text-sm transition-opacity hover:opacity-90"
-                    style={{ background: 'var(--navy)' }}>
+                    style={{ background: '#0D1837' }}>
                     Send Message →
                   </button>
                   <p className="text-xs text-center text-gray-400">
@@ -116,12 +116,12 @@ export default function ContactPage() {
 
           {/* Free counselling CTA */}
           <div className="mt-12 rounded-2xl p-8 md:p-10 text-center"
-            style={{ background: 'linear-gradient(135deg, var(--navy), var(--navy-light))' }}>
+            style={{ background: 'linear-gradient(135deg, #0D1837, #1f3160)' }}>
             <h2 className="text-2xl md:text-3xl font-black text-white mb-2">Free 1-on-1 Counselling</h2>
             <p className="text-white/60 max-w-xl mx-auto text-sm md:text-base">
               Not sure which program is right for you? Our counsellors will assess your current preparation level and recommend the best path forward.
             </p>
-            <a href="tel:8507700177" style={{ background: 'var(--cyan)' }}
+            <a href="tel:8507700177" style={{ background: '#08BD80' }}
               className="mt-6 inline-block px-8 py-3.5 rounded-xl font-bold text-white text-sm">
               📞 Call 8507700177 for Free Counselling
             </a>

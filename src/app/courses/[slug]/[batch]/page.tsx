@@ -44,7 +44,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
 
         {/* ── Hero ───────────────────────────────── */}
         <div className="relative overflow-hidden py-12 md:py-16"
-          style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+          style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full opacity-10"
             style={{ background: batch.color }} />
           <div className="max-w-7xl mx-auto px-4">
@@ -136,13 +136,13 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
 
               {/* About batch */}
               <section>
-                <h2 className="text-2xl font-black mb-3" style={{ color: 'var(--navy)' }}>About This Batch</h2>
+                <h2 className="text-2xl font-black mb-3" style={{ color: '#0D1837' }}>About This Batch</h2>
                 <p className="text-gray-600 leading-relaxed">{batch.description}</p>
               </section>
 
               {/* Faculty */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Faculty</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Faculty</h2>
                 <div className="flex flex-wrap gap-3">
                   {batch.faculty.map((f) => (
                     <div key={f} className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl px-4 py-3">
@@ -158,7 +158,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
 
               {/* What's covered */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Syllabus Covered</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Syllabus Covered</h2>
                 <div className="grid md:grid-cols-2 gap-3">
                   {batch.syllabus.map((s, i) => (
                     <div key={i} className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl">
@@ -174,7 +174,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
 
               {/* Batch details table */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Batch Details</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Batch Details</h2>
                 <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden">
                   {[
                     { label: 'Batch Name', val: batch.name },
@@ -200,7 +200,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
 
               {/* CTA banner */}
               <div className="rounded-2xl p-6 md:p-8"
-                style={{ background: 'linear-gradient(135deg, var(--navy), var(--navy-light))' }}>
+                style={{ background: 'linear-gradient(135deg, #0D1837, #1f3160)' }}>
                 <h3 className="font-black text-white text-xl mb-1">Ready to Join This Batch?</h3>
                 <p className="text-white/60 text-sm mb-4">
                   Only {seatsLeft} seats left. Call now or visit our Patna center to secure your seat.
@@ -266,7 +266,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                 {/* Other batches of same course */}
                 {otherBatches.length > 0 && (
                   <div className="bg-white border border-gray-100 rounded-2xl p-5">
-                    <h3 className="font-black text-sm mb-3" style={{ color: 'var(--navy)' }}>
+                    <h3 className="font-black text-sm mb-3" style={{ color: '#0D1837' }}>
                       More {course.title} Batches
                     </h3>
                     <div className="space-y-2">
@@ -291,7 +291,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                 {/* Back to course */}
                 <a href={`/courses/${slug}`}
                   className="flex items-center gap-2 text-sm font-semibold px-5 py-3 rounded-xl border transition-colors hover:bg-gray-50"
-                  style={{ color: 'var(--navy)', borderColor: 'var(--border)' }}>
+                  style={{ color: '#0D1837', borderColor: '#E9EEF2' }}>
                   ← Back to {course.title}
                 </a>
               </div>

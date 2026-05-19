@@ -136,7 +136,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                 <div className="flex items-center gap-3 mb-4">
                   <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                     style={{ background: exam.color }}>📋</span>
-                  <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>Overview</h2>
+                  <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>Overview</h2>
                 </div>
                 <p className="text-gray-600 leading-relaxed text-base">{exam.overview}</p>
               </section>
@@ -146,7 +146,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                 <div className="flex items-center gap-3 mb-5">
                   <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                     style={{ background: exam.color }}>✅</span>
-                  <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>Eligibility Criteria</h2>
+                  <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>Eligibility Criteria</h2>
                 </div>
                 <div className="grid gap-3">
                   {exam.eligibility.map((e, i) => (
@@ -166,7 +166,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                 <div className="flex items-center gap-3 mb-5">
                   <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                     style={{ background: exam.color }}>📊</span>
-                  <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>Exam Pattern</h2>
+                  <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>Exam Pattern</h2>
                 </div>
                 <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
                   <table className="w-full text-sm">
@@ -227,7 +227,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                 <div className="flex items-center gap-3 mb-5">
                   <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                     style={{ background: exam.color }}>📚</span>
-                  <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>Syllabus</h2>
+                  <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>Syllabus</h2>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   {exam.syllabus.map((s, si) => (
@@ -257,7 +257,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                 <div className="flex items-center gap-3 mb-5">
                   <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                     style={{ background: exam.color }}>📅</span>
-                  <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>Important Dates</h2>
+                  <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>Important Dates</h2>
                 </div>
                 <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
                   <table className="w-full text-sm">
@@ -295,7 +295,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                   <div className="flex items-center gap-3 mb-5">
                     <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                       style={{ background: exam.color }}>💳</span>
-                    <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>Application Fee</h2>
+                    <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>Application Fee</h2>
                   </div>
                   <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
                     <table className="w-full text-sm">
@@ -326,7 +326,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                   <div className="flex items-center gap-3 mb-5">
                     <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                       style={{ background: exam.color }}>📝</span>
-                    <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>How to Apply</h2>
+                    <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>How to Apply</h2>
                   </div>
                   <div className="relative">
                     {/* Vertical line */}
@@ -355,7 +355,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                   <div className="flex items-center gap-3 mb-2">
                     <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                       style={{ background: exam.color }}>🏛️</span>
-                    <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>
+                    <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>
                       Participating Universities ({exam.nluList.length})
                     </h2>
                   </div>
@@ -400,7 +400,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                 <div className="flex items-center gap-3 mb-5">
                   <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                     style={{ background: exam.color }}>🎯</span>
-                  <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>
+                  <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>
                     CLATians Preparation Tips
                   </h2>
                 </div>
@@ -423,7 +423,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                   <div className="flex items-center gap-3 mb-5">
                     <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                       style={{ background: exam.color }}>🔔</span>
-                    <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>Latest Updates</h2>
+                    <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>Latest Updates</h2>
                   </div>
                   <div className="relative pl-4 border-l-2" style={{ borderColor: exam.color }}>
                     {exam.latestUpdates.map((u, i) => (
@@ -446,7 +446,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                 <div className="flex items-center gap-3 mb-5">
                   <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-base flex-shrink-0"
                     style={{ background: exam.color }}>💬</span>
-                  <h2 className="text-2xl font-black" style={{ color: 'var(--navy)' }}>
+                  <h2 className="text-2xl font-black" style={{ color: '#0D1837' }}>
                     Frequently Asked Questions
                   </h2>
                 </div>
@@ -498,7 +498,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
 
                 {/* Enroll CTA */}
                 <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-                  <h3 className="font-black text-lg mb-1" style={{ color: 'var(--navy)' }}>
+                  <h3 className="font-black text-lg mb-1" style={{ color: '#0D1837' }}>
                     Crack {exam.code} 2026
                   </h3>
                   <p className="text-sm text-gray-500 mb-4">
@@ -515,7 +515,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                     Join Online Course
                   </a>
                   <div className="mt-4 pt-4 border-t border-gray-50 text-center">
-                    <a href="tel:8507700177" className="text-sm font-bold flex items-center justify-center gap-1.5" style={{ color: 'var(--navy)' }}>
+                    <a href="tel:8507700177" className="text-sm font-bold flex items-center justify-center gap-1.5" style={{ color: '#0D1837' }}>
                       📞 8507700177
                     </a>
                     <p className="text-xs text-gray-400 mt-0.5">Free counselling available</p>
@@ -524,7 +524,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
 
                 {/* Exam at a Glance */}
                 <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-                  <h3 className="font-bold text-sm mb-3" style={{ color: 'var(--navy)' }}>⚡ Quick Facts</h3>
+                  <h3 className="font-bold text-sm mb-3" style={{ color: '#0D1837' }}>⚡ Quick Facts</h3>
                   <div className="space-y-2.5">
                     {[
                       { label: 'Total Questions', value: String(exam.questions) },
@@ -544,7 +544,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
 
                 {/* Other Exams */}
                 <div className="bg-white border border-gray-100 rounded-2xl p-5">
-                  <h3 className="font-bold text-sm mb-3" style={{ color: 'var(--navy)' }}>Other Exams</h3>
+                  <h3 className="font-bold text-sm mb-3" style={{ color: '#0D1837' }}>Other Exams</h3>
                   <div className="space-y-2">
                     {otherExams.map((e) => (
                       <a key={e.slug} href={`/exams/${e.slug}`}

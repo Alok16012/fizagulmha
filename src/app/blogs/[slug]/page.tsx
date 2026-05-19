@@ -27,7 +27,7 @@ function renderContent(content: string) {
     const line = lines[i];
     if (line.startsWith('## ')) {
       elements.push(
-        <h2 key={i} className="text-xl md:text-2xl font-black mt-8 mb-3" style={{ color: 'var(--navy)' }}>
+        <h2 key={i} className="text-xl md:text-2xl font-black mt-8 mb-3" style={{ color: '#0D1837' }}>
           {line.replace('## ', '')}
         </h2>
       );
@@ -47,7 +47,7 @@ function renderContent(content: string) {
         <ul key={`ul-${i}`} className="space-y-1.5 my-3">
           {items.map((item, j) => (
             <li key={j} className="flex items-start gap-2 text-gray-600 text-sm">
-              <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: 'var(--cyan)' }} />
+              <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: '#08BD80' }} />
               {item}
             </li>
           ))}
@@ -65,7 +65,7 @@ function renderContent(content: string) {
           {items.map((item, j) => (
             <li key={j} className="flex items-start gap-3 text-sm text-gray-600">
               <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
-                style={{ background: 'var(--cyan)' }}>
+                style={{ background: '#08BD80' }}>
                 {j + 1}
               </span>
               {item}
@@ -104,7 +104,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
         {/* Hero */}
         <div className="relative overflow-hidden py-14 md:py-20"
-          style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+          style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full opacity-10"
             style={{ background: blog.categoryColor }} />
           <div className="max-w-4xl mx-auto px-4">
@@ -154,13 +154,13 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
               {/* CTA */}
               <div className="mt-8 rounded-2xl p-6 md:p-8"
-                style={{ background: 'linear-gradient(135deg, var(--navy), var(--navy-light))' }}>
+                style={{ background: 'linear-gradient(135deg, #0D1837, #1f3160)' }}>
                 <h3 className="font-black text-white text-xl mb-2">Start Your CLAT Journey with CLATians</h3>
                 <p className="text-white/60 text-sm mb-5">
                   Expert coaching, 150+ mock tests, and personalized mentorship. Join 5000+ successful students.
                 </p>
                 <div className="flex gap-3 flex-wrap">
-                  <a href="/courses/online" style={{ background: 'var(--cyan)' }}
+                  <a href="/courses/online" style={{ background: '#08BD80' }}
                     className="px-6 py-2.5 rounded-xl font-bold text-white text-sm">
                     Enroll Now →
                   </a>
@@ -178,21 +178,21 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
                 {/* Enroll card */}
                 <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-                  <h3 className="font-black text-base mb-3" style={{ color: 'var(--navy)' }}>
+                  <h3 className="font-black text-base mb-3" style={{ color: '#0D1837' }}>
                     Start CLAT Prep Today
                   </h3>
                   <div className="space-y-2">
-                    <a href="/courses/offline" style={{ background: 'var(--navy)' }}
+                    <a href="/courses/offline" style={{ background: '#0D1837' }}
                       className="block text-center py-3 rounded-xl font-bold text-white text-sm">
                       Offline Course
                     </a>
-                    <a href="/courses/online" style={{ background: 'var(--cyan)' }}
+                    <a href="/courses/online" style={{ background: '#08BD80' }}
                       className="block text-center py-3 rounded-xl font-bold text-white text-sm">
                       Online Course
                     </a>
                     <a href="/courses/mock-tests"
                       className="block text-center py-3 rounded-xl font-bold text-sm border-2"
-                      style={{ borderColor: 'var(--cyan)', color: 'var(--cyan)' }}>
+                      style={{ borderColor: '#08BD80', color: '#08BD80' }}>
                       Mock Test Series
                     </a>
                   </div>
@@ -203,7 +203,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
                 {/* Related blogs */}
                 <div className="bg-white border border-gray-100 rounded-2xl p-5">
-                  <h3 className="font-bold text-sm mb-4" style={{ color: 'var(--navy)' }}>Related Articles</h3>
+                  <h3 className="font-bold text-sm mb-4" style={{ color: '#0D1837' }}>Related Articles</h3>
                   <div className="space-y-4">
                     {relatedBlogs.map((rb) => (
                       <a key={rb.slug} href={`/blogs/${rb.slug}`}
@@ -225,11 +225,11 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
                 {/* College Predictor */}
                 <div className="rounded-2xl p-5"
-                  style={{ background: 'linear-gradient(135deg, var(--navy), var(--navy-light))' }}>
+                  style={{ background: 'linear-gradient(135deg, #0D1837, #1f3160)' }}>
                   <div className="text-2xl mb-2">🔮</div>
                   <h3 className="font-bold text-white text-sm mb-1">College Predictor</h3>
                   <p className="text-white/60 text-xs mb-3">Know your NLU chances based on expected rank.</p>
-                  <a href="/college-predictor" style={{ background: 'var(--cyan)' }}
+                  <a href="/college-predictor" style={{ background: '#08BD80' }}
                     className="block text-center py-2.5 rounded-xl font-bold text-white text-xs">
                     Try Free Predictor
                   </a>

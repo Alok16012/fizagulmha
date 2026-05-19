@@ -34,7 +34,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
         {/* ── Hero ──────────────────────────────────── */}
         <div className="relative overflow-hidden py-14 md:py-20"
-          style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+          style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-10"
             style={{ background: course.color }} />
           <div className="max-w-7xl mx-auto px-4">
@@ -99,13 +99,13 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
               {/* Overview */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Course Overview</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Course Overview</h2>
                 <p className="text-gray-600 leading-relaxed">{course.overview}</p>
               </section>
 
               {/* Features */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>What You Get</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>What You Get</h2>
                 <div className="grid md:grid-cols-2 gap-3">
                   {course.features.map((f, i) => (
                     <div key={i} className="flex items-start gap-3 p-4 bg-white border border-gray-100 rounded-xl">
@@ -121,7 +121,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
               {/* Curriculum */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Curriculum</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Curriculum</h2>
                 <div className="space-y-4">
                   {course.curriculum.map((mod, i) => (
                     <details key={i} className="bg-white border border-gray-100 rounded-xl overflow-hidden group" open={i === 0}>
@@ -152,7 +152,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
               {/* Who is this for */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Who Is This For?</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Who Is This For?</h2>
                 <div className="space-y-2">
                   {course.whoFor.map((w, i) => (
                     <div key={i} className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl">
@@ -165,9 +165,9 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
               {/* Student Testimonial */}
               <section>
-                <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Student Success Story</h2>
+                <h2 className="text-2xl font-black mb-4" style={{ color: '#0D1837' }}>Student Success Story</h2>
                 <div className="rounded-2xl p-6 md:p-8"
-                  style={{ background: `linear-gradient(135deg, var(--navy), var(--navy-light))` }}>
+                  style={{ background: `linear-gradient(135deg, #0D1837, #1f3160)` }}>
                   <p className="text-white text-lg md:text-xl font-semibold leading-relaxed">
                     &ldquo;{course.testimonial.quote}&rdquo;
                   </p>
@@ -192,7 +192,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
                 {/* Batches card */}
                 <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
                   <div className="px-5 py-4 border-b border-gray-50 flex items-center justify-between"
-                    style={{ background: 'linear-gradient(135deg, var(--navy-dark), var(--navy))' }}>
+                    style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
                     <div>
                       <h3 className="font-black text-white text-base">Available Batches</h3>
                       <p className="text-white/60 text-xs mt-0.5">{courseBatches.length} batches · {course.title}</p>
@@ -262,7 +262,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
 
                 {/* Other Courses */}
                 <div className="bg-white border border-gray-100 rounded-2xl p-5">
-                  <h3 className="font-bold text-sm mb-3" style={{ color: 'var(--navy)' }}>Other Programs</h3>
+                  <h3 className="font-bold text-sm mb-3" style={{ color: '#0D1837' }}>Other Programs</h3>
                   <div className="space-y-2">
                     {otherCourses.map((c) => (
                       <a key={c.slug} href={`/courses/${c.slug}`}
