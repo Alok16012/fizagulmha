@@ -203,6 +203,23 @@ export const exams: Exam[] = [
       { q: 'How many seats are available in AILET?', a: 'NLU Delhi offers approximately 110 seats in its BA LLB (Hons) program through AILET.' },
       { q: 'Can I prepare for CLAT and AILET together?', a: 'Yes! CLATians offers a combined CLAT+AILET preparation program. Most of the syllabus overlaps, with AILET having an additional Mathematics section and higher GK weightage.' },
     ],
+    applicationFee: [
+      { category: 'General / OBC / EWS / PWD', fee: '₹3,500' },
+      { category: 'SC / ST / BPL', fee: '₹2,500' },
+    ],
+    applicationProcess: [
+      'Register on the official NLU Delhi AILET portal (nludelhi.ac.in) with your email and mobile number',
+      'Fill personal details, academic qualifications, category information, and programme preference (UG/PG)',
+      'Upload required documents — recent passport-size photograph and signature in JPG format',
+      'Pay the application fee online (₹3,500 for General / ₹2,500 for SC/ST) via net banking, debit or credit card',
+      'Download and save your application form confirmation for admit card download later',
+    ],
+    latestUpdates: [
+      { date: 'May 2025', update: 'AILET 2026 official notification expected from NLU Delhi' },
+      { date: 'December 2024', update: 'AILET 2025 exam conducted — NLU Delhi announced results' },
+      { date: 'August 2024', update: 'AILET 2025 application form released by NLU Delhi' },
+      { date: 'December 2023', update: 'AILET 2024 results declared — CLATians students secured top ranks' },
+    ],
   },
   {
     slug: 'mh-cet-law',
@@ -260,6 +277,24 @@ export const exams: Exam[] = [
       { q: 'Is there negative marking in MH-CET Law?', a: 'No, there is no negative marking in MH-CET Law. You should attempt all 150 questions.' },
       { q: 'Can students from other states apply for MH-CET Law?', a: 'Yes, MH-CET Law is open to students from all states of India. Students from outside Maharashtra can apply and get admission to Maharashtra law colleges.' },
     ],
+    applicationFee: [
+      { category: 'General / OBC (Maharashtra domicile)', fee: '₹800' },
+      { category: 'SC / ST / NT / SBC (Maharashtra domicile)', fee: '₹600' },
+      { category: 'Outside Maharashtra / NRI', fee: '₹900' },
+    ],
+    applicationProcess: [
+      'Register on the official MHT-CET portal (cetcell.mahacet.org) with a valid email ID and mobile number',
+      'Fill in your personal details, category, domicile, and academic qualifications carefully',
+      'Upload scanned photograph (25–50 KB) and signature (10–20 KB) in JPEG format',
+      'Pay the application fee online through payment gateway (₹800 General / ₹600 SC/ST)',
+      'Submit form and download the confirmation page for future reference',
+    ],
+    latestUpdates: [
+      { date: 'April 2026', update: 'MH-CET Law 2026 exam expected — prepare with CLATians OLET program' },
+      { date: 'January 2026', update: 'MH-CET Law 2026 application form expected to be released' },
+      { date: 'May 2025', update: 'MH-CET Law 2025 results declared by State CET Cell Maharashtra' },
+      { date: 'March 2025', update: 'MH-CET Law 2025 exam conducted successfully' },
+    ],
   },
   {
     slug: 'cuet-law',
@@ -313,6 +348,25 @@ export const exams: Exam[] = [
       { q: 'What is CUET-LAW?', a: 'CUET-LAW is the Common University Entrance Test for Law conducted by NTA for admission to law programs at central, state, and private universities accepting CUET scores.' },
       { q: 'Which universities accept CUET-LAW scores?', a: 'Over 200 universities accept CUET scores including BHU, DU, JNU, Jamia Millia Islamia, and many state universities. Each university sets its own cutoff.' },
       { q: 'Is CUET-LAW different from CLAT?', a: 'Yes. CUET-LAW is for central and state universities (not NLUs), has a different format including a Legal Studies domain paper, and is conducted by NTA.' },
+    ],
+    applicationFee: [
+      { category: 'General / EWS (up to 3 subjects)', fee: '₹750' },
+      { category: 'OBC-NCL / EWS (up to 3 subjects)', fee: '₹700' },
+      { category: 'SC / ST / PWD / Third Gender', fee: '₹650' },
+      { category: 'Additional subject (each)', fee: '₹150 – ₹200' },
+    ],
+    applicationProcess: [
+      'Register on the official CUET portal (cuet.samarth.ac.in) with email and phone number',
+      'Fill in your personal details and select universities and courses (including law programmes) you wish to apply for',
+      'Choose your preferred test language and upload photograph and signature as per specifications',
+      'Pay the application fee online — fee varies by number of subjects and category',
+      'Download and print the CUET application form confirmation and keep it safe',
+    ],
+    latestUpdates: [
+      { date: 'May 2026', update: 'CUET-UG 2026 exam expected — law programmes included across 200+ universities' },
+      { date: 'February 2026', update: 'CUET 2026 application window expected to open on cuet.samarth.ac.in' },
+      { date: 'May 2025', update: 'CUET-UG 2025 exam conducted by NTA in May across multiple days' },
+      { date: 'March 2025', update: 'CUET 2025 application forms were released and filled by lakhs of students' },
     ],
   },
   {
@@ -369,6 +423,23 @@ export const exams: Exam[] = [
       { q: 'Is AIL-LET only for Army wards?', a: 'No, AIL-LET is open to all Indian citizens. However, wards of Army personnel get reservation benefits in the admission process.' },
       { q: 'Does CLATians offer AIL-LET coaching?', a: 'Yes! CLATians covers AIL-LET as part of its OLET (Other Law Entrance Tests) program alongside AILET, CUET-LAW, MH-CET, and LSAT.' },
     ],
+    applicationFee: [
+      { category: 'General / All Categories', fee: '₹1,000' },
+      { category: 'Wards of Army Personnel', fee: '₹500' },
+    ],
+    applicationProcess: [
+      'Visit the official Army Institute of Law website (armyinstituteoflaw.edu.in) and download the application form',
+      'Fill in the form with personal details, educational qualifications, category, and parent\'s service details (if applicable)',
+      'Attach self-attested photocopies of required documents — Class 10 & 12 marksheets, photographs, and ID proof',
+      'Pay the application fee via demand draft (DD) in favour of "Army Institute of Law" payable at Mohali',
+      'Send the completed form by post to the AIL office before the deadline and keep proof of dispatch',
+    ],
+    latestUpdates: [
+      { date: 'March 2026', update: 'AIL-LET 2026 exam expected — application form to be released in January' },
+      { date: 'March 2025', update: 'AIL-LET 2025 exam conducted at Army Institute of Law, Mohali' },
+      { date: 'January 2025', update: 'AIL-LET 2025 application form released on armyinstituteoflaw.edu.in' },
+      { date: 'April 2025', update: 'AIL-LET 2025 results and merit list announced' },
+    ],
   },
   {
     slug: 'lsat',
@@ -424,6 +495,23 @@ export const exams: Exam[] = [
       { q: 'Is there negative marking in LSAT India?', a: 'No, there is no negative marking in LSAT India. You should attempt all questions.' },
       { q: 'How is LSAT India different from CLAT?', a: 'LSAT India does not test legal knowledge — it tests pure reasoning and reading skills. It is accepted by private universities, while CLAT is for NLUs.' },
       { q: 'Does CLATians prepare students for LSAT India?', a: 'Yes! CLATians covers LSAT India as part of the OLET program with specialized analytical and logical reasoning training.' },
+    ],
+    applicationFee: [
+      { category: 'Standard Registration Fee', fee: '₹3,999' },
+      { category: 'Late Registration Fee', fee: '₹4,999' },
+    ],
+    applicationProcess: [
+      'Register on the official LSAC India website (lsac.org/india) with your email ID and create your account',
+      'Fill in your personal details, academic background, and select your preferred test date and city',
+      'Upload a recent passport-size photograph as per the specifications on the portal',
+      'Pay the registration fee online (₹3,999 standard) via debit card, credit card, or net banking',
+      'Download your LSAT India admission ticket and keep it ready for exam day along with a valid photo ID',
+    ],
+    latestUpdates: [
+      { date: 'March 2026', update: 'LSAT India 2026 exam expected — accepted by 85+ private law universities' },
+      { date: 'January 2026', update: 'LSAT India 2026 registration expected to open on lsac.org/india' },
+      { date: 'March 2025', update: 'LSAT India 2025 exam conducted in remote proctored online mode' },
+      { date: 'January 2025', update: 'LSAT India 2025 registrations were open — Jindal, UPES and 85+ accepted scores' },
     ],
   },
 ];
