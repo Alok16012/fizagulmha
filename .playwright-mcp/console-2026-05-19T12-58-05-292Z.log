@@ -1,0 +1,9 @@
+[     841ms] Error: Minified React error #418; visit https://react.dev/errors/418?args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at ud (https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:103738)
+    at https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:117262
+    at im (https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:120043)
+    at ic (https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:112412)
+    at https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:108527
+    at u9 (https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:108628)
+    at iH (https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:130637)
+    at MessagePort.w (https://www.clatians.in/_next/static/chunks/1684-64b22189340c1e88.js:1:25633)

@@ -1,0 +1,10 @@
+[     542ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://www.clatians.in/courses:0
+[     925ms] Error: Minified React error #418; visit https://react.dev/errors/418?args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at ud (https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:103738)
+    at ov (https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:78203)
+    at ic (https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:112351)
+    at https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:108527
+    at u9 (https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:108628)
+    at iH (https://www.clatians.in/_next/static/chunks/4bd1b696-e978e6058c7222d3.js:1:130637)
+    at MessagePort.w (https://www.clatians.in/_next/static/chunks/1684-64b22189340c1e88.js:1:25633)
+[    4465ms] [WARNING] The resource https://www.clatians.in/_next/static/css/8b7d179711c59696.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://www.clatians.in/courses:0

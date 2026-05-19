@@ -1,0 +1,610 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e4]:
+      - link "CLATians" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "CLATians" [ref=e7]
+      - navigation [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Courses" [ref=e11] [cursor=pointer]:
+          - /url: /courses
+          - text: Courses
+          - img [ref=e12]
+        - link "Admission" [ref=e14] [cursor=pointer]:
+          - /url: /admission
+        - link "Student Zone" [ref=e15] [cursor=pointer]:
+          - /url: /student-zone
+        - link "Blogs" [ref=e16] [cursor=pointer]:
+          - /url: /blogs
+      - generic [ref=e17]:
+        - link "+91-8507700177" [ref=e18] [cursor=pointer]:
+          - /url: tel:+918507700177
+        - link "College Predictor" [ref=e19] [cursor=pointer]:
+          - /url: /college-predictor
+          - button "College Predictor" [ref=e20]
+        - link "Admission 2026" [ref=e21] [cursor=pointer]:
+          - /url: /admission
+          - button "Admission 2026" [ref=e22]
+    - generic [ref=e25]:
+      - generic [ref=e29]:
+        - generic [ref=e30]: "India's #1 Law Entrance Coaching"
+        - heading "Your Gateway to Top NLUs" [level=2] [ref=e31]
+        - link "Start Your Journey" [ref=e32] [cursor=pointer]:
+          - /url: /courses
+          - button "Start Your Journey" [ref=e33]
+      - generic [ref=e37]:
+        - generic [ref=e38]: AILET Prep
+        - heading "Crack AILET with expert coaching—your path to NLU Delhi." [level=2] [ref=e39]
+        - link "Enroll Now" [ref=e40] [cursor=pointer]:
+          - /url: /courses?cat=ailet
+          - button "Enroll Now" [ref=e41]
+      - generic [ref=e45]:
+        - generic [ref=e46]: Law Entrance
+        - heading "Ace MH-CET with expert coaching—top law colleges in Maharashtra." [level=2] [ref=e47]
+        - link "Learn More" [ref=e48] [cursor=pointer]:
+          - /url: /courses?cat=mhcet
+          - button "Learn More" [ref=e49]
+      - generic [ref=e53]:
+        - generic [ref=e54]: CUET 2026
+        - heading "Prepare for CUET with expert coaching—gateway to top universities." [level=2] [ref=e55]
+        - link "Know More" [ref=e56] [cursor=pointer]:
+          - /url: /courses?cat=cuet
+          - button "Know More" [ref=e57]
+    - generic [ref=e65]:
+      - generic [ref=e66]:
+        - generic [ref=e67]: 15000+
+        - generic [ref=e68]:
+          - text: Success
+          - text: Stories
+      - generic [ref=e69]:
+        - generic [ref=e70]: Top
+        - generic [ref=e71]:
+          - text: NLU
+          - text: Selections
+      - generic [ref=e72]:
+        - generic [ref=e73]: 23+
+        - generic [ref=e74]:
+          - text: Expert
+          - text: Faculty
+      - generic [ref=e75]:
+        - generic [ref=e76]: 4.9/5
+        - generic [ref=e77]:
+          - text: Student
+          - text: Trust
+    - generic [ref=e80]:
+      - paragraph [ref=e81]: Our Programs
+      - generic [ref=e82]:
+        - link "Offline Course" [ref=e83] [cursor=pointer]:
+          - /url: /courses?cat=offline
+          - button "Offline Course" [ref=e84]
+        - link "Online Course" [ref=e85] [cursor=pointer]:
+          - /url: /courses?cat=online
+          - button "Online Course" [ref=e86]
+        - link "Mentorship" [ref=e87] [cursor=pointer]:
+          - /url: /courses?cat=mentorship
+          - button "Mentorship" [ref=e88]
+        - link "Mock Test" [ref=e89] [cursor=pointer]:
+          - /url: /courses?cat=mock-test
+          - button "Mock Test" [ref=e90]
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - generic [ref=e94]:
+          - generic [ref=e95]: 🎓 Your Path to Top NLUs
+          - paragraph [ref=e97]: CLAT
+          - link "Explore Program →" [ref=e98] [cursor=pointer]:
+            - /url: /courses?type=clat
+            - button "Explore Program →" [ref=e99]
+        - generic [ref=e100]:
+          - generic [ref=e101]: 🎓 Early Edge for CUET
+          - paragraph [ref=e103]: CUET-UG
+          - link "Explore Program →" [ref=e104] [cursor=pointer]:
+            - /url: /courses?type=cuet
+            - button "Explore Program →" [ref=e105]
+        - generic [ref=e106]:
+          - generic [ref=e107]: 🎓 Your Gateway to Law
+          - paragraph [ref=e109]: OLET
+          - link "Explore Program →" [ref=e110] [cursor=pointer]:
+            - /url: /courses?type=olet
+            - button "Explore Program →" [ref=e111]
+      - link "View All Courses" [ref=e113] [cursor=pointer]:
+        - /url: /courses
+        - button "View All Courses" [ref=e114]
+    - generic [ref=e116]:
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - text: Law Entrance
+          - heading "Choose Your Exam" [level=2] [ref=e119]
+          - paragraph [ref=e120]: Expert coaching for every law entrance
+        - link "View All →" [ref=e121] [cursor=pointer]:
+          - /url: /law-exams
+          - button "View All →" [ref=e122]
+      - generic [ref=e123]:
+        - generic [ref=e124] [cursor=pointer]:
+          - img "CLAT" [ref=e125]
+          - paragraph [ref=e126]: CLAT
+          - paragraph [ref=e127]: Gateway to top NLUs!
+        - generic [ref=e128] [cursor=pointer]:
+          - img "AILET" [ref=e129]
+          - paragraph [ref=e130]: AILET
+          - paragraph [ref=e131]: Path to NLU Delhi.
+        - generic [ref=e132] [cursor=pointer]:
+          - img "MH-CET LAW" [ref=e133]
+          - paragraph [ref=e134]: MH-CET LAW
+          - paragraph [ref=e135]: Top colleges in MH.
+        - generic [ref=e136] [cursor=pointer]:
+          - img "CUET" [ref=e137]
+          - paragraph [ref=e138]: CUET
+          - paragraph [ref=e139]: Top Universities.
+        - generic [ref=e140] [cursor=pointer]:
+          - img "AIL-LET" [ref=e141]
+          - paragraph [ref=e142]: AIL-LET
+          - paragraph [ref=e143]: Army Institute of Law.
+        - generic [ref=e144] [cursor=pointer]:
+          - img "LSAT" [ref=e145]
+          - paragraph [ref=e146]: LSAT
+          - paragraph [ref=e147]: Global law schools.
+      - link "Explore All Law Entrance Exams" [ref=e149] [cursor=pointer]:
+        - /url: /law-exams
+        - button "Explore All Law Entrance Exams" [ref=e150]
+    - generic [ref=e152]:
+      - generic [ref=e154]:
+        - generic [ref=e155]:
+          - heading "Find Top Ranked Online Universities" [level=3] [ref=e156]
+          - generic [ref=e157]: 100+ Online University Options
+          - link "Top Online Universities" [ref=e158] [cursor=pointer]:
+            - /url: /universities
+            - button "Top Online Universities" [ref=e159]:
+              - img [ref=e161]
+              - generic [ref=e163]: Top Online Universities
+        - generic: 📚
+      - generic [ref=e165]:
+        - generic [ref=e166]:
+          - heading "Compare & Choose The Best Courses" [level=3] [ref=e167]
+          - generic [ref=e168]: 500+ Course Options available
+          - link "Explore Courses" [ref=e169] [cursor=pointer]:
+            - /url: /courses
+            - button "Explore Courses" [ref=e170]:
+              - img [ref=e172]
+              - generic [ref=e174]: Explore Courses
+        - generic: 🎯
+      - generic [ref=e176]:
+        - generic [ref=e177]:
+          - heading "Get Free Expert Counselling Today" [level=3] [ref=e178]
+          - generic [ref=e179]: Connect with 500+ Experts
+          - link "Book Free Session" [ref=e180] [cursor=pointer]:
+            - /url: /counselling
+            - button "Book Free Session" [ref=e181]:
+              - img [ref=e183]
+              - generic [ref=e188]: Book Free Session
+        - generic: 👨‍🏫
+    - generic [ref=e190]:
+      - generic [ref=e191]:
+        - text: 🏫Top Partner Universities
+        - heading "UGC-approved Universities, verified by CLATians for premium legal education." [level=2] [ref=e192]
+      - generic [ref=e193]:
+        - img "SRM University" [ref=e195] [cursor=pointer]
+        - img "Amity University" [ref=e197] [cursor=pointer]
+        - img "Lovely Professional University" [ref=e199] [cursor=pointer]
+        - img "Chandigarh University" [ref=e201] [cursor=pointer]
+      - generic [ref=e202]:
+        - generic [ref=e203]: Coupon Code
+        - paragraph [ref=e204]: Use code CLATIANS for special discount on SRM University admission
+      - link "VIEW ALL UNIVERSITIES" [ref=e206] [cursor=pointer]:
+        - /url: /universities
+        - button "VIEW ALL UNIVERSITIES" [ref=e207]
+    - generic [ref=e208]:
+      - generic [ref=e209]:
+        - text: Trusted Voices
+        - heading "Hear them out" [level=2] [ref=e210]
+      - generic [ref=e211]:
+        - generic [ref=e212]:
+          - generic [ref=e213]:
+            - img "Rahul Sharma" [ref=e214]
+            - paragraph [ref=e216]: Rahul Sharma
+          - generic [ref=e217]:
+            - img "Amit Kumar" [ref=e218]
+            - paragraph [ref=e220]: Amit Kumar
+          - generic [ref=e221]:
+            - img "Vikash Singh" [ref=e222]
+            - paragraph [ref=e224]: Vikash Singh
+          - generic [ref=e225]:
+            - img "Priya Patel" [ref=e226]
+            - paragraph [ref=e228]: Priya Patel
+          - generic [ref=e229]:
+            - img "Sanjay Gupta" [ref=e230]
+            - paragraph [ref=e232]: Sanjay Gupta
+          - generic [ref=e233]:
+            - img "Mohit Verma" [ref=e234]
+            - paragraph [ref=e236]: Mohit Verma
+          - generic [ref=e237]:
+            - img "Arjun Das" [ref=e238]
+            - paragraph [ref=e240]: Arjun Das
+          - generic [ref=e241]:
+            - img "Deepak Roy" [ref=e242]
+            - paragraph [ref=e244]: Deepak Roy
+          - generic [ref=e245]:
+            - img "Rahul Sharma" [ref=e246]
+            - paragraph [ref=e248]: Rahul Sharma
+          - generic [ref=e249]:
+            - img "Amit Kumar" [ref=e250]
+            - paragraph [ref=e252]: Amit Kumar
+          - generic [ref=e253]:
+            - img "Vikash Singh" [ref=e254]
+            - paragraph [ref=e256]: Vikash Singh
+          - generic [ref=e257]:
+            - img "Priya Patel" [ref=e258]
+            - paragraph [ref=e260]: Priya Patel
+          - generic [ref=e261]:
+            - img "Sanjay Gupta" [ref=e262]
+            - paragraph [ref=e264]: Sanjay Gupta
+          - generic [ref=e265]:
+            - img "Mohit Verma" [ref=e266]
+            - paragraph [ref=e268]: Mohit Verma
+          - generic [ref=e269]:
+            - img "Arjun Das" [ref=e270]
+            - paragraph [ref=e272]: Arjun Das
+          - generic [ref=e273]:
+            - img "Deepak Roy" [ref=e274]
+            - paragraph [ref=e276]: Deepak Roy
+        - generic [ref=e277]:
+          - generic [ref=e278]:
+            - img "Deepak Roy" [ref=e279]
+            - paragraph [ref=e281]: Deepak Roy
+          - generic [ref=e282]:
+            - img "Arjun Das" [ref=e283]
+            - paragraph [ref=e285]: Arjun Das
+          - generic [ref=e286]:
+            - img "Mohit Verma" [ref=e287]
+            - paragraph [ref=e289]: Mohit Verma
+          - generic [ref=e290]:
+            - img "Sanjay Gupta" [ref=e291]
+            - paragraph [ref=e293]: Sanjay Gupta
+          - generic [ref=e294]:
+            - img "Priya Patel" [ref=e295]
+            - paragraph [ref=e297]: Priya Patel
+          - generic [ref=e298]:
+            - img "Vikash Singh" [ref=e299]
+            - paragraph [ref=e301]: Vikash Singh
+          - generic [ref=e302]:
+            - img "Amit Kumar" [ref=e303]
+            - paragraph [ref=e305]: Amit Kumar
+          - generic [ref=e306]:
+            - img "Rahul Sharma" [ref=e307]
+            - paragraph [ref=e309]: Rahul Sharma
+          - generic [ref=e310]:
+            - img "Deepak Roy" [ref=e311]
+            - paragraph [ref=e313]: Deepak Roy
+          - generic [ref=e314]:
+            - img "Arjun Das" [ref=e315]
+            - paragraph [ref=e317]: Arjun Das
+          - generic [ref=e318]:
+            - img "Mohit Verma" [ref=e319]
+            - paragraph [ref=e321]: Mohit Verma
+          - generic [ref=e322]:
+            - img "Sanjay Gupta" [ref=e323]
+            - paragraph [ref=e325]: Sanjay Gupta
+          - generic [ref=e326]:
+            - img "Priya Patel" [ref=e327]
+            - paragraph [ref=e329]: Priya Patel
+          - generic [ref=e330]:
+            - img "Vikash Singh" [ref=e331]
+            - paragraph [ref=e333]: Vikash Singh
+          - generic [ref=e334]:
+            - img "Amit Kumar" [ref=e335]
+            - paragraph [ref=e337]: Amit Kumar
+          - generic [ref=e338]:
+            - img "Rahul Sharma" [ref=e339]
+            - paragraph [ref=e341]: Rahul Sharma
+      - generic [ref=e343]:
+        - img "Testimonial background" [ref=e345]
+        - generic [ref=e346]:
+          - text: 12K NLU Selection
+          - paragraph [ref=e347]: CRACKED CLAT 2024
+          - paragraph [ref=e348]: AIR 23
+          - paragraph [ref=e349]: Aman Deep Singh - NLU Delhi
+          - link "WATCH ALL SUCCESS STORIES →" [ref=e350] [cursor=pointer]:
+            - /url: /success-stories
+            - button "WATCH ALL SUCCESS STORIES →" [ref=e351]
+    - generic [ref=e353]:
+      - text: 👀Latest Updates.
+      - heading "Explore Our Blogs." [level=2] [ref=e354]
+      - generic [ref=e355]:
+        - 'link "Current Affairs for CLAT : 4th may, 2026 Current Affairs Current Affairs for CLAT : 4th may, 2026 Read more →" [ref=e356] [cursor=pointer]':
+          - /url: "#"
+          - generic [ref=e357]:
+            - 'img "Current Affairs for CLAT : 4th may, 2026" [ref=e359]'
+            - generic [ref=e360]:
+              - text: Current Affairs
+              - 'heading "Current Affairs for CLAT : 4th may, 2026" [level=3] [ref=e361]'
+              - paragraph [ref=e362]: Read more →
+        - 'link "Current Affairs for CLAT : 3rd May, 2026 Current Affairs Current Affairs for CLAT : 3rd May, 2026 Read more →" [ref=e363] [cursor=pointer]':
+          - /url: "#"
+          - generic [ref=e364]:
+            - 'img "Current Affairs for CLAT : 3rd May, 2026" [ref=e366]'
+            - generic [ref=e367]:
+              - text: Current Affairs
+              - 'heading "Current Affairs for CLAT : 3rd May, 2026" [level=3] [ref=e368]'
+              - paragraph [ref=e369]: Read more →
+        - 'link "Current Affairs for CLAT : 2nd May, 2026 Current Affairs Current Affairs for CLAT : 2nd May, 2026 Read more →" [ref=e370] [cursor=pointer]':
+          - /url: "#"
+          - generic [ref=e371]:
+            - 'img "Current Affairs for CLAT : 2nd May, 2026" [ref=e373]'
+            - generic [ref=e374]:
+              - text: Current Affairs
+              - 'heading "Current Affairs for CLAT : 2nd May, 2026" [level=3] [ref=e375]'
+              - paragraph [ref=e376]: Read more →
+    - generic [ref=e378]:
+      - heading "15000+ Students Made A Choice" [level=2] [ref=e379]:
+        - generic [ref=e380]: 15000+
+        - text: Students Made A Choice
+      - paragraph [ref=e381]: That Opened the Right Doors.
+      - generic [ref=e382]:
+        - generic [ref=e383]:
+          - img "Rahul Sharma" [ref=e385]
+          - img "Amit Kumar" [ref=e387]
+          - img "Vikash Singh" [ref=e389]
+          - img "Priya Patel" [ref=e391]
+          - img "Sanjay Gupta" [ref=e393]
+          - img "Mohit Verma" [ref=e395]
+          - img "Arjun Das" [ref=e397]
+          - img "Deepak Roy" [ref=e399]
+          - img "Rahul Sharma" [ref=e401]
+          - img "Amit Kumar" [ref=e403]
+          - img "Vikash Singh" [ref=e405]
+          - img "Priya Patel" [ref=e407]
+          - img "Sanjay Gupta" [ref=e409]
+          - img "Mohit Verma" [ref=e411]
+          - img "Arjun Das" [ref=e413]
+          - img "Deepak Roy" [ref=e415]
+        - generic [ref=e416]:
+          - img "Deepak Roy" [ref=e418]
+          - img "Arjun Das" [ref=e420]
+          - img "Mohit Verma" [ref=e422]
+          - img "Sanjay Gupta" [ref=e424]
+          - img "Priya Patel" [ref=e426]
+          - img "Vikash Singh" [ref=e428]
+          - img "Amit Kumar" [ref=e430]
+          - img "Rahul Sharma" [ref=e432]
+          - img "Deepak Roy" [ref=e434]
+          - img "Arjun Das" [ref=e436]
+          - img "Mohit Verma" [ref=e438]
+          - img "Sanjay Gupta" [ref=e440]
+          - img "Priya Patel" [ref=e442]
+          - img "Vikash Singh" [ref=e444]
+          - img "Amit Kumar" [ref=e446]
+          - img "Rahul Sharma" [ref=e448]
+    - generic [ref=e450]:
+      - text: Expert Faculty
+      - heading "Learn from the Best Minds" [level=2] [ref=e451]
+      - paragraph [ref=e452]: "Advocates, NLU alumni & toppers — handpicked for one goal: your selection."
+      - generic [ref=e453]:
+        - generic [ref=e454]:
+          - img "Adv. Ravi Kumar" [ref=e456]
+          - generic [ref=e457]:
+            - paragraph [ref=e458]: Adv. Ravi Kumar
+            - paragraph [ref=e459]: Legal Reasoning
+            - paragraph [ref=e460]: CLAT Expert
+            - generic [ref=e461]:
+              - generic [ref=e462]: ⭐ 4.9
+              - generic [ref=e463]: ·2,400+
+              - generic [ref=e464]: 12 Yrs Exp.
+        - generic [ref=e465]:
+          - img "Adv. Priya Singh" [ref=e467]
+          - generic [ref=e468]:
+            - paragraph [ref=e469]: Adv. Priya Singh
+            - paragraph [ref=e470]: English
+            - paragraph [ref=e471]: AILET Expert
+            - generic [ref=e472]:
+              - generic [ref=e473]: ⭐ 4.8
+              - generic [ref=e474]: ·1,800+
+              - generic [ref=e475]: 9 Yrs Exp.
+        - generic [ref=e476]:
+          - img "Adv. Arjun Sharma" [ref=e478]
+          - generic [ref=e479]:
+            - paragraph [ref=e480]: Adv. Arjun Sharma
+            - paragraph [ref=e481]: Maths & LR
+            - paragraph [ref=e482]: CUET Expert
+            - generic [ref=e483]:
+              - generic [ref=e484]: ⭐ 4.9
+              - generic [ref=e485]: ·1,200+
+              - generic [ref=e486]: 7 Yrs Exp.
+        - generic [ref=e487]:
+          - img "Dr. Neha Verma" [ref=e489]
+          - generic [ref=e490]:
+            - paragraph [ref=e491]: Dr. Neha Verma
+            - paragraph [ref=e492]: GK & Current Affairs
+            - paragraph [ref=e493]: GK Expert
+            - generic [ref=e494]:
+              - generic [ref=e495]: ⭐ 5.0
+              - generic [ref=e496]: ·3,100+
+              - generic [ref=e497]: 10 Yrs Exp.
+        - generic [ref=e498]:
+          - img "Adv. Sahil Gupta" [ref=e500]
+          - generic [ref=e501]:
+            - paragraph [ref=e502]: Adv. Sahil Gupta
+            - paragraph [ref=e503]: Legal Aptitude
+            - paragraph [ref=e504]: AILET Expert
+            - generic [ref=e505]:
+              - generic [ref=e506]: ⭐ 4.8
+              - generic [ref=e507]: ·900+
+              - generic [ref=e508]: 6 Yrs Exp.
+        - generic [ref=e509]:
+          - img "Ms. Kavya Nair" [ref=e511]
+          - generic [ref=e512]:
+            - paragraph [ref=e513]: Ms. Kavya Nair
+            - paragraph [ref=e514]: Comprehension
+            - paragraph [ref=e515]: MH-CET Expert
+            - generic [ref=e516]:
+              - generic [ref=e517]: ⭐ 4.7
+              - generic [ref=e518]: ·750+
+              - generic [ref=e519]: 5 Yrs Exp.
+        - generic [ref=e520]:
+          - img "Adv. Rohit Mishra" [ref=e522]
+          - generic [ref=e523]:
+            - paragraph [ref=e524]: Adv. Rohit Mishra
+            - paragraph [ref=e525]: Logical Reasoning
+            - paragraph [ref=e526]: CLAT Expert
+            - generic [ref=e527]:
+              - generic [ref=e528]: ⭐ 4.9
+              - generic [ref=e529]: ·1,500+
+              - generic [ref=e530]: 8 Yrs Exp.
+        - generic [ref=e531]:
+          - img "Dr. Ankita Roy" [ref=e533]
+          - generic [ref=e534]:
+            - paragraph [ref=e535]: Dr. Ankita Roy
+            - paragraph [ref=e536]: Polity & Const.
+            - paragraph [ref=e537]: GK Expert
+            - generic [ref=e538]:
+              - generic [ref=e539]: ⭐ 5.0
+              - generic [ref=e540]: ·2,200+
+              - generic [ref=e541]: 11 Yrs Exp.
+        - generic [ref=e542]:
+          - img "Adv. Vikram Das" [ref=e544]
+          - generic [ref=e545]:
+            - paragraph [ref=e546]: Adv. Vikram Das
+            - paragraph [ref=e547]: Legal Reasoning
+            - paragraph [ref=e548]: CLAT Expert
+            - generic [ref=e549]:
+              - generic [ref=e550]: ⭐ 4.8
+              - generic [ref=e551]: ·1,100+
+              - generic [ref=e552]: 7 Yrs Exp.
+    - generic [ref=e554]:
+      - text: Let's Clear Up Some Doubts
+      - heading "Frequently Asked Questions" [level=2] [ref=e555]
+      - generic [ref=e556]:
+        - generic [ref=e557]:
+          - button "1. What is the exam pattern for CLAT 2025?" [ref=e558]:
+            - generic [ref=e559]: 1. What is the exam pattern for CLAT 2025?
+            - img [ref=e560]
+          - generic [ref=e562]: "CLAT 2025 follows a 2-hour computer-based test format with 150 questions across five sections: English Language, Current Affairs & GK, Legal Reasoning, Logical Reasoning, and Quantitative Techniques. Each question carries 1 mark with a 0.25 negative marking for incorrect answers."
+        - button "2. When is the CLAT 2025 exam scheduled?" [ref=e564]:
+          - generic [ref=e565]: 2. When is the CLAT 2025 exam scheduled?
+          - img [ref=e566]
+        - button "3. What are the eligibility criteria for CLAT UG?" [ref=e569]:
+          - generic [ref=e570]: 3. What are the eligibility criteria for CLAT UG?
+          - img [ref=e571]
+        - button "4. How many NLUs are covered under CLAT?" [ref=e574]:
+          - generic [ref=e575]: 4. How many NLUs are covered under CLAT?
+          - img [ref=e576]
+        - button "5. Does CLATians provide mock tests?" [ref=e579]:
+          - generic [ref=e580]: 5. Does CLATians provide mock tests?
+          - img [ref=e581]
+      - link "View More FAQs →" [ref=e584] [cursor=pointer]:
+        - /url: /faq
+        - button "View More FAQs →" [ref=e585]
+    - generic [ref=e588]:
+      - generic [ref=e589]:
+        - heading "Every query is essential." [level=2] [ref=e590]
+        - paragraph [ref=e591]: Our team of experts, or experienced individuals, will answer it within 24 hours.
+        - generic [ref=e592]:
+          - textbox "Your Name" [ref=e593]
+          - textbox "Phone Number" [ref=e594]
+          - textbox "Your Question" [ref=e595]
+          - button "Ask any Question" [ref=e596]
+      - generic [ref=e597]:
+        - img "College Predictor" [ref=e598]
+        - heading "College Predictor" [level=2] [ref=e599]
+        - paragraph [ref=e600]: Predict your chances of getting into your dream college with our AI-powered tool.
+        - link "Try Predictor Now" [ref=e601] [cursor=pointer]:
+          - /url: /college-predictor
+          - button "Try Predictor Now" [ref=e602]
+    - generic [ref=e604]:
+      - generic [ref=e605]:
+        - generic [ref=e606]:
+          - img "CLATians" [ref=e607]
+          - paragraph [ref=e608]: Your trusted institute for CLAT, AILET, and other law entrance preparations. Expert guidance by NLU Alumni.
+          - generic [ref=e609]:
+            - paragraph [ref=e610]: "Contact Us:"
+            - paragraph [ref=e611]: 2nd Floor, Gangotri Palace, Boring Rd, near Sumati Palace, Nageshwar Colony, Kidwaipuri, Patna, Bihar 800001
+            - paragraph [ref=e612]: "Phone: +91-8507700177"
+        - generic [ref=e613]:
+          - heading "Quick Links" [level=4] [ref=e614]
+          - list [ref=e615]:
+            - listitem [ref=e616]:
+              - link "Home" [ref=e617] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e618]:
+              - link "Courses" [ref=e619] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e620]:
+              - link "Admission" [ref=e621] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e622]:
+              - link "Student Zone" [ref=e623] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e624]:
+              - link "Law Entrance Exams" [ref=e625] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e626]:
+              - link "Gallery" [ref=e627] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e628]:
+          - heading "Resources" [level=4] [ref=e629]
+          - list [ref=e630]:
+            - listitem [ref=e631]:
+              - link "Previous Year Papers" [ref=e632] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e633]:
+              - link "Current Affairs" [ref=e634] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e635]:
+              - link "Quizzes" [ref=e636] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e637]:
+              - link "Online Resources" [ref=e638] [cursor=pointer]:
+                - /url: "#"
+          - heading "Company" [level=4] [ref=e639]
+          - list [ref=e640]:
+            - listitem [ref=e641]:
+              - link "About Us" [ref=e642] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e643]:
+              - link "Careers" [ref=e644] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e645]:
+              - link "Faculty" [ref=e646] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e647]:
+              - link "Contact" [ref=e648] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e649]:
+              - link "Privacy Policy" [ref=e650] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e651]:
+              - link "Legal" [ref=e652] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e653]:
+          - heading "Courses" [level=4] [ref=e654]
+          - list [ref=e655]:
+            - listitem [ref=e656]:
+              - link "CLAT" [ref=e657] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e658]:
+              - link "CLAT+AILET" [ref=e659] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e660]:
+              - link "CUET(UG)" [ref=e661] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e662]:
+              - link "CUET(PG)" [ref=e663] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e664]:
+              - link "OLET" [ref=e665] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e666]:
+              - link "CLAT+OLET" [ref=e667] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e668]:
+              - link "Booster Course" [ref=e669] [cursor=pointer]:
+                - /url: "#"
+      - generic [ref=e670]:
+        - paragraph [ref=e671]: © 2026 CLATians - All rights reserved.
+        - generic [ref=e672]:
+          - link "Privacy Policy" [ref=e673] [cursor=pointer]:
+            - /url: "#"
+          - link "Legal" [ref=e674] [cursor=pointer]:
+            - /url: "#"
+  - button "Open Next.js Dev Tools" [ref=e680] [cursor=pointer]:
+    - img [ref=e681]
+  - alert [ref=e684]

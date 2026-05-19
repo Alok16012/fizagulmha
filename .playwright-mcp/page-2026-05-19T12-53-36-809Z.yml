@@ -1,0 +1,391 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]: 🔥 New Batches Starting Soon!🎯 Enroll Now🏆 Best CLAT Coaching in Patna
+    - generic [ref=e6]:
+      - link "Student Zone" [ref=e7] [cursor=pointer]:
+        - /url: /studentZone
+      - link "Blogs" [ref=e8] [cursor=pointer]:
+        - /url: /blogs
+      - link "Contact" [ref=e9] [cursor=pointer]:
+        - /url: /contactUs
+  - navigation [ref=e10]:
+    - generic [ref=e12]:
+      - link "clatians-Logo" [ref=e13] [cursor=pointer]:
+        - /url: /
+        - img "clatians-Logo" [ref=e14]
+      - generic [ref=e15]:
+        - link "Home" [ref=e17] [cursor=pointer]:
+          - /url: /
+          - text: Home
+        - link "About" [ref=e20] [cursor=pointer]:
+          - /url: /about
+        - button "Courses" [ref=e22] [cursor=pointer]:
+          - text: Courses
+          - img [ref=e24]
+        - link "Admission" [ref=e27] [cursor=pointer]:
+          - /url: /admission
+        - button "Law Entrance Exams" [ref=e29] [cursor=pointer]:
+          - text: Law Entrance Exams
+          - img [ref=e31]
+        - link "Online Resources" [ref=e34] [cursor=pointer]:
+          - /url: /onlineResources
+      - generic [ref=e35]:
+        - button "Call Us" [ref=e36] [cursor=pointer]:
+          - link "Call Us" [ref=e37]:
+            - /url: tel:8507700177
+        - link "Download App" [ref=e38] [cursor=pointer]:
+          - /url: https://play.google.com/store/apps/details?id=com.clatians&pcampaignid=web_share
+  - main [ref=e39]:
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - img "Slide 1" [ref=e43]
+        - img "Slide 2" [ref=e45]
+        - img "Slide 4" [ref=e47]
+      - generic [ref=e48]:
+        - button [ref=e49] [cursor=pointer]
+        - button [ref=e50] [cursor=pointer]
+        - button [ref=e51] [cursor=pointer]
+        - button [ref=e52] [cursor=pointer]
+      - button [ref=e53] [cursor=pointer]:
+        - img [ref=e54]
+      - button [ref=e56] [cursor=pointer]:
+        - img [ref=e57]
+    - generic [ref=e61]:
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - heading "CLATians" [level=2] [ref=e64]
+          - paragraph [ref=e65]: India's Most Trusted & Best CLAT Coaching Institute
+        - paragraph [ref=e66]:
+          - text: Crack CLAT with India's affordable and comprehensive law entrance preparation program. From Legal Reasoning to Current Affairs, comprehensive study material to mock tests series, our expert mentors guide you through every section of CLAT to secure your seat in Top National Law Universities (NLUs).
+          - strong [ref=e67]: Start your NLU journey today at unmatched Study Environment!
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - heading "216+" [level=3] [ref=e70]
+            - paragraph [ref=e71]: Fast Learning Student
+          - generic [ref=e72]:
+            - heading "23%" [level=3] [ref=e73]
+            - paragraph [ref=e74]: Success Rate
+        - link "Get Started →" [ref=e75] [cursor=pointer]:
+          - /url: /admission
+          - heading "Get Started" [level=5] [ref=e76]
+          - generic [ref=e77]: →
+      - generic [ref=e79]:
+        - generic [ref=e80]: 💬 Chat with CLATians
+        - generic [ref=e81]:
+          - generic [ref=e83]: Hello! What is CLATians?
+          - generic [ref=e87]: CLATians is one of the best CLAT coaching institutes in Patna...
+          - generic [ref=e89]: Hello! What is CLATians?
+          - generic [ref=e93]: CLATians is one of the best CLAT coaching institutes in Patna...
+    - generic [ref=e103]:
+      - generic [ref=e105]:
+        - generic [ref=e106]: 
+        - heading "Daily Live" [level=5] [ref=e107]
+        - paragraph [ref=e108]: Interactive classes
+      - generic [ref=e110]:
+        - generic [ref=e111]: 
+        - heading "10 Million +" [level=5] [ref=e112]
+        - paragraph [ref=e113]: Quetion Bank
+      - generic [ref=e115]:
+        - generic [ref=e116]: 
+        - heading "24 x 7" [level=5] [ref=e117]
+        - paragraph [ref=e118]: Doubt solving sessions
+      - generic [ref=e120]:
+        - generic [ref=e121]: 
+        - heading "10 +" [level=5] [ref=e122]
+        - paragraph [ref=e123]: Year Teaching Experience
+    - generic [ref=e129]:
+      - heading "Explore Top Courses" [level=3] [ref=e131]
+      - generic [ref=e135]:
+        - button "" [ref=e136] [cursor=pointer]:
+          - generic [ref=e137]: 
+        - button "" [ref=e139] [cursor=pointer]:
+          - generic [ref=e140]: 
+    - generic [ref=e142]:
+      - heading "KNOW YOUR MILESTONE" [level=2] [ref=e143]:
+        - generic [ref=e144]: KNOW
+        - text: YOUR MILESTONE
+      - generic [ref=e145]:
+        - generic [ref=e146]:
+          - link "CLAT" [ref=e149] [cursor=pointer]:
+            - /url: /lawEntranceExams/CKJONOTBolKgUMALgplj
+            - img "CLAT" [ref=e150]
+          - generic [ref=e151]:
+            - heading "CLAT" [level=4] [ref=e152]
+            - paragraph [ref=e153]: Crack CLAT with expert coaching—your gateway to top NLUs!
+        - generic [ref=e154]:
+          - link "AILET" [ref=e157] [cursor=pointer]:
+            - /url: /lawEntranceExams/PBMhB1uEDpTBtD9CBTA1
+            - img "AILET" [ref=e158]
+          - generic [ref=e159]:
+            - heading "AILET" [level=4] [ref=e160]
+            - paragraph [ref=e161]: Crack AILET with expert coaching—your path to NLU Delhi.
+        - generic [ref=e162]:
+          - link "MH-CET LAW" [ref=e165] [cursor=pointer]:
+            - /url: /lawEntranceExams/chuGothq1GP1okYGtL7k
+            - img "MH-CET LAW" [ref=e166]
+          - generic [ref=e167]:
+            - heading "MH-CET LAW" [level=4] [ref=e168]
+            - paragraph [ref=e169]: Ace MH-CET with expert coaching—your path to top law colleges in Maharashtra.
+        - generic [ref=e170]:
+          - link "CUET" [ref=e173] [cursor=pointer]:
+            - /url: /lawEntranceExams/F1UhzvikvDCTKuM8NmuG
+            - img "CUET" [ref=e174]
+          - generic [ref=e175]:
+            - heading "CUET" [level=4] [ref=e176]
+            - paragraph [ref=e177]: Prepare for CUET with expert coaching—your gateway to top universities.
+        - generic [ref=e178]:
+          - link "AIL-LET" [ref=e181] [cursor=pointer]:
+            - /url: /lawEntranceExams/AKiJXQ4khgnb4qnbMeSZ
+            - img "AIL-LET" [ref=e182]
+          - generic [ref=e183]:
+            - heading "AIL-LET" [level=4] [ref=e184]
+            - paragraph [ref=e185]: Crack AIL-LET with expert coaching—your path to the Army Institute of Law.
+        - generic [ref=e186]:
+          - link "LSAT" [ref=e189] [cursor=pointer]:
+            - /url: /lawEntranceExams/0D53yWqCef2zYkcDy7du
+            - img "LSAT" [ref=e190]
+          - generic [ref=e191]:
+            - heading "LSAT" [level=4] [ref=e192]
+            - paragraph [ref=e193]: Crack LSAT with expert coaching—your gateway to top law schools globally.
+    - generic [ref=e195]:
+      - generic [ref=e196]:
+        - heading "CLATians SPECIAL" [level=2] [ref=e197]:
+          - generic [ref=e198]: CLATians
+          - text: SPECIAL
+        - paragraph [ref=e199]: Explore resources to enhance your preparation for exams with our curated blogs, courses, test series, and books.
+      - generic [ref=e200]:
+        - link "Alumni Support Empowering Alumni, Strengthening Connections." [ref=e201] [cursor=pointer]:
+          - /url: /forums
+          - generic [ref=e202]:
+            - img [ref=e204]
+            - heading "Alumni Support" [level=5] [ref=e206]
+            - paragraph [ref=e207]: Empowering Alumni, Strengthening Connections.
+        - link "Carrier Guidance Expert career guidance to help you achieve your goals!" [ref=e208] [cursor=pointer]:
+          - /url: /careers
+          - generic [ref=e209]:
+            - img [ref=e211]
+            - heading "Carrier Guidance" [level=5] [ref=e213]
+            - paragraph [ref=e214]: Expert career guidance to help you achieve your goals!
+        - link "Blogs Explore Our Latest Blogs" [ref=e215] [cursor=pointer]:
+          - /url: /blogs
+          - generic [ref=e216]:
+            - img [ref=e218]
+            - heading "Blogs" [level=5] [ref=e220]
+            - paragraph [ref=e221]: Explore Our Latest Blogs
+        - link "Online Mock Test Explore Online Mock Test Series for Preparation" [ref=e222] [cursor=pointer]:
+          - /url: /mock-tests/online
+          - generic [ref=e223]:
+            - img [ref=e225]
+            - heading "Online Mock Test" [level=5] [ref=e227]
+            - paragraph [ref=e228]: Explore Online Mock Test Series for Preparation
+    - heading "Student ❤️ CLATians" [level=3] [ref=e232]
+    - generic [ref=e237]:
+      - heading "OUR TEACHERS" [level=2] [ref=e238]
+      - paragraph [ref=e239]: Learn from the Best in Legal Education
+    - generic [ref=e244]:
+      - heading "FEATURED NEWS" [level=2] [ref=e245]
+      - paragraph [ref=e246]: Explore Latest Blogs From Here
+    - generic [ref=e251]:
+      - img "Mobile App" [ref=e254]
+      - generic [ref=e255]:
+        - heading "Download For Hassle-Free End-To-End Learning" [level=2] [ref=e256]:
+          - text: Download For Hassle-Free
+          - text: End-To-End Learning
+        - paragraph [ref=e257]:
+          - text: Access all your study materials, attend live classes,
+          - text: and track your progress with our easy-to-use mobile app.
+          - text: Available for both iOS and Android devices.
+        - generic [ref=e258]:
+          - link "Get it on Google Play" [ref=e259] [cursor=pointer]:
+            - /url: https://play.google.com/store/apps/details?id=com.clatians&pcampaignid=web_share
+            - img "Get it on Google Play" [ref=e260]
+          - link "Download on the App Store" [ref=e261] [cursor=pointer]:
+            - /url: "#"
+            - img "Download on the App Store" [ref=e262]
+    - generic [ref=e265]:
+      - generic [ref=e266]: Our Upcoming Events
+      - heading "Upcoming Events & Webinars" [level=2] [ref=e267]
+    - generic [ref=e272]:
+      - heading "FREQUENTLY ASKED QUESTIONS" [level=2] [ref=e273]:
+        - generic [ref=e274]: FREQUENTLY
+        - text: ASKED QUESTIONS
+      - generic [ref=e275]:
+        - generic [ref=e276]:
+          - button " What is the CLAT exam pattern for 2025? " [ref=e277] [cursor=pointer]:
+            - generic [ref=e278]:
+              - generic [ref=e279]: 
+              - text: What is the CLAT exam pattern for 2025?
+            - generic [ref=e280]: 
+          - paragraph [ref=e281]: "CLAT 2025 follows a 2-hour computer-based test format with 150 questions across five sections: English Language, Current Affairs & GK, Legal Reasoning, Logical Reasoning, and Quantitative Techniques. Each question carries 1 mark with a 0.25 negative marking for incorrect answers. Our coaching methodology is specifically designed to align with this latest pattern."
+        - generic [ref=e282]:
+          - button " When is CLAT 2025 scheduled and what are the important dates? " [ref=e283] [cursor=pointer]:
+            - generic [ref=e284]:
+              - generic [ref=e285]: 
+              - text: When is CLAT 2025 scheduled and what are the important dates?
+            - generic [ref=e286]: 
+          - paragraph [ref=e287]: CLAT 2025 is tentatively scheduled for May 2025. The application process typically begins in January, with the exact exam date announced by the Consortium of NLUs. Our coaching institute provides timely updates on application deadlines, admit card release dates, and result announcements to ensure you never miss critical milestones.
+        - generic [ref=e288]:
+          - button " What is CLAT and how can I prepare effectively for it? " [ref=e289] [cursor=pointer]:
+            - generic [ref=e290]:
+              - generic [ref=e291]: 
+              - text: What is CLAT and how can I prepare effectively for it?
+            - generic [ref=e292]: 
+          - paragraph [ref=e293]: The Common Law Admission Test (CLAT) is the premier national-level entrance examination for admission to 22+ National Law Universities (NLUs) across India. Effective preparation includes mastering logical reasoning, legal reasoning, English comprehension, general knowledge, and quantitative techniques. Our specialized coaching program offers comprehensive coverage of all CLAT sections with expert guidance from top NLU alumni and legal educators.
+        - generic [ref=e294]:
+          - button " What exactly is the CLAT exam and why is it important for law aspirants? " [ref=e295] [cursor=pointer]:
+            - generic [ref=e296]:
+              - generic [ref=e297]: 
+              - text: What exactly is the CLAT exam and why is it important for law aspirants?
+            - generic [ref=e298]: 
+          - paragraph [ref=e299]: "The Common Law Admission Test (CLAT) is the unified national entrance examination for admissions to 22+ National Law Universities (NLUs) across India. It serves as the gateway to India's premier legal education institutions, testing candidates on five key areas: English Language, Current Affairs, Legal Reasoning, Logical Reasoning, and Quantitative Techniques."
+        - generic [ref=e300]:
+          - button " What are the basic eligibility criteria for appearing in the CLAT exam? " [ref=e301] [cursor=pointer]:
+            - generic [ref=e302]:
+              - generic [ref=e303]: 
+              - text: What are the basic eligibility criteria for appearing in the CLAT exam?
+            - generic [ref=e304]: 
+          - paragraph [ref=e305]: For CLAT UG (undergraduate), candidates must have completed or be appearing for their 10+2 examination with a minimum of 45% marks (40% for SC/ST/OBC/PWD categories). For CLAT PG (postgraduate), candidates must have completed or be in the final year of their LLB degree with at least 50% marks (45% for reserved categories).
+    - generic [ref=e307]:
+      - heading "Follow Us on Social Media" [level=2] [ref=e308]
+      - paragraph [ref=e309]: Stay updated with our latest news, live sessions, and valuable content. Connect with us on social media for exclusive updates!
+      - generic [ref=e310]:
+        - link "" [ref=e311] [cursor=pointer]:
+          - /url: https://www.facebook.com/IEECLATians
+          - generic [ref=e312]: 
+        - link "" [ref=e313] [cursor=pointer]:
+          - /url: https://www.instagram.com/clatians/
+          - generic [ref=e314]: 
+        - link "" [ref=e315] [cursor=pointer]:
+          - /url: https://www.youtube.com/@CLATians
+          - generic [ref=e316]: 
+        - link "" [ref=e317] [cursor=pointer]:
+          - /url: https://t.me/CLATians
+          - generic [ref=e318]: 
+        - link "" [ref=e319] [cursor=pointer]:
+          - /url: https://g.co/kgs/3NcAYmD
+          - generic [ref=e320]: 
+        - link "" [ref=e321] [cursor=pointer]:
+          - /url: https://twitter.com/CLATians
+          - generic [ref=e322]: 
+        - link "" [ref=e323] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/clatians/
+          - generic [ref=e324]: 
+  - contentinfo [ref=e325]:
+    - generic [ref=e326]:
+      - generic [ref=e327]:
+        - generic [ref=e328]: GET LATEST UPDATES
+        - heading "Subscribe to Our Newsletter" [level=2] [ref=e329]
+        - paragraph [ref=e330]: Stay updated with the latest news, exam strategies, and special offers! Join our newsletter today.
+        - generic [ref=e332]:
+          - textbox "Enter Your E-Mail" [ref=e333]
+          - button "Subscribe →" [ref=e334] [cursor=pointer]
+        - paragraph [ref=e335]: No ads, No spam, Unsubscribe anytime.
+      - generic [ref=e336]:
+        - generic [ref=e338]:
+          - img "Logo" [ref=e339]
+          - paragraph [ref=e340]: Your trusted institute for CLAT, AILET, and other law entrance preparations.
+          - generic [ref=e341]:
+            - strong [ref=e342]: "Address:"
+            - paragraph [ref=e343]:
+              - text: 2nd Floor, Gangotri Palace, Boring Rd, near Sumati Palace
+              - text: Nageshwar Colony, Kidwaipuri, Patna, Bihar 800001.
+          - generic [ref=e344]:
+            - link "" [ref=e345] [cursor=pointer]:
+              - /url: https://www.facebook.com/IEECLATians
+              - generic [ref=e346]: 
+            - link "" [ref=e347] [cursor=pointer]:
+              - /url: https://www.instagram.com/clatians/
+              - generic [ref=e348]: 
+            - link "" [ref=e349] [cursor=pointer]:
+              - /url: https://www.youtube.com/@CLATians
+              - generic [ref=e350]: 
+            - link "" [ref=e351] [cursor=pointer]:
+              - /url: https://t.me/CLATians
+              - generic [ref=e352]: 
+            - link "" [ref=e353] [cursor=pointer]:
+              - /url: https://g.co/kgs/3NcAYmD
+              - generic [ref=e354]: 
+            - link "" [ref=e355] [cursor=pointer]:
+              - /url: https://twitter.com/CLATians
+              - generic [ref=e356]: 
+            - link "" [ref=e357] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/clatians/
+              - generic [ref=e358]: 
+        - generic [ref=e360]:
+          - generic [ref=e361]:
+            - heading "Quick Links" [level=5] [ref=e362]
+            - list [ref=e363]:
+              - listitem [ref=e364]:
+                - link "Admission" [ref=e365] [cursor=pointer]:
+                  - /url: /admission
+              - listitem [ref=e366]:
+                - link "Student Zone" [ref=e367] [cursor=pointer]:
+                  - /url: /studentZone
+              - listitem [ref=e368]:
+                - link "Gallery" [ref=e369] [cursor=pointer]:
+                  - /url: /gallery
+              - listitem [ref=e370]:
+                - link "Test Series" [ref=e371] [cursor=pointer]:
+                  - /url: /mock-tests/online
+          - generic [ref=e372]:
+            - heading "Resources" [level=5] [ref=e373]
+            - list [ref=e374]:
+              - listitem [ref=e375]:
+                - link "Previous Year Papers" [ref=e376] [cursor=pointer]:
+                  - /url: /onlineResources
+              - listitem [ref=e377]:
+                - link "Current Affairs" [ref=e378] [cursor=pointer]:
+                  - /url: /blogs
+              - listitem [ref=e379]:
+                - link "Quizzes" [ref=e380] [cursor=pointer]:
+                  - /url: /quizzes
+              - listitem [ref=e381]:
+                - link "Online Resources" [ref=e382] [cursor=pointer]:
+                  - /url: /onlieResources
+          - generic [ref=e383]:
+            - heading "Company" [level=5] [ref=e384]
+            - list [ref=e385]:
+              - listitem [ref=e386]:
+                - link "About Us" [ref=e387] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e388]:
+                - link "Careers" [ref=e389] [cursor=pointer]:
+                  - /url: /careers
+              - listitem [ref=e390]:
+                - link "Faculty" [ref=e391] [cursor=pointer]:
+                  - /url: /gallery
+              - listitem [ref=e392]:
+                - link "Contact" [ref=e393] [cursor=pointer]:
+                  - /url: /contactUs
+              - listitem [ref=e394]:
+                - link "Privacy policy" [ref=e395] [cursor=pointer]:
+                  - /url: /privacy-policy
+              - listitem [ref=e396]:
+                - link "Legal" [ref=e397] [cursor=pointer]:
+                  - /url: /legal
+          - generic [ref=e398]:
+            - heading "Courses" [level=5] [ref=e399]
+            - list [ref=e400]:
+              - listitem [ref=e401]:
+                - link "CLAT" [ref=e402] [cursor=pointer]:
+                  - /url: /courses/online/0
+              - listitem [ref=e403]:
+                - link "CLAT+AILET" [ref=e404] [cursor=pointer]:
+                  - /url: /courses/online/1
+              - listitem [ref=e405]:
+                - link "CUET(UG)" [ref=e406] [cursor=pointer]:
+                  - /url: /courses/online/2
+              - listitem [ref=e407]:
+                - link "CUET(PG)" [ref=e408] [cursor=pointer]:
+                  - /url: /courses/online/3
+              - listitem [ref=e409]:
+                - link "OLET" [ref=e410] [cursor=pointer]:
+                  - /url: /courses/offline/4
+              - listitem [ref=e411]:
+                - link "CLAT+OLET" [ref=e412] [cursor=pointer]:
+                  - /url: /courses/offline/3
+              - listitem [ref=e413]:
+                - link "Booster Course" [ref=e414] [cursor=pointer]:
+                  - /url: /courses/online/5
+      - paragraph [ref=e416]: © 2026 CLATians - All rights reserved.
+  - alert [ref=e417]

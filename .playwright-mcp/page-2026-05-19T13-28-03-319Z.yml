@@ -1,0 +1,725 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "📢CLATians SCHOLARSHIP TEST (Get Upto 100%) 👆Click to Apply Now" [ref=e7] [cursor=pointer]:
+      - /url: https://www.clatians.in/admission
+    - generic [ref=e8]:
+      - link "Student Zone" [ref=e9] [cursor=pointer]:
+        - /url: /studentZone
+      - link "Blogs" [ref=e10] [cursor=pointer]:
+        - /url: /blogs
+      - link "Contact" [ref=e11] [cursor=pointer]:
+        - /url: /contactUs
+  - navigation [ref=e12]:
+    - generic [ref=e14]:
+      - link "clatians-Logo" [ref=e15] [cursor=pointer]:
+        - /url: /
+        - img "clatians-Logo" [ref=e16]
+      - generic [ref=e17]:
+        - link "Home" [ref=e19] [cursor=pointer]:
+          - /url: /
+        - link "About" [ref=e21] [cursor=pointer]:
+          - /url: /about
+        - button "Courses" [ref=e23] [cursor=pointer]:
+          - text: Courses
+          - img [ref=e25]
+        - link "Admission" [ref=e28] [cursor=pointer]:
+          - /url: /admission
+        - button "Law Entrance Exams" [ref=e30] [cursor=pointer]:
+          - text: Law Entrance Exams
+          - img [ref=e32]
+        - link "Online Resources" [ref=e36] [cursor=pointer]:
+          - /url: /onlineResources
+      - generic [ref=e37]:
+        - button "Call Us" [ref=e38] [cursor=pointer]:
+          - link "Call Us" [ref=e39]:
+            - /url: tel:8507700177
+        - link "Download App" [ref=e40] [cursor=pointer]:
+          - /url: https://play.google.com/store/apps/details?id=com.clatians&pcampaignid=web_share
+  - generic [ref=e41]:
+    - generic [ref=e43]:
+      - heading "A Comprehensive Guide to Common Law Admission Test (CLAT)" [level=1] [ref=e44]
+      - paragraph [ref=e45]: Your Gateway to National Law Universities
+    - generic [ref=e49]:
+      - button "Overview" [ref=e50] [cursor=pointer]
+      - button "Latest Updates" [ref=e51] [cursor=pointer]
+      - button "Eligibility" [ref=e52] [cursor=pointer]
+      - button "Exam Pattern" [ref=e53] [cursor=pointer]
+      - button "Syllabus" [ref=e54] [cursor=pointer]
+      - button "Application Process" [ref=e55] [cursor=pointer]
+      - button "Preparation" [ref=e56] [cursor=pointer]
+      - button "Universities" [ref=e57] [cursor=pointer]
+    - generic [ref=e58]:
+      - generic [ref=e60]:
+        - heading "Overview" [level=2] [ref=e61]
+        - paragraph [ref=e63]: The Common Law Admission Test (CLAT) is a national-level Law Entrance Examination in India for admission to undergraduate (UG) and postgraduate (PG) law programs offered by 26 National Law Universities (NLUs). Established in 2008, CLAT has become the premier law entrance examination in India, determining admissions to approximately 3000+ seats in these prestigious institutions annually.
+      - generic [ref=e65]:
+        - heading "Latest Updates" [level=2] [ref=e66]
+        - table [ref=e68]:
+          - rowgroup [ref=e69]:
+            - row "Timeline Update" [ref=e70]:
+              - columnheader "Timeline" [ref=e71]
+              - columnheader "Update" [ref=e72]
+          - rowgroup [ref=e73]:
+            - row "May 2025 CLAT 2026 notification expected to be released" [ref=e74]:
+              - cell "May 2025" [ref=e75]
+              - cell "CLAT 2026 notification expected to be released" [ref=e76]
+            - row "Mid-May 2025 CLAT 2025 final admission lists released by all participating NLUs (Expected)" [ref=e77]:
+              - cell "Mid-May 2025" [ref=e78]
+              - cell "CLAT 2025 final admission lists released by all participating NLUs (Expected)" [ref=e79]
+            - row "January 5, 2025 CLAT 2025 Counselling Pending Due to Court Order (Stay Tuned for Update)" [ref=e80]:
+              - cell "January 5, 2025" [ref=e81]
+              - cell "CLAT 2025 Counselling Pending Due to Court Order (Stay Tuned for Update)" [ref=e82]
+            - row "December 28, 2024 First CLAT 2025 counseling round initiated" [ref=e83]:
+              - cell "December 28, 2024" [ref=e84]
+              - cell "First CLAT 2025 counseling round initiated" [ref=e85]
+            - row "December 22, 2024 CLAT 2025 results declared; cutoffs announced for all NLUs" [ref=e86]:
+              - cell "December 22, 2024" [ref=e87]
+              - cell "CLAT 2025 results declared; cutoffs announced for all NLUs" [ref=e88]
+            - row "December 8, 2024 CLAT 2025 examination successfully conducted" [ref=e89]:
+              - cell "December 8, 2024" [ref=e90]
+              - cell "CLAT 2025 examination successfully conducted" [ref=e91]
+      - generic [ref=e93]:
+        - heading "Eligibility Criteria" [level=2] [ref=e94]
+        - generic [ref=e95]:
+          - heading "For CLAT UG" [level=3] [ref=e96]
+          - list [ref=e97]:
+            - listitem [ref=e98]:
+              - img [ref=e100]
+              - generic [ref=e102]: Candidates must have passed or be appearing in the final year of Class 12 (10+2) or equivalent examination
+            - listitem [ref=e103]:
+              - img [ref=e105]
+              - generic [ref=e107]: Minimum of 45% marks (40% for SC/ST/OBC/PWD categories)
+            - listitem [ref=e108]:
+              - img [ref=e110]
+              - generic [ref=e112]: No upper age limit
+        - generic [ref=e113]:
+          - heading "For CLAT PG" [level=3] [ref=e114]
+          - list [ref=e115]:
+            - listitem [ref=e116]:
+              - img [ref=e118]
+              - generic [ref=e120]: Candidates must have completed an LLB degree or be in the final year of the LLB program
+            - listitem [ref=e121]:
+              - img [ref=e123]
+              - generic [ref=e125]: Minimum 50% marks in LLB (45% for SC/ST/OBC/PWD categories)
+      - generic [ref=e127]:
+        - heading "Exam Pattern" [level=2] [ref=e128]
+        - generic [ref=e129]:
+          - heading "CLAT UG Pattern" [level=3] [ref=e130]
+          - table [ref=e132]:
+            - rowgroup [ref=e133]:
+              - row "Section Questions Marks Total Marks" [ref=e134]:
+                - columnheader "Section" [ref=e135]
+                - columnheader "Questions" [ref=e136]
+                - columnheader "Marks" [ref=e137]
+                - columnheader "Total Marks" [ref=e138]
+            - rowgroup [ref=e139]:
+              - row "English Language 22-26 1 22-26" [ref=e140]:
+                - cell "English Language" [ref=e141]
+                - cell "22-26" [ref=e142]
+                - cell "1" [ref=e143]
+                - cell "22-26" [ref=e144]
+              - row "Current Affairs & GK 28-32 1 28-32" [ref=e145]:
+                - cell "Current Affairs & GK" [ref=e146]
+                - cell "28-32" [ref=e147]
+                - cell "1" [ref=e148]
+                - cell "28-32" [ref=e149]
+              - row "Legal Reasoning 28-32 1 28-32" [ref=e150]:
+                - cell "Legal Reasoning" [ref=e151]
+                - cell "28-32" [ref=e152]
+                - cell "1" [ref=e153]
+                - cell "28-32" [ref=e154]
+              - row "Logical Reasoning 22-26 1 22-26" [ref=e155]:
+                - cell "Logical Reasoning" [ref=e156]
+                - cell "22-26" [ref=e157]
+                - cell "1" [ref=e158]
+                - cell "22-26" [ref=e159]
+              - row "Quantitative Techniques 10-14 1 10-14" [ref=e160]:
+                - cell "Quantitative Techniques" [ref=e161]
+                - cell "10-14" [ref=e162]
+                - cell "1" [ref=e163]
+                - cell "10-14" [ref=e164]
+          - generic [ref=e165]:
+            - heading "Marking Scheme:" [level=4] [ref=e166]
+            - list [ref=e167]:
+              - listitem [ref=e168]: 1 mark awarded for each correct answer
+              - listitem [ref=e169]: 0.25 marks deducted for each incorrect answer (negative marking)
+              - listitem [ref=e170]: No marks deducted for unattempted questions
+        - generic [ref=e171]:
+          - heading "CLAT PG Pattern" [level=3] [ref=e172]
+          - table [ref=e174]:
+            - rowgroup [ref=e175]:
+              - row "Section Questions Marks Total Marks" [ref=e176]:
+                - columnheader "Section" [ref=e177]
+                - columnheader "Questions" [ref=e178]
+                - columnheader "Marks" [ref=e179]
+                - columnheader "Total Marks" [ref=e180]
+            - rowgroup [ref=e181]:
+              - row "Constitutional Law" [ref=e182]:
+                - cell "Constitutional Law" [ref=e183]
+                - cell [ref=e184]
+                - cell [ref=e185]
+                - cell [ref=e186]
+              - row "Jurisprudence" [ref=e187]:
+                - cell "Jurisprudence" [ref=e188]
+                - cell [ref=e189]
+                - cell [ref=e190]
+                - cell [ref=e191]
+              - row "Other Law Topics i.e. Tort, Criminal Family, etc." [ref=e192]:
+                - cell "Other Law Topics i.e. Tort, Criminal Family, etc." [ref=e193]
+                - cell [ref=e194]
+                - cell [ref=e195]
+                - cell [ref=e196]
+          - generic [ref=e197]:
+            - heading "Marking Scheme:" [level=4] [ref=e198]
+            - list [ref=e199]:
+              - listitem [ref=e200]: 1 mark awarded for each correct answer
+              - listitem [ref=e201]: 0.25 marks deducted for each incorrect answer (negative marking)
+              - listitem [ref=e202]: No marks deducted for unattempted questions
+      - generic [ref=e204]:
+        - heading "Detailed Syllabus" [level=2] [ref=e205]
+        - generic [ref=e206]:
+          - heading "CLAT UG Syllabus" [level=3] [ref=e207]
+          - generic [ref=e208]:
+            - generic [ref=e209]:
+              - heading "English Language" [level=4] [ref=e210]
+              - list [ref=e211]:
+                - listitem [ref=e212]:
+                  - generic [ref=e214]: Read and comprehend the main point discussed in the passage, as well as any arguments and viewpoints discussed or set out in the passage;
+                - listitem [ref=e215]:
+                  - generic [ref=e217]: Draw inferences and conclusions based on the passage;
+                - listitem [ref=e218]:
+                  - generic [ref=e220]: Summarise the passage;
+                - listitem [ref=e221]:
+                  - generic [ref=e223]: Compare and contrast the different arguments or viewpoints set out in the passage; and
+                - listitem [ref=e224]:
+                  - generic [ref=e226]: Understand the meaning of various words and phrases in the context that they are used in the passage.
+            - generic [ref=e227]:
+              - heading "Current Affairs Including General Knowledge" [level=4] [ref=e228]
+              - list [ref=e229]:
+                - listitem [ref=e230]:
+                  - generic [ref=e232]: Contemporary events of significance from India and the world;
+                - listitem [ref=e233]:
+                  - generic [ref=e235]: Arts and culture;
+                - listitem [ref=e236]:
+                  - generic [ref=e238]: International affairs; and
+                - listitem [ref=e239]:
+                  - generic [ref=e241]: Historical events of continuing significance.
+            - generic [ref=e242]:
+              - heading "Legal Reasoning" [level=4] [ref=e243]
+              - list [ref=e244]:
+                - listitem [ref=e245]:
+                  - generic [ref=e247]: Identify and infer the rules and principles set out in the passage;
+                - listitem [ref=e248]:
+                  - generic [ref=e250]: Apply such rules and principles to various fact situations; and
+                - listitem [ref=e251]:
+                  - generic [ref=e253]: Understand how changes to the rules or principles may alter their application to various fact situations.
+            - generic [ref=e254]:
+              - heading "Logical Reasoning" [level=4] [ref=e255]
+              - list [ref=e256]:
+                - listitem [ref=e257]:
+                  - generic [ref=e259]: Recognise an argument, its premises and conclusions;
+                - listitem [ref=e260]:
+                  - generic [ref=e262]: Read and identify the arguments set out in the passage;
+                - listitem [ref=e263]:
+                  - generic [ref=e265]: Critically analyse patterns of reasoning, and assess how conclusions may depend on particular premises or evidence, and how conclusions may be strengthened or weakened as a consequence of an alteration in premises or supporting facts;
+                - listitem [ref=e266]:
+                  - generic [ref=e268]: Infer what follows from the passage and apply these inferences to new situations;
+                - listitem [ref=e269]:
+                  - generic [ref=e271]: Analytical reasoning
+            - generic [ref=e272]:
+              - heading "Quantitative Techniques" [level=4] [ref=e273]
+              - list [ref=e274]:
+                - listitem [ref=e275]:
+                  - generic [ref=e277]: Basic mathematics
+                - listitem [ref=e278]:
+                  - generic [ref=e280]: Numerical ability
+        - generic [ref=e281]:
+          - heading "CLAT PG Syllabus" [level=3] [ref=e282]
+          - generic [ref=e284]:
+            - heading "In this section of the PG-CLAT 2025, you will be provided extracts from primary legal materials such as important court decisions in various fields of law, statutes or regulations. Each passage will be followed by a series of questions that will require you to demonstrate the:" [level=4] [ref=e285]
+            - list [ref=e286]:
+              - listitem [ref=e287]:
+                - generic [ref=e289]: Ability to read and comprehend the issues discussed in the passage, as well as any arguments and viewpoints discussed or set out in the passage;
+              - listitem [ref=e290]:
+                - generic [ref=e292]: Awareness of the issues discussed in the passage, as well as of legal issues and facts related to and arising out of the passage and the judgment or statute from which it is extracted;
+              - listitem [ref=e293]:
+                - generic [ref=e295]: Summarise the passage; and
+              - listitem [ref=e296]:
+                - generic [ref=e298]: Ability to apply your knowledge of the fields of law discussed in the passage.
+      - generic [ref=e300]:
+        - heading "Application Process" [level=2] [ref=e301]
+        - generic [ref=e302]:
+          - heading "Steps to Apply" [level=3] [ref=e303]
+          - generic [ref=e304]:
+            - generic [ref=e305]:
+              - generic [ref=e306]:
+                - generic [ref=e307]: "1"
+                - heading "Registration" [level=4] [ref=e308]
+              - paragraph [ref=e309]: Create an account on the official CLAT website
+            - generic [ref=e310]:
+              - generic [ref=e311]:
+                - generic [ref=e312]: "2"
+                - heading "Form Filling" [level=4] [ref=e313]
+              - paragraph [ref=e314]: Complete the online application form with personal, academic, and contact details
+            - generic [ref=e315]:
+              - generic [ref=e316]:
+                - generic [ref=e317]: "3"
+                - heading "Document Upload" [level=4] [ref=e318]
+              - paragraph [ref=e319]: Upload photograph, signature, and required documents as per specifications
+            - generic [ref=e320]:
+              - generic [ref=e321]:
+                - generic [ref=e322]: "4"
+                - heading "Fee Payment" [level=4] [ref=e323]
+              - paragraph [ref=e324]: Pay the application fee online through credit/debit card, net banking, or UPI
+            - generic [ref=e325]:
+              - generic [ref=e326]:
+                - generic [ref=e327]: "5"
+                - heading "Confirmation" [level=4] [ref=e328]
+              - paragraph [ref=e329]: Download and print the completed application form for future reference
+        - generic [ref=e330]:
+          - heading "Key Dates" [level=3] [ref=e331]
+          - table [ref=e333]:
+            - rowgroup [ref=e334]:
+              - row "Event Date" [ref=e335]:
+                - columnheader "Event" [ref=e336]
+                - columnheader "Date" [ref=e337]
+            - rowgroup [ref=e338]:
+              - row "Application Start September 2025" [ref=e339]:
+                - cell "Application Start" [ref=e340]
+                - cell "September 2025" [ref=e341]
+              - row "Application Deadline November 2025" [ref=e342]:
+                - cell "Application Deadline" [ref=e343]
+                - cell "November 2025" [ref=e344]
+              - row "Admit Card Release November 2025" [ref=e345]:
+                - cell "Admit Card Release" [ref=e346]
+                - cell "November 2025" [ref=e347]
+              - row "Exam Date First week of December 2025" [ref=e348]:
+                - cell "Exam Date" [ref=e349]
+                - cell "First week of December 2025" [ref=e350]
+              - row "Result Declaration Second week of December 2025" [ref=e351]:
+                - cell "Result Declaration" [ref=e352]
+                - cell "Second week of December 2025" [ref=e353]
+              - row "Counseling Process Last week of January 2026" [ref=e354]:
+                - cell "Counseling Process" [ref=e355]
+                - cell "Last week of January 2026" [ref=e356]
+        - generic [ref=e357]:
+          - heading "Application Fees" [level=3] [ref=e358]
+          - generic [ref=e359]:
+            - generic [ref=e360]:
+              - heading "General/OBC/PWD/NRI/OCI/PIO" [level=4] [ref=e361]
+              - paragraph [ref=e362]: ₹4000
+            - generic [ref=e363]:
+              - heading "SC/ST/BPL" [level=4] [ref=e364]
+              - paragraph [ref=e365]: ₹3500
+      - generic [ref=e367]:
+        - heading "Preparation Guide" [level=2] [ref=e368]
+        - generic [ref=e369]:
+          - generic [ref=e370]:
+            - generic [ref=e371]:
+              - generic [ref=e372]: 
+              - heading "English Language" [level=3] [ref=e373]
+            - list [ref=e374]:
+              - listitem [ref=e375]:
+                - generic [ref=e377]: Read newspapers, magazines, and literary works daily
+              - listitem [ref=e378]:
+                - generic [ref=e380]: Practice reading comprehension regularly
+              - listitem [ref=e381]:
+                - generic [ref=e383]: Improve vocabulary through word lists and flashcards
+              - listitem [ref=e384]:
+                - generic [ref=e386]: Solve previous years' papers for vocabulary questions
+          - generic [ref=e387]:
+            - generic [ref=e388]:
+              - generic [ref=e389]: 
+              - heading "Current Affairs & GK" [level=3] [ref=e390]
+            - list [ref=e391]:
+              - listitem [ref=e392]:
+                - generic [ref=e394]: Read Newspaper i.e. Indian Express & The Hindu
+              - listitem [ref=e395]:
+                - generic [ref=e397]: Follow a daily news routine covering major publications
+              - listitem [ref=e398]:
+                - generic [ref=e400]: Create monthly compilations of important events
+              - listitem [ref=e401]:
+                - generic [ref=e403]: Study static GK topics systematically
+              - listitem [ref=e404]:
+                - generic [ref=e406]: Focus on legal developments and landmark judgments
+        - generic [ref=e407]:
+          - heading "Performance Improvement Strategies" [level=3] [ref=e408]
+          - generic [ref=e409]:
+            - generic [ref=e410]:
+              - generic [ref=e411]:
+                - generic [ref=e412]: "1"
+                - heading "Mock Tests" [level=4] [ref=e413]
+              - paragraph [ref=e414]: Take regular mock tests under timed conditions
+            - generic [ref=e415]:
+              - generic [ref=e416]:
+                - generic [ref=e417]: "2"
+                - heading "Section-wise Analysis" [level=4] [ref=e418]
+              - paragraph [ref=e419]: Identify strengths and weaknesses in each section
+            - generic [ref=e420]:
+              - generic [ref=e421]:
+                - generic [ref=e422]: "3"
+                - heading "Time Management" [level=4] [ref=e423]
+              - paragraph [ref=e424]: Develop a strategy for allocating time to each section
+            - generic [ref=e425]:
+              - generic [ref=e426]:
+                - generic [ref=e427]: "4"
+                - heading "Revision Schedule" [level=4] [ref=e428]
+              - paragraph [ref=e429]: Create a systematic revision plan for all topics
+            - generic [ref=e430]:
+              - generic [ref=e431]:
+                - generic [ref=e432]: "5"
+                - heading "Error Analysis" [level=4] [ref=e433]
+              - paragraph [ref=e434]: Maintain an error log to avoid repeating mistakes
+        - generic [ref=e435]:
+          - heading "Official Resources" [level=3] [ref=e436]
+          - generic [ref=e437]:
+            - link "Official Website CLAT Consortium Website" [ref=e438] [cursor=pointer]:
+              - /url: https://consortiumofnlus.ac.in
+              - heading "Official Website" [level=4] [ref=e439]
+              - paragraph [ref=e440]: CLAT Consortium Website
+            - link "Sample Papers Official CLAT sample papers and previous year questions" [ref=e441] [cursor=pointer]:
+              - /url: "#"
+              - heading "Sample Papers" [level=4] [ref=e442]
+              - paragraph [ref=e443]: Official CLAT sample papers and previous year questions
+            - link "Study Material Recommended books and online resources" [ref=e444] [cursor=pointer]:
+              - /url: "#"
+              - heading "Study Material" [level=4] [ref=e445]
+              - paragraph [ref=e446]: Recommended books and online resources
+      - generic [ref=e448]:
+        - heading "Participating Universities" [level=2] [ref=e449]
+        - table [ref=e451]:
+          - rowgroup [ref=e452]:
+            - row "Rank University Location Established Website" [ref=e453]:
+              - columnheader "Rank" [ref=e454]
+              - columnheader "University" [ref=e455]
+              - columnheader "Location" [ref=e456]
+              - columnheader "Established" [ref=e457]
+              - columnheader "Website" [ref=e458]
+          - rowgroup [ref=e459]:
+            - row "1 National Law School of India University (NLSIU) Bangalore, Karnataka 1987 Visit Website" [ref=e460]:
+              - cell "1" [ref=e461]
+              - cell "National Law School of India University (NLSIU)" [ref=e462]
+              - cell "Bangalore, Karnataka" [ref=e463]
+              - cell "1987" [ref=e464]
+              - cell "Visit Website" [ref=e465]:
+                - link "Visit Website" [ref=e466] [cursor=pointer]:
+                  - /url: https://www.nls.ac.in
+            - row "2 National Academy of Legal Studies and Research (NALSAR) Hyderabad, Telangana 1998 Visit Website" [ref=e467]:
+              - cell "2" [ref=e468]
+              - cell "National Academy of Legal Studies and Research (NALSAR)" [ref=e469]
+              - cell "Hyderabad, Telangana" [ref=e470]
+              - cell "1998" [ref=e471]
+              - cell "Visit Website" [ref=e472]:
+                - link "Visit Website" [ref=e473] [cursor=pointer]:
+                  - /url: https://www.nalsar.ac.in
+            - row "3 National Law Institute University (NLIU) Bhopal, Madhya Pradesh 1997 Visit Website" [ref=e474]:
+              - cell "3" [ref=e475]
+              - cell "National Law Institute University (NLIU)" [ref=e476]
+              - cell "Bhopal, Madhya Pradesh" [ref=e477]
+              - cell "1997" [ref=e478]
+              - cell "Visit Website" [ref=e479]:
+                - link "Visit Website" [ref=e480] [cursor=pointer]:
+                  - /url: https://www.nliu.ac.in
+            - row "4 THE WEST BENGAL NATIONAL UNIVERSITY OF JURIDICAL SCIENCES, WBNUJS KOLKATA, West Bengal 1999 Visit Website" [ref=e481]:
+              - cell "4" [ref=e482]
+              - cell "THE WEST BENGAL NATIONAL UNIVERSITY OF JURIDICAL SCIENCES, WBNUJS" [ref=e483]
+              - cell "KOLKATA, West Bengal" [ref=e484]
+              - cell "1999" [ref=e485]
+              - cell "Visit Website" [ref=e486]:
+                - link "Visit Website" [ref=e487] [cursor=pointer]:
+                  - /url: https://www.nujs.edu
+            - row "5 National Law University Jodhpur (NLUJ) Jodhpur, Rajsthan 1999 Visit Website" [ref=e488]:
+              - cell "5" [ref=e489]
+              - cell "National Law University Jodhpur (NLUJ)" [ref=e490]
+              - cell "Jodhpur, Rajsthan" [ref=e491]
+              - cell "1999" [ref=e492]
+              - cell "Visit Website" [ref=e493]:
+                - link "Visit Website" [ref=e494] [cursor=pointer]:
+                  - /url: https://www.nlujodhpur.ac.in
+            - row "6 Gujarat National Law University (GNLU) Gandhinagar, Gujarat 2003 Visit Website" [ref=e495]:
+              - cell "6" [ref=e496]
+              - cell "Gujarat National Law University (GNLU)" [ref=e497]
+              - cell "Gandhinagar, Gujarat" [ref=e498]
+              - cell "2003" [ref=e499]
+              - cell "Visit Website" [ref=e500]:
+                - link "Visit Website" [ref=e501] [cursor=pointer]:
+                  - /url: https://www.gnlu.ac.in
+            - row "7 Rajiv Gandhi National University of Law (RGNUL) Patiala, Punjab 2006 Visit Website" [ref=e502]:
+              - cell "7" [ref=e503]
+              - cell "Rajiv Gandhi National University of Law (RGNUL)" [ref=e504]
+              - cell "Patiala, Punjab" [ref=e505]
+              - cell "2006" [ref=e506]
+              - cell "Visit Website" [ref=e507]:
+                - link "Visit Website" [ref=e508] [cursor=pointer]:
+                  - /url: https://www.rgnul.ac.in
+            - row "8 Hidayatullah National Law University (HNLU) Raipur, Chhattisgarh 2003 Visit Website" [ref=e509]:
+              - cell "8" [ref=e510]
+              - cell "Hidayatullah National Law University (HNLU)" [ref=e511]
+              - cell "Raipur, Chhattisgarh" [ref=e512]
+              - cell "2003" [ref=e513]
+              - cell "Visit Website" [ref=e514]:
+                - link "Visit Website" [ref=e515] [cursor=pointer]:
+                  - /url: https://www.hnlu.ac.in
+            - row "9 Dr. Ram Manohar Lohiya National Law University (RMLNLU) Lucknow, Uttar Pradesh 2005 Visit Website" [ref=e516]:
+              - cell "9" [ref=e517]
+              - cell "Dr. Ram Manohar Lohiya National Law University (RMLNLU)" [ref=e518]
+              - cell "Lucknow, Uttar Pradesh" [ref=e519]
+              - cell "2005" [ref=e520]
+              - cell "Visit Website" [ref=e521]:
+                - link "Visit Website" [ref=e522] [cursor=pointer]:
+                  - /url: https://www.rmlnlu.ac.in
+            - row "10 National University of Advanced Legal Studies (NUALS) Kochi, Kerala 2005 Visit Website" [ref=e523]:
+              - cell "10" [ref=e524]
+              - cell "National University of Advanced Legal Studies (NUALS)" [ref=e525]
+              - cell "Kochi, Kerala" [ref=e526]
+              - cell "2005" [ref=e527]
+              - cell "Visit Website" [ref=e528]:
+                - link "Visit Website" [ref=e529] [cursor=pointer]:
+                  - /url: https://www.nuals.ac.in
+            - row "11 Chanakya National Law University (CNLU) Patna, Bihar 2006 Visit Website" [ref=e530]:
+              - cell "11" [ref=e531]
+              - cell "Chanakya National Law University (CNLU)" [ref=e532]
+              - cell "Patna, Bihar" [ref=e533]
+              - cell "2006" [ref=e534]
+              - cell "Visit Website" [ref=e535]:
+                - link "Visit Website" [ref=e536] [cursor=pointer]:
+                  - /url: https://www.cnlu.ac.in
+            - row "12 National Law University Odisha (NLUO) Cuttack, Odisha 2009 Visit Website" [ref=e537]:
+              - cell "12" [ref=e538]
+              - cell "National Law University Odisha (NLUO)" [ref=e539]
+              - cell "Cuttack, Odisha" [ref=e540]
+              - cell "2009" [ref=e541]
+              - cell "Visit Website" [ref=e542]:
+                - link "Visit Website" [ref=e543] [cursor=pointer]:
+                  - /url: https://www.nluo.ac.in
+            - row "13 National Law University and Judicial Academy (NLUJA) Guwahati, Assam 2010 Visit Website" [ref=e544]:
+              - cell "13" [ref=e545]
+              - cell "National Law University and Judicial Academy (NLUJA)" [ref=e546]
+              - cell "Guwahati, Assam" [ref=e547]
+              - cell "2010" [ref=e548]
+              - cell "Visit Website" [ref=e549]:
+                - link "Visit Website" [ref=e550] [cursor=pointer]:
+                  - /url: https://www.nluassam.ac.in
+            - row "14 National University of Study and Research in Law (NUSRL) Ranchi, Jharkhand 2010 Visit Website" [ref=e551]:
+              - cell "14" [ref=e552]
+              - cell "National University of Study and Research in Law (NUSRL)" [ref=e553]
+              - cell "Ranchi, Jharkhand" [ref=e554]
+              - cell "2010" [ref=e555]
+              - cell "Visit Website" [ref=e556]:
+                - link "Visit Website" [ref=e557] [cursor=pointer]:
+                  - /url: https://www.nusrlranchi.ac.in
+            - row "15 Tamil Nadu National Law University (TNNLU) Tiruchirappalli, Tamil Nadu 2012 Visit Website" [ref=e558]:
+              - cell "15" [ref=e559]
+              - cell "Tamil Nadu National Law University (TNNLU)" [ref=e560]
+              - cell "Tiruchirappalli, Tamil Nadu" [ref=e561]
+              - cell "2012" [ref=e562]
+              - cell "Visit Website" [ref=e563]:
+                - link "Visit Website" [ref=e564] [cursor=pointer]:
+                  - /url: https://www.tnnlu.ac.in
+            - row "16 Maharashtra National Law University, Mumbai (MNLU Mumbai) Mumbai, Maharashtra 2014 Visit Website" [ref=e565]:
+              - cell "16" [ref=e566]
+              - cell "Maharashtra National Law University, Mumbai (MNLU Mumbai)" [ref=e567]
+              - cell "Mumbai, Maharashtra" [ref=e568]
+              - cell "2014" [ref=e569]
+              - cell "Visit Website" [ref=e570]:
+                - link "Visit Website" [ref=e571] [cursor=pointer]:
+                  - /url: https://www.mnlumumbai.edu.in
+            - row "17 Maharashtra National Law University, Nagpur (MNLU Nagpur) Nagpur, Maharashtra 2015 Visit Website" [ref=e572]:
+              - cell "17" [ref=e573]
+              - cell "Maharashtra National Law University, Nagpur (MNLU Nagpur)" [ref=e574]
+              - cell "Nagpur, Maharashtra" [ref=e575]
+              - cell "2015" [ref=e576]
+              - cell "Visit Website" [ref=e577]:
+                - link "Visit Website" [ref=e578] [cursor=pointer]:
+                  - /url: https://www.nlunagpur.ac.in
+            - row "18 Maharashtra National Law University, Aurangabad (MNLU Aurangabad) Aurangabad, Maharashtra 2017 Visit Website" [ref=e579]:
+              - cell "18" [ref=e580]
+              - cell "Maharashtra National Law University, Aurangabad (MNLU Aurangabad)" [ref=e581]
+              - cell "Aurangabad, Maharashtra" [ref=e582]
+              - cell "2017" [ref=e583]
+              - cell "Visit Website" [ref=e584]:
+                - link "Visit Website" [ref=e585] [cursor=pointer]:
+                  - /url: https://www.mnlua.ac.in
+            - row "19 Himachal Pradesh National Law University (HPNLU) Shimla, Himachal Pradesh 2016 Visit Website" [ref=e586]:
+              - cell "19" [ref=e587]
+              - cell "Himachal Pradesh National Law University (HPNLU)" [ref=e588]
+              - cell "Shimla, Himachal Pradesh" [ref=e589]
+              - cell "2016" [ref=e590]
+              - cell "Visit Website" [ref=e591]:
+                - link "Visit Website" [ref=e592] [cursor=pointer]:
+                  - /url: https://www.hpnlu.ac.in
+            - row "20 Dharmashastra National Law University (DNLU) Jabalpur, Madhya Pradesh 2018 Visit Website" [ref=e593]:
+              - cell "20" [ref=e594]
+              - cell "Dharmashastra National Law University (DNLU)" [ref=e595]
+              - cell "Jabalpur, Madhya Pradesh" [ref=e596]
+              - cell "2018" [ref=e597]
+              - cell "Visit Website" [ref=e598]:
+                - link "Visit Website" [ref=e599] [cursor=pointer]:
+                  - /url: https://www.mpdnlu.ac.in
+            - row "21 Dr. B.R. Ambedkar National Law University (DBRANLU) Sonipat, Haryana 2019 Visit Website" [ref=e600]:
+              - cell "21" [ref=e601]
+              - cell "Dr. B.R. Ambedkar National Law University (DBRANLU)" [ref=e602]
+              - cell "Sonipat, Haryana" [ref=e603]
+              - cell "2019" [ref=e604]
+              - cell "Visit Website" [ref=e605]:
+                - link "Visit Website" [ref=e606] [cursor=pointer]:
+                  - /url: https://www.dbranlu.ac.in
+            - row "22 National Law University, Tripura (NLUT) Agartala, Tripura 2020 Visit Website" [ref=e607]:
+              - cell "22" [ref=e608]
+              - cell "National Law University, Tripura (NLUT)" [ref=e609]
+              - cell "Agartala, Tripura" [ref=e610]
+              - cell "2020" [ref=e611]
+              - cell "Visit Website" [ref=e612]:
+                - link "Visit Website" [ref=e613] [cursor=pointer]:
+                  - /url: https://www.nlutripura.ac.in
+            - row "23 GUJARAT NATIONAL LAW UNIVERSITY, Silvassa Gandhinagar, Gujarat 2003 Visit Website" [ref=e614]:
+              - cell "23" [ref=e615]
+              - cell "GUJARAT NATIONAL LAW UNIVERSITY, Silvassa" [ref=e616]
+              - cell "Gandhinagar, Gujarat" [ref=e617]
+              - cell "2003" [ref=e618]
+              - cell "Visit Website" [ref=e619]:
+                - link "Visit Website" [ref=e620] [cursor=pointer]:
+                  - /url: https://www.gnlus.ac.in
+            - row "24 DAMODARAM SANJIVAYYA NATIONAL LAW UNIVERSITY (DSNLU) Visakhapatnam, Andhra Pradesh 2008 Visit Website" [ref=e621]:
+              - cell "24" [ref=e622]
+              - cell "DAMODARAM SANJIVAYYA NATIONAL LAW UNIVERSITY (DSNLU)" [ref=e623]
+              - cell "Visakhapatnam, Andhra Pradesh" [ref=e624]
+              - cell "2008" [ref=e625]
+              - cell "Visit Website" [ref=e626]:
+                - link "Visit Website" [ref=e627] [cursor=pointer]:
+                  - /url: https://dsnlu.ac.in
+            - row "25 Dr. Rajendra Prasad National Law University (RPNLUP) Prayagraj, UP 2020 Visit Website" [ref=e628]:
+              - cell "25" [ref=e629]
+              - cell "Dr. Rajendra Prasad National Law University (RPNLUP)" [ref=e630]
+              - cell "Prayagraj, UP" [ref=e631]
+              - cell "2020" [ref=e632]
+              - cell "Visit Website" [ref=e633]:
+                - link "Visit Website" [ref=e634] [cursor=pointer]:
+                  - /url: https://www.rpnlup.ac.in
+            - row "26 India International University of Legal Education and Research (IIULER) Goa 2022 Visit Website" [ref=e635]:
+              - cell "26" [ref=e636]
+              - cell "India International University of Legal Education and Research (IIULER)" [ref=e637]
+              - cell "Goa" [ref=e638]
+              - cell "2022" [ref=e639]
+              - cell "Visit Website" [ref=e640]:
+                - link "Visit Website" [ref=e641] [cursor=pointer]:
+                  - /url: https://www.iiuler.edu.in
+  - contentinfo [ref=e642]:
+    - generic [ref=e643]:
+      - generic [ref=e644]:
+        - generic [ref=e645]: GET LATEST UPDATES
+        - heading "Subscribe to Our Newsletter" [level=2] [ref=e646]
+        - paragraph [ref=e647]: Stay updated with the latest news, exam strategies, and special offers! Join our newsletter today.
+        - generic [ref=e649]:
+          - textbox "Enter Your E-Mail" [ref=e650]
+          - button "Subscribe →" [ref=e651] [cursor=pointer]
+        - paragraph [ref=e652]: No ads, No spam, Unsubscribe anytime.
+      - generic [ref=e653]:
+        - generic [ref=e655]:
+          - img "Logo" [ref=e656]
+          - paragraph [ref=e657]: Your trusted institute for CLAT, AILET, and other law entrance preparations.
+          - generic [ref=e658]:
+            - strong [ref=e659]: "Address:"
+            - paragraph [ref=e660]:
+              - text: 2nd Floor, Gangotri Palace, Boring Rd, near Sumati Palace
+              - text: Nageshwar Colony, Kidwaipuri, Patna, Bihar 800001.
+          - generic [ref=e661]:
+            - link "" [ref=e662] [cursor=pointer]:
+              - /url: https://www.facebook.com/IEECLATians
+              - generic [ref=e663]: 
+            - link "" [ref=e664] [cursor=pointer]:
+              - /url: https://www.instagram.com/clatians/
+              - generic [ref=e665]: 
+            - link "" [ref=e666] [cursor=pointer]:
+              - /url: https://www.youtube.com/@CLATians
+              - generic [ref=e667]: 
+            - link "" [ref=e668] [cursor=pointer]:
+              - /url: https://t.me/CLATians
+              - generic [ref=e669]: 
+            - link "" [ref=e670] [cursor=pointer]:
+              - /url: https://g.co/kgs/3NcAYmD
+              - generic [ref=e671]: 
+            - link "" [ref=e672] [cursor=pointer]:
+              - /url: https://twitter.com/CLATians
+              - generic [ref=e673]: 
+            - link "" [ref=e674] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/clatians/
+              - generic [ref=e675]: 
+        - generic [ref=e677]:
+          - generic [ref=e678]:
+            - heading "Quick Links" [level=5] [ref=e679]
+            - list [ref=e680]:
+              - listitem [ref=e681]:
+                - link "Admission" [ref=e682] [cursor=pointer]:
+                  - /url: /admission
+              - listitem [ref=e683]:
+                - link "Student Zone" [ref=e684] [cursor=pointer]:
+                  - /url: /studentZone
+              - listitem [ref=e685]:
+                - link "Gallery" [ref=e686] [cursor=pointer]:
+                  - /url: /gallery
+              - listitem [ref=e687]:
+                - link "Test Series" [ref=e688] [cursor=pointer]:
+                  - /url: /mock-tests/online
+          - generic [ref=e689]:
+            - heading "Resources" [level=5] [ref=e690]
+            - list [ref=e691]:
+              - listitem [ref=e692]:
+                - link "Previous Year Papers" [ref=e693] [cursor=pointer]:
+                  - /url: /onlineResources
+              - listitem [ref=e694]:
+                - link "Current Affairs" [ref=e695] [cursor=pointer]:
+                  - /url: /blogs
+              - listitem [ref=e696]:
+                - link "Quizzes" [ref=e697] [cursor=pointer]:
+                  - /url: /quizzes
+              - listitem [ref=e698]:
+                - link "Online Resources" [ref=e699] [cursor=pointer]:
+                  - /url: /onlieResources
+          - generic [ref=e700]:
+            - heading "Company" [level=5] [ref=e701]
+            - list [ref=e702]:
+              - listitem [ref=e703]:
+                - link "About Us" [ref=e704] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e705]:
+                - link "Careers" [ref=e706] [cursor=pointer]:
+                  - /url: /careers
+              - listitem [ref=e707]:
+                - link "Faculty" [ref=e708] [cursor=pointer]:
+                  - /url: /gallery
+              - listitem [ref=e709]:
+                - link "Contact" [ref=e710] [cursor=pointer]:
+                  - /url: /contactUs
+              - listitem [ref=e711]:
+                - link "Privacy policy" [ref=e712] [cursor=pointer]:
+                  - /url: /privacy-policy
+              - listitem [ref=e713]:
+                - link "Legal" [ref=e714] [cursor=pointer]:
+                  - /url: /legal
+          - generic [ref=e715]:
+            - heading "Courses" [level=5] [ref=e716]
+            - list [ref=e717]:
+              - listitem [ref=e718]:
+                - link "CLAT" [ref=e719] [cursor=pointer]:
+                  - /url: /courses/online/0
+              - listitem [ref=e720]:
+                - link "CLAT+AILET" [ref=e721] [cursor=pointer]:
+                  - /url: /courses/online/1
+              - listitem [ref=e722]:
+                - link "CUET(UG)" [ref=e723] [cursor=pointer]:
+                  - /url: /courses/online/2
+              - listitem [ref=e724]:
+                - link "CUET(PG)" [ref=e725] [cursor=pointer]:
+                  - /url: /courses/online/3
+              - listitem [ref=e726]:
+                - link "OLET" [ref=e727] [cursor=pointer]:
+                  - /url: /courses/offline/4
+              - listitem [ref=e728]:
+                - link "CLAT+OLET" [ref=e729] [cursor=pointer]:
+                  - /url: /courses/offline/3
+              - listitem [ref=e730]:
+                - link "Booster Course" [ref=e731] [cursor=pointer]:
+                  - /url: /courses/online/5
+      - paragraph [ref=e733]: © 2026 CLATians - All rights reserved.
+  - alert [ref=e734]

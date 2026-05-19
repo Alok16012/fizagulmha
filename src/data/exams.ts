@@ -22,6 +22,10 @@ export interface Exam {
   importantDates: { event: string; date: string }[];
   preparationTips: string[];
   faqs: { q: string; a: string }[];
+  applicationFee?: { category: string; fee: string }[];
+  nluList?: { name: string; location: string; established: number }[];
+  latestUpdates?: { date: string; update: string }[];
+  applicationProcess?: string[];
 }
 
 export const exams: Exam[] = [
@@ -87,6 +91,55 @@ export const exams: Exam[] = [
       { q: 'What is the marking scheme for CLAT?', a: 'Each correct answer carries +1 mark and each incorrect answer has a -0.25 negative marking. There are 120 questions for 120 marks total.' },
       { q: 'Is there an age limit for CLAT?', a: 'There is no upper age limit for the CLAT UG program. For the PG (LLM) program, you must have completed your LLB.' },
       { q: 'How many times can I attempt CLAT?', a: 'There is no restriction on the number of attempts for CLAT, as long as you meet the eligibility criteria.' },
+      { q: 'What is the application fee for CLAT 2026?', a: 'The application fee for CLAT 2026 is ₹4,000 for General/OBC/PWD/NRI/OCI/PIO candidates and ₹3,500 for SC/ST/BPL candidates.' },
+      { q: 'What is the exam pattern of CLAT 2026?', a: 'CLAT 2026 consists of 120 questions (120 marks) with 5 sections: English Language (22–26 questions), Current Affairs & GK (28–32 questions), Legal Reasoning (28–32 questions), Logical Reasoning (22–26 questions), and Quantitative Techniques (10–14 questions). Negative marking is -0.25 per wrong answer.' },
+      { q: 'Can I appear in CLAT with 45% in Class 12?', a: 'Yes, General/OBC category students need minimum 45% marks in Class 12. SC/ST category students need minimum 40% marks.' },
+    ],
+    applicationFee: [
+      { category: 'General / OBC / PWD / NRI / OCI / PIO', fee: '₹4,000' },
+      { category: 'SC / ST / BPL', fee: '₹3,500' },
+    ],
+    applicationProcess: [
+      'Visit the official CLAT website (consortiumofnlus.ac.in) and register with your mobile number and email',
+      'Fill in your personal details, academic qualifications, and category information in the application form',
+      'Upload required documents — passport photo (10–200 KB), signature (4–30 KB), and Class 10 certificate',
+      'Pay the application fee online (₹4,000 General / ₹3,500 SC/ST) via debit card, credit card, or net banking',
+      'Download and save the confirmation page and application form for future reference',
+    ],
+    latestUpdates: [
+      { date: 'May 2025', update: 'CLAT 2026 official notification expected — registration to begin' },
+      { date: 'December 2024', update: 'CLAT 2025 results declared — CLATians students secured top ranks across NLUs' },
+      { date: 'December 2024', update: 'CLAT 2025 exam conducted successfully in CBT mode' },
+      { date: 'July 2024', update: 'Consortium released CLAT 2025 official notification' },
+      { date: 'December 2023', update: 'CLAT 2024 results announced — CLATians produced 1000+ NLU selections' },
+    ],
+    nluList: [
+      { name: 'National Law School of India University (NLSIU)', location: 'Bengaluru, Karnataka', established: 1987 },
+      { name: 'NALSAR University of Law', location: 'Hyderabad, Telangana', established: 1998 },
+      { name: 'National Law Institute University (NLIU)', location: 'Bhopal, Madhya Pradesh', established: 1997 },
+      { name: 'The West Bengal National University of Juridical Sciences (WBNUJS)', location: 'Kolkata, West Bengal', established: 1999 },
+      { name: 'National Law University Jodhpur (NLUJ)', location: 'Jodhpur, Rajasthan', established: 1999 },
+      { name: 'Hidayatullah National Law University (HNLU)', location: 'Raipur, Chhattisgarh', established: 2003 },
+      { name: 'Gujarat National Law University (GNLU)', location: 'Gandhinagar, Gujarat', established: 2003 },
+      { name: 'Ram Manohar Lohiya National Law University (RMLNLU)', location: 'Lucknow, Uttar Pradesh', established: 2006 },
+      { name: 'Rajiv Gandhi National University of Law (RGNUL)', location: 'Patiala, Punjab', established: 2006 },
+      { name: 'Chanakya National Law University (CNLU)', location: 'Patna, Bihar', established: 2006 },
+      { name: 'National University of Advanced Legal Studies (NUALS)', location: 'Kochi, Kerala', established: 2005 },
+      { name: 'National Law University Odisha (NLUO)', location: 'Cuttack, Odisha', established: 2008 },
+      { name: 'National University of Study and Research in Law (NUSRL)', location: 'Ranchi, Jharkhand', established: 2010 },
+      { name: 'National Law University and Judicial Academy (NLUJA)', location: 'Guwahati, Assam', established: 2009 },
+      { name: 'Damodaram Sanjivayya National Law University (DSNLU)', location: 'Visakhapatnam, Andhra Pradesh', established: 2008 },
+      { name: 'The Tamil Nadu National Law University (TNNLU)', location: 'Tiruchirappalli, Tamil Nadu', established: 2012 },
+      { name: 'Maharashtra National Law University Mumbai (MNLU Mumbai)', location: 'Mumbai, Maharashtra', established: 2014 },
+      { name: 'Maharashtra National Law University Nagpur (MNLU Nagpur)', location: 'Nagpur, Maharashtra', established: 2014 },
+      { name: 'Maharashtra National Law University Aurangabad (MNLU Aurangabad)', location: 'Aurangabad, Maharashtra', established: 2017 },
+      { name: 'Himachal Pradesh National Law University (HPNLU)', location: 'Shimla, Himachal Pradesh', established: 2016 },
+      { name: 'Dharmashastra National Law University (DNLU)', location: 'Jabalpur, Madhya Pradesh', established: 2018 },
+      { name: 'Dr. B.R. Ambedkar National Law University (DBRANLU)', location: 'Sonipat, Haryana', established: 2020 },
+      { name: 'National Law University Tripura (NLUT)', location: 'Agartala, Tripura', established: 2015 },
+      { name: 'Dr. Ram Manohar Lohiya National Law University Punjab (RPNLUP)', location: 'Prayagraj, Uttar Pradesh', established: 2022 },
+      { name: 'The National Law University Goa (GNLU Goa)', location: 'Silvassa, Goa', established: 2022 },
+      { name: 'Indian Institute of Unani Leatherwork and Entrepreneurial Research (IIULER)', location: 'Goa', established: 2023 },
     ],
   },
   {

@@ -1,0 +1,183 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]: 🔥 New Batches Starting Soon!🎯 Enroll Now🏆 Best CLAT Coaching in Patna
+    - generic [ref=e6]:
+      - link "Student Zone" [ref=e7] [cursor=pointer]:
+        - /url: /studentZone
+      - link "Blogs" [ref=e8] [cursor=pointer]:
+        - /url: /blogs
+      - link "Contact" [ref=e9] [cursor=pointer]:
+        - /url: /contactUs
+  - navigation [ref=e10]:
+    - generic [ref=e12]:
+      - link "clatians-Logo" [ref=e13] [cursor=pointer]:
+        - /url: /
+        - img "clatians-Logo" [ref=e14]
+      - generic [ref=e15]:
+        - link "Home" [ref=e17] [cursor=pointer]:
+          - /url: /
+        - link "About" [ref=e19] [cursor=pointer]:
+          - /url: /about
+        - button "Courses" [ref=e21] [cursor=pointer]:
+          - text: Courses
+          - img [ref=e23]
+        - link "Admission" [ref=e26] [cursor=pointer]:
+          - /url: /admission
+        - button "Law Entrance Exams" [ref=e28] [cursor=pointer]:
+          - text: Law Entrance Exams
+          - img [ref=e30]
+        - link "Online Resources" [ref=e33] [cursor=pointer]:
+          - /url: /onlineResources
+      - generic [ref=e34]:
+        - button "Call Us" [ref=e35] [cursor=pointer]:
+          - link "Call Us" [ref=e36]:
+            - /url: tel:8507700177
+        - link "Download App" [ref=e37] [cursor=pointer]:
+          - /url: https://play.google.com/store/apps/details?id=com.clatians&pcampaignid=web_share
+  - generic [ref=e39]:
+    - heading "Mock Tests" [level=1] [ref=e40]
+    - paragraph [ref=e41]: Practice with our comprehensive mock tests designed to simulate the actual exam experience and improve your performance.
+    - generic [ref=e43]:
+      - button "Online Tests" [ref=e44] [cursor=pointer]:
+        - img [ref=e45]
+        - text: Online Tests
+      - button "Offline Tests" [ref=e47] [cursor=pointer]:
+        - img [ref=e48]
+        - text: Offline Tests
+    - generic [ref=e50]:
+      - heading "Offline Mock Test Features" [level=2] [ref=e51]
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - img [ref=e54]
+          - paragraph [ref=e56]: Printable PDF format for practice anywhere
+        - generic [ref=e57]:
+          - img [ref=e58]
+          - paragraph [ref=e60]: Detailed solutions and explanations
+        - generic [ref=e61]:
+          - img [ref=e62]
+          - paragraph [ref=e64]: No internet connection required
+        - generic [ref=e65]:
+          - img [ref=e66]
+          - paragraph [ref=e68]: Perfect for simulating exam conditions
+        - generic [ref=e69]:
+          - img [ref=e70]
+          - paragraph [ref=e72]: Comprehensive answer keys included
+  - contentinfo [ref=e75]:
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - generic [ref=e78]: GET LATEST UPDATES
+        - heading "Subscribe to Our Newsletter" [level=2] [ref=e79]
+        - paragraph [ref=e80]: Stay updated with the latest news, exam strategies, and special offers! Join our newsletter today.
+        - generic [ref=e82]:
+          - textbox "Enter Your E-Mail" [ref=e83]
+          - button "Subscribe →" [ref=e84] [cursor=pointer]
+        - paragraph [ref=e85]: No ads, No spam, Unsubscribe anytime.
+      - generic [ref=e86]:
+        - generic [ref=e88]:
+          - img "Logo" [ref=e89]
+          - paragraph [ref=e90]: Your trusted institute for CLAT, AILET, and other law entrance preparations.
+          - generic [ref=e91]:
+            - strong [ref=e92]: "Address:"
+            - paragraph [ref=e93]:
+              - text: 2nd Floor, Gangotri Palace, Boring Rd, near Sumati Palace
+              - text: Nageshwar Colony, Kidwaipuri, Patna, Bihar 800001.
+          - generic [ref=e94]:
+            - link "" [ref=e95] [cursor=pointer]:
+              - /url: https://www.facebook.com/IEECLATians
+              - generic [ref=e96]: 
+            - link "" [ref=e97] [cursor=pointer]:
+              - /url: https://www.instagram.com/clatians/
+              - generic [ref=e98]: 
+            - link "" [ref=e99] [cursor=pointer]:
+              - /url: https://www.youtube.com/@CLATians
+              - generic [ref=e100]: 
+            - link "" [ref=e101] [cursor=pointer]:
+              - /url: https://t.me/CLATians
+              - generic [ref=e102]: 
+            - link "" [ref=e103] [cursor=pointer]:
+              - /url: https://g.co/kgs/3NcAYmD
+              - generic [ref=e104]: 
+            - link "" [ref=e105] [cursor=pointer]:
+              - /url: https://twitter.com/CLATians
+              - generic [ref=e106]: 
+            - link "" [ref=e107] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/clatians/
+              - generic [ref=e108]: 
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - heading "Quick Links" [level=5] [ref=e112]
+            - list [ref=e113]:
+              - listitem [ref=e114]:
+                - link "Admission" [ref=e115] [cursor=pointer]:
+                  - /url: /admission
+              - listitem [ref=e116]:
+                - link "Student Zone" [ref=e117] [cursor=pointer]:
+                  - /url: /studentZone
+              - listitem [ref=e118]:
+                - link "Gallery" [ref=e119] [cursor=pointer]:
+                  - /url: /gallery
+              - listitem [ref=e120]:
+                - link "Test Series" [ref=e121] [cursor=pointer]:
+                  - /url: /mock-tests/online
+          - generic [ref=e122]:
+            - heading "Resources" [level=5] [ref=e123]
+            - list [ref=e124]:
+              - listitem [ref=e125]:
+                - link "Previous Year Papers" [ref=e126] [cursor=pointer]:
+                  - /url: /onlineResources
+              - listitem [ref=e127]:
+                - link "Current Affairs" [ref=e128] [cursor=pointer]:
+                  - /url: /blogs
+              - listitem [ref=e129]:
+                - link "Quizzes" [ref=e130] [cursor=pointer]:
+                  - /url: /quizzes
+              - listitem [ref=e131]:
+                - link "Online Resources" [ref=e132] [cursor=pointer]:
+                  - /url: /onlieResources
+          - generic [ref=e133]:
+            - heading "Company" [level=5] [ref=e134]
+            - list [ref=e135]:
+              - listitem [ref=e136]:
+                - link "About Us" [ref=e137] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e138]:
+                - link "Careers" [ref=e139] [cursor=pointer]:
+                  - /url: /careers
+              - listitem [ref=e140]:
+                - link "Faculty" [ref=e141] [cursor=pointer]:
+                  - /url: /gallery
+              - listitem [ref=e142]:
+                - link "Contact" [ref=e143] [cursor=pointer]:
+                  - /url: /contactUs
+              - listitem [ref=e144]:
+                - link "Privacy policy" [ref=e145] [cursor=pointer]:
+                  - /url: /privacy-policy
+              - listitem [ref=e146]:
+                - link "Legal" [ref=e147] [cursor=pointer]:
+                  - /url: /legal
+          - generic [ref=e148]:
+            - heading "Courses" [level=5] [ref=e149]
+            - list [ref=e150]:
+              - listitem [ref=e151]:
+                - link "CLAT" [ref=e152] [cursor=pointer]:
+                  - /url: /courses/online/0
+              - listitem [ref=e153]:
+                - link "CLAT+AILET" [ref=e154] [cursor=pointer]:
+                  - /url: /courses/online/1
+              - listitem [ref=e155]:
+                - link "CUET(UG)" [ref=e156] [cursor=pointer]:
+                  - /url: /courses/online/2
+              - listitem [ref=e157]:
+                - link "CUET(PG)" [ref=e158] [cursor=pointer]:
+                  - /url: /courses/online/3
+              - listitem [ref=e159]:
+                - link "OLET" [ref=e160] [cursor=pointer]:
+                  - /url: /courses/offline/4
+              - listitem [ref=e161]:
+                - link "CLAT+OLET" [ref=e162] [cursor=pointer]:
+                  - /url: /courses/offline/3
+              - listitem [ref=e163]:
+                - link "Booster Course" [ref=e164] [cursor=pointer]:
+                  - /url: /courses/online/5
+      - paragraph [ref=e166]: © 2026 CLATians - All rights reserved.
+  - alert [ref=e167]

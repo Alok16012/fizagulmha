@@ -196,6 +196,93 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                 </div>
               </section>
 
+              {/* Latest Updates */}
+              {exam.latestUpdates && exam.latestUpdates.length > 0 && (
+                <section>
+                  <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Latest Updates</h2>
+                  <div className="relative pl-4 border-l-2" style={{ borderColor: exam.color }}>
+                    {exam.latestUpdates.map((u, i) => (
+                      <div key={i} className="relative mb-4 pl-5">
+                        <span className="absolute -left-[21px] top-1 w-4 h-4 rounded-full border-2 border-white"
+                          style={{ background: exam.color }} />
+                        <div className="bg-white border border-gray-100 rounded-xl p-4">
+                          <span className="text-xs font-bold px-2 py-0.5 rounded-full text-white mb-2 inline-block"
+                            style={{ background: exam.color }}>{u.date}</span>
+                          <p className="text-gray-700 text-sm mt-1">{u.update}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* Application Fee */}
+              {exam.applicationFee && exam.applicationFee.length > 0 && (
+                <section>
+                  <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>Application Fee</h2>
+                  <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr style={{ background: exam.color + '15' }}>
+                          <th className="text-left p-4 font-bold text-gray-700">Category</th>
+                          <th className="text-right p-4 font-bold text-gray-700">Fee</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {exam.applicationFee.map((row, i) => (
+                          <tr key={i} className="border-t border-gray-50 hover:bg-gray-50 transition-colors">
+                            <td className="p-4 text-gray-700">{row.category}</td>
+                            <td className="p-4 text-right font-bold" style={{ color: exam.color }}>{row.fee}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+              )}
+
+              {/* Application Process */}
+              {exam.applicationProcess && exam.applicationProcess.length > 0 && (
+                <section>
+                  <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>How to Apply</h2>
+                  <div className="space-y-3">
+                    {exam.applicationProcess.map((step, i) => (
+                      <div key={i} className="flex items-start gap-3 p-4 rounded-xl border border-gray-100 bg-white">
+                        <span className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-black flex-shrink-0"
+                          style={{ background: exam.color }}>
+                          {i + 1}
+                        </span>
+                        <p className="text-gray-700 text-sm leading-relaxed pt-1">{step}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* NLU List */}
+              {exam.nluList && exam.nluList.length > 0 && (
+                <section>
+                  <h2 className="text-2xl font-black mb-2" style={{ color: 'var(--navy)' }}>
+                    Participating Universities ({exam.nluList.length} NLUs)
+                  </h2>
+                  <p className="text-gray-500 text-sm mb-4">All National Law Universities accepting {exam.code} scores for 2026 admission</p>
+                  <div className="space-y-2">
+                    {exam.nluList.map((nlu, i) => (
+                      <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl border border-gray-100 bg-white hover:border-blue-100 hover:bg-blue-50/30 transition-colors">
+                        <span className="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-0.5"
+                          style={{ background: exam.color }}>
+                          {i + 1}
+                        </span>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-semibold text-gray-900 text-sm leading-snug">{nlu.name}</p>
+                          <p className="text-xs text-gray-400 mt-0.5">📍 {nlu.location} &nbsp;·&nbsp; Est. {nlu.established}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
               {/* Preparation Tips */}
               <section>
                 <h2 className="text-2xl font-black mb-4" style={{ color: 'var(--navy)' }}>

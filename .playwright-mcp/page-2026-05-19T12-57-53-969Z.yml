@@ -1,0 +1,348 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "📢CLATians SCHOLARSHIP TEST (Get Upto 100%) 👆Click to Apply Now" [ref=e7] [cursor=pointer]:
+      - /url: https://www.clatians.in/admission
+    - generic [ref=e8]:
+      - link "Student Zone" [ref=e9] [cursor=pointer]:
+        - /url: /studentZone
+      - link "Blogs" [ref=e10] [cursor=pointer]:
+        - /url: /blogs
+      - link "Contact" [ref=e11] [cursor=pointer]:
+        - /url: /contactUs
+  - navigation [ref=e12]:
+    - generic [ref=e14]:
+      - link "clatians-Logo" [ref=e15] [cursor=pointer]:
+        - /url: /
+        - img "clatians-Logo" [ref=e16]
+      - generic [ref=e17]:
+        - link "Home" [ref=e19] [cursor=pointer]:
+          - /url: /
+        - link "About" [ref=e21] [cursor=pointer]:
+          - /url: /about
+          - text: About
+        - button "Courses" [ref=e24] [cursor=pointer]:
+          - text: Courses
+          - img [ref=e26]
+        - link "Admission" [ref=e29] [cursor=pointer]:
+          - /url: /admission
+        - button "Law Entrance Exams" [ref=e31] [cursor=pointer]:
+          - text: Law Entrance Exams
+          - img [ref=e33]
+        - link "Online Resources" [ref=e36] [cursor=pointer]:
+          - /url: /onlineResources
+      - generic [ref=e37]:
+        - button "Call Us" [ref=e38] [cursor=pointer]:
+          - link "Call Us" [ref=e39]:
+            - /url: tel:8507700177
+        - link "Download App" [ref=e40] [cursor=pointer]:
+          - /url: https://play.google.com/store/apps/details?id=com.clatians&pcampaignid=web_share
+  - generic [ref=e44]:
+    - heading "About Us" [level=1] [ref=e45]
+    - navigation [ref=e46]:
+      - link "Home" [ref=e47] [cursor=pointer]:
+        - /url: /
+      - text: »About Us
+  - generic [ref=e50]:
+    - generic [ref=e51]:
+      - heading "We're Experienced in Online Education" [level=2] [ref=e52]
+      - paragraph [ref=e53]: With years of expertise in providing world-class education, we have helped thousands of students succeed in their careers.
+      - paragraph [ref=e54]:
+        - strong [ref=e55]: Join us today
+        - text: and experience a new way of learning!
+      - generic [ref=e56]:
+        - link "Learn More →" [ref=e57] [cursor=pointer]:
+          - /url: /onlineResources
+        - link "How it Works →" [ref=e58] [cursor=pointer]:
+          - /url: /admission
+    - generic [ref=e60]:
+      - img "Student 1" [ref=e61]
+      - img "Student 2" [ref=e62]
+      - img "Student 3" [ref=e63]
+      - img "Student 4" [ref=e64]
+      - generic [ref=e66]:
+        - text: "25"
+        - text: Years Of
+        - text: Experience
+  - generic [ref=e69]:
+    - generic [ref=e70]:
+      - generic [ref=e71]: 
+      - heading "0+" [level=3] [ref=e72]
+      - paragraph [ref=e73]: Succesfull Students
+    - generic [ref=e74]:
+      - generic [ref=e75]: 
+      - heading "0+" [level=3] [ref=e76]
+      - paragraph [ref=e77]: Active Students
+    - generic [ref=e78]:
+      - generic [ref=e79]: 
+      - heading "0%" [level=3] [ref=e80]
+      - paragraph [ref=e81]: Satisfaction Rate
+    - generic [ref=e82]:
+      - generic [ref=e83]: 
+      - heading "0+" [level=3] [ref=e84]
+      - paragraph [ref=e85]: Awards Winning
+  - generic [ref=e87]:
+    - generic [ref=e88]:
+      - heading "OUR TEACHERS" [level=2] [ref=e89]
+      - paragraph [ref=e90]: Learn from the Best in Legal Education
+    - generic [ref=e91]:
+      - generic [ref=e93]:
+        - img "A. K. Singh" [ref=e96]
+        - generic [ref=e97]:
+          - heading "A. K. Singh" [level=4] [ref=e98]
+          - paragraph [ref=e99]: Director, CLATians
+          - paragraph [ref=e100]:
+            - img [ref=e101]
+            - text: Patna, India
+          - paragraph [ref=e104]:
+            - text: Expert in teaching Legal Reasoning and Legal Awareness for CLAT and other law entrance exams. Over
+            - strong [ref=e105]: 15+ years
+            - text: of experience in guiding students for top NLUs.
+          - generic [ref=e106]:
+            - link [ref=e107] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e108]
+            - link [ref=e110] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e111]
+            - link [ref=e113] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e114]
+          - generic [ref=e116]:
+            - paragraph [ref=e117]:
+              - img [ref=e118]
+              - text: +91-8507700177
+            - paragraph [ref=e120]:
+              - img [ref=e121]
+              - text: director@clatians.in
+      - generic [ref=e123]:
+        - generic [ref=e125] [cursor=pointer]:
+          - img "A. K. Singh" [ref=e126]
+          - img [ref=e128]
+        - generic [ref=e131] [cursor=pointer]:
+          - img "R. K. Choudhary" [ref=e132]
+          - img [ref=e134]
+        - generic [ref=e137] [cursor=pointer]:
+          - img "Hari Bhushan" [ref=e138]
+          - img [ref=e140]
+        - generic [ref=e143] [cursor=pointer]:
+          - img "B. N. Pandey" [ref=e144]
+          - img [ref=e146]
+        - generic [ref=e149] [cursor=pointer]:
+          - img "Sweta Singh" [ref=e150]
+          - img [ref=e152]
+        - generic [ref=e155] [cursor=pointer]:
+          - img "Yuvraj Singh" [ref=e156]
+          - img [ref=e158]
+  - generic [ref=e161]:
+    - generic [ref=e162]:
+      - generic [ref=e163]: Our Upcoming Events
+      - heading "Upcoming Events & Webinars" [level=2] [ref=e164]
+    - generic [ref=e165]:
+      - generic [ref=e169]:
+        - generic [ref=e170]:
+          - img "📢 CLATians SCHOLARSHIP cum ADMISSION TEST (CSAT)" [ref=e171]
+          - generic [ref=e173]:
+            - heading "01" [level=5] [ref=e174]
+            - text: May
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - generic [ref=e177]: 
+            - generic [ref=e178]: 03:00 PM - 04:00 PM
+          - heading "📢 CLATians SCHOLARSHIP cum ADMISSION TEST (CSAT)" [level=5] [ref=e179]
+          - generic [ref=e180]:
+            - generic [ref=e181]: 
+            - generic [ref=e182]: CLATians Patna Centre
+          - link "View Details" [ref=e183] [cursor=pointer]:
+            - /url: /events/bPdsT5OeMIlolnA6YQNf
+            - button "View Details" [ref=e184]
+      - generic [ref=e186]:
+        - button "" [ref=e187] [cursor=pointer]:
+          - generic [ref=e188]: 
+        - button "" [ref=e191] [cursor=pointer]:
+          - generic [ref=e192]: 
+  - generic [ref=e194]:
+    - generic [ref=e195]:
+      - heading "Our Journey" [level=2] [ref=e196]
+      - paragraph [ref=e197]: Tracing Clatians' success step by step.
+    - text:          
+    - generic [ref=e199]:
+      - img [ref=e200]
+      - generic [ref=e202]:
+        - generic:
+          - generic: 
+        - heading "2015 Foundation Year" [level=3] [ref=e205]:
+          - text: "2015"
+          - text: Foundation Year
+      - generic [ref=e206]:
+        - generic:
+          - generic: 
+        - heading "2016 First Campus Established" [level=3] [ref=e209]:
+          - text: "2016"
+          - text: First Campus Established
+      - generic [ref=e210]:
+        - generic:
+          - generic: 
+        - heading "2017 First Batch Success" [level=3] [ref=e213]:
+          - text: "2017"
+          - text: First Batch Success
+      - generic [ref=e214]:
+        - generic:
+          - generic: 
+        - heading "2018 Expanded to 3 Cities" [level=3] [ref=e217]:
+          - text: "2018"
+          - text: Expanded to 3 Cities
+      - generic [ref=e218]:
+        - generic:
+          - generic: 
+        - heading "2019 Online Learning Launched" [level=3] [ref=e221]:
+          - text: "2019"
+          - text: Online Learning Launched
+      - generic [ref=e222]:
+        - generic:
+          - generic: 
+        - heading "2020 Virtual Classrooms" [level=3] [ref=e225]:
+          - text: "2020"
+          - text: Virtual Classrooms
+      - generic [ref=e226]:
+        - generic:
+          - generic: 
+        - heading "2021 Highest Success Rate" [level=3] [ref=e229]:
+          - text: "2021"
+          - text: Highest Success Rate
+      - generic [ref=e230]:
+        - generic:
+          - generic: 
+        - heading "2022 10,000+ Students Milestone" [level=3] [ref=e233]:
+          - text: "2022"
+          - text: 10,000+ Students Milestone
+      - generic [ref=e234]:
+        - generic:
+          - generic: 
+        - heading "2023 Nationwide Recognition" [level=3] [ref=e237]:
+          - text: "2023"
+          - text: Nationwide Recognition
+      - generic [ref=e238]:
+        - generic:
+          - generic: 
+        - heading "2024 AI-Enhanced Learning" [level=3] [ref=e241]:
+          - text: "2024"
+          - text: AI-Enhanced Learning
+  - contentinfo [ref=e242]:
+    - generic [ref=e243]:
+      - generic [ref=e244]:
+        - generic [ref=e245]: GET LATEST UPDATES
+        - heading "Subscribe to Our Newsletter" [level=2] [ref=e246]
+        - paragraph [ref=e247]: Stay updated with the latest news, exam strategies, and special offers! Join our newsletter today.
+        - generic [ref=e249]:
+          - textbox "Enter Your E-Mail" [ref=e250]
+          - button "Subscribe →" [ref=e251] [cursor=pointer]
+        - paragraph [ref=e252]: No ads, No spam, Unsubscribe anytime.
+      - generic [ref=e253]:
+        - generic [ref=e255]:
+          - img "Logo" [ref=e256]
+          - paragraph [ref=e257]: Your trusted institute for CLAT, AILET, and other law entrance preparations.
+          - generic [ref=e258]:
+            - strong [ref=e259]: "Address:"
+            - paragraph [ref=e260]:
+              - text: 2nd Floor, Gangotri Palace, Boring Rd, near Sumati Palace
+              - text: Nageshwar Colony, Kidwaipuri, Patna, Bihar 800001.
+          - generic [ref=e261]:
+            - link "" [ref=e262] [cursor=pointer]:
+              - /url: https://www.facebook.com/IEECLATians
+              - generic [ref=e263]: 
+            - link "" [ref=e264] [cursor=pointer]:
+              - /url: https://www.instagram.com/clatians/
+              - generic [ref=e265]: 
+            - link "" [ref=e266] [cursor=pointer]:
+              - /url: https://www.youtube.com/@CLATians
+              - generic [ref=e267]: 
+            - link "" [ref=e268] [cursor=pointer]:
+              - /url: https://t.me/CLATians
+              - generic [ref=e269]: 
+            - link "" [ref=e270] [cursor=pointer]:
+              - /url: https://g.co/kgs/3NcAYmD
+              - generic [ref=e271]: 
+            - link "" [ref=e272] [cursor=pointer]:
+              - /url: https://twitter.com/CLATians
+              - generic [ref=e273]: 
+            - link "" [ref=e274] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/clatians/
+              - generic [ref=e275]: 
+        - generic [ref=e277]:
+          - generic [ref=e278]:
+            - heading "Quick Links" [level=5] [ref=e279]
+            - list [ref=e280]:
+              - listitem [ref=e281]:
+                - link "Admission" [ref=e282] [cursor=pointer]:
+                  - /url: /admission
+              - listitem [ref=e283]:
+                - link "Student Zone" [ref=e284] [cursor=pointer]:
+                  - /url: /studentZone
+              - listitem [ref=e285]:
+                - link "Gallery" [ref=e286] [cursor=pointer]:
+                  - /url: /gallery
+              - listitem [ref=e287]:
+                - link "Test Series" [ref=e288] [cursor=pointer]:
+                  - /url: /mock-tests/online
+          - generic [ref=e289]:
+            - heading "Resources" [level=5] [ref=e290]
+            - list [ref=e291]:
+              - listitem [ref=e292]:
+                - link "Previous Year Papers" [ref=e293] [cursor=pointer]:
+                  - /url: /onlineResources
+              - listitem [ref=e294]:
+                - link "Current Affairs" [ref=e295] [cursor=pointer]:
+                  - /url: /blogs
+              - listitem [ref=e296]:
+                - link "Quizzes" [ref=e297] [cursor=pointer]:
+                  - /url: /quizzes
+              - listitem [ref=e298]:
+                - link "Online Resources" [ref=e299] [cursor=pointer]:
+                  - /url: /onlieResources
+          - generic [ref=e300]:
+            - heading "Company" [level=5] [ref=e301]
+            - list [ref=e302]:
+              - listitem [ref=e303]:
+                - link "About Us" [ref=e304] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e305]:
+                - link "Careers" [ref=e306] [cursor=pointer]:
+                  - /url: /careers
+              - listitem [ref=e307]:
+                - link "Faculty" [ref=e308] [cursor=pointer]:
+                  - /url: /gallery
+              - listitem [ref=e309]:
+                - link "Contact" [ref=e310] [cursor=pointer]:
+                  - /url: /contactUs
+              - listitem [ref=e311]:
+                - link "Privacy policy" [ref=e312] [cursor=pointer]:
+                  - /url: /privacy-policy
+              - listitem [ref=e313]:
+                - link "Legal" [ref=e314] [cursor=pointer]:
+                  - /url: /legal
+          - generic [ref=e315]:
+            - heading "Courses" [level=5] [ref=e316]
+            - list [ref=e317]:
+              - listitem [ref=e318]:
+                - link "CLAT" [ref=e319] [cursor=pointer]:
+                  - /url: /courses/online/0
+              - listitem [ref=e320]:
+                - link "CLAT+AILET" [ref=e321] [cursor=pointer]:
+                  - /url: /courses/online/1
+              - listitem [ref=e322]:
+                - link "CUET(UG)" [ref=e323] [cursor=pointer]:
+                  - /url: /courses/online/2
+              - listitem [ref=e324]:
+                - link "CUET(PG)" [ref=e325] [cursor=pointer]:
+                  - /url: /courses/online/3
+              - listitem [ref=e326]:
+                - link "OLET" [ref=e327] [cursor=pointer]:
+                  - /url: /courses/offline/4
+              - listitem [ref=e328]:
+                - link "CLAT+OLET" [ref=e329] [cursor=pointer]:
+                  - /url: /courses/offline/3
+              - listitem [ref=e330]:
+                - link "Booster Course" [ref=e331] [cursor=pointer]:
+                  - /url: /courses/online/5
+      - paragraph [ref=e333]: © 2026 CLATians - All rights reserved.
+  - alert [ref=e334]
