@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
-import { getCourseBySlug, courses } from '@/data/courses';
-import { getBatch, getBatchesByCourse, batches } from '@/data/batches';
+import { getCourseBySlug as staticGetCourse, courses } from '@/data/courses';
+import { getBatch as staticGetBatch, getBatchesByCourse as staticGetBCourse, batches } from '@/data/batches';
+import { getCourseBySlug, getBatchBySlug, getBatchesByCourse } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -10,8 +11,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; batch: string }> }): Promise<Metadata> {
-  const { slug, batch: batchSlug } = await params;
-  const batch = getBatch(slug, batchSlug);
+  const { slug: _slug, batch: batchSlug } = await params;
+  const batch = getBatchBySlug(batchSlug);
   if (!batch) return { title: 'Batch Not Found' };
   return {
     title: `${batch.name} – CLATians`,
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function BatchPage({ params }: { params: Promise<{ slug: string; batch: string }> }) {
   const { slug, batch: batchSlug } = await params;
   const course = getCourseBySlug(slug);
-  const batch = getBatch(slug, batchSlug);
+  const batch = getBatchBySlug(batchSlug);
   if (!course || !batch) notFound();
 
   const allBatches = getBatchesByCourse(slug);

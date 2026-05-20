@@ -1,12 +1,12 @@
 import { notFound } from 'next/navigation';
-import { courses, getCourseBySlug } from '@/data/courses';
-import { getBatchesByCourse } from '@/data/batches';
+import { getCourses, getCourseBySlug, getBatchesByCourse } from '@/lib/getData';
+import { courses as staticCourses } from '@/data/courses';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
 
 export function generateStaticParams() {
-  return courses.map((c) => ({ slug: c.slug }));
+  return staticCourses.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -24,7 +24,8 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   const course = getCourseBySlug(slug);
   if (!course) notFound();
 
-  const otherCourses = courses.filter((c) => c.slug !== slug);
+  const allCourses = getCourses();
+  const otherCourses = allCourses.filter((c) => c.slug !== slug);
   const courseBatches = getBatchesByCourse(slug);
 
   return (

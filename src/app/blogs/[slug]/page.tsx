@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import { blogs, getBlogBySlug } from '@/data/blogs';
+import { blogs } from '@/data/blogs';
+import { getBlogBySlug } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';

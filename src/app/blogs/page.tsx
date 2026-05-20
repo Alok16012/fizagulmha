@@ -1,4 +1,4 @@
-import { blogs } from '@/data/blogs';
+import { getBlogs } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 const categories = ['All', 'CLAT Guide', 'NLU Cutoffs', 'Exam Comparison', 'Strategy', 'Legal Reasoning', 'NLU Life'];
 
 export default function BlogsPage() {
+  const blogs = getBlogs();
   return (
     <>
       <Navbar />

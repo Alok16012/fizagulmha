@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import { facultyMembers, getFacultyBySlug } from '@/data/faculty';
+import { facultyMembers } from '@/data/faculty';
+import { getFacultyBySlug } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';

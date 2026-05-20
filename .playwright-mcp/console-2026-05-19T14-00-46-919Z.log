@@ -44,3 +44,46 @@ Visit https://www.docs.developers.amplitude.com/data/sdks/browser-2/#tracking-de
 [  379493ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.unacademy.com/v1/users/educator-levels-display-config/:0
 [  544815ms] [ERROR] Access to fetch at 'https://api.unacademy.com/v1/users/educator-levels-display-config/' from origin 'https://unacademy.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header contains multiple values 'https://unacademy.com, https://unacademy.com', but only one is allowed. Have the server send the header with a valid value. @ https://unacademy.com/goal/neet-ug/YOTUH:0
 [  544816ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.unacademy.com/v1/users/educator-levels-display-config/:0
+[20474476ms] [LOG] DEBUG: AMPLITUDE_ENABLED before @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49
+[20474479ms] [LOG] DEBUG: AMPLITUDE_ENABLED after @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49
+[20475149ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://event-server-prod.unacademy.com/bulk/collect:0
+[20475427ms] [WARNING] Amplitude Logger [Warn]: `options.defaultTracking` is set to undefined. This implicitly configures your Amplitude instance to track Page Views, Sessions, File Downloads, and Form Interactions. You can suppress this warning by explicitly setting a value to `options.defaultTracking`. The value must either be a boolean, to enable and disable all default events, or an object, for advanced configuration. For example:
+
+amplitude.init(<YOUR_API_KEY>, {
+  defaultTracking: true,
+});
+
+Visit https://www.docs.developers.amplitude.com/data/sdks/browser-2/#tracking-default-events for more details. @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49
+[20476627ms] [WARNING] [Meta Pixel] - You are sending a non-standard event 'Banner - Banner Viewed'. The preferred way to send these events is using trackCustom. See 'https://developers.facebook.com/docs/ads-for-websites/pixel-events/#events' for more information. @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49
+[20477979ms] [WARNING] [Meta Pixel] - You are sending a non-standard event 'Scholarship Test - Card Viewed'. The preferred way to send these events is using trackCustom. See 'https://developers.facebook.com/docs/ads-for-websites/pixel-events/#events' for more information. @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49
+[20480893ms] [ERROR] Access to fetch at 'https://api.unacademy.com/v1/users/educator-levels-display-config/' from origin 'https://unacademy.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header contains multiple values 'https://unacademy.com, https://unacademy.com', but only one is allowed. Have the server send the header with a valid value. @ https://unacademy.com/goal/neet-ug/YOTUH:0
+[20480893ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.unacademy.com/v1/users/educator-levels-display-config/:0
+[20490918ms] [ERROR] Access to fetch at 'https://api.unacademy.com/v1/users/educator-levels-display-config/' from origin 'https://unacademy.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header contains multiple values 'https://unacademy.com, https://unacademy.com', but only one is allowed. Have the server send the header with a valid value. @ https://unacademy.com/goal/neet-ug/YOTUH:0
+[20490918ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.unacademy.com/v1/users/educator-levels-display-config/:0
+[20982809ms] [ERROR] Access to fetch at 'https://api.unacademy.com/v1/users/educator-levels-display-config/' from origin 'https://unacademy.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header contains multiple values 'https://unacademy.com, https://unacademy.com', but only one is allowed. Have the server send the header with a valid value. @ https://unacademy.com/goal/neet-ug/YOTUH:0
+[20982809ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.unacademy.com/v1/users/educator-levels-display-config/:0
+[21017838ms] [ERROR] Access to fetch at 'https://api.unacademy.com/v1/users/educator-levels-display-config/' from origin 'https://unacademy.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header contains multiple values 'https://unacademy.com, https://unacademy.com', but only one is allowed. Have the server send the header with a valid value. @ https://unacademy.com/goal/neet-ug/YOTUH:0
+[21017838ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.unacademy.com/v1/users/educator-levels-display-config/:0
+[21072870ms] [ERROR] Access to fetch at 'https://api.unacademy.com/v1/users/educator-levels-display-config/' from origin 'https://unacademy.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header contains multiple values 'https://unacademy.com, https://unacademy.com', but only one is allowed. Have the server send the header with a valid value. @ https://unacademy.com/goal/neet-ug/YOTUH:0
+[21072871ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.unacademy.com/v1/users/educator-levels-display-config/:0
+[21152910ms] [ERROR] Access to fetch at 'https://api.unacademy.com/v1/users/educator-levels-display-config/' from origin 'https://unacademy.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header contains multiple values 'https://unacademy.com, https://unacademy.com', but only one is allowed. Have the server send the header with a valid value. @ https://unacademy.com/goal/neet-ug/YOTUH:0
+[21152910ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.unacademy.com/v1/users/educator-levels-display-config/:0
+[21557968ms] [ERROR] Access to fetch at 'https://api.unacademy.com/v1/users/educator-levels-display-config/' from origin 'https://unacademy.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header contains multiple values 'https://unacademy.com, https://unacademy.com', but only one is allowed. Have the server send the header with a valid value. @ https://unacademy.com/goal/neet-ug/YOTUH:0
+[21557969ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.unacademy.com/v1/users/educator-levels-display-config/:0
+[22128056ms] [ERROR] Access to fetch at 'https://api.unacademy.com/v1/users/educator-levels-display-config/' from origin 'https://unacademy.com' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header contains multiple values 'https://unacademy.com, https://unacademy.com', but only one is allowed. Have the server send the header with a valid value. @ https://unacademy.com/goal/neet-ug/YOTUH:0
+[22128057ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.unacademy.com/v1/users/educator-levels-display-config/:0
+[23975467ms] [LOG] DEBUG: AMPLITUDE_ENABLED before @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49
+[23975469ms] [LOG] DEBUG: AMPLITUDE_ENABLED after @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49
+[23976896ms] [WARNING] Amplitude Logger [Warn]: `options.defaultTracking` is set to undefined. This implicitly configures your Amplitude instance to track Page Views, Sessions, File Downloads, and Form Interactions. You can suppress this warning by explicitly setting a value to `options.defaultTracking`. The value must either be a boolean, to enable and disable all default events, or an object, for advanced configuration. For example:
+
+amplitude.init(<YOUR_API_KEY>, {
+  defaultTracking: true,
+});
+
+Visit https://www.docs.developers.amplitude.com/data/sdks/browser-2/#tracking-default-events for more details. @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49
+[23977433ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://event-server-prod.unacademy.com/bulk/collect:0
+[23978522ms] [WARNING] [Meta Pixel] - You are sending a non-standard event 'Banner - Banner Viewed'. The preferred way to send these events is using trackCustom. See 'https://developers.facebook.com/docs/ads-for-websites/pixel-events/#events' for more information. @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49
+[23978529ms] [WARNING] [Meta Pixel] - You are sending a non-standard event 'Scholarship Test - Card Viewed'. The preferred way to send these events is using trackCustom. See 'https://developers.facebook.com/docs/ads-for-websites/pixel-events/#events' for more information. @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49
+[23982748ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://api2.amplitude.com/2/httpapi:0
+[23982751ms] [ERROR] Amplitude Logger [Error]: Failed to fetch @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49
+[23982751ms] [WARNING] Amplitude Logger [Warn]: {code: 0, error: "Status 'failed' provided for 2 events"} @ https://static.uacdn.net/production/_next/static/chunks/pages/_app-dc4551462f5b5012.js:49

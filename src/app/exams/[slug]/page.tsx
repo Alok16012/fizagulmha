@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
-import { exams, getExamBySlug } from '@/data/exams';
+import { exams } from '@/data/exams';
+import { getExamBySlug } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
