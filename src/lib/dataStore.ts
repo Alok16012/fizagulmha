@@ -4,16 +4,20 @@ import path from 'path';
 const DATA_DIR = path.join(process.cwd(), 'src', 'data', 'db');
 
 function ensureDir() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+  try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
+  } catch {
+    // read-only filesystem (e.g. Vercel) — writes will fail gracefully
   }
 }
 
 export function readJSON<T>(filename: string, fallback: T): T {
-  ensureDir();
-  const file = path.join(DATA_DIR, filename);
-  if (!fs.existsSync(file)) return fallback;
   try {
+    ensureDir();
+    const file = path.join(DATA_DIR, filename);
+    if (!fs.existsSync(file)) return fallback;
     return JSON.parse(fs.readFileSync(file, 'utf-8')) as T;
   } catch {
     return fallback;

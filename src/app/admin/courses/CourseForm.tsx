@@ -68,11 +68,28 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
         {/* Basic Info */}
         <SectionCard title="Basic Information">
           <div className="grid md:grid-cols-2 gap-4">
-            <FieldGroup label="Course Title" >
+            <FieldGroup label="Course Title">
               <TextInput value={data.title} onChange={(v) => set('title', v)} placeholder="e.g. Offline CLAT Course" required />
             </FieldGroup>
             <FieldGroup label="Slug (URL key)">
-              <TextInput value={data.slug} onChange={(v) => set('slug', v)} placeholder="e.g. offline" required />
+              <TextInput value={data.slug} onChange={(v) => set('slug', v)} placeholder="e.g. clat-offline" required />
+            </FieldGroup>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <FieldGroup label="Category">
+              <select
+                value={data.category}
+                onChange={(e) => set('category', e.target.value as Course['category'])}
+                className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-green-400"
+              >
+                <option value="offline">🏫 Offline</option>
+                <option value="online">💻 Online</option>
+                <option value="mentorship">🎯 Mentorship</option>
+                <option value="mock">📝 Mock Tests</option>
+              </select>
+            </FieldGroup>
+            <FieldGroup label="Mode">
+              <TextInput value={data.mode} onChange={(v) => set('mode', v)} placeholder="e.g. In-person at Patna Center" />
             </FieldGroup>
           </div>
           <FieldGroup label="Tagline">
@@ -81,15 +98,22 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
           <FieldGroup label="Overview">
             <TextareaInput value={data.overview} onChange={(v) => set('overview', v)} placeholder="Full description..." rows={5} />
           </FieldGroup>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             <FieldGroup label="Icon (emoji)">
               <TextInput value={data.icon} onChange={(v) => set('icon', v)} placeholder="📚" />
             </FieldGroup>
-            <FieldGroup label="Color (hex)">
+            <FieldGroup label="Accent Color">
               <div className="flex gap-2 items-center">
                 <input type="color" value={data.color} onChange={(e) => set('color', e.target.value)}
-                  className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer" />
+                  className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer flex-shrink-0" />
                 <TextInput value={data.color} onChange={(v) => set('color', v)} placeholder="#08BD80" />
+              </div>
+            </FieldGroup>
+            <FieldGroup label="Card Background Color">
+              <div className="flex gap-2 items-center">
+                <input type="color" value={data.bg} onChange={(e) => set('bg', e.target.value)}
+                  className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer flex-shrink-0" />
+                <TextInput value={data.bg} onChange={(v) => set('bg', v)} placeholder="#E6FAF4" />
               </div>
             </FieldGroup>
           </div>
@@ -103,9 +127,6 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
             </FieldGroup>
             <FieldGroup label="Batch Size">
               <TextInput value={data.batchSize} onChange={(v) => set('batchSize', v)} placeholder="e.g. 20–30 Students" />
-            </FieldGroup>
-            <FieldGroup label="Mode">
-              <TextInput value={data.mode} onChange={(v) => set('mode', v)} placeholder="e.g. In-person at Patna Center" />
             </FieldGroup>
             <FieldGroup label="Fee">
               <TextInput value={data.fee} onChange={(v) => set('fee', v)} placeholder="e.g. ₹95,000" />

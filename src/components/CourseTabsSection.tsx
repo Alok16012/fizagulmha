@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { batches as allBatches } from '@/data/batches';
-import { courses } from '@/data/courses';
+import { batches as staticBatches, type Batch } from '@/data/batches';
+import { courses as staticCourses, type Course } from '@/data/courses';
 
 const catTabs = [
   { key: 'offline',    label: '🏛️ Offline',    color: '#0f3460', accent: '#08BD80' },
@@ -23,7 +23,7 @@ function useReveal(threshold = 0.1) {
   return { ref, visible };
 }
 
-function CourseCard({ course: c, accent, catColor, idx }: { course: typeof courses[number]; accent: string; catColor: string; idx: number }) {
+function CourseCard({ course: c, accent, catColor, idx, allBatches }: { course: Course; accent: string; catColor: string; idx: number; allBatches: Batch[] }) {
   const [hov, setHov] = useState(false);
   const courseBatches = allBatches.filter(b => b.courseSlug === c.slug);
   const minFee = courseBatches.length > 0
@@ -103,7 +103,7 @@ function CourseCard({ course: c, accent, catColor, idx }: { course: typeof cours
   );
 }
 
-function MobileCourseCard({ course: c, accent, catColor }: { course: typeof courses[number]; accent: string; catColor: string }) {
+function MobileCourseCard({ course: c, accent, catColor, allBatches }: { course: Course; accent: string; catColor: string; allBatches: Batch[] }) {
   const courseBatches = allBatches.filter(b => b.courseSlug === c.slug);
   const minFee = courseBatches.length > 0
     ? courseBatches.reduce((min, b) => parseInt(b.fee.replace(/\D/g, '')) < parseInt(min.replace(/\D/g, '')) ? b.fee : min, courseBatches[0].fee)
@@ -150,6 +150,13 @@ function MobileCourseCard({ course: c, accent, catColor }: { course: typeof cour
 export default function CourseTabsSection() {
   const [activeTab, setActiveTab] = useState<CatKey>('offline');
   const { ref, visible } = useReveal(0.05);
+  const [courses, setCourses] = useState<Course[]>(staticCourses);
+  const [allBatches, setAllBatches] = useState<Batch[]>(staticBatches);
+
+  useEffect(() => {
+    fetch('/api/courses').then(r => r.json()).then(setCourses).catch(() => {});
+    fetch('/api/batches').then(r => r.json()).then(setAllBatches).catch(() => {});
+  }, []);
 
   const getCourses = (key: CatKey) => courses.filter(c => c.category === key).slice(0, 3);
   const activeCat = catTabs.find(t => t.key === activeTab)!;
@@ -186,7 +193,7 @@ export default function CourseTabsSection() {
       {/* Desktop course grid */}
       <div className="hidden md:grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
         {getCourses(activeTab).map((c, i) => (
-          <CourseCard key={c.slug} course={c} accent={activeCat.accent} catColor={activeCat.color} idx={i} />
+          <CourseCard key={c.slug} course={c} accent={activeCat.accent} catColor={activeCat.color} idx={i} allBatches={allBatches} />
         ))}
       </div>
 
@@ -229,7 +236,7 @@ export default function CourseTabsSection() {
         {/* Course list */}
         <div style={{ padding: '0 16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {getCourses(activeTab).map((c) => (
-            <MobileCourseCard key={c.slug} course={c} accent={activeCat.accent} catColor={activeCat.color} />
+            <MobileCourseCard key={c.slug} course={c} accent={activeCat.accent} catColor={activeCat.color} allBatches={allBatches} />
           ))}
         </div>
 

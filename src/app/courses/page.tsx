@@ -1,8 +1,8 @@
 'use client';
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { courses } from '@/data/courses';
-import { batches, type Batch } from '@/data/batches';
+import { courses as staticCourses, type Course } from '@/data/courses';
+import { batches as staticBatches, type Batch } from '@/data/batches';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -47,8 +47,8 @@ function getSeatsInfo(batch: Batch): { text: string; urgent: boolean } {
   return { text: `${left} Seats Left`, urgent: false };
 }
 
-function getBatchesForCourse(slug: string): Batch[] {
-  return batches.filter((b) => b.courseSlug === slug);
+function getBatchesForCourse(slug: string, batchList: Batch[]): Batch[] {
+  return batchList.filter((b) => b.courseSlug === slug);
 }
 
 // ─── Batch Card ────────────────────────────────────────────────────────────
@@ -152,18 +152,18 @@ function BatchCard({ batch }: { batch: Batch }) {
 }
 
 // ─── Two-panel layout ──────────────────────────────────────────────────────
-function CoursePanels({ categoryKey }: { categoryKey: TabKey }) {
+function CoursePanels({ categoryKey, courses, batches }: { categoryKey: TabKey; courses: Course[]; batches: Batch[] }) {
   const filtered = courses.filter((c) => c.category === categoryKey);
   const [selectedSlug, setSelectedSlug] = useState(filtered[0]?.slug ?? '');
 
-  // Reset selection when category changes
+  // Reset selection when category or courses change
   useEffect(() => {
     const first = courses.find((c) => c.category === categoryKey);
     if (first) setSelectedSlug(first.slug);
-  }, [categoryKey]);
+  }, [categoryKey, courses]);
 
   const selectedCourse  = courses.find((c) => c.slug === selectedSlug);
-  const selectedBatches = getBatchesForCourse(selectedSlug);
+  const selectedBatches = getBatchesForCourse(selectedSlug, batches);
 
   if (filtered.length === 0) return (
     <div className="text-center py-24">
@@ -182,7 +182,7 @@ function CoursePanels({ categoryKey }: { categoryKey: TabKey }) {
         </p>
         <div className="space-y-2">
           {filtered.map((course) => {
-            const batchCount = getBatchesForCourse(course.slug).length;
+            const batchCount = getBatchesForCourse(course.slug, batches).length;
             const isActive   = course.slug === selectedSlug;
             return (
               <button
@@ -313,7 +313,6 @@ function MobileBatchCard({ batch }: { batch: Batch }) {
   );
 }
 
-// ─── Two-panel layout ──────────────────────────────────────────────────────
 // ─── Main Page ─────────────────────────────────────────────────────────────
 function CoursesPageInner() {
   const searchParams = useSearchParams();
@@ -321,6 +320,14 @@ function CoursesPageInner() {
   const validTabs: TabKey[] = ['offline', 'online', 'mentorship', 'mock'];
   const initial: TabKey     = catParam && validTabs.includes(catParam) ? catParam : 'offline';
   const [activeTab, setActiveTab] = useState<TabKey>(initial);
+  const [courses, setCourses] = useState<Course[]>(staticCourses);
+  const [batches, setBatches] = useState<Batch[]>(staticBatches);
+
+  // Fetch dynamic data from API (reflects admin edits)
+  useEffect(() => {
+    fetch('/api/courses').then(r => r.json()).then(setCourses).catch(() => {});
+    fetch('/api/batches').then(r => r.json()).then(setBatches).catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (catParam && validTabs.includes(catParam)) setActiveTab(catParam);
@@ -337,9 +344,9 @@ function CoursesPageInner() {
   useEffect(() => {
     const first = courses.find((c) => c.category === activeTab);
     if (first) setMobileSlug(first.slug);
-  }, [activeTab]);
+  }, [activeTab, courses]);
   const mobileCourse   = courses.find((c) => c.slug === mobileSlug);
-  const mobileBatches  = getBatchesForCourse(mobileSlug);
+  const mobileBatches  = getBatchesForCourse(mobileSlug, batches);
 
   return (
     <>
@@ -417,7 +424,7 @@ function CoursesPageInner() {
 
             {/* Desktop: two-panel */}
             <div className="hidden md:block">
-              <CoursePanels categoryKey={activeTab} />
+              <CoursePanels categoryKey={activeTab} courses={courses} batches={batches} />
             </div>
 
             {/* Mobile: horizontal course chips + compact batch list */}
