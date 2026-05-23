@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { isAuthenticated } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import BatchForm from '../BatchForm';

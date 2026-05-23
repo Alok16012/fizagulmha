@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { isAuthenticated } from '@/lib/auth';
 import { readJSON } from '@/lib/dataStore';
 import { redirect, notFound } from 'next/navigation';
