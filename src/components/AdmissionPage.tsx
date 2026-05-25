@@ -19,6 +19,27 @@ function useReveal(threshold = 0.12) {
   return { ref, visible };
 }
 
+/* ─── Countdown Hook ────────────────────────────────── */
+function useCountdown(targetDate: Date) {
+  const calc = () => {
+    const diff = targetDate.getTime() - Date.now();
+    if (diff <= 0) return { days: 0, hours: 0, mins: 0, secs: 0 };
+    return {
+      days:  Math.floor(diff / 86400000),
+      hours: Math.floor((diff % 86400000) / 3600000),
+      mins:  Math.floor((diff % 3600000) / 60000),
+      secs:  Math.floor((diff % 60000) / 1000),
+    };
+  };
+  const [time, setTime] = useState(calc);
+  useEffect(() => {
+    const t = setInterval(() => setTime(calc()), 1000);
+    return () => clearInterval(t);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return time;
+}
+
 /* ─── Data ──────────────────────────────────────────── */
 const enrollments = [
   { name: 'Ankit', city: 'Patna', time: '2 hrs ago', program: 'Offline Batch' },
@@ -421,6 +442,9 @@ export default function AdmissionPage() {
           </span>
         </div>
       </div>
+
+      {/* ── CSAT 2026 SCHOLARSHIP TEST ── */}
+      <CsatSection />
 
       {/* ── REAL BATCHES ── */}
       <section style={{ background: '#F8FAFC', padding: '60px 0' }}>
@@ -861,6 +885,12 @@ export default function AdmissionPage() {
         </div>
       </section>
 
+      {/* ── FREE RESOURCES ── */}
+      <FreeResourcesSection />
+
+      {/* ── FAQ ── */}
+      <FaqSection />
+
       {/* ── TESTIMONIALS ── */}
       <section style={{ background: 'white', padding: '72px 0' }}>
         <div className="max-w-7xl mx-auto px-4 md:px-10">
@@ -1063,5 +1093,195 @@ function TestimonialCard({ t }: { t: Testimonial }) {
         </div>
       </div>
     </div>
+  );
+}
+
+/* ─── CSAT 2026 Scholarship Section ─────────────────── */
+const scholarshipSlabs = [
+  { marks: '49–50', discount: '100%', bg: '#fef3c7', color: '#92400e', badge: '🏆 Full Scholarship' },
+  { marks: '46–48', discount: '70%',  bg: '#dcfce7', color: '#166534', badge: '🥇 Gold' },
+  { marks: '41–45', discount: '50%',  bg: '#dbeafe', color: '#1d4ed8', badge: '🥈 Silver' },
+  { marks: '36–40', discount: '40%',  bg: '#ede9fe', color: '#6d28d9', badge: '🥉 Bronze' },
+  { marks: '31–35', discount: '35%',  bg: '#fce7f3', color: '#be185d', badge: '' },
+  { marks: '26–30', discount: '30%',  bg: '#ffedd5', color: '#c2410c', badge: '' },
+  { marks: '21–25', discount: '25%',  bg: '#f0fdf4', color: '#15803d', badge: '' },
+  { marks: '16–20', discount: '20%',  bg: '#f0f9ff', color: '#0369a1', badge: '' },
+  { marks: 'Up to 15', discount: '15%', bg: '#fafafa', color: '#374151', badge: '' },
+];
+
+function CsatSection() {
+  const target = new Date('2026-07-20T10:00:00');
+  const { days, hours, mins, secs } = useCountdown(target);
+
+  return (
+    <section style={{ background: 'linear-gradient(135deg, #0D1837 0%, #0f3460 100%)', padding: '60px 0', overflow: 'hidden', position: 'relative' }}>
+      <div style={{ position: 'absolute', top: '-100px', right: '-80px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(8,189,128,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-60px', left: '-60px', width: '300px', height: '300px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+      <div className="max-w-7xl mx-auto px-4 md:px-10" style={{ position: 'relative', zIndex: 1 }}>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: '99px', padding: '6px 16px', marginBottom: '16px' }}>
+            <span style={{ fontSize: '14px' }}>🎓</span>
+            <span style={{ color: '#fbbf24', fontSize: '12px', fontWeight: 700, letterSpacing: '0.06em' }}>CSAT 2026 — SCHOLARSHIP TEST</span>
+          </div>
+          <h2 style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(24px, 3.5vw, 40px)', marginBottom: '10px', lineHeight: 1.2 }}>
+            Reward Your Merit with<br />
+            <span style={{ background: 'linear-gradient(90deg,#f59e0b,#fbbf24)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Up to 100% Fee Waiver</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '15px', maxWidth: '480px', margin: '0 auto' }}>
+            Appear for our Scholarship Test and get major discounts on your CLATians program fee.
+            <br /><span style={{ color: '#fbbf24', fontWeight: 700 }}>Limited to first 200 students.</span>
+          </p>
+        </div>
+
+        {/* Countdown */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '48px', flexWrap: 'wrap' }}>
+          {[
+            { val: String(days).padStart(2,'0'),  label: 'Days' },
+            { val: String(hours).padStart(2,'0'), label: 'Hours' },
+            { val: String(mins).padStart(2,'0'),  label: 'Mins' },
+            { val: String(secs).padStart(2,'0'),  label: 'Secs' },
+          ].map(({ val, label }, i) => (
+            <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ background: 'rgba(255,255,255,0.08)', border: '1.5px solid rgba(255,255,255,0.15)', borderRadius: '16px', padding: '16px 22px', minWidth: '72px' }}>
+                  <div style={{ color: '#f59e0b', fontWeight: 900, fontSize: '36px', lineHeight: 1 }}>{val}</div>
+                </div>
+                <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '11px', fontWeight: 600, marginTop: '6px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{label}</div>
+              </div>
+              {i < 3 && <span style={{ color: '#f59e0b', fontSize: '28px', fontWeight: 900, marginBottom: '20px' }}>:</span>}
+            </div>
+          ))}
+        </div>
+
+        {/* Slabs + CTA */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px', alignItems: 'start' }}>
+          {/* Scholarship Slabs */}
+          <div>
+            <h3 style={{ color: 'white', fontWeight: 800, fontSize: '17px', marginBottom: '16px' }}>📊 Scholarship Slabs</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {scholarshipSlabs.map((slab) => (
+                <div key={slab.marks} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(255,255,255,0.06)', borderRadius: '12px', padding: '10px 16px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', fontWeight: 600, minWidth: '70px' }}>{slab.marks} marks</span>
+                    {slab.badge && <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '99px', background: slab.bg, color: slab.color }}>{slab.badge}</span>}
+                  </div>
+                  <span style={{ color: '#fbbf24', fontWeight: 900, fontSize: '18px' }}>{slab.discount} <span style={{ fontSize: '11px', fontWeight: 600, color: 'rgba(255,255,255,0.5)' }}>off</span></span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Card */}
+          <div style={{ background: 'rgba(255,255,255,0.06)', border: '1.5px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '28px' }}>
+            <div style={{ fontSize: '40px', marginBottom: '12px' }}>🎯</div>
+            <h3 style={{ color: 'white', fontWeight: 800, fontSize: '20px', marginBottom: '8px' }}>Register for CSAT 2026</h3>
+            <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '13px', lineHeight: 1.6, marginBottom: '20px' }}>
+              50 MCQ questions · 60 minutes · CLAT pattern (English, LR, GK, Legal Aptitude). Conducted at Patna centre.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
+              {['Free to appear — no registration fee', 'Results declared within 48 hours', 'Scholarship valid for 2026–27 batch', 'Both Offline & Online students eligible'].map(pt => (
+                <div key={pt} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ color: '#08BD80', fontWeight: 700 }}>✓</span>
+                  <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px' }}>{pt}</span>
+                </div>
+              ))}
+            </div>
+            <a href="tel:8507700177" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: 'linear-gradient(135deg,#f59e0b,#d97706)', color: 'white', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '12px', textDecoration: 'none', marginBottom: '10px' }}>
+              📞 Call to Register — 8507700177
+            </a>
+            <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: 'rgba(255,255,255,0.08)', color: 'white', fontWeight: 600, fontSize: '13px', padding: '12px', borderRadius: '12px', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.15)' }}>
+              💬 WhatsApp to Register
+            </a>
+            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: '11px', marginTop: '12px' }}>Test Date: July 20, 2026 · Patna Centre</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Free Resources Section ─────────────────────────── */
+const freeResources = [
+  { icon: '📚', title: 'Free CLAT Study Material', desc: 'Comprehensive notes covering all 5 sections of CLAT — English, GK, Legal, Logical & Quant. Updated for CLAT 2026.', cta: 'Download Free', href: 'https://wa.me/918507700177?text=I want free CLAT study material', color: '#6366f1', bg: '#eef2ff' },
+  { icon: '📝', title: 'Free Mock Test', desc: 'Experience the real CLAT exam interface. Full 120-question mock with detailed solutions and rank predictor.', cta: 'Attempt Free Mock', href: 'https://wa.me/918507700177?text=I want to attempt a free mock test', color: '#0891b2', bg: '#e0f2fe' },
+  { icon: '🤝', title: 'Free Strategy Session', desc: '1-on-1 session with our expert mentors. Get a personalised study plan based on your current level and target NLU.', cta: 'Book Free Session', href: 'https://wa.me/918507700177?text=I want a free strategy session', color: '#08BD80', bg: '#E6FAF4' },
+];
+
+function FreeResourcesSection() {
+  return (
+    <section style={{ background: '#F8FAFC', padding: '60px 0' }}>
+      <div className="max-w-7xl mx-auto px-4 md:px-10">
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <span style={{ background: '#E6FAF4', color: '#08BD80', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '12px' }}>FREE FOR EVERYONE</span>
+          <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 34px)', marginBottom: '8px' }}>Boost Your Prep — Free</h2>
+          <p style={{ color: '#6B7280', fontSize: '15px', maxWidth: '440px', margin: '0 auto' }}>No payment needed. Get these resources to kickstart your CLAT preparation today.</p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px' }}>
+          {freeResources.map((r) => (
+            <div key={r.title} style={{ background: 'white', borderRadius: '20px', border: '1.5px solid #E9EEF2', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ background: r.bg, padding: '28px 24px 20px', textAlign: 'center' }}>
+                <div style={{ fontSize: '44px', marginBottom: '8px' }}>{r.icon}</div>
+                <span style={{ background: r.color, color: 'white', fontSize: '10px', fontWeight: 700, padding: '3px 12px', borderRadius: '99px' }}>FREE</span>
+              </div>
+              <div style={{ padding: '20px 24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <h3 style={{ color: '#0D1837', fontWeight: 800, fontSize: '16px', marginBottom: '8px' }}>{r.title}</h3>
+                <p style={{ color: '#6B7280', fontSize: '13px', lineHeight: 1.6, flex: 1, marginBottom: '16px' }}>{r.desc}</p>
+                <a href={r.href} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px', borderRadius: '12px', background: r.color, color: 'white', fontWeight: 700, fontSize: '13px', textDecoration: 'none' }}>
+                  {r.cta} →
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── FAQ Section ────────────────────────────────────── */
+const faqs = [
+  { q: 'Is the Scholarship Test online or offline?', a: 'The CSAT 2026 test is conducted at our Patna centre (Boring Road). For outstation students, we also offer an online proctored mode. Call 8507700177 to confirm your preferred mode.' },
+  { q: 'Is personal mentorship included in all programs?', a: 'Personal mentorship is a standard feature in our Offline Batch and Mentorship programs. Online Batch students get group doubt-clearing sessions. Our 1-on-1 Mentorship program includes unlimited 1-on-1 sessions.' },
+  { q: 'Do you provide mock test analytics?', a: 'Yes! All enrolled students get access to our AI-powered analytics dashboard. It shows section-wise performance, time management analysis, rank prediction, and personalized improvement suggestions.' },
+  { q: 'Is EMI available for fees?', a: 'Yes, EMI options are available for all programs. You can pay in 3–12 monthly instalments. Call us to discuss your preferred EMI plan. Zero-cost EMI available on select payment methods.' },
+  { q: 'What if I am from outside Patna?', a: 'Our Online Batch is designed for students across India. For Offline Batch, we have hostel tie-ups near our Patna centre. Many students from Bihar, Jharkhand, UP, and Delhi study with us.' },
+  { q: 'Can I switch from Online to Offline mid-session?', a: 'Yes, subject to seat availability. Any fee difference will need to be paid. Contact our admissions team at 8507700177 to initiate the switch.' },
+];
+
+function FaqSection() {
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <section style={{ background: 'white', padding: '60px 0' }}>
+      <div className="max-w-4xl mx-auto px-4 md:px-10">
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <span style={{ background: '#EFF6FF', color: '#3b82f6', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '12px' }}>FAQ</span>
+          <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 34px)', marginBottom: '8px' }}>Got Questions? We Have Answers.</h2>
+          <p style={{ color: '#6B7280', fontSize: '15px' }}>Everything you need to know about admissions, programs and fees.</p>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          {faqs.map((faq, i) => (
+            <div key={i} style={{ background: open === i ? '#F0FDF9' : 'white', border: `1.5px solid ${open === i ? '#08BD80' : '#E9EEF2'}`, borderRadius: '16px', overflow: 'hidden', transition: 'all .2s ease' }}>
+              <button onClick={() => setOpen(open === i ? null : i)}
+                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '18px 20px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
+                <span style={{ fontWeight: 700, fontSize: '14px', color: open === i ? '#08BD80' : '#0D1837', lineHeight: 1.4 }}>{faq.q}</span>
+                <span style={{ color: open === i ? '#08BD80' : '#9CA3AF', fontSize: '20px', flexShrink: 0, transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform .2s ease', lineHeight: 1 }}>+</span>
+              </button>
+              {open === i && (
+                <div style={{ padding: '0 20px 18px', color: '#374151', fontSize: '13px', lineHeight: 1.7, borderTop: '1px solid #D1FAE5' }}>{faq.a}</div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: '32px', textAlign: 'center', padding: '24px', background: '#F8FAFC', borderRadius: '16px', border: '1.5px solid #E9EEF2' }}>
+          <p style={{ color: '#374151', fontWeight: 600, fontSize: '14px', marginBottom: '12px' }}>Still have questions? Talk to our counsellors directly.</p>
+          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="tel:8507700177" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#08BD80', color: 'white', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '10px', textDecoration: 'none' }}>📞 Call 8507700177</a>
+            <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#075E54', color: 'white', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '10px', textDecoration: 'none' }}>💬 WhatsApp Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
