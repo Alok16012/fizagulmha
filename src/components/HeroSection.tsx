@@ -304,15 +304,15 @@ export default function HeroSection() {
 
         <div className="relative z-10 px-4 pt-5 pb-5">
 
-          {/* Exam selector — horizontal scroll pills */}
-          <div className="flex gap-2 overflow-x-auto pb-1 mb-5" style={{ scrollbarWidth: 'none' }}>
+          {/* Exam selector — 3-col grid (all 6 visible, no scroll) */}
+          <div className="grid grid-cols-3 gap-2 mb-5">
             {['CLAT', 'AILET', 'MH-CET', 'CUET', 'AIL-LET', 'LSAT'].map((exam) => (
               <a key={exam} href={`/exams/${exam.toLowerCase().replace('-cet','-cet-law')}`}
-                className="flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all"
+                className="text-center py-2 rounded-xl text-xs font-bold transition-all"
                 style={{
                   background: exam === slide.pill || (exam === 'MH-CET' && slide.pill === 'MH-CET') ? '#08BD80' : 'rgba(255,255,255,0.1)',
-                  color: exam === slide.pill || (exam === 'MH-CET' && slide.pill === 'MH-CET') ? 'white' : 'rgba(255,255,255,0.65)',
-                  border: `1.5px solid ${exam === slide.pill ? 'rgba(8,189,128,0.6)' : 'rgba(255,255,255,0.08)'}`,
+                  color: 'white',
+                  border: `1.5px solid ${exam === slide.pill || (exam === 'MH-CET' && slide.pill === 'MH-CET') ? 'rgba(8,189,128,0.6)' : 'rgba(255,255,255,0.08)'}`,
                 }}>
                 {exam}
               </a>
