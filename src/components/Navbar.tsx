@@ -26,6 +26,16 @@ const navLinks = [
   { label: 'Admission', href: '/admission' },
   { label: 'Blogs', href: '/blogs' },
   { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const mobileMenuLinks = [
+  { label: 'Courses', href: '/courses', icon: '📚' },
+  { label: 'Exams', href: '/exams/clat', icon: '🏛️' },
+  { label: 'Admission', href: '/admission', icon: '🎓' },
+  { label: 'Blogs', href: '/blogs', icon: '✍️' },
+  { label: 'About', href: '/about', icon: '👥' },
+  { label: 'Contact', href: '/contact', icon: '📞' },
 ];
 
 const mobileNavItems = [
@@ -166,41 +176,31 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Search / Menu Drawer */}
+        {/* Hamburger Drawer — simple vertical stack */}
         {mobileOpen && (
           <div className="absolute top-full left-0 right-0 z-50" style={{ background: '#0D1837', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-            {/* Search bar */}
-            <div className="px-4 py-3">
-              <div className="flex items-center gap-3 px-4 py-3 rounded-2xl" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
-                <svg className="w-4 h-4 flex-shrink-0" style={{ color: 'rgba(255,255,255,0.4)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <input
-                  autoFocus
-                  type="text"
-                  placeholder="Search courses, exams..."
-                  className="flex-1 bg-transparent outline-none text-sm"
-                  style={{ color: 'white' }}
-                />
-              </div>
-            </div>
-            {/* Quick links */}
-            <div className="px-4 pb-4">
-              <p className="text-xs font-bold mb-3" style={{ color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Quick Links</p>
-              <div className="grid grid-cols-2 gap-2">
-                {navLinks.map((link) => (
-                  <a key={link.label} href={link.href} onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold"
-                    style={{ background: 'rgba(255,255,255,0.07)', color: 'rgba(255,255,255,0.85)' }}>
-                    {link.label}
-                  </a>
-                ))}
-                <a href="/college-predictor" onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold col-span-2"
-                  style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.25)' }}>
-                  🔮 College Predictor — Free Tool
+            <div className="px-4 py-3 flex flex-col">
+              {mobileMenuLinks.map((link, i) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3.5 text-sm font-semibold"
+                  style={{
+                    color: 'rgba(255,255,255,0.88)',
+                    borderBottom: i < mobileMenuLinks.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                  }}
+                >
+                  <span className="text-base w-6 text-center">{link.icon}</span>
+                  {link.label}
                 </a>
-              </div>
+              ))}
+              {/* CTA at bottom */}
+              <a href="/college-predictor" onClick={() => setMobileOpen(false)}
+                className="mt-3 flex items-center justify-center gap-2 px-3 py-3 rounded-xl text-sm font-bold"
+                style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.25)' }}>
+                🔮 College Predictor — Free Tool
+              </a>
             </div>
           </div>
         )}
