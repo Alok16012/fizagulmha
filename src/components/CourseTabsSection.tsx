@@ -213,7 +213,7 @@ function CoursePanels({ categoryKey, courses, batches }: { categoryKey: CatKey; 
   return (
     <div className="flex gap-6 items-start">
       {/* Left sidebar */}
-      <div className="w-64 flex-shrink-0 sticky top-32">
+      <div className="w-72 flex-shrink-0 sticky top-32">
         <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#9CA3AF' }}>Select a Course</p>
         <div className="space-y-2">
           {filtered.map((course) => {
@@ -334,8 +334,8 @@ export default function CourseTabsSection() {
   return (
     <div>
       {/* ── Tab Bar (same as courses page) ── */}
-      <div className="border-b-2 mb-6" style={{ borderColor: '#E9EEF2' }}>
-        <div className="flex items-stretch overflow-x-auto scrollbar-none">
+      <div className="mb-6 rounded-xl overflow-hidden" style={{ background: 'white', border: '1px solid #E9EEF2', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
+        <div className="flex items-stretch overflow-x-auto scrollbar-none border-b-2" style={{ borderColor: '#E9EEF2' }}>
           {tabs.map((tab) => {
             const count    = getTabCount(tab.key);
             const isActive = activeTab === tab.key;
