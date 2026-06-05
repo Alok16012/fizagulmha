@@ -10,7 +10,8 @@ create table if not exists public.leads (
   email text not null default '',
   program text not null default '',
   exam text not null default '',
-  message text not null default ''
+  message text not null default '',
+  source text not null default 'contact'
 );
 
 -- Blog posts (managed from admin → /blogs and home).
@@ -29,7 +30,27 @@ create table if not exists public.blogs (
   tags text[] not null default '{}'
 );
 
+-- Blog categories (manageable from admin → Blogs page).
+create table if not exists public.blog_categories (
+  id bigint generated always as identity primary key,
+  name text not null unique,
+  color text not null default '#08BD80',
+  created_at timestamptz not null default now()
+);
+
 -- The server talks to these tables with the service-role key, which bypasses
 -- RLS. Enabling RLS with no public policies keeps the anon key locked out.
 alter table public.leads enable row level security;
 alter table public.blogs enable row level security;
+alter table public.blog_categories enable row level security;
+
+-- ── Migrations (safe to re-run) ──────────────────────────────────────────────
+-- Track which form submitted the lead (contact / admission).
+alter table public.leads add column if not exists source text not null default 'contact';
+
+-- Seed default blog categories (skip if already exist).
+insert into public.blog_categories (name, color) values
+  ('Legal',           '#6366f1'),
+  ('Current Affairs', '#f97316'),
+  ('Law Preparation', '#08BD80')
+on conflict (name) do nothing;

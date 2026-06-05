@@ -1,41 +1,128 @@
 'use client';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import type { Blog } from '@/data/blogs';
-import { BLOG_CATEGORIES } from '@/data/blogCategories';
 
-const FILTERS = ['All', ...BLOG_CATEGORIES];
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-export default function BlogsList({ blogs }: { blogs: Blog[] }) {
-  const [active, setActive] = useState('All');
+function parseBlogDate(dateStr: string): Date | null {
+  if (!dateStr) return null;
+  const d = new Date(dateStr);
+  return isNaN(d.getTime()) ? null : d;
+}
 
-  const filtered = active === 'All' ? blogs : blogs.filter((b) => b.category === active);
+type DateFilter = 'month' | 'year' | 'all';
+
+export default function BlogsList({ blogs, categories }: { blogs: Blog[]; categories?: { name: string; color: string }[] }) {
+  const now = new Date();
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [dateFilter, setDateFilter] = useState<DateFilter>('month');
+
+  // Build category list from prop or derive from blogs
+  const categoryList = useMemo(() => {
+    if (categories && categories.length) return categories;
+    const seen = new Set<string>();
+    const list: { name: string; color: string }[] = [];
+    blogs.forEach((b) => {
+      if (b.category && !seen.has(b.category)) {
+        seen.add(b.category);
+        list.push({ name: b.category, color: b.categoryColor });
+      }
+    });
+    return list;
+  }, [blogs, categories]);
+
+  const filtered = useMemo(() => {
+    let result = blogs;
+
+    // Category filter
+    if (activeCategory !== 'All') {
+      result = result.filter((b) => b.category === activeCategory);
+    }
+
+    // Date filter
+    result = result.filter((b) => {
+      const d = parseBlogDate(b.date);
+      if (!d) return dateFilter === 'all'; // unknown date: only show in "all"
+      if (dateFilter === 'month') {
+        return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth();
+      }
+      if (dateFilter === 'year') {
+        return d.getFullYear() === now.getFullYear();
+      }
+      return true; // all
+    });
+
+    return result;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [blogs, activeCategory, dateFilter]);
+
   const featured = filtered[0];
   const rest = filtered.slice(1);
+
+  const currentMonthLabel = `${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
+  const currentYearLabel = `${now.getFullYear()}`;
+
+  const DATE_FILTERS: { key: DateFilter; label: string }[] = [
+    { key: 'month', label: `This Month (${currentMonthLabel})` },
+    { key: 'year', label: `This Year (${currentYearLabel})` },
+    { key: 'all', label: 'All Time' },
+  ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 md:py-14">
 
-      {/* Category filter */}
-      <div className="flex gap-2 overflow-x-auto pb-2 mb-8 scrollbar-none">
-        {FILTERS.map((cat) => {
-          const isActive = cat === active;
-          return (
-            <button key={cat}
-              onClick={() => setActive(cat)}
-              className="flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all border"
-              style={{
-                background: isActive ? '#0D1837' : 'white',
-                color: isActive ? 'white' : 'var(--text)',
-                borderColor: isActive ? '#0D1837' : '#e5e7eb',
-              }}>
-              {cat}
-            </button>
-          );
-        })}
+      {/* ── Filters row ── */}
+      <div className="flex flex-col gap-3 mb-8">
+        {/* Date filter */}
+        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+          {DATE_FILTERS.map(({ key, label }) => {
+            const isActive = dateFilter === key;
+            return (
+              <button key={key}
+                onClick={() => setDateFilter(key)}
+                className="flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-bold transition-all border"
+                style={{
+                  background: isActive ? '#0D1837' : 'white',
+                  color: isActive ? 'white' : '#6b7280',
+                  borderColor: isActive ? '#0D1837' : '#e5e7eb',
+                }}>
+                🗓 {label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Category filter */}
+        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+          {['All', ...categoryList.map((c) => c.name)].map((cat) => {
+            const isActive = cat === activeCategory;
+            const color = categoryList.find((c) => c.name === cat)?.color;
+            return (
+              <button key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className="flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all border"
+                style={{
+                  background: isActive ? (color || '#0D1837') : 'white',
+                  color: isActive ? 'white' : 'var(--text)',
+                  borderColor: isActive ? (color || '#0D1837') : '#e5e7eb',
+                }}>
+                {cat}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {filtered.length === 0 ? (
-        <div className="text-center py-20 text-gray-400">No articles in this category yet.</div>
+        <div className="text-center py-20">
+          <div className="text-5xl mb-4">📭</div>
+          <p className="text-gray-400 mb-3">No articles found for this filter.</p>
+          <button
+            onClick={() => { setDateFilter('all'); setActiveCategory('All'); }}
+            className="text-sm font-semibold px-5 py-2 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-50">
+            Show All Articles
+          </button>
+        </div>
       ) : (
         <>
           {/* Featured post */}
@@ -83,39 +170,41 @@ export default function BlogsList({ blogs }: { blogs: Blog[] }) {
           )}
 
           {/* Blog grid */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
-            {rest.map((blog) => (
-              <a key={blog.slug} href={`/blogs/${blog.slug}`}
-                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover flex flex-col">
-                <div className="h-1.5" style={{ background: blog.categoryColor }} />
-                <div className="p-3 md:p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-1.5 mb-2">
-                    <span className="text-[9px] md:text-xs font-bold px-2 py-0.5 rounded-full text-white"
-                      style={{ background: blog.categoryColor }}>
-                      {blog.category}
-                    </span>
-                    <span className="text-[9px] md:text-xs text-gray-400 hidden sm:inline">{blog.readTime}</span>
-                  </div>
-                  <h2 className="font-black text-xs md:text-base text-gray-900 leading-snug group-hover:text-green-700 transition-colors line-clamp-3">
-                    {blog.title}
-                  </h2>
-                  <p className="text-gray-500 text-xs mt-1 leading-relaxed flex-1 line-clamp-2 hidden md:block">
-                    {blog.excerpt}
-                  </p>
-                  <div className="flex items-center gap-1.5 mt-3 pt-2 border-t border-gray-50">
-                    <div className="w-5 h-5 md:w-7 md:h-7 rounded-full flex items-center justify-center text-white font-bold text-[8px] flex-shrink-0"
-                      style={{ background: blog.categoryColor }}>
-                      {blog.authorAvatar}
+          {rest.length > 0 && (
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+              {rest.map((blog) => (
+                <a key={blog.slug} href={`/blogs/${blog.slug}`}
+                  className="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover flex flex-col">
+                  <div className="h-1.5" style={{ background: blog.categoryColor }} />
+                  <div className="p-3 md:p-6 flex flex-col flex-1">
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <span className="text-[9px] md:text-xs font-bold px-2 py-0.5 rounded-full text-white"
+                        style={{ background: blog.categoryColor }}>
+                        {blog.category}
+                      </span>
+                      <span className="text-[9px] md:text-xs text-gray-400 hidden sm:inline">{blog.readTime}</span>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-semibold text-[9px] md:text-xs text-gray-800 truncate">{blog.author.split(' ').slice(-1)[0]}</div>
+                    <h2 className="font-black text-xs md:text-base text-gray-900 leading-snug group-hover:text-green-700 transition-colors line-clamp-3">
+                      {blog.title}
+                    </h2>
+                    <p className="text-gray-500 text-xs mt-1 leading-relaxed flex-1 line-clamp-2 hidden md:block">
+                      {blog.excerpt}
+                    </p>
+                    <div className="flex items-center gap-1.5 mt-3 pt-2 border-t border-gray-50">
+                      <div className="w-5 h-5 md:w-7 md:h-7 rounded-full flex items-center justify-center text-white font-bold text-[8px] flex-shrink-0"
+                        style={{ background: blog.categoryColor }}>
+                        {blog.authorAvatar}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-[9px] md:text-xs text-gray-800 truncate">{blog.author.split(' ').slice(-1)[0]}</div>
+                      </div>
+                      <span className="text-[9px] md:text-xs font-semibold flex-shrink-0" style={{ color: blog.categoryColor }}>→</span>
                     </div>
-                    <span className="text-[9px] md:text-xs font-semibold flex-shrink-0" style={{ color: blog.categoryColor }}>→</span>
                   </div>
-                </div>
-              </a>
-            ))}
-          </div>
+                </a>
+              ))}
+            </div>
+          )}
         </>
       )}
     </div>

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Blog } from '@/data/blogs';
 import {
@@ -7,10 +7,9 @@ import {
   StringArrayEditor, SectionCard, FormActions, Toast,
 } from '@/components/admin/AdminFormHelpers';
 import RichTextEditor from '@/components/admin/RichTextEditor';
-import { BLOG_CATEGORIES, BLOG_CATEGORY_COLORS } from '@/data/blogCategories';
+import { BLOG_CATEGORY_COLORS as STATIC_COLORS } from '@/data/blogCategories';
 
-const CATEGORIES = BLOG_CATEGORIES.map((c) => ({ value: c, label: c }));
-const CATEGORY_COLORS = BLOG_CATEGORY_COLORS;
+interface Category { id: number; name: string; color: string; }
 
 export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }) {
   const router = useRouter();
@@ -18,6 +17,22 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null);
   const [preview, setPreview] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    fetch('/api/admin/categories')
+      .then((r) => r.json())
+      .then((d: Category[]) => { if (Array.isArray(d)) setCategories(d); })
+      .catch(() => {});
+  }, []);
+
+  const CATEGORY_COLORS: Record<string, string> = {
+    ...STATIC_COLORS,
+    ...Object.fromEntries(categories.map((c) => [c.name, c.color])),
+  };
+  const CATEGORIES = categories.length
+    ? categories.map((c) => ({ value: c.name, label: c.name }))
+    : [{ value: data.category, label: data.category }].filter((c) => c.value);
 
   function set<K extends keyof Blog>(key: K, val: Blog[K]) {
     setData((d) => ({ ...d, [key]: val }));

@@ -1,23 +1,14 @@
 'use client';
-
-interface Lead {
-  id: number;
-  timestamp: string;
-  name: string;
-  phone: string;
-  email: string;
-  program: string;
-  exam: string;
-  message: string;
-}
+import type { Lead } from './LeadsClient';
 
 export default function LeadsExport({ leads }: { leads: Lead[] }) {
   function handleExport() {
     if (leads.length === 0) return;
 
-    const headers = ['ID', 'Name', 'Phone', 'Email', 'Program', 'Exam', 'Message', 'Time'];
+    const headers = ['ID', 'Source', 'Name', 'Phone', 'Email', 'Program', 'Exam', 'Message', 'Time'];
     const rows = leads.map((l) => [
       l.id,
+      `"${(l.source || 'contact').replace(/"/g, '""')}"`,
       `"${l.name.replace(/"/g, '""')}"`,
       l.phone,
       `"${(l.email || '').replace(/"/g, '""')}"`,
@@ -49,10 +40,7 @@ export default function LeadsExport({ leads }: { leads: Lead[] }) {
       }}
     >
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-        <path
-          d="M7.5 10L3.5 6H5.5V1H9.5V6H11.5L7.5 10ZM2 12H13V13.5H2V12Z"
-          fill="currentColor"
-        />
+        <path d="M7.5 10L3.5 6H5.5V1H9.5V6H11.5L7.5 10ZM2 12H13V13.5H2V12Z" fill="currentColor" />
       </svg>
       Export CSV
     </button>

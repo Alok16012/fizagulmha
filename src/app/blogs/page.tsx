@@ -1,4 +1,5 @@
 import { getBlogs } from '@/lib/getData';
+import { supabaseAdmin, CATEGORY_COLUMNS, isSupabaseConfigured } from '@/lib/supabase';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BlogsList from './BlogsList';
@@ -13,6 +14,18 @@ export const metadata: Metadata = {
 
 export default async function BlogsPage() {
   const blogs = await getBlogs();
+
+  let categories: { name: string; color: string }[] = [];
+  if (isSupabaseConfigured()) {
+    try {
+      const { data } = await supabaseAdmin()
+        .from('blog_categories')
+        .select(CATEGORY_COLUMNS)
+        .order('created_at', { ascending: true });
+      if (data && data.length) categories = data;
+    } catch { /* fallback: derive from blogs */ }
+  }
+
   return (
     <>
       <Navbar />
@@ -36,7 +49,7 @@ export default async function BlogsPage() {
           </div>
         </div>
 
-        <BlogsList blogs={blogs} />
+        <BlogsList blogs={blogs} categories={categories} />
       </main>
       <Footer />
     </>

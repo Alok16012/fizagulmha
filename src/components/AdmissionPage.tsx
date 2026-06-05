@@ -311,6 +311,7 @@ export default function AdmissionPage() {
           program: PROGRAM_LABELS[formData.program] || formData.program,
           exam: 'CLAT',
           message: messageParts.join(' | '),
+          source: 'admission',
         }),
       });
       if (!res.ok) {

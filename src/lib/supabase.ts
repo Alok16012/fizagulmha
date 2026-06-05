@@ -19,7 +19,11 @@ export function supabaseAdmin(): SupabaseClient {
   return client;
 }
 
-export const LEAD_COLUMNS = 'id, timestamp:created_at, name, phone, email, program, exam, message';
+// `source` may not yet exist if the DB migration hasn't been run — handled in the API.
+export const LEAD_COLUMNS = 'id, timestamp:created_at, name, phone, email, program, exam, message, source';
+export const LEAD_COLUMNS_BASE = 'id, timestamp:created_at, name, phone, email, program, exam, message';
+
+export const CATEGORY_COLUMNS = 'id, name, color';
 
 export const BLOG_COLUMNS =
   'slug, title, excerpt, content, category, categoryColor:category_color, author, authorAvatar:author_avatar, date, readTime:read_time, tags';

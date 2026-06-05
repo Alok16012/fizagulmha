@@ -67,6 +67,7 @@ export default function ContactPage() {
           program: form.program === 'Select a program' ? '' : form.program,
           exam: form.exam === 'Select exam' ? '' : form.exam,
           message: form.message.trim(),
+          source: 'contact',
         }),
       });
 
