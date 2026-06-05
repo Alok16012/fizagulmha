@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { getBlogs, getBlogBySlug } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BlogShare from './BlogShare';
 import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
@@ -160,6 +161,9 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 ))}
               </div>
 
+              {/* Share */}
+              <BlogShare title={blog.title} slug={blog.slug} />
+
               {/* CTA */}
               <div className="mt-8 rounded-2xl p-6 md:p-8"
                 style={{ background: 'linear-gradient(135deg, #0D1837, #1f3160)' }}>
@@ -214,7 +218,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                   <h3 className="font-bold text-sm mb-4" style={{ color: '#0D1837' }}>Related Articles</h3>
                   <div className="space-y-4">
                     {relatedBlogs.map((rb) => (
-                      <a key={rb.slug} href={`/blogs/${rb.slug}`}
+                      <a key={rb.slug} href={`/blogs/${encodeURIComponent(rb.slug)}`}
                         className="block group">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-[10px] font-bold px-2 py-0.5 rounded-full text-white"

@@ -122,6 +122,7 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
 
   function insertImage(url: string) {
     ref.current?.focus();
+    restoreSelection();
     document.execCommand('insertHTML', false, `<img src="${url}" alt="" />`);
     emit();
   }

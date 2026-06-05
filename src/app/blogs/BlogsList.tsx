@@ -128,7 +128,7 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
           {/* Featured post */}
           {featured && (
             <div className="mb-10">
-              <a href={`/blogs/${featured.slug}`}
+              <a href={`/blogs/${encodeURIComponent(featured.slug)}`}
                 className="group grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-gray-100 bg-white card-hover">
                 <div className="p-5 md:p-10 flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-4">
@@ -173,7 +173,7 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
           {rest.length > 0 && (
             <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
               {rest.map((blog) => (
-                <a key={blog.slug} href={`/blogs/${blog.slug}`}
+                <a key={blog.slug} href={`/blogs/${encodeURIComponent(blog.slug)}`}
                   className="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover flex flex-col">
                   <div className="h-1.5" style={{ background: blog.categoryColor }} />
                   <div className="p-3 md:p-6 flex flex-col flex-1">
