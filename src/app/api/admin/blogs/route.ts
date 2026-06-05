@@ -18,7 +18,11 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   // Always sanitize slug to be URL-safe
   body.slug = generateSlug(body.slug || body.title);
-  if (!body.date) body.date = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+  if (!body.date) {
+    const now = new Date();
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    body.date = `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+  }
 
   const { data, error } = await supabaseAdmin()
     .from('blogs')

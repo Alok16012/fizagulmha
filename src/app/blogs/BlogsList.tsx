@@ -4,8 +4,31 @@ import type { Blog } from '@/data/blogs';
 
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
+const MONTH_MAP: Record<string, number> = {
+  jan:0, feb:1, mar:2, apr:3, may:4, jun:5,
+  jul:6, aug:7, sep:8, oct:9, nov:10, dec:11,
+  january:0, february:1, march:2, april:3, june:5,
+  july:6, august:7, september:8, october:9, november:10, december:11,
+};
+
 function parseBlogDate(dateStr: string): Date | null {
   if (!dateStr) return null;
+
+  // Try "DD Mon YYYY" or "DD Mon, YYYY"  →  "05 Jun 2026", "15 May, 2026"
+  const ddMonYYYY = dateStr.match(/^(\d{1,2})\s+([A-Za-z]+),?\s+(\d{4})$/);
+  if (ddMonYYYY) {
+    const mo = MONTH_MAP[ddMonYYYY[2].toLowerCase()];
+    if (mo !== undefined) return new Date(+ddMonYYYY[3], mo, +ddMonYYYY[1]);
+  }
+
+  // Try "Mon DD, YYYY"  →  "May 10, 2026", "April 28, 2026"
+  const monDDYYYY = dateStr.match(/^([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})$/);
+  if (monDDYYYY) {
+    const mo = MONTH_MAP[monDDYYYY[1].toLowerCase()];
+    if (mo !== undefined) return new Date(+monDDYYYY[3], mo, +monDDYYYY[2]);
+  }
+
+  // ISO / anything else
   const d = new Date(dateStr);
   return isNaN(d.getTime()) ? null : d;
 }
