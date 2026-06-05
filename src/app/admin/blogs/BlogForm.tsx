@@ -6,26 +6,11 @@ import {
   FieldGroup, TextInput, TextareaInput, SelectInput,
   StringArrayEditor, SectionCard, FormActions, Toast,
 } from '@/components/admin/AdminFormHelpers';
+import RichTextEditor from '@/components/admin/RichTextEditor';
+import { BLOG_CATEGORIES, BLOG_CATEGORY_COLORS } from '@/data/blogCategories';
 
-const CATEGORIES = [
-  { value: 'CLAT Prep', label: 'CLAT Prep' },
-  { value: 'Study Tips', label: 'Study Tips' },
-  { value: 'Legal GK', label: 'Legal GK' },
-  { value: 'NLU Guide', label: 'NLU Guide' },
-  { value: 'Exam Strategy', label: 'Exam Strategy' },
-  { value: 'Current Affairs', label: 'Current Affairs' },
-  { value: 'Success Stories', label: 'Success Stories' },
-];
-
-const CATEGORY_COLORS: Record<string, string> = {
-  'CLAT Prep': '#08BD80',
-  'Study Tips': '#6366f1',
-  'Legal GK': '#f59e0b',
-  'NLU Guide': '#ec4899',
-  'Exam Strategy': '#14b8a6',
-  'Current Affairs': '#f97316',
-  'Success Stories': '#8b5cf6',
-};
+const CATEGORIES = BLOG_CATEGORIES.map((c) => ({ value: c, label: c }));
+const CATEGORY_COLORS = BLOG_CATEGORY_COLORS;
 
 export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }) {
   const router = useRouter();
@@ -67,8 +52,9 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
     router.push('/admin/blogs');
   }
 
-  // Render markdown-like preview
+  // Content from the rich editor is already HTML. Old posts may still be markdown.
   function renderPreview(content: string) {
+    if (/<(p|h2|h3|ul|ol|li|img|strong|em|blockquote|a|br)\b/i.test(content)) return content;
     return content
       .replace(/^## (.+)$/gm, '<h2 class="text-xl font-black text-gray-900 mt-6 mb-3">$1</h2>')
       .replace(/^### (.+)$/gm, '<h3 class="text-lg font-bold text-gray-800 mt-5 mb-2">$1</h3>')
@@ -115,7 +101,7 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
               <span>·</span>
               <span>{data.readTime}</span>
             </div>
-            <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: renderPreview(data.content) }} />
+            <div className="blog-content max-w-none" dangerouslySetInnerHTML={{ __html: renderPreview(data.content) }} />
           </div>
         </div>
       ) : (
@@ -143,19 +129,11 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
             </div>
           </SectionCard>
 
-          <SectionCard title="Content (Markdown supported)">
-            <div className="text-xs text-gray-400 mb-2 font-mono">
-              Tips: ## Heading · **bold** · - list item · blank line = new paragraph
+          <SectionCard title="Content">
+            <div className="text-xs text-gray-400 mb-2">
+              Use the toolbar to format — headings, bold, bullet/numbered lists, quotes, links and inline images.
             </div>
-            <textarea
-              value={data.content}
-              onChange={(e) => set('content', e.target.value)}
-              placeholder="Write your blog post here... Use ## for headings, **bold** for emphasis, - for bullet points."
-              rows={25}
-              className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm font-mono focus:outline-none resize-y leading-relaxed"
-              onFocus={(e) => { e.target.style.borderColor = '#08BD80'; e.target.style.boxShadow = '0 0 0 3px rgba(8,189,128,0.12)'; }}
-              onBlur={(e) => { e.target.style.borderColor = '#E5E7EB'; e.target.style.boxShadow = 'none'; }}
-            />
+            <RichTextEditor value={data.content} onChange={(html) => set('content', html)} />
           </SectionCard>
 
           <SectionCard title="Tags">

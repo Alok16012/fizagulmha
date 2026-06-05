@@ -9,7 +9,7 @@ const emptyBlog: Blog = {
   title: '',
   excerpt: '',
   content: '',
-  category: 'CLAT Prep',
+  category: 'Law Preparation',
   categoryColor: '#08BD80',
   author: 'A.K. Singh',
   authorAvatar: 'AK',

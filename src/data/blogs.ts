@@ -84,8 +84,8 @@ Practice reading 500+ word passages quickly and accurately. Focus on:
 - Previous Year CLAT Papers (2010-2025)
 
 Start your CLAT 2026 journey today with CLATians and join 5000+ successful students who have cracked their dream NLU.`,
-    category: 'CLAT Guide',
-    categoryColor: '#06b6d4',
+    category: 'Law Preparation',
+    categoryColor: '#08BD80',
     author: 'Adv. Ravi Kumar',
     authorAvatar: 'RK',
     date: 'May 10, 2026',
@@ -154,8 +154,8 @@ Our counselling team can help you:
 - Plan your preparation to hit target ranks
 
 Call us at 8507700177 for free counselling.`,
-    category: 'NLU Cutoffs',
-    categoryColor: '#818cf8',
+    category: 'Law Preparation',
+    categoryColor: '#08BD80',
     author: 'CLATians Team',
     authorAvatar: 'CT',
     date: 'May 5, 2026',
@@ -208,8 +208,8 @@ AILET gives you 90 seconds per question on average (90 min / 100 questions), whi
 3. **AILET-specific (15%)**: Deep legal aptitude, offline test-taking practice, NLU Delhi specific GK
 
 Appear in both exams for maximum chances. Most serious law aspirants do!`,
-    category: 'Exam Comparison',
-    categoryColor: '#34d399',
+    category: 'Law Preparation',
+    categoryColor: '#08BD80',
     author: 'Adv. Priya Singh',
     authorAvatar: 'PS',
     date: 'April 28, 2026',
@@ -279,8 +279,8 @@ Strictly avoid spending time on:
 4. CLATians Current Affairs Tests on portal
 
 Remember: 35 marks in current affairs can change your rank by hundreds. Never neglect this section!`,
-    category: 'Strategy',
-    categoryColor: '#f59e0b',
+    category: 'Current Affairs',
+    categoryColor: '#f97316',
     author: 'Dr. Neha Verma',
     authorAvatar: 'NV',
     date: 'April 20, 2026',
@@ -338,8 +338,8 @@ The biggest mistake students make is using their own legal knowledge instead of 
 Target: 30+ correct out of 35 in Legal Reasoning to secure a top rank.
 
 Join CLATians Legal Reasoning sessions with Adv. Ravi Kumar for detailed practice and guidance.`,
-    category: 'Legal Reasoning',
-    categoryColor: '#06b6d4',
+    category: 'Legal',
+    categoryColor: '#6366f1',
     author: 'Adv. Ravi Kumar',
     authorAvatar: 'RK',
     date: 'April 15, 2026',
@@ -388,8 +388,8 @@ An NLU degree opens multiple pathways:
 Absolutely. An NLU education is transformative — academically, professionally, and personally. The preparation may be intense, but the opportunity is life-changing.
 
 Start your preparation with CLATians today. Your NLU journey begins here.`,
-    category: 'NLU Life',
-    categoryColor: '#a855f7',
+    category: 'Law Preparation',
+    categoryColor: '#08BD80',
     author: 'CLATians Team',
     authorAvatar: 'CT',
     date: 'April 8, 2026',
@@ -439,8 +439,8 @@ When deciding which NLU to target, consider:
 ## CLATians Pro Tip
 
 At CLATians, we run specialized College Predictor sessions where A.K. Sir personally helps students identify their target NLUs based on their mock test performance. Join us today!`,
-    category: 'NLU Guide',
-    categoryColor: '#ec4899',
+    category: 'Law Preparation',
+    categoryColor: '#08BD80',
     author: 'A.K. Singh',
     authorAvatar: 'AK',
     date: '15 May, 2026',
@@ -504,8 +504,8 @@ Every wrong answer goes into an error log with: question, why you got it wrong, 
 ## Tip 10: Join CLATians Legal Reasoning Classes
 
 A.K. Singh's specialized Legal Reasoning sessions at CLATians systematically cover all areas — Torts, Contracts, Constitutional Law, Criminal Law — with 500+ practice passages. Students consistently score 30+/37 after completing the course.`,
-    category: 'CLAT Prep',
-    categoryColor: '#08BD80',
+    category: 'Legal',
+    categoryColor: '#6366f1',
     author: 'A.K. Singh',
     authorAvatar: 'AK',
     date: '12 May, 2026',
@@ -560,8 +560,8 @@ Yes! Most CLATians coaching students prepare for both. The syllabi overlap signi
 ## CLATians Strategy for Both Exams
 
 At CLATians, we have a combined preparation program covering both CLAT and AILET. Students who join our Offline Batch typically attempt both exams and secure admissions in either NLU Delhi or NALSAR/NLSIU. Call us at 8507700177 to know more.`,
-    category: 'Exam Strategy',
-    categoryColor: '#14b8a6',
+    category: 'Law Preparation',
+    categoryColor: '#08BD80',
     author: 'A.K. Singh',
     authorAvatar: 'AK',
     date: '8 May, 2026',

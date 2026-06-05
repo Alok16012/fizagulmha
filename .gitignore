@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# runtime lead captures (contains personal data)
+/src/data/db/leads.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -271,14 +271,58 @@ export default function AdmissionPage() {
     program: '', currentClass: '', requirements: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    if (error) setError('');
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  const PROGRAM_LABELS: Record<string, string> = {
+    offline: 'Offline Batch — ₹75,000',
+    online: 'Online Batch — ₹45,000',
+    mentorship: 'Mentorship — ₹1,20,000',
+    mock: 'Mock Test Series — ₹8,999',
+  };
+  const CLASS_LABELS: Record<string, string> = {
+    '11': 'Class 11', '12': 'Class 12', dropper: 'Dropper / Repeat', graduate: 'Graduate',
+  };
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError('');
+
+    const messageParts = [
+      formData.city && `City: ${formData.city}`,
+      formData.currentClass && `Class: ${CLASS_LABELS[formData.currentClass] || formData.currentClass}`,
+      formData.requirements && `Requirements: ${formData.requirements}`,
+    ].filter(Boolean);
+
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          phone: formData.mobile.trim(),
+          email: formData.email.trim(),
+          program: PROGRAM_LABELS[formData.program] || formData.program,
+          exam: 'CLAT',
+          message: messageParts.join(' | '),
+        }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Something went wrong');
+      }
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -755,17 +799,27 @@ export default function AdmissionPage() {
                     />
                   </div>
 
+                  {error && (
+                    <p style={{ color: '#dc2626', fontSize: '13px', fontWeight: 600, margin: 0 }}>
+                      {error}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
+                    disabled={submitting}
                     style={{
                       width: '100%', padding: '14px',
                       background: 'linear-gradient(135deg, #08BD80, #06a865)',
                       color: 'white', fontWeight: 800, fontSize: '15px',
-                      borderRadius: '12px', border: 'none', cursor: 'pointer',
+                      borderRadius: '12px', border: 'none',
+                      cursor: submitting ? 'not-allowed' : 'pointer',
+                      opacity: submitting ? 0.7 : 1,
                       boxShadow: '0 4px 20px rgba(8,189,128,0.35)',
                       transition: 'transform .2s ease, box-shadow .2s ease',
                     }}
                     onMouseEnter={e => {
+                      if (submitting) return;
                       (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)';
                       (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 28px rgba(8,189,128,0.45)';
                     }}
@@ -774,7 +828,7 @@ export default function AdmissionPage() {
                       (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 20px rgba(8,189,128,0.35)';
                     }}
                   >
-                    Get Free Counselling →
+                    {submitting ? 'Submitting…' : 'Get Free Counselling →'}
                   </button>
 
                   <p style={{ textAlign: 'center', fontSize: '12px', color: '#6B7280', marginTop: '4px' }}>

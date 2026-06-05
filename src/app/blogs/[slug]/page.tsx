@@ -19,6 +19,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+function isHtmlContent(content: string): boolean {
+  return /<(p|h2|h3|ul|ol|li|img|strong|em|blockquote|a|br)\b/i.test(content);
+}
+
 function renderContent(content: string) {
   const lines = content.split('\n');
   const elements: React.ReactNode[] = [];
@@ -139,8 +143,12 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
             {/* Article */}
             <article className="md:col-span-2">
-              <div className="bg-white border border-gray-100 rounded-2xl p-6 md:p-10 space-y-2">
-                {renderContent(blog.content)}
+              <div className="bg-white border border-gray-100 rounded-2xl p-6 md:p-10">
+                {isHtmlContent(blog.content) ? (
+                  <div className="blog-content" dangerouslySetInnerHTML={{ __html: blog.content }} />
+                ) : (
+                  <div className="space-y-2">{renderContent(blog.content)}</div>
+                )}
               </div>
 
               {/* Tags */}
