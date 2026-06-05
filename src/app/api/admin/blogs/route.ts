@@ -16,7 +16,8 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   if (!(await isAuthenticated())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const body = await request.json();
-  if (!body.slug) body.slug = generateSlug(body.title);
+  // Always sanitize slug to be URL-safe
+  body.slug = generateSlug(body.slug || body.title);
   if (!body.date) body.date = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
 
   const { data, error } = await supabaseAdmin()

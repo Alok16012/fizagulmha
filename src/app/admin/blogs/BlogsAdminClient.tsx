@@ -183,11 +183,11 @@ export default function BlogsAdminClient({
                     <div className="text-xs text-gray-400 mt-1">By {blog.author} · {blog.date}</div>
                   </div>
                   <div className="flex items-center gap-2 flex-shrink-0">
-                    <Link href={`/blogs/${blog.slug}`} target="_blank"
+                    <Link href={`/blogs/${encodeURIComponent(blog.slug)}`} target="_blank"
                       className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-200 text-gray-600 hover:border-gray-300 transition-colors">
                       View
                     </Link>
-                    <Link href={`/admin/blogs/${blog.slug}`}
+                    <Link href={`/admin/blogs/${encodeURIComponent(blog.slug)}`}
                       className="text-xs font-semibold px-3 py-1.5 rounded-lg"
                       style={{ background: '#E6FAF4', color: '#08BD80' }}>
                       Edit

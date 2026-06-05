@@ -34,7 +34,30 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
     ? categories.map((c) => ({ value: c.name, label: c.name }))
     : [{ value: data.category, label: data.category }].filter((c) => c.value);
 
+  function sanitizeSlug(raw: string): string {
+    return raw
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')   // strip special chars
+      .trim()
+      .replace(/\s+/g, '-')            // spaces → hyphens
+      .replace(/-+/g, '-');            // collapse multiple hyphens
+  }
+
   function set<K extends keyof Blog>(key: K, val: Blog[K]) {
+    // When title changes on a NEW blog and slug is still empty/title-derived, auto-fill slug
+    if (key === 'title' && isNew) {
+      setData((d) => ({
+        ...d,
+        title: val as string,
+        slug: sanitizeSlug(val as string),
+      }));
+      return;
+    }
+    // When slug is manually edited, sanitize it
+    if (key === 'slug') {
+      setData((d) => ({ ...d, slug: sanitizeSlug(val as string) }));
+      return;
+    }
     setData((d) => ({ ...d, [key]: val }));
   }
 

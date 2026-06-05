@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const blog = await getBlogBySlug(slug);
+  const blog = await getBlogBySlug(decodeURIComponent(slug));
   if (!blog) return { title: 'Blog Not Found' };
   return {
     title: `${blog.title} | CLATians Blog`,
@@ -94,11 +94,12 @@ function renderContent(content: string) {
 
 export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
   const allBlogs = await getBlogs();
-  const blog = allBlogs.find((b) => b.slug === slug);
+  const blog = allBlogs.find((b) => b.slug === decodedSlug || b.slug === slug);
   if (!blog) notFound();
 
-  const relatedBlogs = allBlogs.filter((b) => b.slug !== slug).slice(0, 3);
+  const relatedBlogs = allBlogs.filter((b) => b.slug !== decodedSlug && b.slug !== slug).slice(0, 3);
 
   return (
     <>

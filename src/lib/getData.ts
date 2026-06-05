@@ -69,5 +69,7 @@ export async function getBlogs(): Promise<Blog[]> {
 }
 
 export async function getBlogBySlug(slug: string): Promise<Blog | undefined> {
-  return (await getBlogs()).find((b) => b.slug === slug);
+  const decoded = decodeURIComponent(slug);
+  const all = await getBlogs();
+  return all.find((b) => b.slug === decoded || b.slug === slug);
 }
