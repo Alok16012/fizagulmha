@@ -15,7 +15,7 @@ type DateFilter = 'month' | 'year' | 'all';
 export default function BlogsList({ blogs, categories }: { blogs: Blog[]; categories?: { name: string; color: string }[] }) {
   const now = new Date();
   const [activeCategory, setActiveCategory] = useState('All');
-  const [dateFilter, setDateFilter] = useState<DateFilter>('month');
+  const [dateFilter, setDateFilter] = useState<DateFilter>('all');
 
   // Build category list from prop or derive from blogs
   const categoryList = useMemo(() => {
