@@ -1,5 +1,5 @@
 import { isAuthenticated } from '@/lib/auth';
-import { readJSON } from '@/lib/dataStore';
+import { supabaseAdmin, LEAD_COLUMNS } from '@/lib/supabase';
 import { redirect } from 'next/navigation';
 import LeadsExport from './LeadsExport';
 
@@ -19,9 +19,11 @@ interface Lead {
 export default async function AdminLeadsPage() {
   if (!(await isAuthenticated())) redirect('/admin/login');
 
-  const allLeads = readJSON<Lead[]>('leads.json', []);
-  // Sort newest first
-  const leads = [...allLeads].reverse();
+  const { data } = await supabaseAdmin()
+    .from('leads')
+    .select(LEAD_COLUMNS)
+    .order('created_at', { ascending: false });
+  const leads = (data ?? []) as Lead[];
 
   return (
     <div>

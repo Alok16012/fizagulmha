@@ -2,13 +2,12 @@ export const dynamic = "force-dynamic";
 import Link from 'next/link';
 import { isAuthenticated } from '@/lib/auth';
 import { redirect } from 'next/navigation';
-import { readJSON } from '@/lib/dataStore';
-import { blogs as defaultBlogs } from '@/data/blogs';
+import { getBlogs } from '@/lib/getData';
 import { BLOG_CATEGORY_COLORS as categoryColors } from '@/data/blogCategories';
 
 export default async function AdminBlogs() {
   if (!(await isAuthenticated())) redirect('/admin/login');
-  const blogs = readJSON('blogs.json', defaultBlogs) as typeof defaultBlogs;
+  const blogs = await getBlogs();
 
   return (
     <div>

@@ -4,6 +4,7 @@
  * Only usable in Server Components / API routes (uses fs).
  */
 import { readJSON } from './dataStore';
+import { supabaseAdmin, BLOG_COLUMNS, isSupabaseConfigured } from './supabase';
 import { courses as defaultCourses } from '@/data/courses';
 import { batches as defaultBatches } from '@/data/batches';
 import { exams as defaultExams } from '@/data/exams';
@@ -52,10 +53,21 @@ export function getFacultyBySlug(slug: string): FacultyMember | undefined {
   return getFaculty().find((f) => f.slug === slug);
 }
 
-export function getBlogs(): Blog[] {
-  return readJSON<Blog[]>('blogs.json', defaultBlogs);
+export async function getBlogs(): Promise<Blog[]> {
+  if (!isSupabaseConfigured()) return defaultBlogs;
+  try {
+    const { data, error } = await supabaseAdmin()
+      .from('blogs')
+      .select(BLOG_COLUMNS)
+      .order('created_at', { ascending: true });
+    if (error) throw error;
+    if (data && data.length) return data as Blog[];
+  } catch {
+    // table missing or unreachable — fall back to bundled defaults
+  }
+  return defaultBlogs;
 }
 
-export function getBlogBySlug(slug: string): Blog | undefined {
-  return getBlogs().find((b) => b.slug === slug);
+export async function getBlogBySlug(slug: string): Promise<Blog | undefined> {
+  return (await getBlogs()).find((b) => b.slug === slug);
 }

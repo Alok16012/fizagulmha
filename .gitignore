@@ -44,3 +44,6 @@ yarn-error.log*
 next-env.d.ts
 .playwright-mcp/
 *.png
+# but keep the app favicon/icon assets
+!src/app/icon.png
+!src/app/apple-icon.png

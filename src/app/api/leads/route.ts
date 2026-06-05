@@ -1,16 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readJSON, writeJSON } from '@/lib/dataStore';
-
-interface Lead {
-  id: number;
-  timestamp: string;
-  name: string;
-  phone: string;
-  email: string;
-  program: string;
-  exam: string;
-  message: string;
-}
+import { supabaseAdmin, LEAD_COLUMNS } from '@/lib/supabase';
 
 export async function POST(req: NextRequest) {
   try {
@@ -21,23 +10,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Name and phone are required' }, { status: 400 });
     }
 
-    const leads = readJSON<Lead[]>('leads.json', []);
+    const { data, error } = await supabaseAdmin()
+      .from('leads')
+      .insert({
+        name,
+        phone,
+        email: email || '',
+        program: program || '',
+        exam: exam || '',
+        message: message || '',
+      })
+      .select(LEAD_COLUMNS)
+      .single();
 
-    const newLead: Lead = {
-      id: Date.now(),
-      timestamp: new Date().toISOString(),
-      name,
-      phone,
-      email: email || '',
-      program: program || '',
-      exam: exam || '',
-      message: message || '',
-    };
+    if (error) throw error;
 
-    leads.push(newLead);
-    writeJSON('leads.json', leads);
-
-    return NextResponse.json({ success: true, lead: newLead }, { status: 201 });
+    return NextResponse.json({ success: true, lead: data }, { status: 201 });
   } catch {
     return NextResponse.json({ error: 'Failed to save lead' }, { status: 500 });
   }
@@ -45,8 +33,14 @@ export async function POST(req: NextRequest) {
 
 export async function GET() {
   try {
-    const leads = readJSON<Lead[]>('leads.json', []);
-    return NextResponse.json({ leads });
+    const { data, error } = await supabaseAdmin()
+      .from('leads')
+      .select(LEAD_COLUMNS)
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    return NextResponse.json({ leads: data ?? [] });
   } catch {
     return NextResponse.json({ error: 'Failed to read leads' }, { status: 500 });
   }

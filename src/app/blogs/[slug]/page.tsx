@@ -1,17 +1,14 @@
 import { notFound } from 'next/navigation';
-import { blogs } from '@/data/blogs';
-import { getBlogBySlug } from '@/lib/getData';
+import { getBlogs, getBlogBySlug } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
 
-export function generateStaticParams() {
-  return blogs.map((b) => ({ slug: b.slug }));
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const blog = getBlogBySlug(slug);
+  const blog = await getBlogBySlug(slug);
   if (!blog) return { title: 'Blog Not Found' };
   return {
     title: `${blog.title} | CLATians Blog`,
@@ -97,10 +94,11 @@ function renderContent(content: string) {
 
 export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const blog = getBlogBySlug(slug);
+  const allBlogs = await getBlogs();
+  const blog = allBlogs.find((b) => b.slug === slug);
   if (!blog) notFound();
 
-  const relatedBlogs = blogs.filter((b) => b.slug !== slug).slice(0, 3);
+  const relatedBlogs = allBlogs.filter((b) => b.slug !== slug).slice(0, 3);
 
   return (
     <>

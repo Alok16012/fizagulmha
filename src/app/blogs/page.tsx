@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   description: 'Expert articles on CLAT, AILET, MH-CET preparation strategy, NLU cutoffs, legal reasoning tips and more from CLATians faculty.',
 };
 
-export default function BlogsPage() {
-  const blogs = getBlogs();
+export default async function BlogsPage() {
+  const blogs = await getBlogs();
   return (
     <>
       <Navbar />
