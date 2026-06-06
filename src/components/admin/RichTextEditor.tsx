@@ -120,6 +120,20 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
     if (url) exec('createLink', url);
   }
 
+  // Keyboard shortcuts (Ctrl/Cmd + key)
+  function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    const mod = e.ctrlKey || e.metaKey;
+    if (!mod) return;
+    const key = e.key.toLowerCase();
+    if (key === 'b') { e.preventDefault(); exec('bold'); }
+    else if (key === 'i') { e.preventDefault(); exec('italic'); }
+    else if (key === 'u') { e.preventDefault(); exec('underline'); }
+    else if (key === 'z' && !e.shiftKey) { e.preventDefault(); exec('undo'); }
+    else if (key === 'z' && e.shiftKey) { e.preventDefault(); exec('redo'); }
+    else if (key === 'y') { e.preventDefault(); exec('redo'); }
+    else if (key === 'k') { e.preventDefault(); addLink(); }
+  }
+
   function insertImage(url: string) {
     ref.current?.focus();
     restoreSelection();
@@ -167,6 +181,7 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
       { label: '⯇', title: 'Align left', cmd: 'justifyLeft' },
       { label: '☰', title: 'Align center', cmd: 'justifyCenter' },
       { label: '⯈', title: 'Align right', cmd: 'justifyRight' },
+      { label: '≡', title: 'Justify', cmd: 'justifyFull' },
     ],
     [
       { label: '❝ Quote', title: 'Quote', cmd: 'formatBlock', value: 'BLOCKQUOTE' },
@@ -186,7 +201,7 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
 
   return (
     <div className="rte-wrap">
-      <div className="flex flex-wrap items-center gap-1 p-2 border border-gray-200 rounded-t-xl bg-gray-50">
+      <div className="flex flex-wrap items-center gap-1 p-2 border border-gray-200 rounded-t-xl bg-gray-50 sticky top-0 z-20 shadow-sm">
         {/* Block format */}
         <select
           title="Text style"
@@ -272,13 +287,16 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
         suppressContentEditableWarning
         onInput={emit}
         onBlur={emit}
+        onKeyDown={handleKeyDown}
         className="rte-content w-full min-h-[420px] px-5 py-4 border border-t-0 border-gray-200 text-sm leading-relaxed focus:outline-none"
         data-placeholder="Write your blog post here… Use the toolbar for headings, bold, lists, quotes and images."
       />
 
       <div className="flex items-center justify-between px-4 py-2 border border-t-0 border-gray-200 rounded-b-xl bg-gray-50 text-xs text-gray-400">
         <span>{words} {words === 1 ? 'word' : 'words'}</span>
-        <span>Rich text · auto-saved to draft on publish</span>
+        <span title="Ctrl+B Bold · Ctrl+I Italic · Ctrl+U Underline · Ctrl+Z Undo · Ctrl+K Link">
+          ⌨ Ctrl+B/I/U · Rich text
+        </span>
       </div>
 
       <style jsx global>{`
