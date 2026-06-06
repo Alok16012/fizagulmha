@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import type { Blog } from '@/data/blogs';
+import { adminFetch } from '@/lib/adminFetch';
 
 interface Category { id: number; name: string; color: string; }
 
@@ -28,11 +29,15 @@ export default function BlogsAdminClient({
     if (!confirm(`Delete "${title}"?`)) return;
     setDeletingSlug(slug);
     try {
-      const res = await fetch(`/api/admin/blogs/${encodeURIComponent(slug)}`, { method: 'DELETE' });
-      if (!res.ok) throw new Error();
-      setBlogs((prev) => prev.filter((b) => b.slug !== slug));
-    } catch {
-      alert('Failed to delete blog.');
+      const res = await adminFetch(`/api/admin/blogs/${encodeURIComponent(slug)}`, { method: 'DELETE' });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        alert(`Delete failed (${res.status}): ${err.error || 'Unknown error'}`);
+      } else {
+        setBlogs((prev) => prev.filter((b) => b.slug !== slug));
+      }
+    } catch (e) {
+      alert(`Delete failed: ${e instanceof Error ? e.message : 'Network error'}`);
     }
     setDeletingSlug(null);
   }
@@ -43,7 +48,7 @@ export default function BlogsAdminClient({
     if (!newCatName.trim()) return;
     setAddingCat(true);
     try {
-      const res = await fetch('/api/admin/categories', {
+      const res = await adminFetch('/api/admin/categories', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newCatName.trim(), color: newCatColor }),
@@ -63,7 +68,7 @@ export default function BlogsAdminClient({
     if (!confirm(`Remove category "${name}"? Blogs using it won't be deleted.`)) return;
     setDeletingCatId(id);
     try {
-      const res = await fetch(`/api/admin/categories/${id}`, { method: 'DELETE' });
+      const res = await adminFetch(`/api/admin/categories/${id}`, { method: 'DELETE' });
       if (!res.ok) throw new Error();
       setCategories((prev) => prev.filter((c) => c.id !== id));
     } catch {

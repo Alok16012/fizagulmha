@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Course } from '@/data/courses';
+import { adminFetch } from '@/lib/adminFetch';
 import {
   FieldGroup, TextInput, TextareaInput, StringArrayEditor,
   SectionCard, FormActions, Toast,
@@ -28,7 +29,7 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
     try {
       const url = isNew ? '/api/admin/courses' : `/api/admin/courses/${course.slug}`;
       const method = isNew ? 'POST' : 'PUT';
-      const res = await fetch(url, {
+      const res = await adminFetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -45,7 +46,7 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
   async function handleDelete() {
     if (!confirm('Delete this course? This cannot be undone.')) return;
     setLoading(true);
-    await fetch(`/api/admin/courses/${course.slug}`, { method: 'DELETE' });
+    await adminFetch(`/api/admin/courses/${course.slug}`, { method: 'DELETE' });
     router.push('/admin/courses');
   }
 

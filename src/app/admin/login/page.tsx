@@ -18,6 +18,12 @@ export default function AdminLogin() {
       body: JSON.stringify({ password }),
     });
     if (res.ok) {
+      // Persist token in localStorage so adminFetch() can include it as
+      // X-Admin-Token header — works even when Netlify doesn't forward cookies.
+      try {
+        const body = await res.json().catch(() => ({}));
+        if (body.token) localStorage.setItem('admin_token', body.token);
+      } catch { /* ignore */ }
       router.push('/admin');
     } else {
       setError('Invalid password. Please try again.');

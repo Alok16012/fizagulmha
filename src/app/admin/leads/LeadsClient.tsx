@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { adminFetch } from '@/lib/adminFetch';
 
 export interface Lead {
   id: number;
@@ -77,7 +78,7 @@ export default function LeadsClient({ initialLeads }: { initialLeads: Lead[] }) 
     if (!confirm('Delete this lead permanently?')) return;
     setDeletingId(id);
     try {
-      const res = await fetch(`/api/admin/leads/${id}`, { method: 'DELETE' });
+      const res = await adminFetch(`/api/admin/leads/${id}`, { method: 'DELETE' });
       if (!res.ok) throw new Error();
       setLeads((prev) => prev.filter((l) => l.id !== id));
     } catch {

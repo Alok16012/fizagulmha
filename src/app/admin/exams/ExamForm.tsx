@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Exam } from '@/data/exams';
+import { adminFetch } from '@/lib/adminFetch';
 import {
   FieldGroup, TextInput, NumberInput, TextareaInput,
   StringArrayEditor, SectionCard, FormActions, Toast,
@@ -28,7 +29,7 @@ export default function ExamForm({ exam, isNew }: { exam: Exam; isNew: boolean }
     try {
       const url = isNew ? '/api/admin/exams' : `/api/admin/exams/${exam.slug}`;
       const method = isNew ? 'POST' : 'PUT';
-      const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      const res = await adminFetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
       if (!res.ok) throw new Error('Failed');
       showToast(isNew ? 'Exam created!' : 'Exam saved!', 'success');
       setTimeout(() => router.push('/admin/exams'), 1000);
@@ -40,7 +41,7 @@ export default function ExamForm({ exam, isNew }: { exam: Exam; isNew: boolean }
 
   async function handleDelete() {
     if (!confirm('Delete this exam?')) return;
-    await fetch(`/api/admin/exams/${exam.slug}`, { method: 'DELETE' });
+    await adminFetch(`/api/admin/exams/${exam.slug}`, { method: 'DELETE' });
     router.push('/admin/exams');
   }
 

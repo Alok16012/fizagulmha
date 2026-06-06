@@ -25,6 +25,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   async function handleLogout() {
+    try { localStorage.removeItem('admin_token'); } catch { /* ignore */ }
     await fetch('/api/admin/login', { method: 'DELETE' });
     router.push('/admin/login');
   }

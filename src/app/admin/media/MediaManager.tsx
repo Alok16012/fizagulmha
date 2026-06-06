@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { Toast } from '@/components/admin/AdminFormHelpers';
+import { adminFetch } from '@/lib/adminFetch';
 
 interface MediaFile {
   name: string;
@@ -23,7 +24,7 @@ export default function MediaManager() {
 
   async function fetchFiles() {
     setLoading(true);
-    const res = await fetch('/api/admin/media');
+    const res = await adminFetch('/api/admin/media');
     if (res.ok) setFiles(await res.json());
     setLoading(false);
   }
@@ -38,7 +39,7 @@ export default function MediaManager() {
     setUploading(true);
     const form = new FormData();
     form.append('file', file);
-    const res = await fetch('/api/admin/media', { method: 'POST', body: form });
+    const res = await adminFetch('/api/admin/media', { method: 'POST', body: form });
     if (res.ok) {
       showToast('Image uploaded!', 'success');
       fetchFiles();
@@ -63,7 +64,7 @@ export default function MediaManager() {
 
   async function handleDelete(name: string) {
     if (!confirm('Delete this image?')) return;
-    const res = await fetch('/api/admin/media', {
+    const res = await adminFetch('/api/admin/media', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name }),

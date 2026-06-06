@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Batch } from '@/data/batches';
+import { adminFetch } from '@/lib/adminFetch';
 import {
   FieldGroup, TextInput, NumberInput, TextareaInput, SelectInput,
   StringArrayEditor, SectionCard, FormActions, Toast,
@@ -28,7 +29,7 @@ export default function BatchForm({ batch, isNew }: { batch: Batch; isNew: boole
     try {
       const url = isNew ? '/api/admin/batches' : `/api/admin/batches/${batch.slug}`;
       const method = isNew ? 'POST' : 'PUT';
-      const res = await fetch(url, {
+      const res = await adminFetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -45,7 +46,7 @@ export default function BatchForm({ batch, isNew }: { batch: Batch; isNew: boole
   async function handleDelete() {
     if (!confirm('Delete this batch?')) return;
     setLoading(true);
-    await fetch(`/api/admin/batches/${batch.slug}`, { method: 'DELETE' });
+    await adminFetch(`/api/admin/batches/${batch.slug}`, { method: 'DELETE' });
     router.push('/admin/batches');
   }
 

@@ -8,7 +8,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Invalid password' }, { status: 401 });
   }
 
-  const response = NextResponse.json({ success: true });
+  // Include the token in the response body so the client can persist it
+  // in localStorage and send it as X-Admin-Token on subsequent API calls.
+  const response = NextResponse.json({ success: true, token: SESSION_VALUE });
   response.cookies.set(SESSION_COOKIE, SESSION_VALUE, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',

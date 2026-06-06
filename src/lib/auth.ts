@@ -17,12 +17,22 @@ export async function isAuthenticated(): Promise<boolean> {
 }
 
 /**
- * For Route Handlers (API routes) — reads cookie directly from the
- * raw request Cookie header, which is always present on Netlify.
+ * For Route Handlers (API routes).
+ *
+ * Checks two sources (either is sufficient):
+ *  1. X-Admin-Token custom header — sent by adminFetch() from localStorage.
+ *     Works reliably on all Netlify Function setups.
+ *  2. Raw Cookie header — traditional httpOnly cookie, also works when
+ *     cookies are forwarded correctly.
  */
 export function isAuthenticatedRequest(request: Request): boolean {
+  // 1. Custom header (localStorage-based, most reliable on Netlify)
+  if (request.headers.get('x-admin-token') === SESSION_VALUE) return true;
+
+  // 2. Cookie header (httpOnly cookie fallback)
   try {
     const header = request.headers.get('cookie') ?? '';
+    if (!header) return false;
     const map = Object.fromEntries(
       header.split(';').map((c) => {
         const idx = c.indexOf('=');

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { FacultyMember } from '@/data/faculty';
+import { adminFetch } from '@/lib/adminFetch';
 import {
   FieldGroup, TextInput, TextareaInput,
   StringArrayEditor, SectionCard, FormActions, Toast,
@@ -28,7 +29,7 @@ export default function FacultyForm({ member, isNew }: { member: FacultyMember; 
     try {
       const url = isNew ? '/api/admin/faculty' : `/api/admin/faculty/${member.slug}`;
       const method = isNew ? 'POST' : 'PUT';
-      const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      const res = await adminFetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
       if (!res.ok) throw new Error('Failed');
       showToast(isNew ? 'Faculty created!' : 'Faculty saved!', 'success');
       setTimeout(() => router.push('/admin/faculty'), 1000);
@@ -40,7 +41,7 @@ export default function FacultyForm({ member, isNew }: { member: FacultyMember; 
 
   async function handleDelete() {
     if (!confirm('Delete this faculty member?')) return;
-    await fetch(`/api/admin/faculty/${member.slug}`, { method: 'DELETE' });
+    await adminFetch(`/api/admin/faculty/${member.slug}`, { method: 'DELETE' });
     router.push('/admin/faculty');
   }
 

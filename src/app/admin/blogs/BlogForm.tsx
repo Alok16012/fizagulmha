@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Blog } from '@/data/blogs';
+import { adminFetch } from '@/lib/adminFetch';
 import {
   FieldGroup, TextInput, TextareaInput, SelectInput,
   StringArrayEditor, SectionCard, FormActions, Toast,
@@ -20,7 +21,7 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
-    fetch('/api/admin/categories')
+    adminFetch('/api/admin/categories')
       .then((r) => r.json())
       .then((d: Category[]) => { if (Array.isArray(d)) setCategories(d); })
       .catch(() => {});
@@ -74,7 +75,7 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
     try {
       const url = isNew ? '/api/admin/blogs' : `/api/admin/blogs/${encodeURIComponent(blog.slug)}`;
       const method = isNew ? 'POST' : 'PUT';
-      const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(updatedData) });
+      const res = await adminFetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(updatedData) });
       if (!res.ok) throw new Error('Failed');
       showToast(isNew ? 'Blog published!' : 'Blog saved!', 'success');
       setTimeout(() => router.push('/admin/blogs'), 1000);
@@ -87,7 +88,7 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
   async function handleDelete() {
     if (!confirm('Delete this blog post?')) return;
     try {
-      const res = await fetch(`/api/admin/blogs/${encodeURIComponent(blog.slug)}`, { method: 'DELETE' });
+      const res = await adminFetch(`/api/admin/blogs/${encodeURIComponent(blog.slug)}`, { method: 'DELETE' });
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         showToast(err.error || 'Delete failed', 'error');

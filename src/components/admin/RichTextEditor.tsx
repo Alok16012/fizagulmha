@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { adminFetch } from '@/lib/adminFetch';
 
 interface RichTextEditorProps {
   value: string;
@@ -152,15 +153,16 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
     const form = new FormData();
     form.append('file', file);
     try {
-      const res = await fetch('/api/admin/media', { method: 'POST', body: form });
+      const res = await adminFetch('/api/admin/media', { method: 'POST', body: form });
       if (res.ok) {
         const { url } = await res.json();
         insertImage(url);
       } else {
-        alert('Image upload failed');
+        const err = await res.json().catch(() => ({}));
+        alert(`Image upload failed (${res.status}): ${err.error || 'Unknown error'}`);
       }
-    } catch {
-      alert('Image upload failed');
+    } catch (e) {
+      alert(`Image upload failed: ${e instanceof Error ? e.message : 'Network error'}`);
     }
     setUploading(false);
   }
