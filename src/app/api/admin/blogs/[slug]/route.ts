@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { isAuthenticated } from '@/lib/auth';
+import { isAuthenticatedRequest } from '@/lib/auth';
 import { generateSlug } from '@/lib/dataStore';
 import { supabaseAdmin, BLOG_COLUMNS, blogToRow } from '@/lib/supabase';
 
-export async function GET(_req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
-  if (!(await isAuthenticated())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+export async function GET(req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
+  if (!isAuthenticatedRequest(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
   const { data, error } = await supabaseAdmin()
@@ -18,7 +18,7 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ slu
 }
 
 export async function PUT(request: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
-  if (!(await isAuthenticated())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!isAuthenticatedRequest(request)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
   const body = await request.json();
@@ -37,8 +37,8 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
   return NextResponse.json(data);
 }
 
-export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
-  if (!(await isAuthenticated())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
+  if (!isAuthenticatedRequest(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
   const { error } = await supabaseAdmin().from('blogs').delete().eq('slug', decodedSlug);

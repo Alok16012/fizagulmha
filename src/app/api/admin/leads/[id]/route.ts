@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { isAuthenticated } from '@/lib/auth';
+import { isAuthenticatedRequest } from '@/lib/auth';
 import { supabaseAdmin } from '@/lib/supabase';
 
 export async function DELETE(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  if (!(await isAuthenticated())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!isAuthenticatedRequest(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { id } = await params;
   const { error } = await supabaseAdmin().from('leads').delete().eq('id', Number(id));
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });

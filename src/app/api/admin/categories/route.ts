@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { isAuthenticated } from '@/lib/auth';
+import { isAuthenticatedRequest } from '@/lib/auth';
 import { supabaseAdmin, CATEGORY_COLUMNS } from '@/lib/supabase';
 
 const FALLBACK = [
@@ -22,7 +22,7 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await isAuthenticated())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!isAuthenticatedRequest(request)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { name, color } = await request.json();
   if (!name?.trim()) return NextResponse.json({ error: 'Name required' }, { status: 400 });
   const { data, error } = await supabaseAdmin()

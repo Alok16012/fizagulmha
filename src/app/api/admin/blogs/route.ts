@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { isAuthenticated } from '@/lib/auth';
+import { isAuthenticatedRequest } from '@/lib/auth';
 import { generateSlug } from '@/lib/dataStore';
 import { supabaseAdmin, BLOG_COLUMNS, blogToRow } from '@/lib/supabase';
 
-export async function GET() {
-  if (!(await isAuthenticated())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+export async function GET(req: NextRequest) {
+  if (!isAuthenticatedRequest(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { data, error } = await supabaseAdmin()
     .from('blogs')
     .select(BLOG_COLUMNS)
@@ -14,7 +14,7 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await isAuthenticated())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!isAuthenticatedRequest(request)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const body = await request.json();
   // Always sanitize slug to be URL-safe
   body.slug = generateSlug(body.slug || body.title);

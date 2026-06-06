@@ -1,0 +1,103 @@
+{
+  "app": {
+    "[project]/src/app/_not-found/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/about/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/batches/[slug]/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/batches/new/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/batches/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/blogs/[slug]/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/blogs/new/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/blogs/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/courses/[slug]/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/courses/new/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/courses/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/exams/[slug]/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/exams/new/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/exams/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/faculty/[slug]/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/faculty/new/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/faculty/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/leads/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/login/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/media/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admin/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/admission/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/blogs/[slug]/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/blogs/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/college-predictor/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/contact/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/courses/[slug]/[batch]/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/courses/[slug]/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/courses/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/exams/[slug]/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/faculty/[slug]/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ],
+    "[project]/src/app/page": [
+      "static/media/fba5a26ea33df6a3-s.p.0eehd8tgys7nv.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}
