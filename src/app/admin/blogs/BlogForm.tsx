@@ -86,8 +86,17 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
 
   async function handleDelete() {
     if (!confirm('Delete this blog post?')) return;
-    await fetch(`/api/admin/blogs/${encodeURIComponent(blog.slug)}`, { method: 'DELETE' });
-    router.push('/admin/blogs');
+    try {
+      const res = await fetch(`/api/admin/blogs/${encodeURIComponent(blog.slug)}`, { method: 'DELETE' });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        showToast(err.error || 'Delete failed', 'error');
+        return;
+      }
+      router.push('/admin/blogs');
+    } catch {
+      showToast('Delete failed — check connection', 'error');
+    }
   }
 
   // Content from the rich editor is already HTML. Old posts may still be markdown.

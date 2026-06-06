@@ -141,6 +141,11 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
     emit();
   }
 
+  function insertImageFromUrl() {
+    const url = prompt('Image URL (https://...)');
+    if (url && url.startsWith('http')) insertImage(url);
+  }
+
   async function handleImageFile(file: File) {
     if (!file.type.startsWith('image/')) return;
     setUploading(true);
@@ -255,18 +260,27 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
             className="absolute inset-0 opacity-0 cursor-pointer" />
         </label>
 
-        {/* Image */}
+        {/* Image — upload or URL */}
         <span className="w-px h-6 bg-gray-200 mx-0.5" />
         <button
           type="button"
-          title="Upload image"
+          title="Upload image from device"
           onMouseDown={(e) => e.preventDefault()}
           onClick={() => fileRef.current?.click()}
           disabled={uploading}
           className="px-3 py-1.5 rounded-lg text-sm font-semibold text-white hover:opacity-90 transition-all disabled:opacity-60"
           style={{ background: '#08BD80' }}
         >
-          {uploading ? 'Uploading…' : '🖼 Image'}
+          {uploading ? 'Uploading…' : '🖼 Upload'}
+        </button>
+        <button
+          type="button"
+          title="Insert image from URL"
+          onMouseDown={(e) => e.preventDefault()}
+          onClick={insertImageFromUrl}
+          className="px-3 py-1.5 rounded-lg text-sm font-semibold border border-gray-200 text-gray-600 hover:bg-white hover:shadow-sm transition-all"
+        >
+          🔗 Image URL
         </button>
         <input
           ref={fileRef}

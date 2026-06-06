@@ -61,7 +61,8 @@ export async function getBlogs(): Promise<Blog[]> {
       .select(BLOG_COLUMNS)
       .order('created_at', { ascending: true });
     if (error) throw error;
-    if (data && data.length) return data as Blog[];
+    // Return Supabase data even if empty — only fall back if query itself failed
+    if (data !== null) return data as Blog[];
   } catch {
     // table missing or unreachable — fall back to bundled defaults
   }

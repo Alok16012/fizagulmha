@@ -1,54 +1,78 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isAuthenticated } from '@/lib/auth';
-import { writeFile, readdir, unlink } from 'fs/promises';
-import path from 'path';
-import fs from 'fs';
+import { supabaseAdmin } from '@/lib/supabase';
 
-const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads');
+const BUCKET = 'blog-images';
 
-function ensureUploadDir() {
-  if (!fs.existsSync(UPLOAD_DIR)) {
-    fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+/** Ensure the bucket exists and is public. Creates it on first use. */
+async function ensureBucket() {
+  const sb = supabaseAdmin();
+  const { data: buckets } = await sb.storage.listBuckets();
+  const exists = buckets?.some((b) => b.name === BUCKET);
+  if (!exists) {
+    await sb.storage.createBucket(BUCKET, { public: true });
   }
 }
 
 export async function GET() {
   if (!(await isAuthenticated())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  ensureUploadDir();
-  const files = await readdir(UPLOAD_DIR);
-  const fileList = files.map((f) => ({
-    name: f,
-    url: `/uploads/${f}`,
-  }));
-  return NextResponse.json(fileList);
+  try {
+    await ensureBucket();
+    const { data, error } = await supabaseAdmin().storage.from(BUCKET).list('', { limit: 200 });
+    if (error) throw error;
+    const sb = supabaseAdmin();
+    const files = (data ?? []).map((f) => ({
+      name: f.name,
+      url: sb.storage.from(BUCKET).getPublicUrl(f.name).data.publicUrl,
+    }));
+    return NextResponse.json(files);
+  } catch (e) {
+    return NextResponse.json({ error: String(e) }, { status: 500 });
+  }
 }
 
 export async function POST(request: NextRequest) {
   if (!(await isAuthenticated())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  ensureUploadDir();
 
   const formData = await request.formData();
   const file = formData.get('file') as File;
   if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
 
-  // Sanitize filename
   const ext = file.name.split('.').pop()?.toLowerCase() || 'bin';
   const allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'];
   if (!allowed.includes(ext)) {
     return NextResponse.json({ error: 'Only image files allowed' }, { status: 400 });
   }
 
-  const safeName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
-  const buffer = Buffer.from(await file.arrayBuffer());
-  await writeFile(path.join(UPLOAD_DIR, safeName), buffer);
+  try {
+    await ensureBucket();
 
-  return NextResponse.json({ url: `/uploads/${safeName}`, name: safeName }, { status: 201 });
+    const safeName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
+    const buffer = Buffer.from(await file.arrayBuffer());
+
+    const { error } = await supabaseAdmin()
+      .storage
+      .from(BUCKET)
+      .upload(safeName, buffer, { contentType: file.type, upsert: false });
+
+    if (error) throw error;
+
+    const { data: urlData } = supabaseAdmin().storage.from(BUCKET).getPublicUrl(safeName);
+    return NextResponse.json({ url: urlData.publicUrl, name: safeName }, { status: 201 });
+  } catch (e) {
+    return NextResponse.json({ error: String(e) }, { status: 500 });
+  }
 }
 
 export async function DELETE(request: NextRequest) {
   if (!(await isAuthenticated())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  const { name } = await request.json();
-  if (!name || name.includes('..')) return NextResponse.json({ error: 'Invalid filename' }, { status: 400 });
-  await unlink(path.join(UPLOAD_DIR, name));
-  return NextResponse.json({ success: true });
+  try {
+    const { name } = await request.json();
+    if (!name || name.includes('..')) return NextResponse.json({ error: 'Invalid filename' }, { status: 400 });
+    const { error } = await supabaseAdmin().storage.from(BUCKET).remove([name]);
+    if (error) throw error;
+    return NextResponse.json({ success: true });
+  } catch (e) {
+    return NextResponse.json({ error: String(e) }, { status: 500 });
+  }
 }
