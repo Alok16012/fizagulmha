@@ -2,7 +2,10 @@
 import { useState, useMemo } from 'react';
 import type { Blog } from '@/data/blogs';
 
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MONTH_NAMES = [
+  'January','February','March','April','May','June',
+  'July','August','September','October','November','December',
+];
 
 const MONTH_MAP: Record<string, number> = {
   jan:0, feb:1, mar:2, apr:3, may:4, jun:5,
@@ -14,14 +17,14 @@ const MONTH_MAP: Record<string, number> = {
 function parseBlogDate(dateStr: string): Date | null {
   if (!dateStr) return null;
 
-  // Try "DD Mon YYYY" or "DD Mon, YYYY"  →  "05 Jun 2026", "15 May, 2026"
+  // "DD Mon YYYY" or "DD Mon, YYYY"  →  "05 Jun 2026", "15 May, 2026"
   const ddMonYYYY = dateStr.match(/^(\d{1,2})\s+([A-Za-z]+),?\s+(\d{4})$/);
   if (ddMonYYYY) {
     const mo = MONTH_MAP[ddMonYYYY[2].toLowerCase()];
     if (mo !== undefined) return new Date(+ddMonYYYY[3], mo, +ddMonYYYY[1]);
   }
 
-  // Try "Mon DD, YYYY"  →  "May 10, 2026", "April 28, 2026"
+  // "Mon DD, YYYY"  →  "May 10, 2026", "April 28, 2026"
   const monDDYYYY = dateStr.match(/^([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})$/);
   if (monDDYYYY) {
     const mo = MONTH_MAP[monDDYYYY[1].toLowerCase()];
@@ -33,14 +36,22 @@ function parseBlogDate(dateStr: string): Date | null {
   return isNaN(d.getTime()) ? null : d;
 }
 
-type DateFilter = 'month' | 'year' | 'all';
-
 export default function BlogsList({ blogs, categories }: { blogs: Blog[]; categories?: { name: string; color: string }[] }) {
   const now = new Date();
   const [activeCategory, setActiveCategory] = useState('All');
-  const [dateFilter, setDateFilter] = useState<DateFilter>('all');
+  // -1 = All Months; default = current month
+  const [selectedMonth, setSelectedMonth] = useState(now.getMonth());
+  const [selectedYear, setSelectedYear]   = useState(now.getFullYear());
 
-  // Build category list from prop or derive from blogs
+  // Years that have at least one blog (+ current year always present)
+  const availableYears = useMemo(() => {
+    const set = new Set<number>([now.getFullYear()]);
+    blogs.forEach((b) => { const d = parseBlogDate(b.date); if (d) set.add(d.getFullYear()); });
+    return Array.from(set).sort((a, b) => b - a);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [blogs]);
+
+  // Category list from prop or derived from blogs
   const categoryList = useMemo(() => {
     if (categories && categories.length) return categories;
     const seen = new Set<string>();
@@ -56,77 +67,74 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
 
   const filtered = useMemo(() => {
     let result = blogs;
-
-    // Category filter
-    if (activeCategory !== 'All') {
-      result = result.filter((b) => b.category === activeCategory);
-    }
-
-    // Date filter
+    if (activeCategory !== 'All') result = result.filter((b) => b.category === activeCategory);
     result = result.filter((b) => {
       const d = parseBlogDate(b.date);
-      if (!d) return dateFilter === 'all'; // unknown date: only show in "all"
-      if (dateFilter === 'month') {
-        return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth();
-      }
-      if (dateFilter === 'year') {
-        return d.getFullYear() === now.getFullYear();
-      }
-      return true; // all
+      if (!d) return selectedMonth === -1; // unknown date only in "All Months"
+      if (d.getFullYear() !== selectedYear) return false;
+      if (selectedMonth === -1) return true;  // any month of this year
+      return d.getMonth() === selectedMonth;
     });
-
     return result;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [blogs, activeCategory, dateFilter]);
+  }, [blogs, activeCategory, selectedMonth, selectedYear]);
 
   const featured = filtered[0];
-  const rest = filtered.slice(1);
+  const rest     = filtered.slice(1);
 
-  const currentMonthLabel = `${MONTHS[now.getMonth()]} ${now.getFullYear()}`;
-  const currentYearLabel = `${now.getFullYear()}`;
-
-  const DATE_FILTERS: { key: DateFilter; label: string }[] = [
-    { key: 'month', label: `This Month (${currentMonthLabel})` },
-    { key: 'year', label: `This Year (${currentYearLabel})` },
-    { key: 'all', label: 'All Time' },
-  ];
+  const selectBase =
+    'w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm font-semibold text-gray-700 ' +
+    'focus:outline-none focus:border-green-400 cursor-pointer appearance-none pr-8';
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 md:py-14">
 
-      {/* ── Filters row ── */}
-      <div className="flex flex-col gap-3 mb-8">
-        {/* Date filter */}
-        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
-          {DATE_FILTERS.map(({ key, label }) => {
-            const isActive = dateFilter === key;
-            return (
-              <button key={key}
-                onClick={() => setDateFilter(key)}
-                className="flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-bold transition-all border"
-                style={{
-                  background: isActive ? '#0D1837' : 'white',
-                  color: isActive ? 'white' : '#6b7280',
-                  borderColor: isActive ? '#0D1837' : '#e5e7eb',
-                }}>
-                🗓 {label}
-              </button>
-            );
-          })}
+      {/* ── Filters ── */}
+      <div className="mb-8 space-y-4">
+
+        {/* Month + Year dropdowns */}
+        <div className="bg-white border border-gray-100 rounded-2xl p-4 md:p-5 shadow-sm">
+          <div className="grid grid-cols-2 gap-3">
+
+            {/* Month */}
+            <div>
+              <label className="block text-xs font-bold text-gray-500 mb-1.5 ml-0.5">Select Month</label>
+              <div className="relative">
+                <select value={selectedMonth} onChange={(e) => setSelectedMonth(Number(e.target.value))} className={selectBase}>
+                  <option value={-1}>All Months</option>
+                  {MONTH_NAMES.map((name, idx) => (
+                    <option key={idx} value={idx}>{name}</option>
+                  ))}
+                </select>
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">▾</span>
+              </div>
+            </div>
+
+            {/* Year */}
+            <div>
+              <label className="block text-xs font-bold text-gray-500 mb-1.5 ml-0.5">Select Year</label>
+              <div className="relative">
+                <select value={selectedYear} onChange={(e) => setSelectedYear(Number(e.target.value))} className={selectBase}>
+                  {availableYears.map((y) => (
+                    <option key={y} value={y}>{y}</option>
+                  ))}
+                </select>
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">▾</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Category filter */}
+        {/* Category pills */}
         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
           {['All', ...categoryList.map((c) => c.name)].map((cat) => {
             const isActive = cat === activeCategory;
             const color = categoryList.find((c) => c.name === cat)?.color;
             return (
-              <button key={cat}
-                onClick={() => setActiveCategory(cat)}
+              <button key={cat} onClick={() => setActiveCategory(cat)}
                 className="flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all border"
                 style={{
                   background: isActive ? (color || '#0D1837') : 'white',
-                  color: isActive ? 'white' : 'var(--text)',
+                  color: isActive ? 'white' : '#374151',
                   borderColor: isActive ? (color || '#0D1837') : '#e5e7eb',
                 }}>
                 {cat}
@@ -139,9 +147,10 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
       {filtered.length === 0 ? (
         <div className="text-center py-20">
           <div className="text-5xl mb-4">📭</div>
-          <p className="text-gray-400 mb-3">No articles found for this filter.</p>
+          <p className="text-gray-500 mb-1 font-semibold">No articles for {selectedMonth === -1 ? 'All Months' : MONTH_NAMES[selectedMonth]} {selectedYear}</p>
+          <p className="text-gray-400 text-sm mb-4">Try a different month or view all articles.</p>
           <button
-            onClick={() => { setDateFilter('all'); setActiveCategory('All'); }}
+            onClick={() => { setSelectedMonth(-1); setActiveCategory('All'); }}
             className="text-sm font-semibold px-5 py-2 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-50">
             Show All Articles
           </button>
@@ -156,7 +165,7 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
                 <div className="p-5 md:p-10 flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-4">
                     <span className="text-xs font-bold px-3 py-1.5 rounded-full text-white"
-                      style={{ background: featured.categoryColor }}>
+                      style={{ background: featured.categoryColor || '#08BD80' }}>
                       {featured.category}
                     </span>
                     <span className="text-xs text-gray-400">{featured.readTime}</span>
@@ -167,25 +176,25 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
                   <p className="text-gray-500 text-sm mt-3 leading-relaxed">{featured.excerpt}</p>
                   <div className="flex items-center gap-3 mt-6">
                     <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs"
-                      style={{ background: featured.categoryColor }}>
+                      style={{ background: featured.categoryColor || '#08BD80' }}>
                       {featured.authorAvatar}
                     </div>
                     <div>
                       <div className="font-semibold text-xs text-gray-900">{featured.author}</div>
                       <div className="text-xs text-gray-400">{featured.date}</div>
                     </div>
-                    <span className="ml-auto text-sm font-semibold text-green-600 group-hover:gap-2 transition-all">
-                      Read More →
-                    </span>
+                    <span className="ml-auto text-sm font-semibold text-green-600 transition-all">Read More →</span>
                   </div>
                 </div>
                 <div className="hidden md:flex items-center justify-center p-10"
-                  style={{ background: `linear-gradient(135deg, ${featured.categoryColor}15, ${featured.categoryColor}08)` }}>
+                  style={{ background: `linear-gradient(135deg, ${featured.categoryColor || '#08BD80'}15, ${featured.categoryColor || '#08BD80'}08)` }}>
                   <div className="text-center">
                     <div className="text-7xl mb-4">📚</div>
-                    <div className="text-4xl font-black" style={{ color: featured.categoryColor }}>
-                      {featured.tags[0]}
-                    </div>
+                    {(featured.tags ?? []).length > 0 && (
+                      <div className="text-4xl font-black" style={{ color: featured.categoryColor || '#08BD80' }}>
+                        {featured.tags[0]}
+                      </div>
+                    )}
                   </div>
                 </div>
               </a>
@@ -198,11 +207,11 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
               {rest.map((blog) => (
                 <a key={blog.slug} href={`/blogs/${encodeURIComponent(blog.slug)}`}
                   className="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover flex flex-col">
-                  <div className="h-1.5" style={{ background: blog.categoryColor }} />
+                  <div className="h-1.5" style={{ background: blog.categoryColor || '#08BD80' }} />
                   <div className="p-3 md:p-6 flex flex-col flex-1">
                     <div className="flex items-center gap-1.5 mb-2">
                       <span className="text-[9px] md:text-xs font-bold px-2 py-0.5 rounded-full text-white"
-                        style={{ background: blog.categoryColor }}>
+                        style={{ background: blog.categoryColor || '#08BD80' }}>
                         {blog.category}
                       </span>
                       <span className="text-[9px] md:text-xs text-gray-400 hidden sm:inline">{blog.readTime}</span>
@@ -215,13 +224,13 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
                     </p>
                     <div className="flex items-center gap-1.5 mt-3 pt-2 border-t border-gray-50">
                       <div className="w-5 h-5 md:w-7 md:h-7 rounded-full flex items-center justify-center text-white font-bold text-[8px] flex-shrink-0"
-                        style={{ background: blog.categoryColor }}>
+                        style={{ background: blog.categoryColor || '#08BD80' }}>
                         {blog.authorAvatar}
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="font-semibold text-[9px] md:text-xs text-gray-800 truncate">{blog.author.split(' ').slice(-1)[0]}</div>
                       </div>
-                      <span className="text-[9px] md:text-xs font-semibold flex-shrink-0" style={{ color: blog.categoryColor }}>→</span>
+                      <span className="text-[9px] md:text-xs font-semibold flex-shrink-0" style={{ color: blog.categoryColor || '#08BD80' }}>→</span>
                     </div>
                   </div>
                 </a>

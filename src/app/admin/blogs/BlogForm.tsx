@@ -72,7 +72,7 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
     // Auto-set category color
     const updatedData = { ...data, categoryColor: CATEGORY_COLORS[data.category] || '#08BD80' };
     try {
-      const url = isNew ? '/api/admin/blogs' : `/api/admin/blogs/${blog.slug}`;
+      const url = isNew ? '/api/admin/blogs' : `/api/admin/blogs/${encodeURIComponent(blog.slug)}`;
       const method = isNew ? 'POST' : 'PUT';
       const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(updatedData) });
       if (!res.ok) throw new Error('Failed');
@@ -86,7 +86,7 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
 
   async function handleDelete() {
     if (!confirm('Delete this blog post?')) return;
-    await fetch(`/api/admin/blogs/${blog.slug}`, { method: 'DELETE' });
+    await fetch(`/api/admin/blogs/${encodeURIComponent(blog.slug)}`, { method: 'DELETE' });
     router.push('/admin/blogs');
   }
 

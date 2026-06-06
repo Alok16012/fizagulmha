@@ -28,7 +28,7 @@ export default function BlogsAdminClient({
     if (!confirm(`Delete "${title}"?`)) return;
     setDeletingSlug(slug);
     try {
-      const res = await fetch(`/api/admin/blogs/${slug}`, { method: 'DELETE' });
+      const res = await fetch(`/api/admin/blogs/${encodeURIComponent(slug)}`, { method: 'DELETE' });
       if (!res.ok) throw new Error();
       setBlogs((prev) => prev.filter((b) => b.slug !== slug));
     } catch {
