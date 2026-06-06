@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={plusJakarta.variable}>
-      <body className={plusJakarta.className}>{children}</body>
+      <body className={plusJakarta.className} style={{ overflowX: 'hidden', maxWidth: '100%' }}>{children}</body>
     </html>
   );
 }
