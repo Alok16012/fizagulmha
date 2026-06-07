@@ -228,12 +228,18 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
             </div>
           </SectionCard>
 
-          <SectionCard title="Content">
-            <div className="text-xs text-gray-400 mb-2">
-              Use the toolbar to format — headings, bold, bullet/numbered lists, quotes, links and inline images.
+          {/* Content card — intentionally no overflow-hidden so sticky toolbar works */}
+          <div className="bg-white rounded-2xl border border-gray-100">
+            <div className="px-6 py-4 border-b border-gray-50">
+              <h2 className="font-black text-gray-900">Content</h2>
             </div>
-            <RichTextEditor value={data.content} onChange={(html) => set('content', html)} />
-          </SectionCard>
+            <div className="px-6 py-5">
+              <div className="text-xs text-gray-400 mb-2">
+                Use the toolbar to format — headings, bold, bullet/numbered lists, quotes, links and inline images.
+              </div>
+              <RichTextEditor value={data.content} onChange={(html) => set('content', html)} />
+            </div>
+          </div>
 
           <SectionCard title="Tags">
             <StringArrayEditor label="" items={data.tags} onChange={(v) => set('tags', v)} placeholder="e.g. CLAT 2026" />
