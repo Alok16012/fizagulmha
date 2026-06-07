@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import type { Course } from '@/data/courses';
 import type { Batch } from '@/data/batches';
+import { adminFetch } from '@/lib/adminFetch';
 
 const catConfig = [
   { key: 'offline',    label: 'Offline',    icon: '🏛️', color: '#0f3460', accent: '#08BD80', bg: '#E6FAF4' },
@@ -12,10 +13,23 @@ const catConfig = [
 ] as const;
 type CatKey = typeof catConfig[number]['key'];
 
-export default function CourseTabsAdmin({ courses, batches }: { courses: Course[]; batches: Batch[] }) {
+export default function CourseTabsAdmin({ courses: initialCourses, batches }: { courses: Course[]; batches: Batch[] }) {
   const [active, setActive] = useState<CatKey>('offline');
+  const [courses, setCourses] = useState<Course[]>(initialCourses);
+  const [deletingSlug, setDeletingSlug] = useState<string | null>(null);
   const cat = catConfig.find(c => c.key === active)!;
   const filtered = courses.filter(c => c.category === active);
+
+  async function handleDelete(slug: string, title: string) {
+    if (!confirm(`Delete "${title}"? This will also affect linked batches.`)) return;
+    setDeletingSlug(slug);
+    try {
+      const res = await adminFetch(`/api/admin/courses/${encodeURIComponent(slug)}`, { method: 'DELETE' });
+      if (res.ok) setCourses(prev => prev.filter(c => c.slug !== slug));
+      else alert('Delete failed. Please try again.');
+    } catch { alert('Delete failed — network error.'); }
+    setDeletingSlug(null);
+  }
 
   return (
     <div>
@@ -134,13 +148,22 @@ export default function CourseTabsAdmin({ courses, batches }: { courses: Course[
                   <Link href={`/admin/courses/${c.slug}`}
                     className="flex-1 text-center text-xs font-bold py-2 rounded-xl transition-colors"
                     style={{ background: cat.bg, color: cat.color }}>
-                    ✏️ Edit Course
+                    ✏️ Edit
                   </Link>
                   <Link href={`/admin/batches/new?courseSlug=${c.slug}`}
                     className="flex-1 text-center text-xs font-bold py-2 rounded-xl transition-colors"
                     style={{ background: '#F0FDF4', color: '#16a34a', border: '1.5px solid #bbf7d0' }}>
-                    + Add Batch
+                    + Batch
                   </Link>
+                  <button
+                    onClick={() => handleDelete(c.slug, c.title)}
+                    disabled={deletingSlug === c.slug}
+                    className="text-xs font-bold px-2.5 py-2 rounded-xl border transition-colors disabled:opacity-50"
+                    style={{ borderColor: '#fecaca', color: '#dc2626', background: '#fff5f5' }}
+                    title="Delete course"
+                  >
+                    {deletingSlug === c.slug ? '…' : '🗑'}
+                  </button>
                 </div>
               </div>
             );
