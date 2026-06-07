@@ -12,7 +12,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; batch: string }> }): Promise<Metadata> {
   const { batch: batchSlug } = await params;
-  const batch = getBatchBySlug(batchSlug);
+  const batch = await getBatchBySlug(batchSlug);
   if (!batch) return { title: 'Batch Not Found' };
   return {
     title: `${batch.name} – CLATians`,
@@ -48,11 +48,11 @@ const statusConfig = {
 
 export default async function BatchPage({ params }: { params: Promise<{ slug: string; batch: string }> }) {
   const { slug, batch: batchSlug } = await params;
-  const course = getCourseBySlug(slug);
-  const batch  = getBatchBySlug(batchSlug);
+  const course = await getCourseBySlug(slug);
+  const batch  = await getBatchBySlug(batchSlug);
   if (!course || !batch) notFound();
 
-  const allBatches   = getBatchesByCourse(slug);
+  const allBatches   = await getBatchesByCourse(slug);
   const otherBatches = allBatches.filter((b) => b.slug !== batchSlug);
   const seatsLeft    = batch.seats - batch.filled;
   const pct          = Math.round((batch.filled / batch.seats) * 100);

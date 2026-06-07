@@ -4,7 +4,7 @@
  * Only usable in Server Components / API routes (uses fs).
  */
 import { readJSON } from './dataStore';
-import { supabaseAdmin, BLOG_COLUMNS, isSupabaseConfigured } from './supabase';
+import { supabaseAdmin, BLOG_COLUMNS, COURSE_COLUMNS, BATCH_COLUMNS, isSupabaseConfigured } from './supabase';
 import { courses as defaultCourses } from '@/data/courses';
 import { batches as defaultBatches } from '@/data/batches';
 import { exams as defaultExams } from '@/data/exams';
@@ -17,24 +17,45 @@ import type { Exam } from '@/data/exams';
 import type { FacultyMember } from '@/data/faculty';
 import type { Blog } from '@/data/blogs';
 
-export function getCourses(): Course[] {
+export async function getCourses(): Promise<Course[]> {
+  if (!isSupabaseConfigured()) return readJSON<Course[]>('courses.json', defaultCourses);
+  try {
+    const { data, error } = await supabaseAdmin()
+      .from('courses')
+      .select(COURSE_COLUMNS)
+      .order('created_at', { ascending: true });
+    if (error) throw error;
+    if (data !== null && data.length > 0) return data as unknown as Course[];
+  } catch {}
   return readJSON<Course[]>('courses.json', defaultCourses);
 }
 
-export function getCourseBySlug(slug: string): Course | undefined {
-  return getCourses().find((c) => c.slug === slug);
+export async function getCourseBySlug(slug: string): Promise<Course | undefined> {
+  const all = await getCourses();
+  return all.find((c) => c.slug === slug);
 }
 
-export function getBatches(): Batch[] {
+export async function getBatches(): Promise<Batch[]> {
+  if (!isSupabaseConfigured()) return readJSON<Batch[]>('batches.json', defaultBatches);
+  try {
+    const { data, error } = await supabaseAdmin()
+      .from('batches')
+      .select(BATCH_COLUMNS)
+      .order('created_at', { ascending: true });
+    if (error) throw error;
+    if (data !== null && data.length > 0) return data as unknown as Batch[];
+  } catch {}
   return readJSON<Batch[]>('batches.json', defaultBatches);
 }
 
-export function getBatchesByCourse(courseSlug: string): Batch[] {
-  return getBatches().filter((b) => b.courseSlug === courseSlug);
+export async function getBatchesByCourse(courseSlug: string): Promise<Batch[]> {
+  const all = await getBatches();
+  return all.filter((b) => b.courseSlug === courseSlug);
 }
 
-export function getBatchBySlug(slug: string): Batch | undefined {
-  return getBatches().find((b) => b.slug === slug);
+export async function getBatchBySlug(slug: string): Promise<Batch | undefined> {
+  const all = await getBatches();
+  return all.find((b) => b.slug === slug);
 }
 
 export function getExams(): Exam[] {

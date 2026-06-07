@@ -2,12 +2,11 @@ export const dynamic = "force-dynamic";
 import Link from 'next/link';
 import { isAuthenticated } from '@/lib/auth';
 import { redirect } from 'next/navigation';
-import { readJSON } from '@/lib/dataStore';
-import { batches as defaultBatches } from '@/data/batches';
+import { getBatches } from '@/lib/getData';
 
 export default async function AdminBatches() {
   if (!(await isAuthenticated())) redirect('/admin/login');
-  const batches = readJSON('batches.json', defaultBatches) as typeof defaultBatches;
+  const batches = await getBatches();
 
   const statusColors: Record<string, { bg: string; color: string; label: string }> = {
     'ongoing': { bg: '#dcfce7', color: '#166534', label: '✅ Open' },

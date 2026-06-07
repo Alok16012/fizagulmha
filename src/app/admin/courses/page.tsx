@@ -1,15 +1,13 @@
 export const dynamic = "force-dynamic";
 import { isAuthenticated } from '@/lib/auth';
 import { redirect } from 'next/navigation';
-import { readJSON } from '@/lib/dataStore';
-import { courses as defaultCourses } from '@/data/courses';
-import { batches as defaultBatches } from '@/data/batches';
+import { getCourses, getBatches } from '@/lib/getData';
 import CourseTabsAdmin from './CourseTabsAdmin';
 
 export default async function AdminCourses() {
   if (!(await isAuthenticated())) redirect('/admin/login');
-  const courses = readJSON('courses.json', defaultCourses) as typeof defaultCourses;
-  const batches = readJSON('batches.json', defaultBatches) as typeof defaultBatches;
+  const courses = await getCourses();
+  const batches = await getBatches();
 
   return (
     <div>

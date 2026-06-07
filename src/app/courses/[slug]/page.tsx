@@ -11,7 +11,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const course = getCourseBySlug(slug);
+  const course = await getCourseBySlug(slug);
   if (!course) return { title: 'Course Not Found' };
   return {
     title: `${course.title} – CLAT Coaching | CLATians`,
@@ -21,12 +21,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function CoursePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const course = getCourseBySlug(slug);
+  const course = await getCourseBySlug(slug);
   if (!course) notFound();
 
-  const allCourses = getCourses();
+  const allCourses = await getCourses();
   const otherCourses = allCourses.filter((c) => c.slug !== slug);
-  const courseBatches = getBatchesByCourse(slug);
+  const courseBatches = await getBatchesByCourse(slug);
 
   return (
     <>

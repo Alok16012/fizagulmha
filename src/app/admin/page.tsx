@@ -3,24 +3,22 @@ import Link from 'next/link';
 import { isAuthenticated } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { readJSON } from '@/lib/dataStore';
-import { getBlogs } from '@/lib/getData';
-import { courses as defaultCourses } from '@/data/courses';
-import { batches as defaultBatches } from '@/data/batches';
+import { getCourses, getBatches, getBlogs } from '@/lib/getData';
 import { exams as defaultExams } from '@/data/exams';
 import { facultyMembers as defaultFaculty } from '@/data/faculty';
 
 export default async function AdminDashboard() {
   if (!(await isAuthenticated())) redirect('/admin/login');
 
-  const courses = readJSON('courses.json', defaultCourses);
-  const batches = readJSON('batches.json', defaultBatches);
+  const courses = await getCourses();
+  const batches = await getBatches();
   const exams = readJSON('exams.json', defaultExams);
   const faculty = readJSON('faculty.json', defaultFaculty);
   const blogs = await getBlogs();
 
   const stats = [
-    { label: 'Courses', value: (courses as typeof defaultCourses).length, icon: '📚', href: '/admin/courses', color: '#08BD80' },
-    { label: 'Batches', value: (batches as typeof defaultBatches).length, icon: '📅', href: '/admin/batches', color: '#6366f1' },
+    { label: 'Courses', value: courses.length, icon: '📚', href: '/admin/courses', color: '#08BD80' },
+    { label: 'Batches', value: batches.length, icon: '📅', href: '/admin/batches', color: '#6366f1' },
     { label: 'Exams', value: (exams as typeof defaultExams).length, icon: '🏛️', href: '/admin/exams', color: '#f59e0b' },
     { label: 'Faculty', value: (faculty as typeof defaultFaculty).length, icon: '👨‍🏫', href: '/admin/faculty', color: '#ec4899' },
     { label: 'Blogs', value: blogs.length, icon: '✍️', href: '/admin/blogs', color: '#14b8a6' },
@@ -87,7 +85,7 @@ export default async function AdminDashboard() {
           <Link href="/admin/batches" className="text-sm font-semibold" style={{ color: '#08BD80' }}>View all →</Link>
         </div>
         <div className="divide-y divide-gray-50">
-          {(batches as typeof defaultBatches).slice(0, 5).map((b) => {
+          {batches.slice(0, 5).map((b) => {
             const pct = Math.round((b.filled / b.seats) * 100);
             return (
               <div key={b.slug} className="px-6 py-4 flex items-center gap-4">
