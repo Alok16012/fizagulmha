@@ -130,9 +130,8 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             <h1 className="text-2xl md:text-4xl font-black text-white leading-tight">{blog.title}</h1>
             <p className="text-white/60 mt-3">{blog.excerpt}</p>
             <div className="flex items-center gap-3 mt-6">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold"
-                style={{ background: blog.categoryColor }}>
-                {blog.authorAvatar}
+              <div className="w-10 h-10 rounded-full bg-white border border-white/20 flex items-center justify-center overflow-hidden flex-shrink-0">
+                <img src="/logo.png" alt="CLATians" className="w-full h-full object-contain p-0.5" />
               </div>
               <div>
                 <div className="text-white font-semibold text-sm">{blog.author}</div>

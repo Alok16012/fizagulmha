@@ -184,9 +184,8 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
                   </h2>
                   <p className="text-gray-500 text-sm mt-3 leading-relaxed">{featured.excerpt}</p>
                   <div className="flex items-center gap-3 mt-6">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs"
-                      style={{ background: featured.categoryColor || '#08BD80' }}>
-                      {featured.authorAvatar}
+                    <div className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center overflow-hidden flex-shrink-0">
+                      <img src="/logo.png" alt="CLATians" className="w-full h-full object-contain p-0.5" />
                     </div>
                     <div>
                       <div className="font-semibold text-xs text-gray-900">{featured.author}</div>
@@ -232,12 +231,11 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
                       {blog.excerpt}
                     </p>
                     <div className="flex items-center gap-1.5 mt-3 pt-2 border-t border-gray-50">
-                      <div className="w-5 h-5 md:w-7 md:h-7 rounded-full flex items-center justify-center text-white font-bold text-[8px] flex-shrink-0"
-                        style={{ background: blog.categoryColor || '#08BD80' }}>
-                        {blog.authorAvatar}
+                      <div className="w-5 h-5 md:w-7 md:h-7 rounded-full bg-white border border-gray-200 flex items-center justify-center overflow-hidden flex-shrink-0">
+                        <img src="/logo.png" alt="CLATians" className="w-full h-full object-contain p-px" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="font-semibold text-[9px] md:text-xs text-gray-800 truncate">{blog.author.split(' ').slice(-1)[0]}</div>
+                        <div className="font-semibold text-[9px] md:text-xs text-gray-800 truncate">{blog.author}</div>
                       </div>
                       <span className="text-[9px] md:text-xs font-semibold flex-shrink-0" style={{ color: blog.categoryColor || '#08BD80' }}>→</span>
                     </div>

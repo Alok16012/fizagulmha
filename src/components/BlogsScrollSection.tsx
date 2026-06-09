@@ -77,12 +77,11 @@ export default function BlogsScrollSection() {
               {/* Footer */}
               <div className="px-4 pb-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black text-white"
-                    style={{ background: blog.categoryColor }}>
-                    {blog.authorAvatar}
+                  <div className="w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center overflow-hidden flex-shrink-0">
+                    <img src="/logo.png" alt="CLATians" className="w-full h-full object-contain p-px" />
                   </div>
-                  <span className="text-[11px] font-semibold" style={{ color: '#374151' }}>
-                    {blog.author.split(' ')[0]}
+                  <span className="text-[11px] font-semibold truncate" style={{ color: '#374151' }}>
+                    {blog.author}
                   </span>
                 </div>
                 <span className="text-[10px] font-medium" style={{ color: '#9CA3AF' }}>
