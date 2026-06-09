@@ -83,7 +83,7 @@ function renderContent(content: string) {
       );
     } else if (line.trim()) {
       elements.push(
-        <p key={i} className="text-gray-600 leading-relaxed text-sm md:text-base">
+        <p key={i} className="text-gray-600 leading-relaxed text-sm md:text-base break-words">
           {line}
         </p>
       );
@@ -100,7 +100,11 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   const blog = allBlogs.find((b) => b.slug === decodedSlug || b.slug === slug);
   if (!blog) notFound();
 
-  const relatedBlogs = allBlogs.filter((b) => b.slug !== decodedSlug && b.slug !== slug).slice(0, 3);
+  // getBlogs() returns oldest→newest (ordered by created_at asc), so reverse for most-recent first
+  const relatedBlogs = allBlogs
+    .filter((b) => b.slug !== decodedSlug && b.slug !== slug)
+    .reverse()
+    .slice(0, 3);
 
   return (
     <>
@@ -142,8 +146,8 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
           <div className="grid md:grid-cols-3 gap-10">
 
             {/* Article */}
-            <article className="md:col-span-2">
-              <div className="bg-white border border-gray-100 rounded-2xl p-6 md:p-10">
+            <article className="md:col-span-2 min-w-0">
+              <div className="bg-white border border-gray-100 rounded-2xl p-6 md:p-10 min-w-0">
                 {isHtmlContent(blog.content) ? (
                   <div className="blog-content" dangerouslySetInnerHTML={{ __html: blog.content }} />
                 ) : (

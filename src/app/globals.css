@@ -27,7 +27,7 @@
 * { box-sizing: border-box; }
 
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
 }
 
@@ -38,7 +38,7 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
   position: relative;
 }
@@ -263,7 +263,8 @@ body {
 }
 
 /* Rich blog HTML content (admin editor + public detail page) */
-.blog-content { color: #374151; font-size: 0.975rem; line-height: 1.75; }
+.blog-content { color: #374151; font-size: 0.975rem; line-height: 1.75; overflow-wrap: anywhere; word-break: break-word; }
+.blog-content p, .blog-content li, .blog-content a, .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 { overflow-wrap: anywhere; word-break: break-word; }
 .blog-content > *:first-child { margin-top: 0; }
 .blog-content h2 { font-size: 1.5rem; font-weight: 800; color: #0D1837; margin: 1.6rem 0 0.7rem; line-height: 1.3; }
 .blog-content h3 { font-size: 1.2rem; font-weight: 700; color: #1f2937; margin: 1.2rem 0 0.5rem; }
@@ -279,6 +280,6 @@ body {
 .blog-content a { color: #08BD80; text-decoration: underline; font-weight: 600; }
 .blog-content img { max-width: 100%; height: auto; border-radius: 0.85rem; margin: 1.25rem 0; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
 .blog-content strong { font-weight: 700; color: #1f2937; }
-.blog-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+.blog-content table { border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; display: block; width: max-content !important; max-width: 100% !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .blog-content th, .blog-content td { border: 1px solid #e5e7eb; padding: 0.5rem 0.75rem; text-align: left; }
 .blog-content th { background: #f3f4f6; font-weight: 700; }
