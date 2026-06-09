@@ -75,6 +75,15 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
       if (selectedMonth === -1) return true;  // any month of this year
       return d.getMonth() === selectedMonth;
     });
+    // Most recent first, then chronologically descending. Undated posts sink to the bottom.
+    result = [...result].sort((a, b) => {
+      const da = parseBlogDate(a.date);
+      const db = parseBlogDate(b.date);
+      if (!da && !db) return 0;
+      if (!da) return 1;
+      if (!db) return -1;
+      return db.getTime() - da.getTime();
+    });
     return result;
   }, [blogs, activeCategory, selectedMonth, selectedYear]);
 
