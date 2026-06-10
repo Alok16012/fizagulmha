@@ -176,8 +176,8 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                 </div>
               </div>
 
-              {/* Right — 2 cols — highlights */}
-              <div className="hidden md:block md:col-span-2">
+              {/* Right — 2 cols — highlights (shown on mobile too) */}
+              <div className="md:col-span-2">
                 <div className="rounded-2xl p-5 space-y-2.5"
                   style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)' }}>
                   <p className="text-white/50 text-xs font-bold uppercase tracking-wider mb-3">What&apos;s Included</p>
