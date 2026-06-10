@@ -27,7 +27,6 @@ export interface BatchDetails {
   aboutStrategy?: string;
   aboutFeaturesLabel?: string;
   aboutFeatures?: BatchFeatureCard[];
-  strategyHeading?: string;
   strategySections?: BatchStrategySection[];
   moreDetails?: string[];
   faqs?: BatchFaq[];
@@ -153,8 +152,11 @@ export const batches: Batch[] = [
         { title: 'Doubt Resolution', subtitle: '24/7 doubt solving support (Online)' },
         { title: 'Performance Tracking', subtitle: 'Regular progress monitoring and analysis' },
       ],
-      strategyHeading: 'Subject Covering',
       strategySections: [
+        {
+          title: 'Subject Covering',
+          items: [],
+        },
         {
           title: 'Basic Syllabus',
           items: [

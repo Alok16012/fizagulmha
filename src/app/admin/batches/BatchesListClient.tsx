@@ -73,6 +73,11 @@ export default function BatchesListClient({ initialBatches }: { initialBatches: 
                         style={{ background: '#E6FAF4', color: '#08BD80' }}>
                         Edit
                       </Link>
+                      <Link href={`/admin/batches/new?from=${encodeURIComponent(b.slug)}`}
+                        className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-200 text-gray-600 hover:border-gray-300 transition-colors"
+                        title="Duplicate this batch">
+                        Duplicate
+                      </Link>
                       <button
                         onClick={() => handleDelete(b.slug, b.name)}
                         disabled={deletingSlug === b.slug}

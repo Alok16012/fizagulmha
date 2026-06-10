@@ -90,6 +90,18 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
     { value: 'filling-fast', label: '🔥 Filling Fast' },
   ];
 
+  const categoryOptions = [
+    { value: 'offline', label: 'Offline' },
+    { value: 'online', label: 'Online' },
+    { value: 'mock', label: 'Mock Test' },
+  ];
+
+  const languageOptions = [
+    { value: 'Hinglish', label: 'Hinglish' },
+    { value: 'English', label: 'English' },
+    { value: 'Bilingual', label: 'Bilingual' },
+  ];
+
   return (
     <div>
       {toast && <Toast message={toast.msg} type={toast.type} />}
@@ -124,6 +136,15 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
             <FieldGroup label="Status">
               <SelectInput value={data.status} onChange={(v) => set('status', v as Batch['status'])} options={statusOptions} />
             </FieldGroup>
+            <FieldGroup label="Category">
+              <SelectInput value={data.category} onChange={(v) => set('category', v as Batch['category'])} options={categoryOptions} />
+            </FieldGroup>
+            <FieldGroup label="Language">
+              <SelectInput value={data.language} onChange={(v) => set('language', v as Batch['language'])} options={languageOptions} />
+            </FieldGroup>
+            <FieldGroup label="Batch Type (badge)">
+              <TextInput value={data.batchType} onChange={(v) => set('batchType', v)} placeholder="e.g. Foundation / Target Batch / Crash Course" />
+            </FieldGroup>
           </div>
         </SectionCard>
 
@@ -131,6 +152,9 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
           <div className="grid md:grid-cols-2 gap-4">
             <FieldGroup label="Start Date">
               <TextInput value={data.startDate} onChange={(v) => set('startDate', v)} placeholder="e.g. 02 May, 2025" />
+            </FieldGroup>
+            <FieldGroup label="End Date">
+              <TextInput value={data.endDate} onChange={(v) => set('endDate', v)} placeholder="e.g. CLAT 2027 Exam" />
             </FieldGroup>
             <FieldGroup label="Duration">
               <TextInput value={data.duration} onChange={(v) => set('duration', v)} placeholder="e.g. 30 Months" />
@@ -155,8 +179,14 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
             <FieldGroup label="Fee">
               <TextInput value={data.fee} onChange={(v) => set('fee', v)} placeholder="e.g. ₹1,26,000" />
             </FieldGroup>
+            <FieldGroup label="Original Fee (struck-through)">
+              <TextInput value={data.originalFee ?? ''} onChange={(v) => set('originalFee', v)} placeholder="e.g. ₹1,80,000" />
+            </FieldGroup>
             <FieldGroup label="EMI">
               <TextInput value={data.emi} onChange={(v) => set('emi', v)} placeholder="e.g. ₹10,500/month" />
+            </FieldGroup>
+            <FieldGroup label="Offer (green tag)">
+              <TextInput value={data.offer ?? ''} onChange={(v) => set('offer', v)} placeholder="e.g. Early-bird 20% off till 30 June" />
             </FieldGroup>
           </div>
         </SectionCard>
@@ -171,13 +201,13 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
           <StringArrayEditor label="Faculty" items={data.faculty} onChange={(v) => set('faculty', v)} placeholder="e.g. A.K. Singh" />
         </SectionCard>
 
-        {/* About & Strategy */}
-        <SectionCard title="About the Batch & Strategy">
+        {/* About the Batch */}
+        <SectionCard title="About the Batch">
           <div className="grid md:grid-cols-2 gap-4">
             <FieldGroup label="Duration (about)">
               <TextInput value={details.aboutDuration ?? ''} onChange={(v) => setDetail('aboutDuration', v)} placeholder="e.g. From Admission – CLAT 2028 Exam" />
             </FieldGroup>
-            <FieldGroup label="Batch Strategy">
+            <FieldGroup label="Strategy summary (one-line, inside About box)">
               <TextInput value={details.aboutStrategy ?? ''} onChange={(v) => setDetail('aboutStrategy', v)} placeholder="e.g. Basic Syllabus → Advance Syllabus → Mock Test Series" />
             </FieldGroup>
           </div>
@@ -214,20 +244,22 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
               + Add Feature Card
             </button>
           </div>
+        </SectionCard>
 
-          {/* Batch Strategy phases */}
-          <div className="space-y-4 pt-4 border-t border-gray-100">
-            <FieldGroup label="Strategy Heading (e.g. Subject Covering)">
-              <TextInput value={details.strategyHeading ?? ''} onChange={(v) => setDetail('strategyHeading', v)} placeholder="e.g. Subject Covering" />
-            </FieldGroup>
-            <label className="block text-sm font-semibold text-gray-700">Strategy Phases</label>
+        {/* Batch Strategy (expandable cards) */}
+        <SectionCard title="Batch Strategy (expandable cards)">
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700">Batch Strategy Cards (heading + details)</label>
+              <p className="text-xs text-gray-400 mt-0.5">Each card shows as an expandable accordion on the batch page — heading on top, detail points inside. Add as many as you need (e.g. Subject Covering, Mock Test Series).</p>
+            </div>
             {strategySections.map((sec, i) => (
               <div key={i} className="border border-gray-100 rounded-xl p-4 space-y-3">
                 <div className="flex gap-2">
                   <input
                     value={sec.title}
                     onChange={(e) => setDetail('strategySections', strategySections.map((s, idx) => idx === i ? { ...s, title: e.target.value } : s))}
-                    placeholder="Phase title e.g. Basic Syllabus"
+                    placeholder="Heading e.g. Subject Covering"
                     className="flex-1 px-3 py-2 border border-gray-200 rounded-xl text-sm font-semibold focus:outline-none"
                   />
                   <button type="button" onClick={() => setDetail('strategySections', strategySections.filter((_, idx) => idx !== i))}
@@ -240,10 +272,10 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
                   className="w-full px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none"
                 />
                 <StringArrayEditor
-                  label="Items"
+                  label="Details (bullet points shown when expanded)"
                   items={sec.items}
                   onChange={(v) => setDetail('strategySections', strategySections.map((s, idx) => idx === i ? { ...s, items: v } : s))}
-                  placeholder="e.g. Topic wise Classes"
+                  placeholder="e.g. Foundations of every section"
                 />
               </div>
             ))}
@@ -251,7 +283,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
               onClick={() => setDetail('strategySections', [...strategySections, { title: '', subtitle: '', items: [''] }])}
               className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
               style={{ borderColor: '#08BD80', color: '#08BD80' }}>
-              + Add Strategy Phase
+              + Add Strategy Card
             </button>
           </div>
         </SectionCard>

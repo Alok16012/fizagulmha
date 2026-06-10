@@ -4,6 +4,7 @@ import { batches as staticBatches } from '@/data/batches';
 import { getCourseBySlug, getBatchBySlug, getBatchesByCourse } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BatchStrategy from './BatchStrategy';
 import type { Metadata } from 'next';
 
 export function generateStaticParams() {
@@ -253,70 +254,51 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                 </div>
               )}
 
-              {/* Batch Strategy — phased */}
+              {/* Batch Strategy — phased accordion */}
               {(batch.details?.strategySections?.length ?? 0) > 0 && (
-                <div className="bg-white rounded-2xl p-5"
-                  style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
-                  <h2 className="text-sm font-black mb-1 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Batch Strategy</h2>
-                  {batch.details?.strategyHeading && (
-                    <p className="text-base font-black mb-3" style={{ color: '#0D1837' }}>{batch.details.strategyHeading}</p>
-                  )}
-                  <div className="space-y-3">
-                    {batch.details!.strategySections!.map((sec, i) => (
-                      <div key={i} className="rounded-xl p-4"
-                        style={{ background: '#F8FAFC', borderLeft: `4px solid ${palette.accent}`, border: '1px solid #E9EEF2' }}>
-                        <p className="font-black text-sm" style={{ color: '#0D1837' }}>{sec.title}</p>
-                        {sec.subtitle && (
-                          <p className="text-xs font-semibold mb-2" style={{ color: palette.accent }}>{sec.subtitle}</p>
-                        )}
-                        <ul className="space-y-1.5 mt-2">
-                          {sec.items.map((it, j) => (
-                            <li key={j} className="flex items-start gap-2 text-sm" style={{ color: '#374151' }}>
-                              <span className="font-black flex-shrink-0" style={{ color: palette.accent }}>•</span>
-                              <span className="leading-snug">{it}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <BatchStrategy sections={batch.details!.strategySections!} />
               )}
 
               {/* Includes + Syllabus side by side */}
-              <div className="grid md:grid-cols-2 gap-4">
-                {/* Includes */}
-                <div className="bg-white rounded-2xl p-5"
-                  style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
-                  <h2 className="text-sm font-black mb-3 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Batch Includes</h2>
-                  <div className="space-y-2">
-                    {batch.chips.map((chip) => (
-                      <div key={chip} className="flex items-center gap-2.5 py-2 px-3 rounded-xl"
-                        style={{ background: '#F0FDF9', border: '1px solid #C6F3E4' }}>
-                        <span className="w-4 h-4 rounded-full flex items-center justify-center text-white text-[9px] font-black flex-shrink-0"
-                          style={{ background: palette.accent }}>✓</span>
-                        <span className="text-base font-semibold" style={{ color: '#0f766e' }}>{chip}</span>
+              {(batch.chips.length > 0 || batch.syllabus.length > 0) && (
+                <div className={`grid gap-4 ${batch.chips.length > 0 && batch.syllabus.length > 0 ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
+                  {/* Includes */}
+                  {batch.chips.length > 0 && (
+                    <div className="bg-white rounded-2xl p-5"
+                      style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
+                      <h2 className="text-sm font-black mb-3 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Batch Includes</h2>
+                      <div className="space-y-2">
+                        {batch.chips.map((chip) => (
+                          <div key={chip} className="flex items-center gap-2.5 py-2 px-3 rounded-xl"
+                            style={{ background: '#F0FDF9', border: '1px solid #C6F3E4' }}>
+                            <span className="w-4 h-4 rounded-full flex items-center justify-center text-white text-[9px] font-black flex-shrink-0"
+                              style={{ background: palette.accent }}>✓</span>
+                            <span className="text-base font-semibold" style={{ color: '#0f766e' }}>{chip}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </div>
+                    </div>
+                  )}
 
-                {/* Syllabus */}
-                <div className="bg-white rounded-2xl p-5"
-                  style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
-                  <h2 className="text-sm font-black mb-3 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Syllabus</h2>
-                  <div className="space-y-2">
-                    {batch.syllabus.map((s, i) => (
-                      <div key={i} className="flex items-center gap-2.5 py-2 px-3 rounded-xl"
-                        style={{ background: '#F8FAFC', border: '1px solid #E9EEF2' }}>
-                        <span className="w-5 h-5 rounded-lg flex items-center justify-center text-white text-[10px] font-black flex-shrink-0"
-                          style={{ background: palette.accent }}>{i + 1}</span>
-                        <span className="text-base text-gray-700 font-medium leading-tight">{s}</span>
+                  {/* Syllabus */}
+                  {batch.syllabus.length > 0 && (
+                    <div className="bg-white rounded-2xl p-5"
+                      style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
+                      <h2 className="text-sm font-black mb-3 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Syllabus</h2>
+                      <div className="space-y-2">
+                        {batch.syllabus.map((s, i) => (
+                          <div key={i} className="flex items-center gap-2.5 py-2 px-3 rounded-xl"
+                            style={{ background: '#F8FAFC', border: '1px solid #E9EEF2' }}>
+                            <span className="w-5 h-5 rounded-lg flex items-center justify-center text-white text-[10px] font-black flex-shrink-0"
+                              style={{ background: palette.accent }}>{i + 1}</span>
+                            <span className="text-base text-gray-700 font-medium leading-tight">{s}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  )}
                 </div>
-              </div>
+              )}
 
               {/* Pricing Plans */}
               {(batch.details?.plans?.length ?? 0) > 0 && (
