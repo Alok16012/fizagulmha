@@ -257,44 +257,21 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                 <BatchStrategy sections={batch.details!.strategySections!} />
               )}
 
-              {/* Includes + Syllabus side by side */}
-              {(batch.chips.length > 0 || batch.syllabus.length > 0) && (
-                <div className={`grid gap-4 ${batch.chips.length > 0 && batch.syllabus.length > 0 ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
-                  {/* Includes */}
-                  {batch.chips.length > 0 && (
-                    <div className="bg-white rounded-2xl p-5"
-                      style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
-                      <h2 className="text-sm font-black mb-3 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Batch Includes</h2>
-                      <div className="space-y-2">
-                        {batch.chips.map((chip) => (
-                          <div key={chip} className="flex items-center gap-2.5 py-2 px-3 rounded-xl"
-                            style={{ background: '#F0FDF9', border: '1px solid #C6F3E4' }}>
-                            <span className="w-4 h-4 rounded-full flex items-center justify-center text-white text-[9px] font-black flex-shrink-0"
-                              style={{ background: palette.accent }}>✓</span>
-                            <span className="text-base font-semibold" style={{ color: '#0f766e' }}>{chip}</span>
-                          </div>
-                        ))}
+              {/* Batch Includes — only when it actually has content (ignore blank entries) */}
+              {batch.chips.filter((c) => c.trim()).length > 0 && (
+                <div className="bg-white rounded-2xl p-5"
+                  style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
+                  <h2 className="text-sm font-black mb-3 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Batch Includes</h2>
+                  <div className="space-y-2">
+                    {batch.chips.filter((c) => c.trim()).map((chip) => (
+                      <div key={chip} className="flex items-center gap-2.5 py-2 px-3 rounded-xl"
+                        style={{ background: '#F0FDF9', border: '1px solid #C6F3E4' }}>
+                        <span className="w-4 h-4 rounded-full flex items-center justify-center text-white text-[9px] font-black flex-shrink-0"
+                          style={{ background: palette.accent }}>✓</span>
+                        <span className="text-base font-semibold" style={{ color: '#0f766e' }}>{chip}</span>
                       </div>
-                    </div>
-                  )}
-
-                  {/* Syllabus */}
-                  {batch.syllabus.length > 0 && (
-                    <div className="bg-white rounded-2xl p-5"
-                      style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
-                      <h2 className="text-sm font-black mb-3 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Syllabus</h2>
-                      <div className="space-y-2">
-                        {batch.syllabus.map((s, i) => (
-                          <div key={i} className="flex items-center gap-2.5 py-2 px-3 rounded-xl"
-                            style={{ background: '#F8FAFC', border: '1px solid #E9EEF2' }}>
-                            <span className="w-5 h-5 rounded-lg flex items-center justify-center text-white text-[10px] font-black flex-shrink-0"
-                              style={{ background: palette.accent }}>{i + 1}</span>
-                            <span className="text-base text-gray-700 font-medium leading-tight">{s}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                    ))}
+                  </div>
                 </div>
               )}
 
