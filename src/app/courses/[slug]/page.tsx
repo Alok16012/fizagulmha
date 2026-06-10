@@ -1,13 +1,11 @@
 import { notFound } from 'next/navigation';
 import { getCourses, getCourseBySlug, getBatchesByCourse } from '@/lib/getData';
-import { courses as staticCourses } from '@/data/courses';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
 
-export function generateStaticParams() {
-  return staticCourses.map((c) => ({ slug: c.slug }));
-}
+// Always render fresh so admin edits to courses/batches show immediately.
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;

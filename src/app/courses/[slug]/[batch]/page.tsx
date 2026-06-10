@@ -1,15 +1,13 @@
 import { notFound } from 'next/navigation';
-import { courses as staticCourses } from '@/data/courses';
-import { batches as staticBatches } from '@/data/batches';
 import { getCourseBySlug, getBatchBySlug, getBatchesByCourse } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BatchStrategy from './BatchStrategy';
 import type { Metadata } from 'next';
 
-export function generateStaticParams() {
-  return staticBatches.map((b) => ({ slug: b.courseSlug, batch: b.slug }));
-}
+// Always render with fresh data so admin edits (fee, offer, etc.) show
+// immediately instead of serving a stale statically-cached page.
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; batch: string }> }): Promise<Metadata> {
   const { batch: batchSlug } = await params;
@@ -210,11 +208,11 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                 </div>
               </div>
 
-              {/* About the Batch */}
+              {/* Special Features */}
               {(batch.details?.aboutDuration || batch.details?.aboutStrategy || (batch.details?.aboutFeatures?.length ?? 0) > 0) && (
                 <div className="bg-white rounded-2xl p-5"
                   style={{ border: '1.5px solid #E9EEF2', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
-                  <h2 className="text-sm font-black mb-3 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>About the Batch</h2>
+                  <h2 className="text-sm font-black mb-3 uppercase tracking-wide" style={{ color: '#9CA3AF' }}>Special Features</h2>
                   <div className="space-y-3">
                     {batch.details?.aboutDuration && (
                       <p className="text-sm leading-relaxed">
