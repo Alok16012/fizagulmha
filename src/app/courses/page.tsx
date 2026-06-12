@@ -242,15 +242,24 @@ function CoursePanels({ categoryKey, courses, batches }: { categoryKey: TabKey; 
       {/* ── Right panel — batches ── */}
       <div className="flex-1 min-w-0">
         {selectedCourse && (
-          <div className="mb-5 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
-              style={{ background: selectedCourse.bg }}>
-              {selectedCourse.icon}
+          <div className="mb-5 flex items-start justify-between gap-4">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                style={{ background: selectedCourse.bg }}>
+                {selectedCourse.icon}
+              </div>
+              <div className="min-w-0">
+                <h2 className="font-black text-xl" style={{ color: '#0D1837' }}>{selectedCourse.title}</h2>
+                <p className="text-sm" style={{ color: '#6B7280' }}>{selectedCourse.tagline}</p>
+              </div>
             </div>
-            <div>
-              <h2 className="font-black text-xl" style={{ color: '#0D1837' }}>{selectedCourse.title}</h2>
-              <p className="text-sm" style={{ color: '#6B7280' }}>{selectedCourse.tagline}</p>
-            </div>
+            <a
+              href={`/courses/${selectedCourse.slug}`}
+              className="px-4 py-2.5 rounded-xl text-xs font-black text-white hover:opacity-90 transition-opacity flex-shrink-0"
+              style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}
+            >
+              View Course Details →
+            </a>
           </div>
         )}
 
@@ -259,6 +268,20 @@ function CoursePanels({ categoryKey, courses, batches }: { categoryKey: TabKey; 
             style={{ background: '#F8FAFC', border: '1.5px dashed #E9EEF2' }}>
             <div className="text-4xl mb-3">🔜</div>
             <p className="font-semibold" style={{ color: '#9CA3AF' }}>Batches coming soon</p>
+            {selectedCourse && (
+              <>
+                <p className="text-sm mt-2 mb-5" style={{ color: '#6B7280' }}>
+                  Course detail page is ready. Batches will appear here after you add them from admin.
+                </p>
+                <a
+                  href={`/courses/${selectedCourse.slug}`}
+                  className="inline-flex px-5 py-3 rounded-xl text-sm font-black text-white hover:opacity-90 transition-opacity"
+                  style={{ background: '#08BD80' }}
+                >
+                  Open Detail Page →
+                </a>
+              </>
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -445,12 +468,18 @@ function CoursesPageInner() {
 
               {/* Selected course header */}
               {mobileCourse && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px', padding: '12px', background: 'white', borderRadius: '14px', border: '1px solid #E9EEF2' }}>
-                  <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: mobileCourse.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>{mobileCourse.icon}</div>
-                  <div>
-                    <div style={{ fontWeight: 800, fontSize: '14px', color: '#0D1837' }}>{mobileCourse.title}</div>
-                    <div style={{ fontSize: '11px', color: '#6B7280' }}>{mobileCourse.tagline}</div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px', marginBottom: '14px', padding: '12px', background: 'white', borderRadius: '14px', border: '1px solid #E9EEF2' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: mobileCourse.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>{mobileCourse.icon}</div>
+                    <div style={{ minWidth: 0 }}>
+                      <div style={{ fontWeight: 800, fontSize: '14px', color: '#0D1837' }}>{mobileCourse.title}</div>
+                      <div style={{ fontSize: '11px', color: '#6B7280' }}>{mobileCourse.tagline}</div>
+                    </div>
                   </div>
+                  <a href={`/courses/${mobileCourse.slug}`}
+                    style={{ flexShrink: 0, padding: '9px 11px', borderRadius: '10px', background: '#0D1837', color: 'white', fontWeight: 800, fontSize: '11px', textDecoration: 'none' }}>
+                    Details →
+                  </a>
                 </div>
               )}
 
@@ -464,6 +493,12 @@ function CoursesPageInner() {
                 <div style={{ textAlign: 'center', padding: '40px 16px', background: '#F8FAFC', borderRadius: '16px', border: '1.5px dashed #E9EEF2' }}>
                   <div style={{ fontSize: '32px', marginBottom: '8px' }}>🔜</div>
                   <p style={{ fontWeight: 600, color: '#9CA3AF', fontSize: '13px' }}>Batches coming soon</p>
+                  {mobileCourse && (
+                    <a href={`/courses/${mobileCourse.slug}`}
+                      style={{ display: 'inline-flex', marginTop: '14px', padding: '11px 16px', borderRadius: '12px', background: '#08BD80', color: 'white', fontWeight: 800, fontSize: '12px', textDecoration: 'none' }}>
+                      Open Detail Page →
+                    </a>
+                  )}
                 </div>
               ) : (
                 <div>

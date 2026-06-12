@@ -5,7 +5,7 @@ import type { Course } from '@/data/courses';
 import { adminFetch } from '@/lib/adminFetch';
 import {
   FieldGroup, TextInput, TextareaInput,
-  SectionCard, FormActions, Toast,
+  SectionCard, FormActions, Toast, StringArrayEditor,
 } from '@/components/admin/AdminFormHelpers';
 
 export default function CourseEditForm({ course, isNew }: { course: Course; isNew: boolean }) {
@@ -16,6 +16,34 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
 
   function set<K extends keyof Course>(key: K, val: Course[K]) {
     setData((d) => ({ ...d, [key]: val }));
+  }
+
+  function updateInclude(index: number, key: 'label' | 'value' | 'icon', value: string) {
+    const next = [...(data.includes || [])];
+    next[index] = { ...next[index], [key]: value };
+    set('includes', next);
+  }
+
+  function addInclude() {
+    set('includes', [...(data.includes || []), { label: '', value: '', icon: '✓' }]);
+  }
+
+  function removeInclude(index: number) {
+    set('includes', (data.includes || []).filter((_, i) => i !== index));
+  }
+
+  function updateCurriculum(index: number, key: 'module' | 'topics', value: string | string[]) {
+    const next = [...(data.curriculum || [])];
+    next[index] = { ...next[index], [key]: value };
+    set('curriculum', next);
+  }
+
+  function addCurriculum() {
+    set('curriculum', [...(data.curriculum || []), { module: '', topics: [''] }]);
+  }
+
+  function removeCurriculum(index: number) {
+    set('curriculum', (data.curriculum || []).filter((_, i) => i !== index));
   }
 
   function showToast(msg: string, type: 'success' | 'error') {
@@ -118,6 +146,126 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
               </div>
             </FieldGroup>
           </div>
+        </SectionCard>
+
+        <SectionCard title={data.category === 'mentorship' ? 'Mentorship Page Details' : 'Course Details'}>
+          {data.category === 'mentorship' && (
+            <div className="rounded-xl border border-green-100 bg-green-50 px-4 py-3 text-sm font-semibold text-green-800">
+              These fields update the full mentorship detail page on the user side.
+            </div>
+          )}
+          <div className="grid md:grid-cols-4 gap-4">
+            <FieldGroup label="Duration">
+              <TextInput value={data.duration} onChange={(v) => set('duration', v)} placeholder="e.g. Till CLAT Examination" />
+            </FieldGroup>
+            <FieldGroup label="Batch Size / Seats">
+              <TextInput value={data.batchSize} onChange={(v) => set('batchSize', v)} placeholder="e.g. Limited Intake" />
+            </FieldGroup>
+            <FieldGroup label="Fee">
+              <TextInput value={data.fee} onChange={(v) => set('fee', v)} placeholder="e.g. Call for Fee" />
+            </FieldGroup>
+            <FieldGroup label="EMI">
+              <TextInput value={data.emi} onChange={(v) => set('emi', v)} placeholder="e.g. ₹2,500/month" />
+            </FieldGroup>
+          </div>
+        </SectionCard>
+
+        <SectionCard title={data.category === 'mentorship' ? 'Highlights & Benefits' : 'Features'}>
+          <StringArrayEditor
+            label={data.category === 'mentorship' ? 'Quick Highlights shown on mentorship page' : 'Feature List'}
+            items={data.features || []}
+            onChange={(items) => set('features', items)}
+            placeholder="e.g. Weekly Strategy Sessions"
+          />
+        </SectionCard>
+
+        <SectionCard title={data.category === 'mentorship' ? 'Who This Mentorship Is For' : 'Who This Course Is For'}>
+          <StringArrayEditor
+            label="Audience / eligibility points"
+            items={data.whoFor || []}
+            onChange={(items) => set('whoFor', items)}
+            placeholder="e.g. Self-study aspirants who need accountability"
+          />
+        </SectionCard>
+
+        <SectionCard title={data.category === 'mentorship' ? 'Program Detail Cards' : 'What Is Included'}>
+          <div className="space-y-3">
+            {(data.includes || []).map((item, index) => (
+              <div key={index} className="grid md:grid-cols-[80px_1fr_1fr_auto] gap-3 items-end rounded-xl border border-gray-100 p-3">
+                <FieldGroup label="Icon">
+                  <TextInput value={item.icon} onChange={(v) => updateInclude(index, 'icon', v)} placeholder="✓" />
+                </FieldGroup>
+                <FieldGroup label="Label">
+                  <TextInput value={item.label} onChange={(v) => updateInclude(index, 'label', v)} placeholder="Mentor Access" />
+                </FieldGroup>
+                <FieldGroup label="Value">
+                  <TextInput value={item.value} onChange={(v) => updateInclude(index, 'value', v)} placeholder="Dedicated Mentor" />
+                </FieldGroup>
+                <button type="button" onClick={() => removeInclude(index)}
+                  className="h-10 px-3 rounded-xl text-sm font-bold text-red-500 hover:bg-red-50">
+                  Remove
+                </button>
+              </div>
+            ))}
+          </div>
+          <button type="button" onClick={addInclude}
+            className="text-sm font-semibold px-3 py-2 rounded-lg border-2 border-dashed transition-colors"
+            style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+            + Add Detail
+          </button>
+        </SectionCard>
+
+        <SectionCard title={data.category === 'mentorship' ? 'Roadmap / Stages' : 'Curriculum'}>
+          <div className="space-y-4">
+            {(data.curriculum || []).map((item, index) => (
+              <div key={index} className="rounded-xl border border-gray-100 p-4 space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="flex-1">
+                    <FieldGroup label={data.category === 'mentorship' ? 'Stage Title' : 'Module Title'}>
+                      <TextInput value={item.module} onChange={(v) => updateCurriculum(index, 'module', v)} placeholder="e.g. Phase 1: Diagnostic Assessment" />
+                    </FieldGroup>
+                  </div>
+                  <button type="button" onClick={() => removeCurriculum(index)}
+                    className="mt-6 h-10 px-3 rounded-xl text-sm font-bold text-red-500 hover:bg-red-50">
+                    Remove
+                  </button>
+                </div>
+                <FieldGroup label={data.category === 'mentorship' ? 'Stage Points (one per line)' : 'Topics (one per line)'}>
+                  <TextareaInput
+                    value={(item.topics || []).join('\n')}
+                    onChange={(v) => updateCurriculum(index, 'topics', v.split('\n'))}
+                    placeholder={'Preparation audit\nGoal setting\nWeakness identification'}
+                    rows={4}
+                  />
+                </FieldGroup>
+              </div>
+            ))}
+          </div>
+          <button type="button" onClick={addCurriculum}
+            className="text-sm font-semibold px-3 py-2 rounded-lg border-2 border-dashed transition-colors"
+            style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+            + Add {data.category === 'mentorship' ? 'Stage' : 'Module'}
+          </button>
+        </SectionCard>
+
+        <SectionCard title="Student Success Story / Testimonial">
+          <div className="grid md:grid-cols-2 gap-4">
+            <FieldGroup label="Name">
+              <TextInput value={data.testimonial?.name || ''} onChange={(v) => set('testimonial', { ...data.testimonial, name: v })} placeholder="Student name" />
+            </FieldGroup>
+            <FieldGroup label="Avatar Initials">
+              <TextInput value={data.testimonial?.avatar || ''} onChange={(v) => set('testimonial', { ...data.testimonial, avatar: v })} placeholder="AK" />
+            </FieldGroup>
+            <FieldGroup label="Rank / Result">
+              <TextInput value={data.testimonial?.rank || ''} onChange={(v) => set('testimonial', { ...data.testimonial, rank: v })} placeholder="AIR 23" />
+            </FieldGroup>
+            <FieldGroup label="College">
+              <TextInput value={data.testimonial?.college || ''} onChange={(v) => set('testimonial', { ...data.testimonial, college: v })} placeholder="NLSIU Bengaluru" />
+            </FieldGroup>
+          </div>
+          <FieldGroup label="Quote">
+            <TextareaInput value={data.testimonial?.quote || ''} onChange={(v) => set('testimonial', { ...data.testimonial, quote: v })} placeholder="Student quote..." rows={4} />
+          </FieldGroup>
         </SectionCard>
 
         <FormActions loading={loading} onCancel={() => router.push('/admin/courses')} saveLabel={isNew ? 'Create Course' : 'Save Changes'} />

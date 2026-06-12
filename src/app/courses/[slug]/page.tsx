@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { getCourses, getCourseBySlug, getBatchesByCourse } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ClatNavigatorPageContent, { clatNavigatorFaqSchema } from '@/components/ClatNavigatorPageContent';
 import type { Metadata } from 'next';
 
 // Always render fresh so admin edits to courses/batches show immediately.
@@ -25,6 +26,15 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   const allCourses = await getCourses();
   const otherCourses = allCourses.filter((c) => c.slug !== slug);
   const courseBatches = await getBatchesByCourse(slug);
+
+  if (course.category === 'mentorship') {
+    return (
+      <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(clatNavigatorFaqSchema) }} />
+        <ClatNavigatorPageContent course={course} batches={courseBatches} />
+      </>
+    );
+  }
 
   return (
     <>

@@ -25,7 +25,7 @@ const programs = [
     desc: 'One-on-one mentorship from NLU toppers and advocates. Personalized study plan tailored to your strengths.',
     features: ['1-on-1 Sessions', 'Custom Study Plan', 'NLU Mentor', 'Interview Prep'],
     cta: 'Book Mentor',
-    href: '/courses',
+    href: '/mentorship-programs/clat-navigator',
   },
   {
     icon: '📝',

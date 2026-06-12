@@ -93,7 +93,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
               style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 0', borderRadius: '16px', fontWeight: 800, fontSize: '13px', color: 'white', textDecoration: 'none', background: f.color }}>
               📞 Book Session
             </a>
-            <Link href="/courses/mentorship"
+            <Link href="/mentorship-programs/clat-navigator"
               style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 0', borderRadius: '16px', fontWeight: 800, fontSize: '13px', color: f.color, textDecoration: 'none', background: 'white', border: `1.5px solid ${f.color}` }}>
               Mentorship →
             </Link>
@@ -207,7 +207,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ slug: 
                     style={{ background: f.color }}>
                     📞 Call to Book
                   </a>
-                  <Link href="/courses/mentorship"
+                  <Link href="/mentorship-programs/clat-navigator"
                     className="block text-center py-3 rounded-xl font-bold text-sm border-2"
                     style={{ borderColor: f.color, color: f.color }}>
                     Mentorship Program
