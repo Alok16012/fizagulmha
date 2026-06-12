@@ -2,13 +2,12 @@ export const dynamic = "force-dynamic";
 import Link from 'next/link';
 import { isAuthenticated } from '@/lib/auth';
 import { redirect } from 'next/navigation';
-import { readJSON } from '@/lib/dataStore';
-import type { FacultyMember } from '@/data/faculty';
+import { getFaculty } from '@/lib/getData';
 import FacultyListActions from './FacultyListActions';
 
 export default async function AdminFaculty() {
   if (!(await isAuthenticated())) redirect('/admin/login');
-  const faculty = readJSON<FacultyMember[]>('faculty.json', []);
+  const faculty = await getFaculty();
 
   return (
     <div>

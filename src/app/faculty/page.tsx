@@ -15,8 +15,8 @@ function getInitials(name: string) {
     .toUpperCase();
 }
 
-export default function FacultyListPage() {
-  const faculty = getFaculty();
+export default async function FacultyListPage() {
+  const faculty = await getFaculty();
 
   return (
     <>

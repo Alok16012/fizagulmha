@@ -4,6 +4,7 @@
  * Only usable in Server Components / API routes (uses fs).
  */
 import { readJSON } from './dataStore';
+import { readFaculty } from './facultyStore';
 import { supabaseAdmin, BLOG_COLUMNS, COURSE_COLUMNS, BATCH_COLUMNS, isSupabaseConfigured } from './supabase';
 import { courses as defaultCourses } from '@/data/courses';
 import { batches as defaultBatches } from '@/data/batches';
@@ -65,12 +66,13 @@ export function getExamBySlug(slug: string): Exam | undefined {
   return getExams().find((e) => e.slug === slug);
 }
 
-export function getFaculty(): FacultyMember[] {
-  return readJSON<FacultyMember[]>('faculty.json', []);
+export async function getFaculty(): Promise<FacultyMember[]> {
+  return readFaculty();
 }
 
-export function getFacultyBySlug(slug: string): FacultyMember | undefined {
-  return getFaculty().find((f) => f.slug === slug);
+export async function getFacultyBySlug(slug: string): Promise<FacultyMember | undefined> {
+  const faculty = await getFaculty();
+  return faculty.find((f) => f.slug === slug);
 }
 
 export async function getBlogs(): Promise<Blog[]> {

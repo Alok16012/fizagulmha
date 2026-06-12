@@ -3,9 +3,8 @@ import Link from 'next/link';
 import { isAuthenticated } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { readJSON } from '@/lib/dataStore';
-import { getCourses, getBatches, getBlogs } from '@/lib/getData';
+import { getCourses, getBatches, getBlogs, getFaculty } from '@/lib/getData';
 import { exams as defaultExams } from '@/data/exams';
-import type { FacultyMember } from '@/data/faculty';
 
 export default async function AdminDashboard() {
   if (!(await isAuthenticated())) redirect('/admin/login');
@@ -13,7 +12,7 @@ export default async function AdminDashboard() {
   const courses = await getCourses();
   const batches = await getBatches();
   const exams = readJSON('exams.json', defaultExams);
-  const faculty = readJSON<FacultyMember[]>('faculty.json', []);
+  const faculty = await getFaculty();
   const blogs = await getBlogs();
 
   const stats = [

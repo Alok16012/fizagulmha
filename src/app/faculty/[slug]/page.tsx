@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const f = getFacultyBySlug(slug);
+  const f = await getFacultyBySlug(slug);
   if (!f) return { title: 'Faculty Not Found' };
   return {
     title: `${f.name} – ${f.subject} Expert | CLATians Faculty`,
@@ -19,10 +19,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function FacultyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const f = getFacultyBySlug(slug);
+  const f = await getFacultyBySlug(slug);
   if (!f) notFound();
 
-  const otherFaculty = getFaculty().filter((m) => m.slug !== slug).slice(0, 4);
+  const faculty = await getFaculty();
+  const otherFaculty = faculty.filter((m) => m.slug !== slug).slice(0, 4);
 
   return (
     <>

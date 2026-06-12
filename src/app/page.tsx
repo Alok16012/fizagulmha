@@ -14,8 +14,8 @@ import { getFaculty } from '@/lib/getData';
 
 export const dynamic = 'force-dynamic';
 
-export default function Home() {
-  const faculty = getFaculty();
+export default async function Home() {
+  const faculty = await getFaculty();
 
   return (
     <main>
