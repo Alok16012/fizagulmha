@@ -107,33 +107,39 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
   const isMentorship = data.category === 'mentorship';
   const isMock = data.category === 'mock';
   const accent = isMock ? '#3B82F6' : '#08BD80';
-  const pageNote = isMentorship
-    ? 'Mentorship detail page uses: description, highlights, chips, feature cards, roadmap/stages, more detail points, plans and FAQs.'
-    : isMock
-    ? 'Mock detail page uses: description, highlights, included chips, test coverage, analytics cards, practice flow, more detail points, plans and FAQs.'
+  const categoryName = isMentorship ? 'MENTORSHIP' : isMock ? 'MOCK' : '';
+  const pageNote = isMentorship || isMock
+    ? 'This category uses the same course cards and batch detail page style as Offline/Online. Fill the same sections below; only the text/category changes.'
     : '';
   const labels = {
-    description: isMentorship ? 'Hero overview / mentorship description' : isMock ? 'Hero overview / mock pack description' : 'Description',
-    highlights: isMentorship ? 'Hero highlights / mentorship promises' : isMock ? 'What You Get (hero checklist)' : "Highlights (hero — What's Included)",
-    chips: isMentorship ? 'Included tags / support modes' : isMock ? 'Included tags (shown as chips)' : 'Batch Includes (chips)',
-    syllabus: isMentorship ? 'Coverage / focus areas' : isMock ? 'Test Coverage' : 'Syllabus',
-    faculty: isMentorship ? 'Mentor / team names' : isMock ? 'Mock team / faculty names' : 'Faculty',
-    aboutTitle: isMentorship ? 'Mentorship Benefits' : isMock ? 'Mock Analytics Cards' : 'About the Batch',
-    aboutDuration: isMentorship ? 'Program duration label' : isMock ? 'Access duration label' : 'Duration (about)',
-    aboutStrategy: isMentorship ? 'Mentorship strategy summary' : isMock ? 'Mock practice summary' : 'Strategy summary (one-line, inside About box)',
-    aboutFeaturesLabel: isMentorship ? 'Benefits section label' : isMock ? 'Analytics section label' : 'Feature List Label (heading above the feature cards)',
-    featureCards: isMentorship ? 'Benefit Cards (title + subtitle)' : isMock ? 'Analytics / Feature Cards (title + subtitle)' : 'Feature Cards (title + subtitle)',
-    strategyTitle: isMentorship ? 'Roadmap / Mentorship Stages' : isMock ? 'Practice Flow / Steps' : 'Batch Strategy (expandable cards)',
-    strategyCards: isMentorship ? 'Roadmap cards (stage + details)' : isMock ? 'Practice flow cards (step + details)' : 'Batch Strategy Cards (heading + details)',
-    strategyHint: isMentorship
-      ? 'Each card becomes one roadmap stage on the mentorship detail page.'
-      : isMock
-      ? 'Each card becomes one practice-flow step on the mock detail page.'
-      : 'Each card shows as an expandable accordion on the batch page — heading on top, detail points inside. Add as many as you need (e.g. Subject Covering, Mock Test Series).',
-    plansTitle: isMentorship ? 'Mentorship Plans / Packages' : isMock ? 'Mock Pack Plans' : 'Pricing Plans (Choose Your Plan)',
-    moreDetailsTitle: isMentorship ? 'Extra Mentorship Details' : isMock ? 'Why This Mock Pack Works' : 'More Details (numbered points)',
-    moreDetails: isMentorship ? 'Extra points shown on the mentorship detail page' : isMock ? 'Extra points shown on the mock detail page' : 'Detail points (shown as 01, 02, 03 …)',
+    description: 'About / Description',
+    highlights: "What's Included (hero checklist)",
+    chips: 'Batch Includes (chips)',
+    syllabus: 'Syllabus / Coverage',
+    faculty: 'Faculty / Mentor / Team',
+    aboutTitle: 'Special Features',
+    aboutDuration: 'Duration line shown in Special Features',
+    aboutStrategy: 'Strategy line shown in Special Features',
+    aboutFeaturesLabel: 'Feature List Heading',
+    featureCards: 'Feature Cards (title + subtitle)',
+    strategyTitle: 'Batch Strategy (expandable cards)',
+    strategyCards: 'Batch Strategy Cards (heading + details)',
+    strategyHint: 'Each card shows as an expandable accordion on the batch page — heading on top, detail points inside. Add as many as you need.',
+    plansTitle: 'Pricing Plans (Choose Your Plan)',
+    moreDetailsTitle: 'More Details (numbered points)',
+    moreDetails: 'Detail points shown as 01, 02, 03',
   };
+
+  function handleCourseChange(slug: string) {
+    const selected = courses.find((c) => c.slug === slug);
+    setData((d) => ({
+      ...d,
+      courseSlug: slug,
+      ...(selected && ['offline', 'online', 'mentorship', 'mock'].includes(selected.category)
+        ? { category: selected.category as Batch['category'] }
+        : {}),
+    }));
+  }
 
   return (
     <div>
@@ -152,7 +158,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
         {pageNote && (
           <div className="rounded-2xl border bg-white px-5 py-4 text-sm font-semibold text-gray-700" style={{ borderColor: `${accent}33`, boxShadow: `0 10px 30px ${accent}12` }}>
             <span className="mr-2 rounded-full px-2 py-1 text-xs font-black text-white" style={{ background: accent }}>
-              {isMock ? 'MOCK' : 'MENTORSHIP'}
+              {categoryName}
             </span>
             {pageNote}
           </div>
@@ -167,7 +173,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
               <TextInput value={data.slug} onChange={(v) => set('slug', v)} placeholder="e.g. clat-2027-foundation" required />
             </FieldGroup>
             <FieldGroup label="Course">
-              <SelectInput value={data.courseSlug} onChange={(v) => set('courseSlug', v)} options={courseOptions} />
+              <SelectInput value={data.courseSlug} onChange={handleCourseChange} options={courseOptions} />
             </FieldGroup>
             <FieldGroup label="Exam">
               <TextInput value={data.exam} onChange={(v) => set('exam', v)} placeholder="e.g. CLAT" />
@@ -237,9 +243,9 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
           <FieldGroup label={labels.description}>
             <TextareaInput value={data.description} onChange={(v) => set('description', v)} rows={4} placeholder="Batch description..." />
           </FieldGroup>
-          <StringArrayEditor label={labels.highlights} items={data.highlights} onChange={(v) => set('highlights', v)} placeholder={isMock ? 'e.g. Full-length CLAT mock with detailed solutions' : 'e.g. Weekly personal mentor review'} />
-          <StringArrayEditor label={labels.chips} items={data.chips} onChange={(v) => set('chips', v)} placeholder={isMock ? 'e.g. Online Test Access' : 'e.g. Personal Mentorship'} />
-          <StringArrayEditor label={labels.syllabus} items={data.syllabus} onChange={(v) => set('syllabus', v)} placeholder={isMock ? 'e.g. Legal Reasoning' : 'e.g. Mock analysis and weekly planning'} />
+          <StringArrayEditor label={labels.highlights} items={data.highlights} onChange={(v) => set('highlights', v)} placeholder={isMock ? 'e.g. Full-length CLAT mock with detailed solutions' : isMentorship ? 'e.g. Weekly personal mentor review' : 'e.g. Daily classroom sessions'} />
+          <StringArrayEditor label={labels.chips} items={data.chips} onChange={(v) => set('chips', v)} placeholder={isMock ? 'e.g. Online Test Access' : isMentorship ? 'e.g. Personal Mentorship' : 'e.g. Offline Classes'} />
+          <StringArrayEditor label={labels.syllabus} items={data.syllabus} onChange={(v) => set('syllabus', v)} placeholder={isMock ? 'e.g. Legal Reasoning' : isMentorship ? 'e.g. Mock analysis and weekly planning' : 'e.g. English Language'} />
           <StringArrayEditor label={labels.faculty} items={data.faculty} onChange={(v) => set('faculty', v)} placeholder="e.g. A.K. Singh" />
         </SectionCard>
 

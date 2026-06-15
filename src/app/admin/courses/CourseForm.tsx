@@ -13,6 +13,24 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
   const [data, setData] = useState<Course>({ ...course });
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState<{ msg: string; type: 'success' | 'error' } | null>(null);
+  const isMentorship = data.category === 'mentorship';
+  const isMock = data.category === 'mock';
+  const categoryNote = isMentorship || isMock
+    ? 'This category uses the same user-side course detail style as Offline/Online. Update the text below, then add its packages from Admin > Batches.'
+    : '';
+  const featureLabel = isMock
+    ? 'Feature List for mock test course'
+    : isMentorship
+    ? 'Feature List for mentorship course'
+    : 'Feature List';
+  const audiencePlaceholder = isMock
+    ? 'e.g. Aspirants who want exam-like CLAT practice'
+    : isMentorship
+    ? 'e.g. Self-study aspirants who need accountability'
+    : 'e.g. Students preparing for CLAT';
+  const includeLabelPlaceholder = isMock ? 'Mocks' : isMentorship ? 'Mentor Access' : 'Live Classes';
+  const includeValuePlaceholder = isMock ? '20 Tests' : isMentorship ? 'Dedicated Mentor' : 'Daily Sessions';
+  const modulePlaceholder = isMock ? 'e.g. CLAT Mock Test Series' : isMentorship ? 'e.g. Phase 1: Diagnostic Assessment' : 'e.g. Legal Reasoning';
 
   function set<K extends keyof Course>(key: K, val: Course[K]) {
     setData((d) => ({ ...d, [key]: val }));
@@ -148,10 +166,10 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
           </div>
         </SectionCard>
 
-        <SectionCard title={data.category === 'mentorship' ? 'Mentorship Page Details' : 'Course Details'}>
-          {data.category === 'mentorship' && (
+        <SectionCard title="Course Details">
+          {categoryNote && (
             <div className="rounded-xl border border-green-100 bg-green-50 px-4 py-3 text-sm font-semibold text-green-800">
-              These fields update the full mentorship detail page on the user side.
+              {categoryNote}
             </div>
           )}
           <div className="grid md:grid-cols-4 gap-4">
@@ -170,25 +188,25 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
           </div>
         </SectionCard>
 
-        <SectionCard title={data.category === 'mentorship' ? 'Highlights & Benefits' : 'Features'}>
+        <SectionCard title="Features">
           <StringArrayEditor
-            label={data.category === 'mentorship' ? 'Quick Highlights shown on mentorship page' : 'Feature List'}
+            label={featureLabel}
             items={data.features || []}
             onChange={(items) => set('features', items)}
-            placeholder="e.g. Weekly Strategy Sessions"
+            placeholder={isMock ? 'e.g. Section-wise performance report' : isMentorship ? 'e.g. Weekly Strategy Sessions' : 'e.g. Daily live classes'}
           />
         </SectionCard>
 
-        <SectionCard title={data.category === 'mentorship' ? 'Who This Mentorship Is For' : 'Who This Course Is For'}>
+        <SectionCard title="Who This Course Is For">
           <StringArrayEditor
             label="Audience / eligibility points"
             items={data.whoFor || []}
             onChange={(items) => set('whoFor', items)}
-            placeholder="e.g. Self-study aspirants who need accountability"
+            placeholder={audiencePlaceholder}
           />
         </SectionCard>
 
-        <SectionCard title={data.category === 'mentorship' ? 'Program Detail Cards' : 'What Is Included'}>
+        <SectionCard title="What Is Included">
           <div className="space-y-3">
             {(data.includes || []).map((item, index) => (
               <div key={index} className="grid md:grid-cols-[80px_1fr_1fr_auto] gap-3 items-end rounded-xl border border-gray-100 p-3">
@@ -196,10 +214,10 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
                   <TextInput value={item.icon} onChange={(v) => updateInclude(index, 'icon', v)} placeholder="✓" />
                 </FieldGroup>
                 <FieldGroup label="Label">
-                  <TextInput value={item.label} onChange={(v) => updateInclude(index, 'label', v)} placeholder="Mentor Access" />
+                  <TextInput value={item.label} onChange={(v) => updateInclude(index, 'label', v)} placeholder={includeLabelPlaceholder} />
                 </FieldGroup>
                 <FieldGroup label="Value">
-                  <TextInput value={item.value} onChange={(v) => updateInclude(index, 'value', v)} placeholder="Dedicated Mentor" />
+                  <TextInput value={item.value} onChange={(v) => updateInclude(index, 'value', v)} placeholder={includeValuePlaceholder} />
                 </FieldGroup>
                 <button type="button" onClick={() => removeInclude(index)}
                   className="h-10 px-3 rounded-xl text-sm font-bold text-red-500 hover:bg-red-50">
@@ -215,14 +233,14 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
           </button>
         </SectionCard>
 
-        <SectionCard title={data.category === 'mentorship' ? 'Roadmap / Stages' : 'Curriculum'}>
+        <SectionCard title="Curriculum">
           <div className="space-y-4">
             {(data.curriculum || []).map((item, index) => (
               <div key={index} className="rounded-xl border border-gray-100 p-4 space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="flex-1">
-                    <FieldGroup label={data.category === 'mentorship' ? 'Stage Title' : 'Module Title'}>
-                      <TextInput value={item.module} onChange={(v) => updateCurriculum(index, 'module', v)} placeholder="e.g. Phase 1: Diagnostic Assessment" />
+                    <FieldGroup label="Module / Stage Title">
+                      <TextInput value={item.module} onChange={(v) => updateCurriculum(index, 'module', v)} placeholder={modulePlaceholder} />
                     </FieldGroup>
                   </div>
                   <button type="button" onClick={() => removeCurriculum(index)}
@@ -230,11 +248,11 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
                     Remove
                   </button>
                 </div>
-                <FieldGroup label={data.category === 'mentorship' ? 'Stage Points (one per line)' : 'Topics (one per line)'}>
+                <FieldGroup label="Topics / Points (one per line)">
                   <TextareaInput
                     value={(item.topics || []).join('\n')}
                     onChange={(v) => updateCurriculum(index, 'topics', v.split('\n'))}
-                    placeholder={'Preparation audit\nGoal setting\nWeakness identification'}
+                    placeholder={isMock ? 'Full-length mock\nDetailed solutions\nPerformance report' : 'Preparation audit\nGoal setting\nWeakness identification'}
                     rows={4}
                   />
                 </FieldGroup>
@@ -244,7 +262,7 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
           <button type="button" onClick={addCurriculum}
             className="text-sm font-semibold px-3 py-2 rounded-lg border-2 border-dashed transition-colors"
             style={{ borderColor: '#08BD80', color: '#08BD80' }}>
-            + Add {data.category === 'mentorship' ? 'Stage' : 'Module'}
+            + Add Module
           </button>
         </SectionCard>
 

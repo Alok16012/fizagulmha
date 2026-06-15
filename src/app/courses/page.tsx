@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { courses as staticCourses, type Course } from '@/data/courses';
 import { batches as staticBatches, type Batch } from '@/data/batches';
 import Navbar from '@/components/Navbar';
@@ -241,28 +241,6 @@ function CoursePanels({ categoryKey, courses, batches }: { categoryKey: TabKey; 
 
       {/* ── Right panel — batches ── */}
       <div className="flex-1 min-w-0">
-        {selectedCourse && (
-          <div className="mb-5 flex items-start justify-between gap-4">
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
-                style={{ background: selectedCourse.bg }}>
-                {selectedCourse.icon}
-              </div>
-              <div className="min-w-0">
-                <h2 className="font-black text-xl" style={{ color: '#0D1837' }}>{selectedCourse.title}</h2>
-                <p className="text-sm" style={{ color: '#6B7280' }}>{selectedCourse.tagline}</p>
-              </div>
-            </div>
-            <a
-              href={`/courses/${selectedCourse.slug}`}
-              className="px-4 py-2.5 rounded-xl text-xs font-black text-white hover:opacity-90 transition-opacity flex-shrink-0"
-              style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}
-            >
-              View Course Details →
-            </a>
-          </div>
-        )}
-
         {selectedBatches.length === 0 ? (
           <div className="text-center py-20 rounded-2xl"
             style={{ background: '#F8FAFC', border: '1.5px dashed #E9EEF2' }}>
@@ -338,6 +316,7 @@ function MobileBatchCard({ batch }: { batch: Batch }) {
 
 // ─── Main Page ─────────────────────────────────────────────────────────────
 function CoursesPageInner() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const catParam     = searchParams.get('cat') as TabKey | null;
   const validTabs: TabKey[] = ['offline', 'online', 'mentorship', 'mock'];
@@ -356,6 +335,11 @@ function CoursesPageInner() {
     if (catParam && validTabs.includes(catParam)) setActiveTab(catParam);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [catParam]);
+
+  function selectTab(tab: TabKey) {
+    setActiveTab(tab);
+    router.replace(`/courses?cat=${tab}`, { scroll: false });
+  }
 
   function getTabCount(key: TabKey) {
     return courses.filter((c) => c.category === key).length;
@@ -417,7 +401,7 @@ function CoursesPageInner() {
                 return (
                   <button
                     key={tab.key}
-                    onClick={() => setActiveTab(tab.key)}
+                    onClick={() => selectTab(tab.key)}
                     className="flex items-center gap-1.5 md:gap-2 px-4 md:px-6 py-3.5 md:py-4 text-xs md:text-sm font-bold whitespace-nowrap transition-all flex-shrink-0 border-b-2 -mb-0.5"
                     style={isActive
                       ? { color: '#08BD80', borderBottomColor: '#08BD80' }
@@ -465,23 +449,6 @@ function CoursesPageInner() {
                   );
                 })}
               </div>
-
-              {/* Selected course header */}
-              {mobileCourse && (
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px', marginBottom: '14px', padding: '12px', background: 'white', borderRadius: '14px', border: '1px solid #E9EEF2' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: mobileCourse.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>{mobileCourse.icon}</div>
-                    <div style={{ minWidth: 0 }}>
-                      <div style={{ fontWeight: 800, fontSize: '14px', color: '#0D1837' }}>{mobileCourse.title}</div>
-                      <div style={{ fontSize: '11px', color: '#6B7280' }}>{mobileCourse.tagline}</div>
-                    </div>
-                  </div>
-                  <a href={`/courses/${mobileCourse.slug}`}
-                    style={{ flexShrink: 0, padding: '9px 11px', borderRadius: '10px', background: '#0D1837', color: 'white', fontWeight: 800, fontSize: '11px', textDecoration: 'none' }}>
-                    Details →
-                  </a>
-                </div>
-              )}
 
               {/* Batch cards */}
               {mobileFiltered.length === 0 ? (

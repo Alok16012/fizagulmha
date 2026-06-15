@@ -3,8 +3,6 @@ import { getCourseBySlug, getBatchBySlug, getBatchesByCourse } from '@/lib/getDa
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BatchStrategy from './BatchStrategy';
-import ClatNavigatorPageContent, { clatNavigatorFaqSchema } from '@/components/ClatNavigatorPageContent';
-import MockBatchPageContent from '@/components/MockBatchPageContent';
 import type { Metadata } from 'next';
 
 // Always render with fresh data so admin edits (fee, offer, etc.) show
@@ -60,19 +58,6 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
   const st           = statusConfig[batch.status];
   const palette      = cardPalettes[batch.batchType] || { from: '#060d1f', to: '#0D1837', accent: '#08BD80' };
   const typeStyle    = batchTypeColors[batch.batchType] || { bg: '#f3f4f6', color: '#374151' };
-
-  if (course.category === 'mentorship' && batch.slug === 'clat-navigator') {
-    return (
-      <>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(clatNavigatorFaqSchema) }} />
-        <ClatNavigatorPageContent course={course} batch={batch} />
-      </>
-    );
-  }
-
-  if (course.category === 'mock' || batch.category === 'mock') {
-    return <MockBatchPageContent course={course} batch={batch} otherBatches={otherBatches} />;
-  }
 
   const sampleReviews = [
     { name: 'Sumit Kumar',  badge: 'AIR 34',  text: 'This batch completely transformed my preparation. Small batch size means A.K. Sir knows every student personally. Highly recommend!' },
