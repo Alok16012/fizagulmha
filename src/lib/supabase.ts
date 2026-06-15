@@ -54,6 +54,8 @@ export const COURSE_COLUMNS = 'slug, title, category, icon, color, bg, tagline, 
 
 export const BATCH_COLUMNS = 'slug, courseSlug:course_slug, category, name, exam, batchCode:batch_code, startDate:start_date, endDate:end_date, duration, schedule, mode, seats, filled, fee, originalFee:original_fee, emi, offer, color, bg, status, language, batchType:batch_type, chips, faculty, highlights, syllabus, description, details';
 
+export const EXAM_COLUMNS = 'slug, code, name, fullName:full_name, tagline, icon, color, bg, seats, colleges, duration, questions, marks, negativeMark:negative_mark, conductedBy:conducted_by, mode, overview, eligibility, examPattern:exam_pattern, syllabus, importantDates:important_dates, preparationTips:preparation_tips, faqs, applicationFee:application_fee, nluList:nlu_list, latestUpdates:latest_updates, applicationProcess:application_process';
+
 export function courseToRow(c: Record<string, unknown>) {
   return {
     slug: c.slug,
@@ -107,5 +109,37 @@ export function batchToRow(b: Record<string, unknown>) {
     syllabus: b.syllabus ?? [],
     description: b.description ?? '',
     details: b.details ?? {},
+  };
+}
+
+export function examToRow(e: Record<string, unknown>) {
+  return {
+    slug: e.slug,
+    code: e.code ?? '',
+    name: e.name ?? '',
+    full_name: e.fullName ?? '',
+    tagline: e.tagline ?? '',
+    icon: e.icon ?? '🏛️',
+    color: e.color ?? '#08BD80',
+    bg: e.bg ?? '#E6FAF4',
+    seats: e.seats ?? '',
+    colleges: e.colleges ?? '',
+    duration: e.duration ?? '',
+    questions: e.questions ?? 0,
+    marks: e.marks ?? 0,
+    negative_mark: e.negativeMark ?? '',
+    conducted_by: e.conductedBy ?? '',
+    mode: e.mode ?? '',
+    overview: e.overview ?? '',
+    eligibility: e.eligibility ?? [],
+    exam_pattern: e.examPattern ?? [],
+    syllabus: e.syllabus ?? [],
+    important_dates: e.importantDates ?? [],
+    preparation_tips: e.preparationTips ?? [],
+    faqs: e.faqs ?? [],
+    application_fee: e.applicationFee ?? [],
+    nlu_list: e.nluList ?? [],
+    latest_updates: e.latestUpdates ?? [],
+    application_process: e.applicationProcess ?? [],
   };
 }

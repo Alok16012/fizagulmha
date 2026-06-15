@@ -2,12 +2,11 @@ export const dynamic = "force-dynamic";
 import Link from 'next/link';
 import { isAuthenticated } from '@/lib/auth';
 import { redirect } from 'next/navigation';
-import { readJSON } from '@/lib/dataStore';
-import { exams as defaultExams } from '@/data/exams';
+import { getExams } from '@/lib/getData';
 
 export default async function AdminExams() {
   if (!(await isAuthenticated())) redirect('/admin/login');
-  const exams = readJSON('exams.json', defaultExams) as typeof defaultExams;
+  const exams = await getExams();
 
   return (
     <div>

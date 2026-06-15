@@ -5,7 +5,7 @@
  */
 import { readJSON } from './dataStore';
 import { readFaculty } from './facultyStore';
-import { supabaseAdmin, BLOG_COLUMNS, COURSE_COLUMNS, BATCH_COLUMNS, isSupabaseConfigured } from './supabase';
+import { supabaseAdmin, BLOG_COLUMNS, COURSE_COLUMNS, BATCH_COLUMNS, EXAM_COLUMNS, isSupabaseConfigured } from './supabase';
 import { courses as defaultCourses } from '@/data/courses';
 import { batches as defaultBatches } from '@/data/batches';
 import { exams as defaultExams } from '@/data/exams';
@@ -194,12 +194,32 @@ function createDefaultClatNavigatorBatch(courseSlug: string): Batch {
   };
 }
 
-export function getExams(): Exam[] {
+function mergeExamsWithDefaults(dbExams: Exam[]): Exam[] {
+  const merged = new Map<string, Exam>();
+  for (const exam of defaultExams) merged.set(exam.slug, exam);
+  for (const exam of dbExams) merged.set(exam.slug, exam);
+  return Array.from(merged.values());
+}
+
+export async function getExams(): Promise<Exam[]> {
+  if (isSupabaseConfigured()) {
+    try {
+      const { data, error } = await supabaseAdmin()
+        .from('exams')
+        .select(EXAM_COLUMNS)
+        .order('created_at', { ascending: true });
+      if (error) throw error;
+      if (data) return mergeExamsWithDefaults(data as unknown as Exam[]);
+    } catch {
+      // table missing or unreachable — fall back to local/default data
+    }
+  }
   return readJSON<Exam[]>('exams.json', defaultExams);
 }
 
-export function getExamBySlug(slug: string): Exam | undefined {
-  return getExams().find((e) => e.slug === slug);
+export async function getExamBySlug(slug: string): Promise<Exam | undefined> {
+  const exams = await getExams();
+  return exams.find((e) => e.slug === slug);
 }
 
 export async function getFaculty(): Promise<FacultyMember[]> {

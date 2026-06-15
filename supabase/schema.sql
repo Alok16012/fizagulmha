@@ -38,11 +38,44 @@ create table if not exists public.blog_categories (
   created_at timestamptz not null default now()
 );
 
+-- Exam pages (managed from admin → Exams page).
+create table if not exists public.exams (
+  slug text primary key,
+  code text not null default '',
+  name text not null default '',
+  full_name text not null default '',
+  tagline text default '',
+  icon text default '🏛️',
+  color text default '#08BD80',
+  bg text default '#E6FAF4',
+  seats text default '',
+  colleges text default '',
+  duration text default '',
+  questions integer default 0,
+  marks integer default 0,
+  negative_mark text default '',
+  conducted_by text default '',
+  mode text default '',
+  overview text default '',
+  eligibility jsonb default '[]',
+  exam_pattern jsonb default '[]',
+  syllabus jsonb default '[]',
+  important_dates jsonb default '[]',
+  preparation_tips jsonb default '[]',
+  faqs jsonb default '[]',
+  application_fee jsonb default '[]',
+  nlu_list jsonb default '[]',
+  latest_updates jsonb default '[]',
+  application_process jsonb default '[]',
+  created_at timestamptz default now()
+);
+
 -- The server talks to these tables with the service-role key, which bypasses
 -- RLS. Enabling RLS with no public policies keeps the anon key locked out.
 alter table public.leads enable row level security;
 alter table public.blogs enable row level security;
 alter table public.blog_categories enable row level security;
+alter table public.exams enable row level security;
 
 -- ── Migrations (safe to re-run) ──────────────────────────────────────────────
 -- Track which form submitted the lead (contact / admission).

@@ -1,17 +1,19 @@
 import { notFound } from 'next/navigation';
-import { exams } from '@/data/exams';
-import { getExamBySlug } from '@/lib/getData';
+import { getExamBySlug, getExams } from '@/lib/getData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
 
-export function generateStaticParams() {
+export const dynamic = 'force-dynamic';
+
+export async function generateStaticParams() {
+  const exams = await getExams();
   return exams.map((e) => ({ slug: e.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const exam = getExamBySlug(slug);
+  const exam = await getExamBySlug(slug);
   if (!exam) return { title: 'Exam Not Found' };
   return {
     title: `${exam.code} 2026 – ${exam.fullName} | CLATians`,
@@ -21,9 +23,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ExamPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const exam = getExamBySlug(slug);
+  const exam = await getExamBySlug(slug);
   if (!exam) notFound();
 
+  const exams = await getExams();
   const otherExams = exams.filter((e) => e.slug !== slug).slice(0, 4);
 
   return (
