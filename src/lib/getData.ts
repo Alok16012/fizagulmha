@@ -47,10 +47,7 @@ export async function getBatches(): Promise<Batch[]> {
       .select(BATCH_COLUMNS)
       .order('created_at', { ascending: true });
     if (error) throw error;
-    if (data !== null && data.length > 0) {
-      batches = data as unknown as Batch[];
-      return withDefaultMentorshipBatch(batches);
-    }
+    if (data !== null) return data as unknown as Batch[];
   } catch {}
   batches = readJSON<Batch[]>('batches.json', defaultBatches);
   return withDefaultMentorshipBatch(batches);
