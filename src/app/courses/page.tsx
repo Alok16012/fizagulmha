@@ -3,17 +3,9 @@ import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { courses as staticCourses, type Course } from '@/data/courses';
 import { batches as staticBatches, type Batch } from '@/data/batches';
+import { defaultCourseCategories, type CourseCategory } from '@/data/courseCategories';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
-type TabKey = 'offline' | 'online' | 'mentorship' | 'mock';
-
-const tabs: { key: TabKey; label: string; icon: string }[] = [
-  { key: 'offline', label: 'Offline Course', icon: '🏫' },
-  { key: 'online', label: 'Online Course', icon: '💻' },
-  { key: 'mentorship', label: 'Mentorship', icon: '🎯' },
-  { key: 'mock', label: 'Mock Tests', icon: '📝' },
-];
 
 const cardPalettes: Record<string, { from: string; to: string; avatarBg: string }> = {
   'Target Batch':     { from: '#0f3460', to: '#1a6b5c', avatarBg: '#08BD80' },
@@ -152,7 +144,7 @@ function BatchCard({ batch }: { batch: Batch }) {
 }
 
 // ─── Two-panel layout ──────────────────────────────────────────────────────
-function CoursePanels({ categoryKey, courses, batches }: { categoryKey: TabKey; courses: Course[]; batches: Batch[] }) {
+function CoursePanels({ categoryKey, courses, batches }: { categoryKey: string; courses: Course[]; batches: Batch[] }) {
   const filtered = courses.filter((c) => c.category === categoryKey);
   const [selectedSlug, setSelectedSlug] = useState(filtered[0]?.slug ?? '');
 
@@ -318,10 +310,10 @@ function MobileBatchCard({ batch }: { batch: Batch }) {
 function CoursesPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const catParam     = searchParams.get('cat') as TabKey | null;
-  const validTabs: TabKey[] = ['offline', 'online', 'mentorship', 'mock'];
-  const initial: TabKey     = catParam && validTabs.includes(catParam) ? catParam : 'offline';
-  const [activeTab, setActiveTab] = useState<TabKey>(initial);
+  const catParam = searchParams.get('cat');
+  const [categories, setCategories] = useState<CourseCategory[]>(defaultCourseCategories);
+  const initial = catParam || defaultCourseCategories[0].key;
+  const [activeTab, setActiveTab] = useState(initial);
   const [courses, setCourses] = useState<Course[]>(staticCourses);
   const [batches, setBatches] = useState<Batch[]>(staticBatches);
 
@@ -329,19 +321,23 @@ function CoursesPageInner() {
   useEffect(() => {
     fetch('/api/courses').then(r => r.json()).then(setCourses).catch(() => {});
     fetch('/api/batches').then(r => r.json()).then(setBatches).catch(() => {});
+    fetch('/api/course-categories').then(r => r.json()).then((items: CourseCategory[]) => {
+      if (items.length > 0) setCategories(items);
+    }).catch(() => {});
   }, []);
 
   useEffect(() => {
-    if (catParam && validTabs.includes(catParam)) setActiveTab(catParam);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [catParam]);
+    const validKeys = categories.map((category) => category.key);
+    if (catParam && validKeys.includes(catParam)) setActiveTab(catParam);
+    else if (!validKeys.includes(activeTab) && categories[0]) setActiveTab(categories[0].key);
+  }, [catParam, categories, activeTab]);
 
-  function selectTab(tab: TabKey) {
+  function selectTab(tab: string) {
     setActiveTab(tab);
     router.replace(`/courses?cat=${tab}`, { scroll: false });
   }
 
-  function getTabCount(key: TabKey) {
+  function getTabCount(key: string) {
     return courses.filter((c) => c.category === key).length;
   }
 
@@ -395,7 +391,7 @@ function CoursesPageInner() {
           style={{ background: 'white', borderBottom: '2px solid #E9EEF2', boxShadow: '0 4px 12px rgba(0,0,0,0.06)' }}>
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex items-stretch overflow-x-auto scrollbar-none">
-              {tabs.map((tab) => {
+              {categories.map((tab) => {
                 const count    = getTabCount(tab.key);
                 const isActive = activeTab === tab.key;
                 return (

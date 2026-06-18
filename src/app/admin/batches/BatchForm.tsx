@@ -91,12 +91,24 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
     { value: 'filling-fast', label: '🔥 Filling Fast' },
   ];
 
-  const categoryOptions = [
-    { value: 'offline', label: 'Offline' },
-    { value: 'online', label: 'Online' },
-    { value: 'mentorship', label: 'Mentorship' },
-    { value: 'mock', label: 'Mock Test' },
-  ];
+  const categoryLabels: Record<string, string> = {
+    offline: 'Offline',
+    online: 'Online',
+    mentorship: 'Mentorship',
+    mock: 'Mock Test',
+  };
+  const availableCategories = Array.from(new Set([
+    'offline',
+    'online',
+    'mentorship',
+    'mock',
+    ...courses.map((course) => course.category).filter(Boolean),
+    data.category,
+  ]));
+  const categoryOptions = availableCategories.map((category) => ({
+    value: category,
+    label: categoryLabels[category] || category.replace(/(^|-)([a-z])/g, (_, space, letter) => `${space ? ' ' : ''}${letter.toUpperCase()}`),
+  }));
 
   const languageOptions = [
     { value: 'Hinglish', label: 'Hinglish' },
@@ -135,9 +147,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
     setData((d) => ({
       ...d,
       courseSlug: slug,
-      ...(selected && ['offline', 'online', 'mentorship', 'mock'].includes(selected.category)
-        ? { category: selected.category as Batch['category'] }
-        : {}),
+      ...(selected ? { category: selected.category } : {}),
     }));
   }
 

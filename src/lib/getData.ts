@@ -5,17 +5,33 @@
  */
 import { readJSON } from './dataStore';
 import { readFaculty } from './facultyStore';
-import { supabaseAdmin, BLOG_COLUMNS, COURSE_COLUMNS, BATCH_COLUMNS, EXAM_COLUMNS, isSupabaseConfigured } from './supabase';
+import { supabaseAdmin, BLOG_COLUMNS, COURSE_COLUMNS, BATCH_COLUMNS, EXAM_COLUMNS, COURSE_CATEGORY_COLUMNS, isSupabaseConfigured } from './supabase';
 import { courses as defaultCourses } from '@/data/courses';
 import { batches as defaultBatches } from '@/data/batches';
 import { exams as defaultExams } from '@/data/exams';
 import { blogs as defaultBlogs } from '@/data/blogs';
+import { defaultCourseCategories } from '@/data/courseCategories';
 
 import type { Course } from '@/data/courses';
 import type { Batch } from '@/data/batches';
 import type { Exam } from '@/data/exams';
 import type { FacultyMember } from '@/data/faculty';
 import type { Blog } from '@/data/blogs';
+import type { CourseCategory } from '@/data/courseCategories';
+
+export async function getCourseCategories(): Promise<CourseCategory[]> {
+  if (isSupabaseConfigured()) {
+    try {
+      const { data, error } = await supabaseAdmin()
+        .from('course_categories')
+        .select(COURSE_CATEGORY_COLUMNS)
+        .order('created_at', { ascending: true });
+      if (error) throw error;
+      if (data !== null) return data as CourseCategory[];
+    } catch {}
+  }
+  return defaultCourseCategories;
+}
 
 export async function getCourses(): Promise<Course[]> {
   if (!isSupabaseConfigured()) return withDefaultMockCourse(readJSON<Course[]>('courses.json', defaultCourses));

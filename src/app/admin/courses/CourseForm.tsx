@@ -2,13 +2,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Course } from '@/data/courses';
+import type { CourseCategory } from '@/data/courseCategories';
 import { adminFetch } from '@/lib/adminFetch';
 import {
   FieldGroup, TextInput, TextareaInput,
   SectionCard, FormActions, Toast, StringArrayEditor,
 } from '@/components/admin/AdminFormHelpers';
 
-export default function CourseEditForm({ course, isNew }: { course: Course; isNew: boolean }) {
+export default function CourseEditForm({ course, isNew, categories }: { course: Course; isNew: boolean; categories: CourseCategory[] }) {
   const router = useRouter();
   const [data, setData] = useState<Course>({ ...course });
   const [loading, setLoading] = useState(false);
@@ -129,10 +130,9 @@ export default function CourseEditForm({ course, isNew }: { course: Course; isNe
                 onChange={(e) => set('category', e.target.value as Course['category'])}
                 className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-green-400"
               >
-                <option value="offline">🏫 Offline</option>
-                <option value="online">💻 Online</option>
-                <option value="mentorship">🎯 Mentorship</option>
-                <option value="mock">📝 Mock Tests</option>
+                {categories.map((category) => (
+                  <option key={category.key} value={category.key}>{category.icon} {category.label}</option>
+                ))}
               </select>
             </FieldGroup>
             <FieldGroup label="Mode">

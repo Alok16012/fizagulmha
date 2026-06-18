@@ -24,6 +24,7 @@ export const LEAD_COLUMNS = 'id, timestamp:created_at, name, phone, email, progr
 export const LEAD_COLUMNS_BASE = 'id, timestamp:created_at, name, phone, email, program, exam, message';
 
 export const CATEGORY_COLUMNS = 'id, name, color';
+export const COURSE_CATEGORY_COLUMNS = 'key, label, icon, color, accent, bg';
 
 export const BLOG_COLUMNS =
   'slug, title, excerpt, content, category, categoryColor:category_color, author, authorAvatar:author_avatar, date, readTime:read_time, tags';

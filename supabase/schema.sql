@@ -70,12 +70,23 @@ create table if not exists public.exams (
   created_at timestamptz default now()
 );
 
+create table if not exists public.course_categories (
+  key text primary key,
+  label text not null,
+  icon text not null default '📚',
+  color text not null default '#0D1837',
+  accent text not null default '#08BD80',
+  bg text not null default '#E6FAF4',
+  created_at timestamptz not null default now()
+);
+
 -- The server talks to these tables with the service-role key, which bypasses
 -- RLS. Enabling RLS with no public policies keeps the anon key locked out.
 alter table public.leads enable row level security;
 alter table public.blogs enable row level security;
 alter table public.blog_categories enable row level security;
 alter table public.exams enable row level security;
+alter table public.course_categories enable row level security;
 
 -- ── Migrations (safe to re-run) ──────────────────────────────────────────────
 -- Track which form submitted the lead (contact / admission).
@@ -87,3 +98,10 @@ insert into public.blog_categories (name, color) values
   ('Current Affairs', '#f97316'),
   ('Law Preparation', '#08BD80')
 on conflict (name) do nothing;
+
+insert into public.course_categories (key, label, icon, color, accent, bg) values
+  ('offline', 'Offline Course', '🏫', '#0f3460', '#08BD80', '#E6FAF4'),
+  ('online', 'Online Course', '💻', '#6d28d9', '#8b5cf6', '#ede9fe'),
+  ('mentorship', 'Mentorship', '🎯', '#065f46', '#34d399', '#d1fae5'),
+  ('mock', 'Mock Tests', '📝', '#92400e', '#f59e0b', '#fef3c7')
+on conflict (key) do nothing;

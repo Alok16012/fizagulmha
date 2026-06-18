@@ -43,7 +43,7 @@ const emptyBatch: Batch = {
   },
 };
 
-export default async function NewBatchPage({ searchParams }: { searchParams: Promise<{ from?: string }> }) {
+export default async function NewBatchPage({ searchParams }: { searchParams: Promise<{ from?: string; courseSlug?: string }> }) {
   if (!(await isAuthenticated())) redirect('/admin/login');
   const courses = await getCourses();
   const courseOptions = courses.map((c) => ({ slug: c.slug, title: c.title, category: c.category }));
@@ -51,8 +51,13 @@ export default async function NewBatchPage({ searchParams }: { searchParams: Pro
   // "Duplicate" flow: /admin/batches/new?from=<slug> pre-fills the form from an
   // existing batch so the admin can tweak and save it as a brand-new batch.
   // The slug and enrollment are reset so nothing collides with the source batch.
-  const { from } = await searchParams;
-  let initial: Batch = { ...emptyBatch, courseSlug: courseOptions[0]?.slug ?? '' };
+  const { from, courseSlug } = await searchParams;
+  const selectedCourse = courses.find((course) => course.slug === courseSlug);
+  let initial: Batch = {
+    ...emptyBatch,
+    courseSlug: selectedCourse?.slug ?? courseOptions[0]?.slug ?? '',
+    category: selectedCourse?.category ?? emptyBatch.category,
+  };
   if (from) {
     const source = await getBatchBySlug(from);
     if (source) {

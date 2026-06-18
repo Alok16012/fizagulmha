@@ -3,6 +3,7 @@ import { isAuthenticated } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import CourseEditForm from '../CourseForm';
 import type { Course } from '@/data/courses';
+import { getCourseCategories } from '@/lib/getData';
 
 const emptyCourse: Course = {
   slug: '',
@@ -25,7 +26,9 @@ const emptyCourse: Course = {
   testimonial: { name: '', rank: '', college: '', quote: '', avatar: '' },
 };
 
-export default async function NewCoursePage() {
+export default async function NewCoursePage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
   if (!(await isAuthenticated())) redirect('/admin/login');
-  return <CourseEditForm course={emptyCourse} isNew={true} />;
+  const [categories, params] = await Promise.all([getCourseCategories(), searchParams]);
+  const category = categories.some((item) => item.key === params.category) ? params.category! : categories[0]?.key || 'offline';
+  return <CourseEditForm course={{ ...emptyCourse, category }} isNew={true} categories={categories} />;
 }

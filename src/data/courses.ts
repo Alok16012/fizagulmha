@@ -1,7 +1,7 @@
 export interface Course {
   slug: string;
   title: string;
-  category: 'offline' | 'online' | 'mentorship' | 'mock';
+  category: string;
   icon: string;
   color: string;
   bg: string;

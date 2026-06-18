@@ -3,21 +3,27 @@ import { useState } from 'react';
 import Link from 'next/link';
 import type { Course } from '@/data/courses';
 import type { Batch } from '@/data/batches';
+import type { CourseCategory } from '@/data/courseCategories';
 import { adminFetch } from '@/lib/adminFetch';
 
-const catConfig = [
-  { key: 'offline',    label: 'Offline',    icon: '🏛️', color: '#0f3460', accent: '#08BD80', bg: '#E6FAF4' },
-  { key: 'online',     label: 'Online',     icon: '💻', color: '#6d28d9', accent: '#8b5cf6', bg: '#ede9fe' },
-  { key: 'mentorship', label: 'Mentorship', icon: '🎯', color: '#065f46', accent: '#34d399', bg: '#d1fae5' },
-  { key: 'mock',       label: 'Mock Tests', icon: '📝', color: '#92400e', accent: '#f59e0b', bg: '#fef3c7' },
-] as const;
-type CatKey = typeof catConfig[number]['key'];
-
-export default function CourseTabsAdmin({ courses: initialCourses, batches }: { courses: Course[]; batches: Batch[] }) {
-  const [active, setActive] = useState<CatKey>('offline');
+export default function CourseTabsAdmin({
+  courses: initialCourses,
+  batches,
+  initialCategories,
+}: {
+  courses: Course[];
+  batches: Batch[];
+  initialCategories: CourseCategory[];
+}) {
+  const [categories, setCategories] = useState<CourseCategory[]>(initialCategories);
+  const [active, setActive] = useState(initialCategories[0]?.key || '');
   const [courses, setCourses] = useState<Course[]>(initialCourses);
   const [deletingSlug, setDeletingSlug] = useState<string | null>(null);
-  const cat = catConfig.find(c => c.key === active)!;
+  const [deletingCategory, setDeletingCategory] = useState<string | null>(null);
+  const [showCategoryForm, setShowCategoryForm] = useState(false);
+  const [categoryForm, setCategoryForm] = useState({ label: '', icon: '📚', color: '#0D1837', accent: '#08BD80', bg: '#E6FAF4' });
+  const [savingCategory, setSavingCategory] = useState(false);
+  const cat = categories.find(c => c.key === active) || categories[0];
   const filtered = courses.filter(c => c.category === active);
 
   async function handleDelete(slug: string, title: string) {
@@ -31,34 +37,121 @@ export default function CourseTabsAdmin({ courses: initialCourses, batches }: { 
     setDeletingSlug(null);
   }
 
+  async function handleAddCategory(e: React.FormEvent) {
+    e.preventDefault();
+    setSavingCategory(true);
+    const res = await adminFetch('/api/admin/course-categories', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(categoryForm),
+    });
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) alert(body.error || 'Could not add category.');
+    else {
+      setCategories((prev) => [...prev, body]);
+      setActive(body.key);
+      setCategoryForm({ label: '', icon: '📚', color: '#0D1837', accent: '#08BD80', bg: '#E6FAF4' });
+      setShowCategoryForm(false);
+    }
+    setSavingCategory(false);
+  }
+
+  async function handleDeleteCategory(key: string, label: string) {
+    if (!confirm(`Delete category "${label}"?`)) return;
+    setDeletingCategory(key);
+    const res = await adminFetch(`/api/admin/course-categories/${encodeURIComponent(key)}`, { method: 'DELETE' });
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) alert(body.error || 'Could not delete category.');
+    else {
+      const next = categories.filter((category) => category.key !== key);
+      setCategories(next);
+      if (active === key) setActive(next[0]?.key || '');
+    }
+    setDeletingCategory(null);
+  }
+
   return (
     <div>
+      <div className="mb-5 rounded-2xl border border-gray-100 bg-white p-4">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <h2 className="font-black text-gray-900">Course Categories</h2>
+            <p className="text-xs text-gray-400 mt-0.5">Add a new course tab or remove an empty category.</p>
+          </div>
+          <button type="button" onClick={() => setShowCategoryForm((value) => !value)}
+            className="px-4 py-2 rounded-xl text-sm font-bold text-white" style={{ background: '#08BD80' }}>
+            {showCategoryForm ? 'Cancel' : '+ Add Category'}
+          </button>
+        </div>
+        {showCategoryForm && (
+          <form onSubmit={handleAddCategory} className="mt-4 grid gap-3 md:grid-cols-[1fr_90px_64px_64px_auto] items-end">
+            <label className="text-xs font-semibold text-gray-600">
+              Category Name
+              <input value={categoryForm.label} onChange={(e) => setCategoryForm((v) => ({ ...v, label: e.target.value }))}
+                required placeholder="e.g. Test Series" className="mt-1 w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm" />
+            </label>
+            <label className="text-xs font-semibold text-gray-600">
+              Icon
+              <input value={categoryForm.icon} onChange={(e) => setCategoryForm((v) => ({ ...v, icon: e.target.value }))}
+                className="mt-1 w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm" />
+            </label>
+            <label className="text-xs font-semibold text-gray-600">
+              Main
+              <input type="color" value={categoryForm.color} onChange={(e) => setCategoryForm((v) => ({ ...v, color: e.target.value }))}
+                className="mt-1 h-10 w-full rounded-lg border border-gray-200" />
+            </label>
+            <label className="text-xs font-semibold text-gray-600">
+              Accent
+              <input type="color" value={categoryForm.accent} onChange={(e) => setCategoryForm((v) => ({ ...v, accent: e.target.value }))}
+                className="mt-1 h-10 w-full rounded-lg border border-gray-200" />
+            </label>
+            <button disabled={savingCategory} className="h-10 px-5 rounded-xl text-sm font-bold text-white disabled:opacity-50" style={{ background: '#0D1837' }}>
+              {savingCategory ? 'Adding...' : 'Add'}
+            </button>
+          </form>
+        )}
+      </div>
+
       {/* Tabs */}
       <div className="flex gap-2 flex-wrap mb-6">
-        {catConfig.map(c => {
+        {categories.map(c => {
           const count = courses.filter(x => x.category === c.key).length;
           const isActive = c.key === active;
           return (
-            <button key={c.key} onClick={() => setActive(c.key)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all"
-              style={{
-                background: isActive ? `linear-gradient(135deg,${c.color},${c.accent})` : 'white',
-                color: isActive ? 'white' : '#374151',
-                boxShadow: isActive ? `0 4px 14px ${c.color}44` : '0 1px 4px rgba(0,0,0,0.08)',
-                border: isActive ? 'none' : '1.5px solid #E9EEF2',
-              }}>
-              <span>{c.icon}</span>
-              <span>{c.label}</span>
-              <span className="text-xs font-bold px-2 py-0.5 rounded-full"
-                style={{ background: isActive ? 'rgba(255,255,255,0.25)' : '#F3F4F6', color: isActive ? 'white' : '#6B7280' }}>
-                {count}
-              </span>
-            </button>
+            <div key={c.key} className="flex items-stretch">
+              <button onClick={() => setActive(c.key)}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-l-xl font-bold text-sm transition-all"
+                style={{
+                  background: isActive ? `linear-gradient(135deg,${c.color},${c.accent})` : 'white',
+                  color: isActive ? 'white' : '#374151',
+                  boxShadow: isActive ? `0 4px 14px ${c.color}44` : '0 1px 4px rgba(0,0,0,0.08)',
+                  border: isActive ? 'none' : '1.5px solid #E9EEF2',
+                }}>
+                <span>{c.icon}</span>
+                <span>{c.label}</span>
+                <span className="text-xs font-bold px-2 py-0.5 rounded-full"
+                  style={{ background: isActive ? 'rgba(255,255,255,0.25)' : '#F3F4F6', color: isActive ? 'white' : '#6B7280' }}>
+                  {count}
+                </span>
+              </button>
+              <button type="button" onClick={() => handleDeleteCategory(c.key, c.label)}
+                disabled={deletingCategory === c.key}
+                className="px-2.5 rounded-r-xl border border-l-0 border-red-200 bg-red-50 text-xs font-bold text-red-500 disabled:opacity-50"
+                title={`Delete ${c.label}`}>
+                {deletingCategory === c.key ? '...' : '×'}
+              </button>
+            </div>
           );
         })}
       </div>
 
       {/* Add Course Button */}
+      {!cat ? (
+        <div className="rounded-2xl border border-dashed border-gray-200 bg-white p-12 text-center text-sm text-gray-400">
+          Add a category to start creating courses.
+        </div>
+      ) : (
+      <>
       <div className="flex items-center justify-between mb-4">
         <p className="text-sm text-gray-500">{filtered.length} course{filtered.length !== 1 ? 's' : ''} in {cat.label}</p>
         <Link href={`/admin/courses/new?category=${active}`}
@@ -169,6 +262,8 @@ export default function CourseTabsAdmin({ courses: initialCourses, batches }: { 
             );
           })}
         </div>
+      )}
+      </>
       )}
     </div>
   );
