@@ -22,7 +22,7 @@ create table if not exists public.blogs (
   excerpt text not null default '',
   content text not null default '',
   category text not null default '',
-  category_color text not null default '#08BD80',
+  category_color text not null default '#f77420',
   author text not null default '',
   author_avatar text not null default '',
   date text not null default '',
@@ -34,7 +34,7 @@ create table if not exists public.blogs (
 create table if not exists public.blog_categories (
   id bigint generated always as identity primary key,
   name text not null unique,
-  color text not null default '#08BD80',
+  color text not null default '#f77420',
   created_at timestamptz not null default now()
 );
 
@@ -46,8 +46,8 @@ create table if not exists public.exams (
   full_name text not null default '',
   tagline text default '',
   icon text default '🏛️',
-  color text default '#08BD80',
-  bg text default '#E6FAF4',
+  color text default '#f77420',
+  bg text default '#fff1e8',
   seats text default '',
   colleges text default '',
   duration text default '',
@@ -75,8 +75,8 @@ create table if not exists public.course_categories (
   label text not null,
   icon text not null default '📚',
   color text not null default '#0D1837',
-  accent text not null default '#08BD80',
-  bg text not null default '#E6FAF4',
+  accent text not null default '#f77420',
+  bg text not null default '#fff1e8',
   created_at timestamptz not null default now()
 );
 
@@ -96,12 +96,12 @@ alter table public.leads add column if not exists source text not null default '
 insert into public.blog_categories (name, color) values
   ('Legal',           '#6366f1'),
   ('Current Affairs', '#f97316'),
-  ('Law Preparation', '#08BD80')
+  ('Law Preparation', '#f77420')
 on conflict (name) do nothing;
 
 insert into public.course_categories (key, label, icon, color, accent, bg) values
-  ('offline', 'Offline Course', '🏫', '#0f3460', '#08BD80', '#E6FAF4'),
+  ('offline', 'Offline Course', '🏫', '#0f3460', '#f77420', '#fff1e8'),
   ('online', 'Online Course', '💻', '#6d28d9', '#8b5cf6', '#ede9fe'),
-  ('mentorship', 'Mentorship', '🎯', '#065f46', '#34d399', '#d1fae5'),
+  ('mentorship', 'Mentorship', '🎯', '#7a3412', '#ffad75', '#ffd4ba'),
   ('mock', 'Mock Tests', '📝', '#92400e', '#f59e0b', '#fef3c7')
 on conflict (key) do nothing;

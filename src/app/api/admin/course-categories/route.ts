@@ -25,8 +25,8 @@ export async function POST(request: NextRequest) {
     label,
     icon: String(body.icon || '📚'),
     color: String(body.color || '#0D1837'),
-    accent: String(body.accent || '#08BD80'),
-    bg: String(body.bg || '#E6FAF4'),
+    accent: String(body.accent || '#f77420'),
+    bg: String(body.bg || '#fff1e8'),
   };
   const { data, error } = await supabaseAdmin()
     .from('course_categories')

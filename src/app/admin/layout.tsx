@@ -62,7 +62,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all"
               style={
                 isActive(item)
-                  ? { background: '#08BD80', color: 'white' }
+                  ? { background: '#f77420', color: 'white' }
                   : { color: 'rgba(255,255,255,0.6)' }
               }
               onMouseEnter={(e) => {
@@ -130,7 +130,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </svg>
           </button>
           <div className="flex-1" />
-          <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ background: '#E6FAF4', color: '#08BD80' }}>
+          <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ background: '#fff1e8', color: '#f77420' }}>
             ● Live
           </span>
           <span className="text-sm font-semibold text-gray-700">CLATians Admin</span>

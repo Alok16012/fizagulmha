@@ -26,7 +26,7 @@ export function TextInput({
       placeholder={placeholder}
       required={required}
       className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none transition-all"
-      onFocus={(e) => { e.target.style.borderColor = '#08BD80'; e.target.style.boxShadow = '0 0 0 3px rgba(8,189,128,0.12)'; }}
+      onFocus={(e) => { e.target.style.borderColor = '#f77420'; e.target.style.boxShadow = '0 0 0 3px rgba(247,116,32,0.12)'; }}
       onBlur={(e) => { e.target.style.borderColor = '#E5E7EB'; e.target.style.boxShadow = 'none'; }}
     />
   );
@@ -45,7 +45,7 @@ export function NumberInput({
       placeholder={placeholder}
       min={min}
       className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none transition-all"
-      onFocus={(e) => { e.target.style.borderColor = '#08BD80'; e.target.style.boxShadow = '0 0 0 3px rgba(8,189,128,0.12)'; }}
+      onFocus={(e) => { e.target.style.borderColor = '#f77420'; e.target.style.boxShadow = '0 0 0 3px rgba(247,116,32,0.12)'; }}
       onBlur={(e) => { e.target.style.borderColor = '#E5E7EB'; e.target.style.boxShadow = 'none'; }}
     />
   );
@@ -63,7 +63,7 @@ export function TextareaInput({
       placeholder={placeholder}
       rows={rows}
       className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none transition-all resize-y"
-      onFocus={(e) => { e.target.style.borderColor = '#08BD80'; e.target.style.boxShadow = '0 0 0 3px rgba(8,189,128,0.12)'; }}
+      onFocus={(e) => { e.target.style.borderColor = '#f77420'; e.target.style.boxShadow = '0 0 0 3px rgba(247,116,32,0.12)'; }}
       onBlur={(e) => { e.target.style.borderColor = '#E5E7EB'; e.target.style.boxShadow = 'none'; }}
     />
   );
@@ -79,7 +79,7 @@ export function SelectInput({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none transition-all bg-white"
-      onFocus={(e) => { e.target.style.borderColor = '#08BD80'; e.target.style.boxShadow = '0 0 0 3px rgba(8,189,128,0.12)'; }}
+      onFocus={(e) => { e.target.style.borderColor = '#f77420'; e.target.style.boxShadow = '0 0 0 3px rgba(247,116,32,0.12)'; }}
       onBlur={(e) => { e.target.style.borderColor = '#E5E7EB'; e.target.style.boxShadow = 'none'; }}
     >
       {options.map((o) => (
@@ -119,7 +119,7 @@ export function StringArrayEditor({
               onChange={(e) => update(i, e.target.value)}
               placeholder={placeholder || 'Enter value...'}
               className="flex-1 px-3 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none"
-              onFocus={(e) => { e.target.style.borderColor = '#08BD80'; }}
+              onFocus={(e) => { e.target.style.borderColor = '#f77420'; }}
               onBlur={(e) => { e.target.style.borderColor = '#E5E7EB'; }}
             />
             <button type="button" onClick={() => remove(i)}
@@ -131,7 +131,7 @@ export function StringArrayEditor({
       </div>
       <button type="button" onClick={add}
         className="mt-2 text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed transition-colors"
-        style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+        style={{ borderColor: '#f77420', color: '#f77420' }}>
         + Add Item
       </button>
     </div>
@@ -164,7 +164,7 @@ export function FormActions({ loading, onCancel, saveLabel = 'Save Changes' }: {
       </button>
       <button type="submit" disabled={loading}
         className="px-6 py-2.5 rounded-xl font-bold text-white text-sm transition-opacity disabled:opacity-60"
-        style={{ background: '#08BD80' }}>
+        style={{ background: '#f77420' }}>
         {loading ? 'Saving...' : saveLabel}
       </button>
     </div>
@@ -175,7 +175,7 @@ export function FormActions({ loading, onCancel, saveLabel = 'Save Changes' }: {
 
 export function Toast({ message, type }: { message: string; type: 'success' | 'error' }) {
   return (
-    <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded-xl shadow-lg text-white font-semibold text-sm ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`}>
+    <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded-xl shadow-lg text-white font-semibold text-sm ${type === 'success' ? 'bg-orange-500' : 'bg-red-500'}`}>
       {type === 'success' ? '✓ ' : '✗ '}{message}
     </div>
   );

@@ -68,7 +68,7 @@ export default function CollegePredictorPage() {
             <div className="grid md:grid-cols-3 gap-4 mb-6">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 mb-1.5">Expected CLAT Rank *</label>
-                <div className="flex items-center border border-gray-200 rounded-xl px-4 py-3 focus-within:border-green-400 transition-colors">
+                <div className="flex items-center border border-gray-200 rounded-xl px-4 py-3 focus-within:border-orange-400 transition-colors">
                   <span className="text-gray-400 text-sm mr-2">#</span>
                   <input
                     type="number"
@@ -86,7 +86,7 @@ export default function CollegePredictorPage() {
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-green-400 transition-colors bg-white">
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-orange-400 transition-colors bg-white">
                   {Object.keys(multipliers).map((c) => (
                     <option key={c}>{c}</option>
                   ))}
@@ -95,7 +95,7 @@ export default function CollegePredictorPage() {
               <div className="flex items-end">
                 <button onClick={predict}
                   className="w-full py-3 rounded-xl font-bold text-white text-sm transition-opacity hover:opacity-90"
-                  style={{ background: 'linear-gradient(135deg, #0D1837, #08BD80)' }}>
+                  style={{ background: 'linear-gradient(135deg, #0D1837, #f77420)' }}>
                   🔍 Predict My Colleges
                 </button>
               </div>
@@ -112,23 +112,23 @@ export default function CollegePredictorPage() {
               {/* Likely to get */}
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                  <div className="w-3 h-3 rounded-full bg-orange-500" />
                   <h3 className="text-lg font-black text-gray-900">
                     Likely to Get ({predicted.length} NLUs)
                   </h3>
-                  <span className="text-xs font-bold px-2.5 py-1 rounded-full text-white bg-green-500">
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-full text-white bg-orange-500">
                     RANK #{rank} · {category}
                   </span>
                 </div>
                 {predicted.length === 0 ? (
-                  <div className="bg-green-50 border border-green-100 rounded-2xl p-6 text-center">
+                  <div className="bg-orange-50 border border-orange-100 rounded-2xl p-6 text-center">
                     <p className="text-gray-500 text-sm">No NLUs predicted at this rank. Try improving your score!</p>
                   </div>
                 ) : (
                   <div className="grid md:grid-cols-2 gap-3">
                     {predicted.map((nlu) => (
                       <div key={nlu.name}
-                        className="flex items-center gap-4 p-4 bg-white border border-green-100 rounded-xl">
+                        className="flex items-center gap-4 p-4 bg-white border border-orange-100 rounded-xl">
                         <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-black text-sm flex-shrink-0"
                           style={{ background: 'linear-gradient(135deg, #10b981, #06b6d4)' }}>
                           #{nlu.rank}
@@ -137,7 +137,7 @@ export default function CollegePredictorPage() {
                           <div className="font-bold text-sm text-gray-900 truncate">{nlu.name}</div>
                           <div className="text-xs text-gray-400">{nlu.city}, {nlu.state}</div>
                         </div>
-                        <span className="text-xs font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full flex-shrink-0">
+                        <span className="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-full flex-shrink-0">
                           ✓ Likely
                         </span>
                       </div>
@@ -182,7 +182,7 @@ export default function CollegePredictorPage() {
                 <p className="text-white/60 text-sm mb-4">
                   Our counsellors help you select the best NLU based on your rank, preferences, and career goals.
                 </p>
-                <a href="tel:8507700177" style={{ background: '#08BD80' }}
+                <a href="tel:8507700177" style={{ background: '#f77420' }}
                   className="inline-block px-6 py-3 rounded-xl font-bold text-white text-sm">
                   📞 Book Free Counselling
                 </a>

@@ -209,7 +209,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
                           className="flex flex-col gap-2 p-4 hover:bg-gray-50 transition-colors group">
                           <div className="flex items-start justify-between gap-2">
                             <div className="flex-1 min-w-0">
-                              <div className="font-bold text-sm text-gray-900 group-hover:text-green-700 transition-colors leading-tight">
+                              <div className="font-bold text-sm text-gray-900 group-hover:text-orange-700 transition-colors leading-tight">
                                 {batch.name}
                               </div>
                               <div className="text-[11px] text-gray-400 mt-0.5">{batch.schedule}</div>
@@ -219,7 +219,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
                                 batch.status === 'filling-fast'
                                   ? { background: '#fef3c7', color: '#92400e' }
                                   : batch.status === 'ongoing'
-                                  ? { background: '#dcfce7', color: '#166534' }
+                                  ? { background: '#fff1e8', color: '#c95516' }
                                   : { background: '#e0f2fe', color: '#0369a1' }
                               }>
                               {batch.status === 'filling-fast' ? '🔥 Filling Fast' : batch.status === 'ongoing' ? '✅ Open' : '🕐 Upcoming'}
@@ -305,7 +305,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
           </a>
           <a href="#enroll"
             className="px-5 py-2.5 rounded-xl text-sm font-bold text-white"
-            style={{ background: '#08BD80' }}>
+            style={{ background: '#f77420' }}>
             Enroll Now →
           </a>
         </div>

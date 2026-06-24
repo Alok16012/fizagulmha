@@ -11,8 +11,8 @@ create table if not exists courses (
   title text not null default '',
   category text not null default 'offline',
   icon text default '📚',
-  color text default '#08BD80',
-  bg text default '#E6FAF4',
+  color text default '#f77420',
+  bg text default '#fff1e8',
   tagline text default '',
   overview text default '',
   duration text default '',
@@ -47,7 +47,7 @@ create table if not exists batches (
   original_fee text,
   emi text default '',
   offer text,
-  color text default '#08BD80',
+  color text default '#f77420',
   bg text default '#e8eeff',
   status text default 'upcoming',
   language text default 'Hinglish',
@@ -115,7 +115,7 @@ export default function SetupClient() {
 
         {loading ? (
           <div className="flex items-center gap-3 text-gray-400 text-sm py-4">
-            <div className="w-4 h-4 border-2 border-gray-200 border-t-green-500 rounded-full animate-spin" />
+            <div className="w-4 h-4 border-2 border-gray-200 border-t-orange-500 rounded-full animate-spin" />
             Checking Supabase connection…
           </div>
         ) : !status ? (
@@ -131,10 +131,10 @@ export default function SetupClient() {
             {Object.entries(status.tables).map(([table, exists]) => (
               <div key={table} className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0">
                 <div className="flex items-center gap-3">
-                  <span className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${exists ? 'bg-green-500' : 'bg-red-400'}`} />
+                  <span className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${exists ? 'bg-orange-500' : 'bg-red-400'}`} />
                   <span className="font-mono text-sm text-gray-700">{table}</span>
                 </div>
-                <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${exists ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-600'}`}>
+                <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${exists ? 'bg-orange-50 text-orange-700' : 'bg-red-50 text-red-600'}`}>
                   {exists ? '✓ Exists' : '✗ Missing'}
                 </span>
               </div>
@@ -143,7 +143,7 @@ export default function SetupClient() {
         )}
 
         {allGood && (
-          <div className="mt-4 bg-green-50 text-green-700 text-sm px-4 py-3 rounded-xl border border-green-200 font-semibold">
+          <div className="mt-4 bg-orange-50 text-orange-700 text-sm px-4 py-3 rounded-xl border border-orange-200 font-semibold">
             ✅ All tables ready — courses and batches will save to Supabase!
           </div>
         )}
@@ -162,7 +162,7 @@ export default function SetupClient() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-semibold underline"
-                  style={{ color: '#08BD80' }}
+                  style={{ color: '#f77420' }}
                 >
                   Supabase SQL Editor ↗
                 </a>
@@ -172,13 +172,13 @@ export default function SetupClient() {
             <button
               onClick={copySQL}
               className="flex-shrink-0 px-4 py-2 rounded-xl text-sm font-bold text-white transition-all"
-              style={{ background: copied ? '#16a34a' : '#08BD80' }}
+              style={{ background: copied ? '#f77420' : '#f77420' }}
             >
               {copied ? '✓ Copied!' : '📋 Copy SQL'}
             </button>
           </div>
 
-          <pre className="bg-gray-900 text-green-300 text-xs rounded-xl p-4 overflow-auto max-h-96 font-mono leading-relaxed whitespace-pre">
+          <pre className="bg-gray-900 text-orange-300 text-xs rounded-xl p-4 overflow-auto max-h-96 font-mono leading-relaxed whitespace-pre">
             {MIGRATION_SQL}
           </pre>
 

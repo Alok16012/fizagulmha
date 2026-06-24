@@ -14,7 +14,7 @@ const stats = [
 const values = [
   { icon: '🎯', title: 'Student-First', desc: 'Every decision: "Does this help the student succeed?" No shortcuts, no compromises.', color: '#06b6d4', bg: 'linear-gradient(135deg,#e0f9ff,#cffafe)' },
   { icon: '📚', title: 'Expert Knowledge', desc: 'Faculty are NLU alumni and CLAT toppers — not just teachers from textbooks.', color: '#818cf8', bg: 'linear-gradient(135deg,#eef2ff,#e0e7ff)' },
-  { icon: '🤝', title: 'Accessible Education', desc: 'Quality CLAT prep available regardless of city, background, or finances.', color: '#34d399', bg: 'linear-gradient(135deg,#ecfdf5,#d1fae5)' },
+  { icon: '🤝', title: 'Accessible Education', desc: 'Quality CLAT prep available regardless of city, background, or finances.', color: '#ffad75', bg: 'linear-gradient(135deg,#ecfdf5,#ffd4ba)' },
   { icon: '🏆', title: 'Results-Driven', desc: '5000+ NLU selections since 2012. Your rank is our report card.', color: '#fb923c', bg: 'linear-gradient(135deg,#fff7ed,#ffedd5)' },
 ];
 
@@ -26,13 +26,13 @@ const milestones = [
   { year: '2020', title: '2000+ Selections', desc: 'Zero disruption during pandemic — full digital pivot.', icon: '🌐', color: '#10b981' },
   { year: '2022', title: 'Mock Test Series', desc: '150+ AI-powered tests with rank predictor launched.', icon: '📝', color: '#ef4444' },
   { year: '2024', title: '#1 in Bihar', desc: '20+ faculty, 5000+ NLU selections milestone reached.', icon: '🥇', color: '#f97316' },
-  { year: '2026', title: '1.25L+ Students', desc: 'National platform — offline, online, mentorship, mocks.', icon: '🚀', color: '#08BD80' },
+  { year: '2026', title: '1.25L+ Students', desc: 'National platform — offline, online, mentorship, mocks.', icon: '🚀', color: '#f77420' },
 ];
 
 const team = [
   { name: 'Adv. Ravi Kumar', role: 'Founder & Legal Reasoning', avatar: 'RK', color: '#06b6d4', college: 'NALSAR Hyderabad', exp: '12 yrs' },
   { name: 'Dr. Neha Verma', role: 'GK & Current Affairs Head', avatar: 'NV', color: '#f59e0b', college: 'Patna University PhD', exp: '10 yrs' },
-  { name: 'Dr. Ankita Roy', role: 'Constitutional Law Expert', avatar: 'AR', color: '#34d399', college: 'NLU Jodhpur', exp: '11 yrs' },
+  { name: 'Dr. Ankita Roy', role: 'Constitutional Law Expert', avatar: 'AR', color: '#ffad75', college: 'NLU Jodhpur', exp: '11 yrs' },
   { name: 'Adv. Priya Singh', role: 'English & AILET Head', avatar: 'PS', color: '#818cf8', college: 'NLU Delhi', exp: '9 yrs' },
 ];
 
@@ -121,7 +121,7 @@ function SnakeTimeline() {
           style={{ top: '50%', transform: 'translateY(-50%)' }}
         >
           {/* Glow track */}
-          <path d={pathD} fill="none" stroke="rgba(8,189,128,0.12)" strokeWidth="12" strokeLinecap="round" />
+          <path d={pathD} fill="none" stroke="rgba(247,116,32,0.12)" strokeWidth="12" strokeLinecap="round" />
           {/* Animated draw path */}
           <path
             ref={svgRef}
@@ -139,7 +139,7 @@ function SnakeTimeline() {
               <stop offset="0%" stopColor="#06b6d4" />
               <stop offset="30%" stopColor="#8b5cf6" />
               <stop offset="60%" stopColor="#ec4899" />
-              <stop offset="100%" stopColor="#08BD80" />
+              <stop offset="100%" stopColor="#f77420" />
             </linearGradient>
           </defs>
         </svg>
@@ -242,7 +242,7 @@ function SnakeTimeline() {
       </div>
 
       {/* Mobile */}
-      <div className="md:hidden relative pl-5 border-l-2" style={{ borderColor: '#08BD80' }}>
+      <div className="md:hidden relative pl-5 border-l-2" style={{ borderColor: '#f77420' }}>
         <div className="space-y-4">
           {milestones.map((m, i) => (
             <div key={m.year} className="relative pl-4"
@@ -295,9 +295,9 @@ function Reveal({ children, delay = 0, className = '', from = 'bottom' }:
 function Label({ text }: { text: string }) {
   return (
     <div className="inline-flex items-center gap-2 mb-2">
-      <span className="w-5 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
-      <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#08BD80' }}>{text}</span>
-      <span className="w-5 h-0.5 rounded-full" style={{ background: '#08BD80' }} />
+      <span className="w-5 h-0.5 rounded-full" style={{ background: '#f77420' }} />
+      <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#f77420' }}>{text}</span>
+      <span className="w-5 h-0.5 rounded-full" style={{ background: '#f77420' }} />
     </div>
   );
 }
@@ -310,12 +310,12 @@ export default function AboutPage() {
         @keyframes floatA{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(25px,-35px) scale(1.08)}}
         @keyframes floatB{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,28px) scale(0.94)}}
         @keyframes floatC{0%,100%{transform:translate(0,0)}33%{transform:translate(18px,16px)}66%{transform:translate(-12px,-18px)}}
-        @keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(8,189,128,0.5)}50%{box-shadow:0 0 0 10px rgba(8,189,128,0)}}
+        @keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(247,116,32,0.5)}50%{box-shadow:0 0 0 10px rgba(247,116,32,0)}}
         @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
         @keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
         .card-lift{transition:transform .22s ease,box-shadow .22s ease}
         .card-lift:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.1)!important}
-        .btn-glow:hover{box-shadow:0 4px 20px rgba(8,189,128,0.5)!important}
+        .btn-glow:hover{box-shadow:0 4px 20px rgba(247,116,32,0.5)!important}
         .dot-pulse{animation:pulseDot 2s infinite}
       `}</style>
 
@@ -326,7 +326,7 @@ export default function AboutPage() {
           style={{ background: 'linear-gradient(135deg, #060d1f 0%, #0D1837 55%, #0f3460 100%)', minHeight: '76vh' }}>
           {/* Animated orbs */}
           <div className="absolute top-16 right-24 w-96 h-96 rounded-full opacity-15 blur-3xl pointer-events-none"
-            style={{ background: '#08BD80', animation: 'floatA 9s ease-in-out infinite' }} />
+            style={{ background: '#f77420', animation: 'floatA 9s ease-in-out infinite' }} />
           <div className="absolute bottom-12 left-8 w-72 h-72 rounded-full opacity-10 blur-3xl pointer-events-none"
             style={{ background: '#06b6d4', animation: 'floatB 11s ease-in-out infinite' }} />
           <div className="absolute top-1/3 left-1/3 w-52 h-52 rounded-full opacity-8 blur-2xl pointer-events-none"
@@ -344,15 +344,15 @@ export default function AboutPage() {
               {/* Text */}
               <div className="md:col-span-3">
                 <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full"
-                  style={{ background: 'rgba(8,189,128,0.12)', border: '1px solid rgba(8,189,128,0.3)' }}>
-                  <span className="w-2 h-2 rounded-full dot-pulse" style={{ background: '#08BD80' }} />
-                  <span className="text-xs font-bold" style={{ color: '#08BD80' }}>India&apos;s Most Trusted CLAT Institute</span>
+                  style={{ background: 'rgba(247,116,32,0.12)', border: '1px solid rgba(247,116,32,0.3)' }}>
+                  <span className="w-2 h-2 rounded-full dot-pulse" style={{ background: '#f77420' }} />
+                  <span className="text-xs font-bold" style={{ color: '#f77420' }}>India&apos;s Most Trusted CLAT Institute</span>
                 </div>
                 <h1 className="text-2xl md:text-6xl font-black text-white leading-tight mb-4"
                   style={{ animation: 'floatB 0.01s ease both' }}>
                   Born in Patna.<br />
                   Built for <span style={{
-                    background: 'linear-gradient(90deg, #08BD80, #06b6d4, #08BD80)',
+                    background: 'linear-gradient(90deg, #f77420, #06b6d4, #f77420)',
                     backgroundSize: '200% auto',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
@@ -366,7 +366,7 @@ export default function AboutPage() {
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a href="/admission"
                     className="text-center px-7 py-3.5 rounded-xl font-black text-white text-sm btn-glow transition-all hover:scale-105"
-                    style={{ background: '#08BD80', boxShadow: '0 4px 20px rgba(8,189,128,0.35)' }}>
+                    style={{ background: '#f77420', boxShadow: '0 4px 20px rgba(247,116,32,0.35)' }}>
                     Join CLATians →
                   </a>
                   <a href="tel:8507700177"
@@ -433,7 +433,7 @@ export default function AboutPage() {
                 </div>
                 <div className="mt-5 flex items-center gap-3 pt-4 border-t" style={{ borderColor: '#F3F4F6' }}>
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center text-white font-black text-sm flex-shrink-0"
-                    style={{ background: 'linear-gradient(135deg, #0f3460, #08BD80)' }}>RK</div>
+                    style={{ background: 'linear-gradient(135deg, #0f3460, #f77420)' }}>RK</div>
                   <div>
                     <div className="font-bold text-gray-900 text-base">Adv. Ravi Kumar</div>
                     <div className="text-sm text-gray-500">Founder · NALSAR Hyderabad</div>
@@ -581,8 +581,8 @@ export default function AboutPage() {
             </div>
             <div className="text-center">
               <a href="/#faculty"
-                className="inline-flex items-center gap-2 font-semibold text-sm px-6 py-2.5 rounded-xl border-2 transition-all hover:bg-green-50"
-                style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+                className="inline-flex items-center gap-2 font-semibold text-sm px-6 py-2.5 rounded-xl border-2 transition-all hover:bg-orange-50"
+                style={{ borderColor: '#f77420', color: '#f77420' }}>
                 View All 20+ Faculty Members →
               </a>
             </div>
@@ -598,7 +598,7 @@ export default function AboutPage() {
                 </div>
                 <div className="p-4 md:p-5 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-3">
                   {whyClatians.map((w, i) => (
-                    <div key={w.title} className="flex flex-col md:flex-row items-start gap-1.5 md:gap-3 p-2.5 md:p-3 rounded-xl transition-all hover:bg-green-50 cursor-default"
+                    <div key={w.title} className="flex flex-col md:flex-row items-start gap-1.5 md:gap-3 p-2.5 md:p-3 rounded-xl transition-all hover:bg-orange-50 cursor-default"
                       style={{ background: '#F8FAFC', border: '1px solid #E9EEF2', animationDelay: `${i * 0.08}s` }}>
                       <span className="text-xl md:text-2xl flex-shrink-0">{w.icon}</span>
                       <div>
@@ -631,11 +631,11 @@ export default function AboutPage() {
                     </div>
                   </div>
                   {[
-                    { icon: '📞', label: 'Phone', val: '8507700177', href: 'tel:8507700177', color: '#08BD80' },
-                    { icon: '💬', label: 'WhatsApp', val: '8507700177', href: 'https://wa.me/918507700177', color: '#25D366' },
+                    { icon: '📞', label: 'Phone', val: '8507700177', href: 'tel:8507700177', color: '#f77420' },
+                    { icon: '💬', label: 'WhatsApp', val: '8507700177', href: 'https://wa.me/918507700177', color: '#f77420' },
                     { icon: '⏰', label: 'Hours', val: 'Mon–Sat: 9AM–7PM · Online 7 days', href: null, color: '#6B7280' },
                   ].map((c) => (
-                    <div key={c.label} className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-green-50"
+                    <div key={c.label} className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-orange-50"
                       style={{ background: '#F8FAFC', border: '1px solid #E9EEF2' }}>
                       <div className="text-xl w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
                         style={{ background: '#e0f9ff' }}>{c.icon}</div>
@@ -658,7 +658,7 @@ export default function AboutPage() {
             <div className="relative overflow-hidden rounded-2xl p-8 text-center"
               style={{ background: 'linear-gradient(135deg,#060d1f,#0f3460,#1a6b5c)' }}>
               <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full opacity-20 blur-2xl"
-                style={{ background: '#08BD80', animation: 'floatA 6s ease-in-out infinite' }} />
+                style={{ background: '#f77420', animation: 'floatA 6s ease-in-out infinite' }} />
               <div className="absolute -bottom-10 -left-10 w-36 h-36 rounded-full opacity-15 blur-2xl"
                 style={{ background: '#06b6d4', animation: 'floatB 8s ease-in-out infinite' }} />
               <div className="relative z-10">
@@ -666,7 +666,7 @@ export default function AboutPage() {
                 <h3 className="font-black text-white text-2xl md:text-3xl mb-2 leading-tight">
                   Ready to Write Your<br />
                   <span style={{
-                    background: 'linear-gradient(90deg,#08BD80,#06b6d4,#08BD80)',
+                    background: 'linear-gradient(90deg,#f77420,#06b6d4,#f77420)',
                     backgroundSize: '200% auto',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
@@ -679,7 +679,7 @@ export default function AboutPage() {
                 <div className="flex flex-col sm:flex-row justify-center gap-3">
                   <a href="/admission"
                     className="text-center px-8 py-3.5 rounded-xl font-black text-white text-sm hover:scale-105 transition-all btn-glow"
-                    style={{ background: '#08BD80', boxShadow: '0 4px 20px rgba(8,189,128,0.4)' }}>
+                    style={{ background: '#f77420', boxShadow: '0 4px 20px rgba(247,116,32,0.4)' }}>
                     Start Your Journey →
                   </a>
                   <a href="tel:8507700177"

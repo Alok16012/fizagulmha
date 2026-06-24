@@ -10,7 +10,7 @@ const emptyBlog: Blog = {
   excerpt: '',
   content: '',
   category: 'Law Preparation',
-  categoryColor: '#08BD80',
+  categoryColor: '#f77420',
   author: 'A.K. Singh',
   authorAvatar: 'AK',
   date: new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }),

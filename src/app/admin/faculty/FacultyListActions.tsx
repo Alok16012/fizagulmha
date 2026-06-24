@@ -32,7 +32,7 @@ export default function FacultyListActions({ slug, name }: { slug: string; name:
       </Link>
       <Link href={`/admin/faculty/${slug}`}
         className="text-xs font-semibold px-3 py-1.5 rounded-lg"
-        style={{ background: '#E6FAF4', color: '#08BD80' }}>
+        style={{ background: '#fff1e8', color: '#f77420' }}>
         Edit
       </Link>
       <button

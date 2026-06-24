@@ -43,7 +43,7 @@ function StarRating({ rating }: { rating: number }) {
 
 function MobileCard({ f, idx }: { f: FacultyMember; idx: number }) {
   const avatarBg = f.bg || avatarColors[idx % avatarColors.length];
-  const accent = f.color || '#08BD80';
+  const accent = f.color || '#f77420';
   const initials = f.avatar || getInitials(f.name);
   return (
     <Link
@@ -77,7 +77,7 @@ function MobileCard({ f, idx }: { f: FacultyMember; idx: number }) {
           <div style={{ fontSize: '10px', fontWeight: 700, color: accent, marginBottom: '5px' }}>{f.designation}</div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3px' }}>
             {f.tags.slice(0, 2).map(tag => (
-              <span key={tag} style={{ fontSize: '9px', fontWeight: 700, padding: '2px 6px', borderRadius: '6px', background: '#F0FDF9', color: accent, border: '1px solid #D1FAE5' }}>{tag}</span>
+              <span key={tag} style={{ fontSize: '9px', fontWeight: 700, padding: '2px 6px', borderRadius: '6px', background: '#fff7ed', color: accent, border: '1px solid #ffd4ba' }}>{tag}</span>
             ))}
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function FacultySection({ faculty }: { faculty: FacultyMember[] }
         <div className="flex items-center justify-between">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full"
-              style={{ background: '#F0FDF9', color: '#08BD80' }}>
+              style={{ background: '#fff7ed', color: '#f77420' }}>
               Our Faculty
             </span>
             <h2 className="mt-2 font-black text-xl md:text-3xl" style={{ color: '#0D1837' }}>
@@ -109,7 +109,7 @@ export default function FacultySection({ faculty }: { faculty: FacultyMember[] }
               Advocates, NLU alumni &amp; toppers — handpicked for your selection.
             </p>
           </div>
-          <Link href="/faculty" className="text-sm font-bold flex-shrink-0" style={{ color: '#08BD80' }}>
+          <Link href="/faculty" className="text-sm font-bold flex-shrink-0" style={{ color: '#f77420' }}>
             See All →
           </Link>
         </div>

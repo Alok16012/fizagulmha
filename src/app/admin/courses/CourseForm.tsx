@@ -128,7 +128,7 @@ export default function CourseEditForm({ course, isNew, categories }: { course: 
               <select
                 value={data.category}
                 onChange={(e) => set('category', e.target.value as Course['category'])}
-                className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-green-400"
+                className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-orange-400"
               >
                 {categories.map((category) => (
                   <option key={category.key} value={category.key}>{category.icon} {category.label}</option>
@@ -153,14 +153,14 @@ export default function CourseEditForm({ course, isNew, categories }: { course: 
               <div className="flex gap-2 items-center">
                 <input type="color" value={data.color} onChange={(e) => set('color', e.target.value)}
                   className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer flex-shrink-0" />
-                <TextInput value={data.color} onChange={(v) => set('color', v)} placeholder="#08BD80" />
+                <TextInput value={data.color} onChange={(v) => set('color', v)} placeholder="#f77420" />
               </div>
             </FieldGroup>
             <FieldGroup label="Card Background Color">
               <div className="flex gap-2 items-center">
                 <input type="color" value={data.bg} onChange={(e) => set('bg', e.target.value)}
                   className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer flex-shrink-0" />
-                <TextInput value={data.bg} onChange={(v) => set('bg', v)} placeholder="#E6FAF4" />
+                <TextInput value={data.bg} onChange={(v) => set('bg', v)} placeholder="#fff1e8" />
               </div>
             </FieldGroup>
           </div>
@@ -168,7 +168,7 @@ export default function CourseEditForm({ course, isNew, categories }: { course: 
 
         <SectionCard title="Course Details">
           {categoryNote && (
-            <div className="rounded-xl border border-green-100 bg-green-50 px-4 py-3 text-sm font-semibold text-green-800">
+            <div className="rounded-xl border border-orange-100 bg-orange-50 px-4 py-3 text-sm font-semibold text-orange-800">
               {categoryNote}
             </div>
           )}
@@ -228,7 +228,7 @@ export default function CourseEditForm({ course, isNew, categories }: { course: 
           </div>
           <button type="button" onClick={addInclude}
             className="text-sm font-semibold px-3 py-2 rounded-lg border-2 border-dashed transition-colors"
-            style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+            style={{ borderColor: '#f77420', color: '#f77420' }}>
             + Add Detail
           </button>
         </SectionCard>
@@ -261,7 +261,7 @@ export default function CourseEditForm({ course, isNew, categories }: { course: 
           </div>
           <button type="button" onClick={addCurriculum}
             className="text-sm font-semibold px-3 py-2 rounded-lg border-2 border-dashed transition-colors"
-            style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+            style={{ borderColor: '#f77420', color: '#f77420' }}>
             + Add Module
           </button>
         </SectionCard>

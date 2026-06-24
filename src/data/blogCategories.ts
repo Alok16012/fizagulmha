@@ -5,9 +5,9 @@ export type BlogCategory = (typeof BLOG_CATEGORIES)[number];
 export const BLOG_CATEGORY_COLORS: Record<string, string> = {
   Legal: '#6366f1',
   'Current Affairs': '#f97316',
-  'Law Preparation': '#08BD80',
+  'Law Preparation': '#f77420',
 };
 
 export function categoryColor(category: string): string {
-  return BLOG_CATEGORY_COLORS[category] || '#08BD80';
+  return BLOG_CATEGORY_COLORS[category] || '#f77420';
 }

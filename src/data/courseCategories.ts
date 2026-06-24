@@ -8,8 +8,8 @@ export interface CourseCategory {
 }
 
 export const defaultCourseCategories: CourseCategory[] = [
-  { key: 'offline', label: 'Offline Course', icon: '🏫', color: '#0f3460', accent: '#08BD80', bg: '#E6FAF4' },
+  { key: 'offline', label: 'Offline Course', icon: '🏫', color: '#0f3460', accent: '#f77420', bg: '#fff1e8' },
   { key: 'online', label: 'Online Course', icon: '💻', color: '#6d28d9', accent: '#8b5cf6', bg: '#ede9fe' },
-  { key: 'mentorship', label: 'Mentorship', icon: '🎯', color: '#065f46', accent: '#34d399', bg: '#d1fae5' },
+  { key: 'mentorship', label: 'Mentorship', icon: '🎯', color: '#7a3412', accent: '#ffad75', bg: '#ffd4ba' },
   { key: 'mock', label: 'Mock Tests', icon: '📝', color: '#92400e', accent: '#f59e0b', bg: '#fef3c7' },
 ];

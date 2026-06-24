@@ -9,7 +9,7 @@ const exams = [
     tagline: 'Gateway to top 23 NLUs',
     icon: '🏛️',
     color: '#0f3460',
-    accent: '#08BD80',
+    accent: '#f77420',
     seats: '2,700+',
     colleges: '23 NLUs',
     difficulty: 85,
@@ -50,8 +50,8 @@ const exams = [
     name: 'Common University Entrance',
     tagline: '200+ universities',
     icon: '🎓',
-    color: '#065f46',
-    accent: '#34d399',
+    color: '#7a3412',
+    accent: '#ffad75',
     seats: '3,000+',
     colleges: 'Central Univs.',
     difficulty: 70,
@@ -133,7 +133,7 @@ export default function ExamsSection() {
       {/* ── DESKTOP ─────────────────────────────────────────── */}
       <section id="exams" className="hidden md:block" style={{ background: '#0D1837', padding: '72px 0', position: 'relative', overflow: 'hidden' }}>
         {/* BG orbs */}
-        <div style={{ position: 'absolute', top: '-60px', right: '-60px', width: '320px', height: '320px', borderRadius: '50%', background: '#08BD80', opacity: 0.05, filter: 'blur(60px)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '-60px', right: '-60px', width: '320px', height: '320px', borderRadius: '50%', background: '#f77420', opacity: 0.05, filter: 'blur(60px)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: '-40px', left: '-40px', width: '240px', height: '240px', borderRadius: '50%', background: '#3b82f6', opacity: 0.06, filter: 'blur(50px)', pointerEvents: 'none' }} />
         {/* Grid overlay */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.04, backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px)', backgroundSize: '48px 48px' }} />
@@ -142,17 +142,17 @@ export default function ExamsSection() {
           {/* Header */}
           <div ref={ref} style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '40px', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)', transition: 'opacity .6s ease, transform .6s ease' }}>
             <div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '10px', padding: '5px 14px', borderRadius: '99px', background: 'rgba(8,189,128,0.12)', border: '1px solid rgba(8,189,128,0.25)' }}>
-                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#08BD80' }} />
-                <span style={{ color: '#08BD80', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Law Entrance Exams</span>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '10px', padding: '5px 14px', borderRadius: '99px', background: 'rgba(247,116,32,0.12)', border: '1px solid rgba(247,116,32,0.25)' }}>
+                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#f77420' }} />
+                <span style={{ color: '#f77420', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Law Entrance Exams</span>
               </div>
               <h2 style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(24px, 3vw, 38px)', lineHeight: 1.2, marginBottom: '6px' }}>
                 Expert Coaching for<br />
-                <span style={{ background: 'linear-gradient(90deg,#08BD80,#34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Every Major Law Exam</span>
+                <span style={{ background: 'linear-gradient(90deg,#f77420,#ffad75)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Every Major Law Exam</span>
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px' }}>Pick your exam — we have a specialist batch ready for you.</p>
             </div>
-            <a href="/exams/clat" style={{ color: '#08BD80', fontWeight: 700, fontSize: '13px', textDecoration: 'none', border: '1px solid rgba(8,189,128,0.3)', padding: '8px 18px', borderRadius: '10px', flexShrink: 0, marginBottom: '4px', transition: 'all .2s' }}>
+            <a href="/exams/clat" style={{ color: '#f77420', fontWeight: 700, fontSize: '13px', textDecoration: 'none', border: '1px solid rgba(247,116,32,0.3)', padding: '8px 18px', borderRadius: '10px', flexShrink: 0, marginBottom: '4px', transition: 'all .2s' }}>
               See All Exams →
             </a>
           </div>
@@ -249,7 +249,7 @@ export default function ExamsSection() {
       <section className="md:hidden" style={{ background: '#0D1837', padding: '24px 0 28px' }}>
         {/* Header */}
         <div style={{ padding: '0 16px', marginBottom: '18px' }}>
-          <span style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80', fontSize: '10px', fontWeight: 700, padding: '5px 12px', borderRadius: '99px', display: 'inline-block', marginBottom: '10px', border: '1px solid rgba(8,189,128,0.25)' }}>
+          <span style={{ background: 'rgba(247,116,32,0.15)', color: '#f77420', fontSize: '10px', fontWeight: 700, padding: '5px 12px', borderRadius: '99px', display: 'inline-block', marginBottom: '10px', border: '1px solid rgba(247,116,32,0.25)' }}>
             LAW ENTRANCE EXAMS
           </span>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>

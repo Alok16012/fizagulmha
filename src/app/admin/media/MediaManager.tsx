@@ -96,7 +96,7 @@ export default function MediaManager() {
           onClick={() => fileRef.current?.click()}
           disabled={uploading}
           className="px-5 py-2.5 rounded-xl font-bold text-white text-sm disabled:opacity-60"
-          style={{ background: '#08BD80' }}>
+          style={{ background: '#f77420' }}>
           {uploading ? 'Uploading...' : '⬆ Upload Image'}
         </button>
         <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
@@ -109,7 +109,7 @@ export default function MediaManager() {
         onDrop={handleDrop}
         onClick={() => fileRef.current?.click()}
         className="border-2 border-dashed rounded-2xl p-10 text-center cursor-pointer transition-all mb-6"
-        style={{ borderColor: dragOver ? '#08BD80' : '#E5E7EB', background: dragOver ? '#E6FAF4' : 'white' }}>
+        style={{ borderColor: dragOver ? '#f77420' : '#E5E7EB', background: dragOver ? '#fff1e8' : 'white' }}>
         <div className="text-4xl mb-3">🖼️</div>
         <div className="font-semibold text-gray-700">Drop images here or click to upload</div>
         <div className="text-sm text-gray-400 mt-1">Supports JPG, PNG, GIF, WebP, SVG</div>
@@ -151,7 +151,7 @@ export default function MediaManager() {
                 <button
                   onClick={() => copyUrl(file.url)}
                   className="text-xs font-semibold mt-1 transition-colors"
-                  style={{ color: '#08BD80' }}>
+                  style={{ color: '#f77420' }}>
                   {copied === file.url ? '✓ Copied!' : 'Copy URL'}
                 </button>
               </div>
@@ -169,7 +169,7 @@ export default function MediaManager() {
             (e.g., Faculty photo, Blog cover, Course banner).
           </p>
           <div className="font-mono text-xs bg-gray-50 rounded-xl px-4 py-3 text-gray-600">
-            Example URL: <span style={{ color: '#08BD80' }}>/uploads/1234567890-photo.jpg</span>
+            Example URL: <span style={{ color: '#f77420' }}>/uploads/1234567890-photo.jpg</span>
           </div>
         </div>
       </div>

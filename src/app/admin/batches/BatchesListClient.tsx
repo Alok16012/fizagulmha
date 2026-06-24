@@ -5,7 +5,7 @@ import type { Batch } from '@/data/batches';
 import { adminFetch } from '@/lib/adminFetch';
 
 const statusColors: Record<string, { bg: string; color: string; label: string }> = {
-  'ongoing':      { bg: '#dcfce7', color: '#166534', label: '✅ Open' },
+  'ongoing':      { bg: '#fff1e8', color: '#c95516', label: '✅ Open' },
   'filling-fast': { bg: '#fef3c7', color: '#92400e', label: '🔥 Filling Fast' },
   'upcoming':     { bg: '#e0f2fe', color: '#0369a1', label: '🕐 Upcoming' },
 };
@@ -55,10 +55,10 @@ export default function BatchesListClient({ initialBatches }: { initialBatches: 
                   <td className="px-4 py-4 hidden lg:table-cell">
                     <div className="text-gray-600">{b.filled}/{b.seats}</div>
                     <div className="h-1 bg-gray-100 rounded-full mt-1 w-16">
-                      <div className="h-full rounded-full" style={{ width: `${pct}%`, background: pct > 80 ? '#ef4444' : '#08BD80' }} />
+                      <div className="h-full rounded-full" style={{ width: `${pct}%`, background: pct > 80 ? '#ef4444' : '#f77420' }} />
                     </div>
                   </td>
-                  <td className="px-4 py-4 font-bold" style={{ color: '#08BD80' }}>{b.fee}</td>
+                  <td className="px-4 py-4 font-bold" style={{ color: '#f77420' }}>{b.fee}</td>
                   <td className="px-4 py-4 hidden md:table-cell">
                     <span className="text-xs font-bold px-2 py-1 rounded-full" style={{ background: st.bg, color: st.color }}>{st.label}</span>
                   </td>
@@ -70,7 +70,7 @@ export default function BatchesListClient({ initialBatches }: { initialBatches: 
                       </Link>
                       <Link href={`/admin/batches/${b.slug}`}
                         className="text-xs font-semibold px-3 py-1.5 rounded-lg"
-                        style={{ background: '#E6FAF4', color: '#08BD80' }}>
+                        style={{ background: '#fff1e8', color: '#f77420' }}>
                         Edit
                       </Link>
                       <Link href={`/admin/batches/new?from=${encodeURIComponent(b.slug)}`}

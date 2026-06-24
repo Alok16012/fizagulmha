@@ -37,7 +37,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
         {/* ── Hero ───────────────────────────────────────── */}
         <div
           className="relative overflow-hidden py-14 md:py-20"
-          style={{ background: `linear-gradient(135deg, #0D1837, #08BD80)` }}>
+          style={{ background: `linear-gradient(135deg, #0D1837, #f77420)` }}>
           {/* Decorative circles */}
           <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10"
             style={{ background: '#fff' }} />
@@ -111,7 +111,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
 
         {/* ── Latest Updates Banner ────────────────────── */}
         {exam.latestUpdates && exam.latestUpdates.length > 0 && (
-          <div className="py-3 overflow-hidden" style={{ background: '#E6FAF4', borderBottom: '1px solid #D1FAE5' }}>
+          <div className="py-3 overflow-hidden" style={{ background: '#fff1e8', borderBottom: '1px solid #ffd4ba' }}>
             <div className="max-w-7xl mx-auto px-4 flex items-center gap-4">
               <span className="text-xs font-black px-2.5 py-1 rounded-full text-white flex-shrink-0"
                 style={{ background: exam.color }}>
@@ -120,7 +120,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
               <div className="flex gap-6 overflow-x-auto scrollbar-hide whitespace-nowrap text-sm text-gray-600">
                 {exam.latestUpdates.map((u, i) => (
                   <span key={i} className="flex-shrink-0">
-                    <span className="font-bold" style={{ color: '#08BD80' }}>{u.date}:</span> {u.update}
+                    <span className="font-bold" style={{ color: '#f77420' }}>{u.date}:</span> {u.update}
                     {i < exam.latestUpdates!.length - 1 && <span className="mx-3 text-gray-300">|</span>}
                   </span>
                 ))}
@@ -501,7 +501,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
 
               {/* CTA Banner */}
               <div className="rounded-2xl p-6 flex flex-col gap-4"
-                style={{ background: `linear-gradient(135deg, #0D1837, #08BD80)` }}>
+                style={{ background: `linear-gradient(135deg, #0D1837, #f77420)` }}>
                 <div>
                   <h3 className="text-white font-black text-xl mb-1">Ready to Crack {exam.code} 2026?</h3>
                   <p className="text-white/70 text-sm">Join 15,000+ students who trusted CLATians.</p>
@@ -513,7 +513,7 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
                   </a>
                   <a href="/courses/online"
                     className="flex-1 text-center px-5 py-2.5 rounded-xl font-bold text-sm"
-                    style={{ background: '#fff', color: '#08BD80' }}>
+                    style={{ background: '#fff', color: '#f77420' }}>
                     Online Course →
                   </a>
                 </div>
@@ -592,13 +592,13 @@ export default async function ExamPage({ params }: { params: Promise<{ slug: str
 
                 {/* College Predictor */}
                 <div className="rounded-2xl p-5"
-                  style={{ background: `linear-gradient(135deg, #0D1837, #08BD80)` }}>
+                  style={{ background: `linear-gradient(135deg, #0D1837, #f77420)` }}>
                   <div className="text-3xl mb-2">🔮</div>
                   <h3 className="font-bold text-white text-sm mb-1">College Predictor</h3>
                   <p className="text-white/60 text-xs mb-3">Check your chances for all NLUs based on your {exam.code} rank.</p>
                   <a href="/college-predictor"
                     className="block text-center py-2.5 rounded-xl font-bold text-sm"
-                    style={{ background: '#fff', color: '#08BD80' }}>
+                    style={{ background: '#fff', color: '#f77420' }}>
                     Try Free Predictor
                   </a>
                 </div>

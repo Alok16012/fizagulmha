@@ -92,7 +92,7 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
 
   const selectBase =
     'w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm font-semibold text-gray-700 ' +
-    'focus:outline-none focus:border-green-400 cursor-pointer appearance-none pr-8';
+    'focus:outline-none focus:border-orange-400 cursor-pointer appearance-none pr-8';
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 md:py-14">
@@ -174,12 +174,12 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
                 <div className="p-5 md:p-10 flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-4">
                     <span className="text-xs font-bold px-3 py-1.5 rounded-full text-white"
-                      style={{ background: featured.categoryColor || '#08BD80' }}>
+                      style={{ background: featured.categoryColor || '#f77420' }}>
                       {featured.category}
                     </span>
                     <span className="text-xs text-gray-400">{featured.readTime}</span>
                   </div>
-                  <h2 className="text-xl md:text-2xl font-black text-gray-900 leading-tight group-hover:text-green-700 transition-colors">
+                  <h2 className="text-xl md:text-2xl font-black text-gray-900 leading-tight group-hover:text-orange-700 transition-colors">
                     {featured.title}
                   </h2>
                   <p className="text-gray-500 text-sm mt-3 leading-relaxed">{featured.excerpt}</p>
@@ -191,15 +191,15 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
                       <div className="font-semibold text-xs text-gray-900">{featured.author}</div>
                       <div className="text-xs text-gray-400">{featured.date}</div>
                     </div>
-                    <span className="ml-auto text-sm font-semibold text-green-600 transition-all">Read More →</span>
+                    <span className="ml-auto text-sm font-semibold text-orange-600 transition-all">Read More →</span>
                   </div>
                 </div>
                 <div className="hidden md:flex items-center justify-center p-10"
-                  style={{ background: `linear-gradient(135deg, ${featured.categoryColor || '#08BD80'}15, ${featured.categoryColor || '#08BD80'}08)` }}>
+                  style={{ background: `linear-gradient(135deg, ${featured.categoryColor || '#f77420'}15, ${featured.categoryColor || '#f77420'}08)` }}>
                   <div className="text-center">
                     <div className="text-7xl mb-4">📚</div>
                     {(featured.tags ?? []).length > 0 && (
-                      <div className="text-4xl font-black" style={{ color: featured.categoryColor || '#08BD80' }}>
+                      <div className="text-4xl font-black" style={{ color: featured.categoryColor || '#f77420' }}>
                         {featured.tags[0]}
                       </div>
                     )}
@@ -215,16 +215,16 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
               {rest.map((blog) => (
                 <a key={blog.slug} href={`/blogs/${encodeURIComponent(blog.slug)}`}
                   className="group bg-white border border-gray-100 rounded-2xl overflow-hidden card-hover flex flex-col">
-                  <div className="h-1.5" style={{ background: blog.categoryColor || '#08BD80' }} />
+                  <div className="h-1.5" style={{ background: blog.categoryColor || '#f77420' }} />
                   <div className="p-3 md:p-6 flex flex-col flex-1">
                     <div className="flex items-center gap-1.5 mb-2">
                       <span className="text-[9px] md:text-xs font-bold px-2 py-0.5 rounded-full text-white"
-                        style={{ background: blog.categoryColor || '#08BD80' }}>
+                        style={{ background: blog.categoryColor || '#f77420' }}>
                         {blog.category}
                       </span>
                       <span className="text-[9px] md:text-xs text-gray-400 hidden sm:inline">{blog.readTime}</span>
                     </div>
-                    <h2 className="font-black text-xs md:text-base text-gray-900 leading-snug group-hover:text-green-700 transition-colors line-clamp-3">
+                    <h2 className="font-black text-xs md:text-base text-gray-900 leading-snug group-hover:text-orange-700 transition-colors line-clamp-3">
                       {blog.title}
                     </h2>
                     <p className="text-gray-500 text-xs mt-1 leading-relaxed flex-1 line-clamp-2 hidden md:block">
@@ -237,7 +237,7 @@ export default function BlogsList({ blogs, categories }: { blogs: Blog[]; catego
                       <div className="flex-1 min-w-0">
                         <div className="font-semibold text-[9px] md:text-xs text-gray-800 truncate">{blog.author}</div>
                       </div>
-                      <span className="text-[9px] md:text-xs font-semibold flex-shrink-0" style={{ color: blog.categoryColor || '#08BD80' }}>→</span>
+                      <span className="text-[9px] md:text-xs font-semibold flex-shrink-0" style={{ color: blog.categoryColor || '#f77420' }}>→</span>
                     </div>
                   </div>
                 </a>

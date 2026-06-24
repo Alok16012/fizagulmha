@@ -51,8 +51,8 @@ export default function AdminLogin() {
                 placeholder="Enter admin password"
                 required
                 className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:border-transparent"
-                style={{ '--tw-ring-color': '#08BD80' } as React.CSSProperties}
-                onFocus={(e) => { e.target.style.borderColor = '#08BD80'; e.target.style.boxShadow = '0 0 0 3px rgba(8,189,128,0.15)'; }}
+                style={{ '--tw-ring-color': '#f77420' } as React.CSSProperties}
+                onFocus={(e) => { e.target.style.borderColor = '#f77420'; e.target.style.boxShadow = '0 0 0 3px rgba(247,116,32,0.15)'; }}
                 onBlur={(e) => { e.target.style.borderColor = '#E5E7EB'; e.target.style.boxShadow = 'none'; }}
               />
             </div>
@@ -67,7 +67,7 @@ export default function AdminLogin() {
               type="submit"
               disabled={loading}
               className="w-full py-3 rounded-xl font-bold text-white text-sm transition-opacity disabled:opacity-60"
-              style={{ background: '#08BD80' }}
+              style={{ background: '#f77420' }}
             >
               {loading ? 'Signing in...' : 'Sign In →'}
             </button>

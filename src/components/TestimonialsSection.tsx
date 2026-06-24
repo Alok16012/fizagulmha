@@ -6,7 +6,7 @@ const testimonials = [
   { name: 'Priya Sharma', rank: 'AIR 47', college: 'NALSAR Hyderabad', year: 'CLAT 2024', avatar: 'PS', color: '#ec4899', quote: 'The online program was incredibly flexible. I could study from home while still getting personalized mentorship. Mock test analytics helped me improve 40 ranks.', stars: 5 },
   { name: 'Rohan Gupta', rank: 'AIR 12', college: 'NLU Delhi', year: 'AILET 2024', avatar: 'RG', color: '#f59e0b', quote: 'AILET preparation at CLATians is top-notch. The specialized legal reasoning classes and focused GK sessions made all the difference.', stars: 5 },
   { name: 'Sneha Patel', rank: 'AIR 89', college: 'NLIU Bhopal', year: 'CLAT 2024', avatar: 'SP', color: '#14b8a6', quote: 'From a small town in Bihar to NLIU Bhopal — CLATians made my dream possible. The faculty is truly dedicated to every student.', stars: 5 },
-  { name: 'Vikram Mishra', rank: 'AIR 156', college: 'GNLU Gandhinagar', year: 'CLAT 2024', avatar: 'VM', color: '#08BD80', quote: "I was a dropper who had failed CLAT twice. CLATians' personalized approach completely changed my strategy. Third attempt — AIR 156.", stars: 5 },
+  { name: 'Vikram Mishra', rank: 'AIR 156', college: 'GNLU Gandhinagar', year: 'CLAT 2024', avatar: 'VM', color: '#f77420', quote: "I was a dropper who had failed CLAT twice. CLATians' personalized approach completely changed my strategy. Third attempt — AIR 156.", stars: 5 },
   { name: 'Kavya Reddy', rank: 'AIR 34', college: 'NALSAR Hyderabad', year: 'CLAT 2025', avatar: 'KR', color: '#f97316', quote: 'The study material quality is exceptional. 8 volumes covering every topic in depth. Combined with daily GK sessions, I scored 98/120 in current affairs.', stars: 5 },
   { name: 'Arjun Tiwari', rank: 'AIR 67', college: 'RMLNLU Lucknow', year: 'CLAT 2024', avatar: 'AT', color: '#8b5cf6', quote: "Joined CLATians in Class 11. Two years of consistent preparation with A.K. Sir's guidance. Best decision of my life.", stars: 5 },
   { name: 'Riya Bose', rank: 'AIR 203', college: 'CNLU Patna', year: 'CLAT 2024', avatar: 'RB', color: '#ef4444', quote: 'As a girl from a small family, fees were a concern. CLATians offered scholarship which made it possible. Extremely grateful for the support.', stars: 5 },
@@ -17,7 +17,7 @@ const row2 = testimonials.slice(4, 8);
 
 const rankBadges = [
   { label: 'AIR 1–50', count: '47 students', bg: '#fef3c7', color: '#92400e', icon: '🥇' },
-  { label: 'AIR 51–100', count: '112 students', bg: '#dcfce7', color: '#166534', icon: '🥈' },
+  { label: 'AIR 51–100', count: '112 students', bg: '#fff1e8', color: '#c95516', icon: '🥈' },
   { label: 'AIR 101–500', count: '389 students', bg: '#e0f2fe', color: '#0369a1', icon: '🥉' },
   { label: 'NLU Selections', count: '1,000+', bg: '#ede9fe', color: '#5b21b6', icon: '🏛️' },
 ];
@@ -109,13 +109,13 @@ export default function TestimonialsSection() {
           opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(20px)',
           transition: 'opacity .6s ease, transform .6s ease',
         }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '12px', padding: '5px 14px', borderRadius: '99px', background: 'rgba(8,189,128,0.1)', border: '1px solid rgba(8,189,128,0.25)' }}>
-            <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#08BD80', display: 'inline-block' }} />
-            <span style={{ color: '#08BD80', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Student Success</span>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '12px', padding: '5px 14px', borderRadius: '99px', background: 'rgba(247,116,32,0.1)', border: '1px solid rgba(247,116,32,0.25)' }}>
+            <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#f77420', display: 'inline-block' }} />
+            <span style={{ color: '#f77420', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Student Success</span>
           </div>
           <h2 style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(24px,3vw,40px)', lineHeight: 1.15, marginBottom: '8px' }}>
             15,000+ Students<br />
-            <span style={{ background: 'linear-gradient(90deg,#08BD80,#34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Trust CLATians</span>
+            <span style={{ background: 'linear-gradient(90deg,#f77420,#ffad75)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Trust CLATians</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', marginBottom: '20px' }}>Real students, real NLU selections. Their success is our greatest achievement.</p>
 
@@ -154,7 +154,7 @@ export default function TestimonialsSection() {
 
         {/* Stats bar */}
         <div className="max-w-7xl mx-auto px-4 md:px-10 mt-10">
-          <div style={{ background: 'linear-gradient(90deg,#06a865,#08BD80)', borderRadius: '16px', padding: '16px 28px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
+          <div style={{ background: 'linear-gradient(90deg,#d95f18,#f77420)', borderRadius: '16px', padding: '16px 28px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
             {['1000+ NLU Selections', '23+ NLUs Covered', '15+ Years Track Record'].map((stat, i, arr) => (
               <div key={stat} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                 <span style={{ color: 'white', fontWeight: 700, fontSize: '14px' }}>{stat}</span>

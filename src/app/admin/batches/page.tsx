@@ -18,7 +18,7 @@ export default async function AdminBatches() {
         </div>
         <Link href="/admin/batches/new"
           className="px-5 py-2.5 rounded-xl font-bold text-white text-sm"
-          style={{ background: '#08BD80' }}>
+          style={{ background: '#f77420' }}>
           + New Batch
         </Link>
       </div>

@@ -85,7 +85,7 @@ Practice reading 500+ word passages quickly and accurately. Focus on:
 
 Start your CLAT 2026 journey today with CLATians and join 5000+ successful students who have cracked their dream NLU.`,
     category: 'Law Preparation',
-    categoryColor: '#08BD80',
+    categoryColor: '#f77420',
     author: 'Adv. Ravi Kumar',
     authorAvatar: 'RK',
     date: 'May 10, 2026',
@@ -155,7 +155,7 @@ Our counselling team can help you:
 
 Call us at 8507700177 for free counselling.`,
     category: 'Law Preparation',
-    categoryColor: '#08BD80',
+    categoryColor: '#f77420',
     author: 'CLATians Team',
     authorAvatar: 'CT',
     date: 'May 5, 2026',
@@ -209,7 +209,7 @@ AILET gives you 90 seconds per question on average (90 min / 100 questions), whi
 
 Appear in both exams for maximum chances. Most serious law aspirants do!`,
     category: 'Law Preparation',
-    categoryColor: '#08BD80',
+    categoryColor: '#f77420',
     author: 'Adv. Priya Singh',
     authorAvatar: 'PS',
     date: 'April 28, 2026',
@@ -389,7 +389,7 @@ Absolutely. An NLU education is transformative — academically, professionally,
 
 Start your preparation with CLATians today. Your NLU journey begins here.`,
     category: 'Law Preparation',
-    categoryColor: '#08BD80',
+    categoryColor: '#f77420',
     author: 'CLATians Team',
     authorAvatar: 'CT',
     date: 'April 8, 2026',
@@ -440,7 +440,7 @@ When deciding which NLU to target, consider:
 
 At CLATians, we run specialized College Predictor sessions where A.K. Sir personally helps students identify their target NLUs based on their mock test performance. Join us today!`,
     category: 'Law Preparation',
-    categoryColor: '#08BD80',
+    categoryColor: '#f77420',
     author: 'A.K. Singh',
     authorAvatar: 'AK',
     date: '15 May, 2026',
@@ -561,7 +561,7 @@ Yes! Most CLATians coaching students prepare for both. The syllabi overlap signi
 
 At CLATians, we have a combined preparation program covering both CLAT and AILET. Students who join our Offline Batch typically attempt both exams and secure admissions in either NLU Delhi or NALSAR/NLSIU. Call us at 8507700177 to know more.`,
     category: 'Law Preparation',
-    categoryColor: '#08BD80',
+    categoryColor: '#f77420',
     author: 'A.K. Singh',
     authorAvatar: 'AK',
     date: '8 May, 2026',

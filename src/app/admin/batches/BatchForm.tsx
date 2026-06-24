@@ -118,7 +118,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
 
   const isMentorship = data.category === 'mentorship';
   const isMock = data.category === 'mock';
-  const accent = isMock ? '#3B82F6' : '#08BD80';
+  const accent = isMock ? '#3B82F6' : '#f77420';
   const categoryName = isMentorship ? 'MENTORSHIP' : isMock ? 'MOCK' : '';
   const pageNote = isMentorship || isMock
     ? 'This category uses the same course cards and batch detail page style as Offline/Online. Fill the same sections below; only the text/category changes.'
@@ -243,7 +243,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
             <FieldGroup label="EMI">
               <TextInput value={data.emi} onChange={(v) => set('emi', v)} placeholder="e.g. ₹10,500/month" />
             </FieldGroup>
-            <FieldGroup label="Offer (green tag)">
+            <FieldGroup label="Offer (orange tag)">
               <TextInput value={data.offer ?? ''} onChange={(v) => set('offer', v)} placeholder="e.g. Early-bird 20% off till 30 June" />
             </FieldGroup>
           </div>
@@ -298,7 +298,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
             <button type="button"
               onClick={() => setDetail('aboutFeatures', [...aboutFeatures, { title: '', subtitle: '' }])}
               className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
-              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+              style={{ borderColor: '#f77420', color: '#f77420' }}>
               + Add Feature Card
             </button>
           </div>
@@ -340,7 +340,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
             <button type="button"
               onClick={() => setDetail('strategySections', [...strategySections, { title: '', subtitle: '', items: [''] }])}
               className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
-              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+              style={{ borderColor: '#f77420', color: '#f77420' }}>
               + Add Strategy Card
             </button>
           </div>
@@ -378,7 +378,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
             <button type="button"
               onClick={() => setDetail('plans', [...plans, { name: '', price: '', features: [''] }])}
               className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
-              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+              style={{ borderColor: '#f77420', color: '#f77420' }}>
               + Add Plan
             </button>
           </div>
@@ -420,7 +420,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
             <button type="button"
               onClick={() => setDetail('faqs', [...faqs, { question: '', answer: '' }])}
               className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
-              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+              style={{ borderColor: '#f77420', color: '#f77420' }}>
               + Add FAQ
             </button>
           </div>
@@ -462,7 +462,7 @@ export default function BatchForm({ batch, isNew, courses = [] }: { batch: Batch
             <button type="button"
               onClick={() => setDetail('reviews', [...reviews, { name: '', badge: '', text: '' }])}
               className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
-              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+              style={{ borderColor: '#f77420', color: '#f77420' }}>
               + Add Review
             </button>
           </div>

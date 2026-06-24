@@ -36,9 +36,9 @@ export default function FAQSection() {
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8 px-4">
-          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1.5 rounded-full" style={{ background: 'rgba(8,189,128,0.1)', border: '1px solid rgba(8,189,128,0.2)' }}>
-            <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#08BD80' }} />
-            <span className="text-xs font-bold uppercase tracking-wider" style={{ color: '#08BD80' }}>FAQ</span>
+          <div className="inline-flex items-center gap-2 mb-3 px-3 py-1.5 rounded-full" style={{ background: 'rgba(247,116,32,0.1)', border: '1px solid rgba(247,116,32,0.2)' }}>
+            <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: '#f77420' }} />
+            <span className="text-xs font-bold uppercase tracking-wider" style={{ color: '#f77420' }}>FAQ</span>
           </div>
           <h2 className="text-2xl md:text-4xl font-extrabold mb-2" style={{ color: '#0D1837' }}>
             Frequently Asked Questions
@@ -54,27 +54,27 @@ export default function FAQSection() {
             <div key={i}
               style={{
                 borderRadius: '16px', overflow: 'hidden',
-                border: `1.5px solid ${open === i ? '#08BD80' : '#E9EEF2'}`,
+                border: `1.5px solid ${open === i ? '#f77420' : '#E9EEF2'}`,
                 background: 'white',
-                boxShadow: open === i ? '0 4px 16px rgba(8,189,128,0.1)' : '0 1px 4px rgba(0,0,0,0.04)',
+                boxShadow: open === i ? '0 4px 16px rgba(247,116,32,0.1)' : '0 1px 4px rgba(0,0,0,0.04)',
                 transition: 'all .2s ease',
               }}>
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between px-4 py-4 text-left"
-                style={{ background: open === i ? '#F0FDF9' : 'white', border: 'none', cursor: 'pointer' }}>
+                style={{ background: open === i ? '#fff7ed' : 'white', border: 'none', cursor: 'pointer' }}>
                 <span className="font-semibold text-sm pr-3 leading-snug" style={{ color: '#0D1837' }}>
                   {faq.q}
                 </span>
                 <span
                   className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-lg font-bold transition-all"
-                  style={{ background: open === i ? '#08BD80' : '#F3F4F6', color: open === i ? 'white' : '#9CA3AF', minWidth: '28px' }}>
+                  style={{ background: open === i ? '#f77420' : '#F3F4F6', color: open === i ? 'white' : '#9CA3AF', minWidth: '28px' }}>
                   {open === i ? '−' : '+'}
                 </span>
               </button>
               {open === i && (
                 <div className="px-4 pb-4 pt-1 text-sm leading-relaxed border-t animate-fade-in"
-                  style={{ borderColor: '#E6FAF4', color: '#5a6a75', background: '#F0FDF9' }}>
+                  style={{ borderColor: '#fff1e8', color: '#5a6a75', background: '#fff7ed' }}>
                   {faq.a}
                 </div>
               )}
@@ -92,7 +92,7 @@ export default function FAQSection() {
           <div className="flex gap-3">
             <a href="tel:8507700177"
               className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-white text-sm"
-              style={{ background: 'linear-gradient(135deg,#08BD80,#06a870)', boxShadow: '0 6px 16px rgba(8,189,128,0.35)' }}>
+              style={{ background: 'linear-gradient(135deg,#f77420,#d95f18)', boxShadow: '0 6px 16px rgba(247,116,32,0.35)' }}>
               📞 Call Now
             </a>
             <a href="/admission"

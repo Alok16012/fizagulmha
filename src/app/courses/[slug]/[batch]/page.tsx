@@ -20,28 +20,28 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const cardPalettes: Record<string, { from: string; to: string; accent: string }> = {
-  'Target Batch':     { from: '#0f3460', to: '#1a6b5c', accent: '#08BD80' },
+  'Target Batch':     { from: '#0f3460', to: '#1a6b5c', accent: '#f77420' },
   'Foundation Batch': { from: '#1e3a5f', to: '#1d4ed8', accent: '#3b82f6' },
   'Dream Batch':      { from: '#3b1f6b', to: '#7c3aed', accent: '#8b5cf6' },
   'Crash Course':     { from: '#7c1d1d', to: '#c2410c', accent: '#f97316' },
-  'Starter Pack':     { from: '#134e2c', to: '#15803d', accent: '#22c55e' },
+  'Starter Pack':     { from: '#7a3412', to: '#c95516', accent: '#f77420' },
   'Pro Pack':         { from: '#1e3a8a', to: '#1d4ed8', accent: '#3b82f6' },
   'Ultimate Pack':    { from: '#78350f', to: '#b45309', accent: '#f59e0b' },
 };
 
 const batchTypeColors: Record<string, { bg: string; color: string }> = {
-  'Target Batch':     { bg: '#ccfbf1', color: '#0f766e' },
+  'Target Batch':     { bg: '#ccfbf1', color: '#c95516' },
   'Foundation Batch': { bg: '#dbeafe', color: '#1d4ed8' },
   'Dream Batch':      { bg: '#ede9fe', color: '#6d28d9' },
   'Crash Course':     { bg: '#ffedd5', color: '#c2410c' },
-  'Starter Pack':     { bg: '#dcfce7', color: '#15803d' },
+  'Starter Pack':     { bg: '#fff1e8', color: '#c95516' },
   'Pro Pack':         { bg: '#dbeafe', color: '#1d4ed8' },
   'Ultimate Pack':    { bg: '#fef3c7', color: '#b45309' },
 };
 
 const statusConfig = {
   'filling-fast': { label: '🔥 Filling Fast', bg: '#fef3c7', color: '#92400e' },
-  'ongoing':      { label: '✅ Enrolling Now', bg: '#dcfce7', color: '#166534' },
+  'ongoing':      { label: '✅ Enrolling Now', bg: '#fff1e8', color: '#c95516' },
   'upcoming':     { label: '🕐 Upcoming Batch', bg: '#e0f2fe', color: '#0369a1' },
 };
 
@@ -56,7 +56,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
   const seatsLeft    = batch.seats - batch.filled;
   const pct          = Math.round((batch.filled / batch.seats) * 100);
   const st           = statusConfig[batch.status];
-  const palette      = cardPalettes[batch.batchType] || { from: '#060d1f', to: '#0D1837', accent: '#08BD80' };
+  const palette      = cardPalettes[batch.batchType] || { from: '#060d1f', to: '#0D1837', accent: '#f77420' };
   const typeStyle    = batchTypeColors[batch.batchType] || { bg: '#f3f4f6', color: '#374151' };
 
   const sampleReviews = [
@@ -209,12 +209,12 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                   <span className="text-sm font-bold mr-1" style={{ color: '#9CA3AF' }}>Faculty:</span>
                   {batch.faculty.map((f) => (
                     <div key={f} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full"
-                      style={{ background: '#F0FDF9', border: '1px solid #C6F3E4' }}>
+                      style={{ background: '#fff7ed', border: '1px solid #ffd4ba' }}>
                       <div className="w-5 h-5 rounded-full flex items-center justify-center text-white text-[9px] font-black flex-shrink-0"
                         style={{ background: palette.accent }}>
                         {f.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()}
                       </div>
-                      <span className="text-xs font-bold" style={{ color: '#0f766e' }}>{f}</span>
+                      <span className="text-xs font-bold" style={{ color: '#c95516' }}>{f}</span>
                     </div>
                   ))}
                 </div>
@@ -277,10 +277,10 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                   <div className="space-y-2">
                     {batch.chips.filter((c) => c.trim()).map((chip) => (
                       <div key={chip} className="flex items-center gap-2.5 py-2 px-3 rounded-xl"
-                        style={{ background: '#F0FDF9', border: '1px solid #C6F3E4' }}>
+                        style={{ background: '#fff7ed', border: '1px solid #ffd4ba' }}>
                         <span className="w-4 h-4 rounded-full flex items-center justify-center text-white text-[9px] font-black flex-shrink-0"
                           style={{ background: palette.accent }}>✓</span>
-                        <span className="text-base font-semibold" style={{ color: '#0f766e' }}>{chip}</span>
+                        <span className="text-base font-semibold" style={{ color: '#c95516' }}>{chip}</span>
                       </div>
                     ))}
                   </div>
@@ -349,7 +349,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                           style={{ background: r.color }}>{r.avatar}</div>
                         <div>
                           <p className="font-bold text-base leading-tight" style={{ color: '#0D1837' }}>{r.name}</p>
-                          <p className="text-sm font-bold" style={{ color: '#08BD80' }}>{r.badge} · CLAT</p>
+                          <p className="text-sm font-bold" style={{ color: '#f77420' }}>{r.badge} · CLAT</p>
                         </div>
                         <span className="ml-auto text-sm" style={{ color: '#f59e0b' }}>⭐⭐⭐⭐⭐</span>
                       </div>
@@ -423,7 +423,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                       )}
                     </div>
                     {batch.offer && (
-                      <p className="text-xs font-bold mb-2" style={{ color: '#08BD80' }}>🎉 {batch.offer}</p>
+                      <p className="text-xs font-bold mb-2" style={{ color: '#f77420' }}>🎉 {batch.offer}</p>
                     )}
                     <p className="text-xs mb-3" style={{ color: '#9CA3AF' }}>EMI: {batch.emi}</p>
 
@@ -447,7 +447,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                     </a>
                     <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
                       className="block text-center py-3 rounded-xl font-bold text-sm mb-2 hover:opacity-90 transition-opacity"
-                      style={{ background: '#25D366', color: 'white' }}>
+                      style={{ background: '#f77420', color: 'white' }}>
                       💬 WhatsApp Us
                     </a>
                     <a href="/admission"
@@ -488,7 +488,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                         return (
                           <a key={b.slug}
                             href={`/courses/${slug}/${b.slug}`}
-                            className="block p-3.5 rounded-xl transition-all hover:shadow-md hover:border-green-400"
+                            className="block p-3.5 rounded-xl transition-all hover:shadow-md hover:border-orange-400"
                             style={{ border: '1.5px solid #E9EEF2', background: '#FAFAFA' }}
                           >
                             <div className="flex items-start justify-between gap-2 mb-1.5">
@@ -500,7 +500,7 @@ export default async function BatchPage({ params }: { params: Promise<{ slug: st
                             </div>
                             <div className="flex items-center justify-between">
                               <div>
-                                <p className="text-[11px] font-bold" style={{ color: '#08BD80' }}>{b.fee}</p>
+                                <p className="text-[11px] font-bold" style={{ color: '#f77420' }}>{b.fee}</p>
                                 {b.originalFee && <p className="text-[10px] line-through" style={{ color: '#9CA3AF' }}>{b.originalFee}</p>}
                               </div>
                               <div className="text-right">

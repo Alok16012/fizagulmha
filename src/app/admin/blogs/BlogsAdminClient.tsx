@@ -6,7 +6,7 @@ import { adminFetch } from '@/lib/adminFetch';
 
 interface Category { id: number; name: string; color: string; }
 
-const COLORS = ['#08BD80','#6366f1','#f97316','#ec4899','#14b8a6','#f59e0b','#ef4444','#8b5cf6','#0ea5e9','#22c55e'];
+const COLORS = ['#f77420','#6366f1','#f97316','#ec4899','#14b8a6','#f59e0b','#ef4444','#8b5cf6','#0ea5e9','#f77420'];
 
 export default function BlogsAdminClient({
   initialBlogs,
@@ -20,7 +20,7 @@ export default function BlogsAdminClient({
   const [deletingSlug, setDeletingSlug] = useState<string | null>(null);
   const [showCats, setShowCats] = useState(false);
   const [newCatName, setNewCatName] = useState('');
-  const [newCatColor, setNewCatColor] = useState('#08BD80');
+  const [newCatColor, setNewCatColor] = useState('#f77420');
   const [addingCat, setAddingCat] = useState(false);
   const [deletingCatId, setDeletingCatId] = useState<number | null>(null);
 
@@ -99,7 +99,7 @@ export default function BlogsAdminClient({
           </button>
           <Link href="/admin/blogs/new"
             className="px-5 py-2.5 rounded-xl font-bold text-white text-sm"
-            style={{ background: '#08BD80' }}>
+            style={{ background: '#f77420' }}>
             + New Blog
           </Link>
         </div>
@@ -160,7 +160,7 @@ export default function BlogsAdminClient({
               type="submit"
               disabled={addingCat || !newCatName.trim()}
               className="px-4 py-2 rounded-xl text-xs font-bold text-white"
-              style={{ background: addingCat || !newCatName.trim() ? '#9ca3af' : '#08BD80' }}
+              style={{ background: addingCat || !newCatName.trim() ? '#9ca3af' : '#f77420' }}
             >
               {addingCat ? 'Adding…' : '+ Add'}
             </button>
@@ -176,7 +176,7 @@ export default function BlogsAdminClient({
           <div className="divide-y divide-gray-50">
             {blogs.map((blog) => {
               const cat = categories.find((c) => c.name === blog.category);
-              const color = cat?.color || blog.categoryColor || '#08BD80';
+              const color = cat?.color || blog.categoryColor || '#f77420';
               return (
                 <div key={blog.slug}
                   className="px-6 py-4 flex items-center gap-4 hover:bg-gray-50 transition-colors">
@@ -199,7 +199,7 @@ export default function BlogsAdminClient({
                     </Link>
                     <Link href={`/admin/blogs/${encodeURIComponent(blog.slug)}`}
                       className="text-xs font-semibold px-3 py-1.5 rounded-lg"
-                      style={{ background: '#E6FAF4', color: '#08BD80' }}>
+                      style={{ background: '#fff1e8', color: '#f77420' }}>
                       Edit
                     </Link>
                     <button

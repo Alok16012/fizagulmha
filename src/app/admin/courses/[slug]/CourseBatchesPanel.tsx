@@ -6,7 +6,7 @@ import type { Batch } from '@/data/batches';
 import { adminFetch } from '@/lib/adminFetch';
 
 const statusConfig: Record<string, { bg: string; color: string; label: string }> = {
-  'ongoing':      { bg: '#dcfce7', color: '#166534', label: '✅ Open' },
+  'ongoing':      { bg: '#fff1e8', color: '#c95516', label: '✅ Open' },
   'filling-fast': { bg: '#fef3c7', color: '#92400e', label: '🔥 Filling Fast' },
   'upcoming':     { bg: '#e0f2fe', color: '#0369a1', label: '🕐 Upcoming' },
 };
@@ -46,7 +46,7 @@ export default function CourseBatchesPanel({
         <Link
           href={`/admin/batches/new?courseSlug=${courseSlug}`}
           className="px-4 py-2 rounded-xl font-bold text-white text-sm flex items-center gap-1.5"
-          style={{ background: '#08BD80' }}>
+          style={{ background: '#f77420' }}>
           + Add Batch
         </Link>
       </div>
@@ -56,7 +56,7 @@ export default function CourseBatchesPanel({
           <div className="text-3xl mb-2">📦</div>
           <div className="font-bold text-gray-400 mb-1">No batches yet</div>
           <Link href={`/admin/batches/new?courseSlug=${courseSlug}`}
-            className="text-sm font-semibold" style={{ color: '#08BD80' }}>
+            className="text-sm font-semibold" style={{ color: '#f77420' }}>
             + Create the first batch
           </Link>
         </div>
@@ -86,7 +86,7 @@ export default function CourseBatchesPanel({
                     <td className="px-4 py-4">
                       <div className="text-sm text-gray-600">{b.filled}/{b.seats}</div>
                       <div className="h-1.5 bg-gray-100 rounded-full mt-1 w-20">
-                        <div className="h-full rounded-full" style={{ width: `${Math.min(pct, 100)}%`, background: pct > 80 ? '#ef4444' : '#08BD80' }} />
+                        <div className="h-full rounded-full" style={{ width: `${Math.min(pct, 100)}%`, background: pct > 80 ? '#ef4444' : '#f77420' }} />
                       </div>
                     </td>
                     <td className="px-4 py-4 hidden md:table-cell">
@@ -96,7 +96,7 @@ export default function CourseBatchesPanel({
                       <div className="flex items-center gap-2">
                         <Link href={`/admin/batches/${b.slug}`}
                           className="text-xs font-semibold px-3 py-1.5 rounded-lg"
-                          style={{ background: '#E6FAF4', color: '#08BD80' }}>
+                          style={{ background: '#fff1e8', color: '#f77420' }}>
                           Edit
                         </Link>
                         <button

@@ -2,9 +2,9 @@
 
 :root {
   /* Unacademy-inspired palette for CLATians */
-  --green: #08BD80;
-  --green-dark: #06a870;
-  --green-light: #e6faf4;
+  --brand-orange: #f77420;
+  --brand-orange-dark: #d95f18;
+  --brand-orange-light: #fff1e8;
   --dark: #3C4852;
   --dark-light: #5a6a75;
   --navy: #0D1837;
@@ -20,8 +20,8 @@
   --border: #E9EEF2;
   --white: #ffffff;
   --footer-bg: #2A2B2D;
-  --orange: #f97316;
-  --cyan: #08BD80;
+  --orange: #f77420;
+  --cyan: #f77420;
 }
 
 * { box-sizing: border-box; }
@@ -84,8 +84,8 @@ body {
   text-transform: uppercase;
   padding: 4px 14px;
   border-radius: 100px;
-  background: var(--green-light);
-  color: var(--green);
+  background: var(--brand-orange-light);
+  color: var(--brand-orange);
 }
 
 /* Section headings */
@@ -146,7 +146,7 @@ body {
 .app-section-link {
   font-size: 12px;
   font-weight: 700;
-  color: #08BD80;
+  color: #f77420;
   text-decoration: none;
 }
 .app-card {
@@ -166,9 +166,9 @@ body {
   text-transform: uppercase;
   padding: 5px 12px;
   border-radius: 99px;
-  background: rgba(8,189,128,0.12);
-  color: #08BD80;
-  border: 1px solid rgba(8,189,128,0.25);
+  background: rgba(247,116,32,0.12);
+  color: #f77420;
+  border: 1px solid rgba(247,116,32,0.25);
   margin-bottom: 8px;
 }
 .app-horizontal-scroll {
@@ -213,22 +213,22 @@ body {
   transform: translateX(-50%);
   width: 32px;
   height: 3px;
-  background: #08BD80;
+  background: #f77420;
   border-radius: 0 0 4px 4px;
 }
-.bottom-nav-item.active-nav .nav-icon { color: #08BD80; }
-.bottom-nav-item.active-nav .nav-label { color: #08BD80; }
+.bottom-nav-item.active-nav .nav-icon { color: #f77420; }
+.bottom-nav-item.active-nav .nav-label { color: #f77420; }
 
 /* Gradient text */
-.gradient-text-green {
-  background: linear-gradient(90deg, #08BD80, #34d399);
+.gradient-text-orange {
+  background: linear-gradient(90deg, #f77420, #ffad75);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Green CTA button */
+/* Primary CTA button */
 .btn-primary {
-  background: var(--green);
+  background: var(--brand-orange);
   color: white;
   font-weight: 700;
   padding: 12px 24px;
@@ -257,7 +257,7 @@ body {
 .see-all {
   font-size: 13px;
   font-weight: 700;
-  color: var(--green);
+  color: var(--brand-orange);
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
@@ -276,8 +276,8 @@ body {
 .blog-content ul { list-style: disc; padding-left: 1.5rem; margin: 0.75rem 0; }
 .blog-content ol { list-style: decimal; padding-left: 1.5rem; margin: 0.75rem 0; }
 .blog-content li { margin: 0.35rem 0; }
-.blog-content blockquote { border-left: 4px solid #08BD80; padding: 0.25rem 0 0.25rem 1rem; margin: 1rem 0; color: #4b5563; font-style: italic; background: #f7f9fb; border-radius: 0 8px 8px 0; }
-.blog-content a { color: #08BD80; text-decoration: underline; font-weight: 600; }
+.blog-content blockquote { border-left: 4px solid #f77420; padding: 0.25rem 0 0.25rem 1rem; margin: 1rem 0; color: #4b5563; font-style: italic; background: #f7f9fb; border-radius: 0 8px 8px 0; }
+.blog-content a { color: #f77420; text-decoration: underline; font-weight: 600; }
 .blog-content img { max-width: 100%; height: auto; border-radius: 0.85rem; margin: 1.25rem 0; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
 .blog-content strong { font-weight: 700; color: #1f2937; }
 .blog-content table { border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; display: block; width: max-content !important; max-width: 100% !important; overflow-x: auto; -webkit-overflow-scrolling: touch; }

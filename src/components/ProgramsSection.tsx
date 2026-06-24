@@ -42,24 +42,24 @@ const tabCourses: Record<
   { badge: string; badgeColor: string; badgeBg: string; name: string; slug: string }[]
 > = {
   'Offline Course': [
-    { badge: '🎓 Your Path to Top NLUs', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CLAT', slug: 'clat' },
-    { badge: '🎓 CLAT + NLU Delhi', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CLAT+AILET', slug: 'clat-ailet' },
-    { badge: '🎓 Central Universities', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CUET-UG', slug: 'cuet-ug' },
+    { badge: '🎓 Your Path to Top NLUs', badgeColor: '#f77420', badgeBg: '#fff1e8', name: 'CLAT', slug: 'clat' },
+    { badge: '🎓 CLAT + NLU Delhi', badgeColor: '#f77420', badgeBg: '#fff1e8', name: 'CLAT+AILET', slug: 'clat-ailet' },
+    { badge: '🎓 Central Universities', badgeColor: '#f77420', badgeBg: '#fff1e8', name: 'CUET-UG', slug: 'cuet-ug' },
   ],
   'Online Course': [
-    { badge: '🎓 Study From Anywhere', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'Online CLAT', slug: 'clat-online' },
-    { badge: '🎓 Global Law Schools', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'LSAT India', slug: 'lsat' },
-    { badge: '🎓 Last 45 Days Boost', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'Booster', slug: 'booster' },
+    { badge: '🎓 Study From Anywhere', badgeColor: '#f77420', badgeBg: '#fff1e8', name: 'Online CLAT', slug: 'clat-online' },
+    { badge: '🎓 Global Law Schools', badgeColor: '#f77420', badgeBg: '#fff1e8', name: 'LSAT India', slug: 'lsat' },
+    { badge: '🎓 Last 45 Days Boost', badgeColor: '#f77420', badgeBg: '#fff1e8', name: 'Booster', slug: 'booster' },
   ],
   Mentorship: [
-    { badge: '🎓 1-on-1 CLAT Prep', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CLAT', slug: 'clat' },
-    { badge: '🎓 NLU Delhi Focus', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'AILET', slug: 'clat-ailet' },
-    { badge: '🎓 All Exams Covered', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'All Exams', slug: 'olet' },
+    { badge: '🎓 1-on-1 CLAT Prep', badgeColor: '#f77420', badgeBg: '#fff1e8', name: 'CLAT', slug: 'clat' },
+    { badge: '🎓 NLU Delhi Focus', badgeColor: '#f77420', badgeBg: '#fff1e8', name: 'AILET', slug: 'clat-ailet' },
+    { badge: '🎓 All Exams Covered', badgeColor: '#f77420', badgeBg: '#fff1e8', name: 'All Exams', slug: 'olet' },
   ],
   'Mock Tests': [
-    { badge: '🎓 CLAT Mock Series', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: 'CLAT', slug: 'mock-tests' },
-    { badge: '🎓 10 Mocks Starter', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: '10 Mocks', slug: 'mock-tests' },
-    { badge: '🎓 40 Mocks Ultimate', badgeColor: '#08BD80', badgeBg: '#E6FAF4', name: '40 Mocks', slug: 'mock-tests' },
+    { badge: '🎓 CLAT Mock Series', badgeColor: '#f77420', badgeBg: '#fff1e8', name: 'CLAT', slug: 'mock-tests' },
+    { badge: '🎓 10 Mocks Starter', badgeColor: '#f77420', badgeBg: '#fff1e8', name: '10 Mocks', slug: 'mock-tests' },
+    { badge: '🎓 40 Mocks Ultimate', badgeColor: '#f77420', badgeBg: '#fff1e8', name: '40 Mocks', slug: 'mock-tests' },
   ],
 };
 
@@ -102,20 +102,20 @@ export default function ProgramsSection() {
               {p.badge && (
                 <div
                   className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full text-white"
-                  style={{ background: '#08BD80' }}
+                  style={{ background: '#f77420' }}
                 >
                   {p.badge}
                 </div>
               )}
 
               {/* Top colored bar */}
-              <div className="h-1.5 w-full" style={{ background: '#08BD80' }} />
+              <div className="h-1.5 w-full" style={{ background: '#f77420' }} />
 
               <div className="p-6 flex flex-col flex-1">
                 {/* Icon */}
                 <div
                   className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl mb-4 flex-shrink-0"
-                  style={{ background: '#E6FAF4' }}
+                  style={{ background: '#fff1e8' }}
                 >
                   {p.icon}
                 </div>
@@ -128,7 +128,7 @@ export default function ProgramsSection() {
                 <ul className="mt-4 space-y-1.5">
                   {p.features.map((f) => (
                     <li key={f} className="flex items-center gap-2 text-sm text-gray-600">
-                      <span style={{ color: '#08BD80' }} className="font-bold">
+                      <span style={{ color: '#f77420' }} className="font-bold">
                         ✓
                       </span>{' '}
                       {f}
@@ -139,7 +139,7 @@ export default function ProgramsSection() {
                 <a
                   href={p.href}
                   className="mt-5 block text-center py-2.5 font-semibold text-sm text-white hover:opacity-90 transition-all"
-                  style={{ background: '#08BD80', borderRadius: '8px' }}
+                  style={{ background: '#f77420', borderRadius: '8px' }}
                 >
                   {p.cta} →
                 </a>
@@ -159,7 +159,7 @@ export default function ProgramsSection() {
                 className="flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold border transition-all"
                 style={
                   activeTab === tab
-                    ? { background: '#08BD80', color: 'white', borderColor: '#08BD80' }
+                    ? { background: '#f77420', color: 'white', borderColor: '#f77420' }
                     : { background: 'white', color: '#3C4852', borderColor: '#E9EEF2' }
                 }
               >
@@ -180,7 +180,7 @@ export default function ProgramsSection() {
                   borderRadius: '12px',
                 }}
               >
-                <div className="h-1 w-full" style={{ background: '#08BD80' }} />
+                <div className="h-1 w-full" style={{ background: '#f77420' }} />
                 <div className="px-3 pt-3">
                   <span
                     className="text-[10px] font-bold px-2 py-1 rounded-full inline-block leading-tight"
@@ -193,14 +193,14 @@ export default function ProgramsSection() {
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M22 10v6M2 10l10-5 10 5-10 5z"
-                      stroke="#08BD80"
+                      stroke="#f77420"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
                     <path
                       d="M6 12v5c3 3 9 3 12 0v-5"
-                      stroke="#08BD80"
+                      stroke="#f77420"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -216,7 +216,7 @@ export default function ProgramsSection() {
                 <a
                   href={`/courses/${c.slug}`}
                   className="block mx-3 mb-3 py-2.5 text-center text-xs font-bold text-white"
-                  style={{ background: '#08BD80', borderRadius: '8px' }}
+                  style={{ background: '#f77420', borderRadius: '8px' }}
                 >
                   Explore Program
                 </a>
@@ -229,7 +229,7 @@ export default function ProgramsSection() {
             <a
               href="/courses"
               className="flex items-center gap-2 px-8 py-3 rounded-full border-2 font-bold text-sm uppercase tracking-wide"
-              style={{ borderColor: '#08BD80', color: '#08BD80' }}
+              style={{ borderColor: '#f77420', color: '#f77420' }}
             >
               SEE ALL COURSES →
             </a>

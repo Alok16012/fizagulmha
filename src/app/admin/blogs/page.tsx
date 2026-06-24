@@ -8,7 +8,7 @@ import BlogsAdminClient from './BlogsAdminClient';
 const FALLBACK_CATEGORIES = [
   { id: 1, name: 'Legal', color: '#6366f1' },
   { id: 2, name: 'Current Affairs', color: '#f97316' },
-  { id: 3, name: 'Law Preparation', color: '#08BD80' },
+  { id: 3, name: 'Law Preparation', color: '#f77420' },
 ];
 
 export default async function AdminBlogs() {

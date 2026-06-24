@@ -5,7 +5,7 @@ import { supabaseAdmin, CATEGORY_COLUMNS } from '@/lib/supabase';
 const FALLBACK = [
   { id: 1, name: 'Legal', color: '#6366f1' },
   { id: 2, name: 'Current Affairs', color: '#f97316' },
-  { id: 3, name: 'Law Preparation', color: '#08BD80' },
+  { id: 3, name: 'Law Preparation', color: '#f77420' },
 ];
 
 export async function GET() {
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
   if (!name?.trim()) return NextResponse.json({ error: 'Name required' }, { status: 400 });
   const { data, error } = await supabaseAdmin()
     .from('blog_categories')
-    .insert({ name: name.trim(), color: color || '#08BD80' })
+    .insert({ name: name.trim(), color: color || '#f77420' })
     .select(CATEGORY_COLUMNS)
     .single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });

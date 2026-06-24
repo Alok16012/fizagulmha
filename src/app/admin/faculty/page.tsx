@@ -18,7 +18,7 @@ export default async function AdminFaculty() {
         </div>
         <Link href="/admin/faculty/new"
           className="px-5 py-2.5 rounded-xl font-bold text-white text-sm"
-          style={{ background: '#08BD80' }}>
+          style={{ background: '#f77420' }}>
           + New Faculty
         </Link>
       </div>
@@ -28,7 +28,7 @@ export default async function AdminFaculty() {
           <div key={f.slug} className="bg-white rounded-2xl border border-gray-100 p-5 hover:shadow-md transition-shadow">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 rounded-full flex items-center justify-center text-white font-black text-lg flex-shrink-0 overflow-hidden"
-                style={{ background: '#08BD80' }}>
+                style={{ background: '#f77420' }}>
                 {f.photo ? (
                   <img src={f.photo} alt={f.name} className="w-full h-full object-cover" />
                 ) : (
@@ -57,7 +57,7 @@ export default async function AdminFaculty() {
           <p className="text-sm text-gray-500 mt-1">Add your first faculty member to show this section on the website.</p>
           <Link href="/admin/faculty/new"
             className="inline-flex mt-5 px-5 py-2.5 rounded-xl font-bold text-white text-sm"
-            style={{ background: '#08BD80' }}>
+            style={{ background: '#f77420' }}>
             + New Faculty
           </Link>
         </div>

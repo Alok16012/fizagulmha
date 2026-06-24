@@ -301,7 +301,7 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
           onClick={() => fileRef.current?.click()}
           disabled={uploading}
           className="px-3 py-1.5 rounded-lg text-sm font-semibold text-white hover:opacity-90 transition-all disabled:opacity-60"
-          style={{ background: '#08BD80' }}
+          style={{ background: '#f77420' }}
         >
           {uploading ? 'Uploading…' : '🖼 Upload'}
         </button>
@@ -357,8 +357,8 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
                       onClick={() => insertTable(ri + 1, ci + 1)}
                       className="w-6 h-6 rounded cursor-pointer border transition-colors"
                       style={{
-                        background: ri < tableHover.r && ci < tableHover.c ? '#E6FAF4' : '#f9fafb',
-                        borderColor: ri < tableHover.r && ci < tableHover.c ? '#08BD80' : '#e5e7eb',
+                        background: ri < tableHover.r && ci < tableHover.c ? '#fff1e8' : '#f9fafb',
+                        borderColor: ri < tableHover.r && ci < tableHover.c ? '#f77420' : '#e5e7eb',
                       }}
                     />
                   ))
@@ -392,7 +392,7 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
           content: attr(data-placeholder);
           color: #9ca3af;
         }
-        .rte-content:focus { border-color: #08BD80; box-shadow: 0 0 0 3px rgba(8, 189, 128, 0.12); }
+        .rte-content:focus { border-color: #f77420; box-shadow: 0 0 0 3px rgba(247, 116, 32, 0.12); }
         .rte-content h2 { font-size: 1.4rem; font-weight: 800; color: #0d1837; margin: 1.2rem 0 0.6rem; }
         .rte-content h3 { font-size: 1.15rem; font-weight: 700; color: #1f2937; margin: 1rem 0 0.4rem; }
         .rte-content h4 { font-size: 1.02rem; font-weight: 700; color: #374151; margin: 0.9rem 0 0.3rem; }
@@ -400,10 +400,10 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
         .rte-content ul { list-style: disc; padding-left: 1.5rem; margin: 0.6rem 0; }
         .rte-content ol { list-style: decimal; padding-left: 1.5rem; margin: 0.6rem 0; }
         .rte-content li { margin: 0.3rem 0; color: #374151; }
-        .rte-content blockquote { border-left: 3px solid #08BD80; padding-left: 1rem; margin: 0.8rem 0; color: #4b5563; font-style: italic; }
+        .rte-content blockquote { border-left: 3px solid #f77420; padding-left: 1rem; margin: 0.8rem 0; color: #4b5563; font-style: italic; }
         .rte-content pre { background: #0d1837; color: #e2e8f0; padding: 0.9rem 1rem; border-radius: 0.6rem; margin: 0.8rem 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem; white-space: pre-wrap; overflow-x: auto; }
         .rte-content hr { border: none; border-top: 2px solid #e5e7eb; margin: 1.2rem 0; }
-        .rte-content a { color: #08BD80; text-decoration: underline; }
+        .rte-content a { color: #f77420; text-decoration: underline; }
         .rte-content img { max-width: 100%; border-radius: 0.75rem; margin: 1rem 0; }
         .rte-content strong { font-weight: 700; }
         .rte-content s, .rte-content strike { text-decoration: line-through; }

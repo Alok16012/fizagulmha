@@ -86,7 +86,7 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
     e.preventDefault();
     setLoading(true);
     // Auto-set category color
-    const updatedData = { ...data, categoryColor: CATEGORY_COLORS[data.category] || '#08BD80' };
+    const updatedData = { ...data, categoryColor: CATEGORY_COLORS[data.category] || '#f77420' };
     try {
       const url = isNew ? '/api/admin/blogs' : `/api/admin/blogs/${encodeURIComponent(blog.slug)}`;
       const method = isNew ? 'POST' : 'PUT';
@@ -151,7 +151,7 @@ export default function BlogForm({ blog, isNew }: { blog: Blog; isNew: boolean }
           <div className="bg-white rounded-2xl border border-gray-100 p-8">
             <div className="mb-2">
               <span className="text-xs font-bold px-3 py-1 rounded-full"
-                style={{ background: `${CATEGORY_COLORS[data.category] || '#08BD80'}20`, color: CATEGORY_COLORS[data.category] || '#08BD80' }}>
+                style={{ background: `${CATEGORY_COLORS[data.category] || '#f77420'}20`, color: CATEGORY_COLORS[data.category] || '#f77420' }}>
                 {data.category}
               </span>
             </div>

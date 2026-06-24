@@ -16,7 +16,7 @@ export default async function AdminDashboard() {
   const blogs = await getBlogs();
 
   const stats = [
-    { label: 'Courses', value: courses.length, icon: '📚', href: '/admin/courses', color: '#08BD80' },
+    { label: 'Courses', value: courses.length, icon: '📚', href: '/admin/courses', color: '#f77420' },
     { label: 'Batches', value: batches.length, icon: '📅', href: '/admin/batches', color: '#6366f1' },
     { label: 'Exams', value: (exams as typeof defaultExams).length, icon: '🏛️', href: '/admin/exams', color: '#f59e0b' },
     { label: 'Faculty', value: faculty.length, icon: '👨‍🏫', href: '/admin/faculty', color: '#ec4899' },
@@ -67,10 +67,10 @@ export default async function AdminDashboard() {
             <Link
               key={q.href}
               href={q.href}
-              className="bg-white rounded-2xl p-5 border border-gray-100 hover:border-green-200 hover:shadow-md transition-all group"
+              className="bg-white rounded-2xl p-5 border border-gray-100 hover:border-orange-200 hover:shadow-md transition-all group"
             >
               <span className="text-3xl mb-3 block">{q.icon}</span>
-              <div className="font-bold text-gray-900 text-sm group-hover:text-green-700 transition-colors">{q.label}</div>
+              <div className="font-bold text-gray-900 text-sm group-hover:text-orange-700 transition-colors">{q.label}</div>
               <div className="text-xs text-gray-400 mt-0.5">{q.desc}</div>
             </Link>
           ))}
@@ -81,7 +81,7 @@ export default async function AdminDashboard() {
       <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-50 flex items-center justify-between">
           <h2 className="font-black text-gray-900">Recent Batches</h2>
-          <Link href="/admin/batches" className="text-sm font-semibold" style={{ color: '#08BD80' }}>View all →</Link>
+          <Link href="/admin/batches" className="text-sm font-semibold" style={{ color: '#f77420' }}>View all →</Link>
         </div>
         <div className="divide-y divide-gray-50">
           {batches.slice(0, 5).map((b) => {
@@ -93,17 +93,17 @@ export default async function AdminDashboard() {
                   <div className="text-xs text-gray-400">{b.startDate} · {b.mode}</div>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <div className="text-sm font-bold" style={{ color: '#08BD80' }}>{b.fee}</div>
+                  <div className="text-sm font-bold" style={{ color: '#f77420' }}>{b.fee}</div>
                   <div className="text-xs text-gray-400">{b.filled}/{b.seats} seats</div>
                 </div>
                 <div className="w-16 hidden md:block">
                   <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                    <div className="h-full rounded-full" style={{ width: `${pct}%`, background: pct > 80 ? '#ef4444' : '#08BD80' }} />
+                    <div className="h-full rounded-full" style={{ width: `${pct}%`, background: pct > 80 ? '#ef4444' : '#f77420' }} />
                   </div>
                 </div>
                 <Link href={`/admin/batches/${b.slug}`}
                   className="text-xs font-semibold px-3 py-1.5 rounded-lg"
-                  style={{ background: '#E6FAF4', color: '#08BD80' }}>
+                  style={{ background: '#fff1e8', color: '#f77420' }}>
                   Edit
                 </Link>
               </div>

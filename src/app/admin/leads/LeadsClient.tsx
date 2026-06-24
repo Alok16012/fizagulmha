@@ -111,7 +111,7 @@ export default function LeadsClient({ initialLeads }: { initialLeads: Lead[] }) 
           <p className="text-sm text-gray-400">Share your contact page to start capturing leads!</p>
           <a href="/contact" target="_blank" rel="noopener noreferrer"
             className="mt-4 inline-block px-5 py-2 rounded-xl text-sm font-semibold text-white"
-            style={{ background: '#08BD80' }}>
+            style={{ background: '#f77420' }}>
             View Contact Page →
           </a>
         </div>
@@ -156,7 +156,7 @@ export default function LeadsClient({ initialLeads }: { initialLeads: Lead[] }) 
                             <span className="font-bold" style={{ color: '#0D1837' }}>{lead.name}</span>
                           </td>
                           <td className="px-4 py-3">
-                            <a href={`tel:${lead.phone}`} className="font-mono font-semibold" style={{ color: '#08BD80' }}>
+                            <a href={`tel:${lead.phone}`} className="font-mono font-semibold" style={{ color: '#f77420' }}>
                               {lead.phone}
                             </a>
                           </td>
@@ -166,7 +166,7 @@ export default function LeadsClient({ initialLeads }: { initialLeads: Lead[] }) 
                           <td className="px-4 py-3">
                             {lead.program ? (
                               <span className="px-2 py-0.5 rounded-full text-xs font-semibold"
-                                style={{ background: 'rgba(8,189,128,0.10)', color: '#08BD80' }}>
+                                style={{ background: 'rgba(247,116,32,0.10)', color: '#f77420' }}>
                                 {lead.program}
                               </span>
                             ) : <span className="text-gray-300">—</span>}

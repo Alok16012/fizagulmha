@@ -8,21 +8,21 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const cardPalettes: Record<string, { from: string; to: string; avatarBg: string }> = {
-  'Target Batch':     { from: '#0f3460', to: '#1a6b5c', avatarBg: '#08BD80' },
+  'Target Batch':     { from: '#0f3460', to: '#1a6b5c', avatarBg: '#f77420' },
   'Foundation Batch': { from: '#1e3a5f', to: '#2563eb', avatarBg: '#3b82f6' },
   'Dream Batch':      { from: '#3b1f6b', to: '#7c3aed', avatarBg: '#8b5cf6' },
   'Crash Course':     { from: '#7c1d1d', to: '#c2410c', avatarBg: '#f97316' },
-  'Starter Pack':     { from: '#134e2c', to: '#15803d', avatarBg: '#22c55e' },
+  'Starter Pack':     { from: '#7a3412', to: '#c95516', avatarBg: '#f77420' },
   'Pro Pack':         { from: '#1e3a8a', to: '#1d4ed8', avatarBg: '#3b82f6' },
   'Ultimate Pack':    { from: '#78350f', to: '#b45309', avatarBg: '#f59e0b' },
 };
 
 const batchTypeColors: Record<string, { bg: string; color: string }> = {
-  'Target Batch':     { bg: '#ccfbf1', color: '#0f766e' },
+  'Target Batch':     { bg: '#ccfbf1', color: '#c95516' },
   'Foundation Batch': { bg: '#dbeafe', color: '#1d4ed8' },
   'Dream Batch':      { bg: '#ede9fe', color: '#6d28d9' },
   'Crash Course':     { bg: '#ffedd5', color: '#c2410c' },
-  'Starter Pack':     { bg: '#dcfce7', color: '#15803d' },
+  'Starter Pack':     { bg: '#fff1e8', color: '#c95516' },
   'Pro Pack':         { bg: '#dbeafe', color: '#1d4ed8' },
   'Ultimate Pack':    { bg: '#fef3c7', color: '#b45309' },
 };
@@ -59,7 +59,7 @@ function BatchCard({ batch }: { batch: Batch }) {
         const el = e.currentTarget as HTMLElement;
         el.style.boxShadow = '0 12px 40px rgba(0,0,0,0.12)';
         el.style.transform  = 'translateY(-4px)';
-        el.style.borderColor = '#08BD80';
+        el.style.borderColor = '#f77420';
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLElement;
@@ -86,7 +86,7 @@ function BatchCard({ batch }: { batch: Batch }) {
           </div>
         </div>
         <div className="flex flex-col items-end gap-1 pb-1">
-          {batch.status === 'upcoming'     && <span className="text-[9px] font-black px-2 py-0.5 rounded-full text-white" style={{ background: 'rgba(8,189,128,0.9)' }}>NEW</span>}
+          {batch.status === 'upcoming'     && <span className="text-[9px] font-black px-2 py-0.5 rounded-full text-white" style={{ background: 'rgba(247,116,32,0.9)' }}>NEW</span>}
           {batch.status === 'filling-fast' && <span className="text-[9px] font-black px-2 py-0.5 rounded-full text-white" style={{ background: 'rgba(249,115,22,0.9)' }}>🔥 HOT</span>}
         </div>
       </div>
@@ -110,13 +110,13 @@ function BatchCard({ batch }: { batch: Batch }) {
         <div className="flex flex-wrap gap-1 mb-2.5">
           {batch.chips.slice(0, 3).map((chip) => (
             <span key={chip} className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
-              style={{ background: '#F0FDF9', color: '#0f766e', border: '1px solid #C6F3E4' }}>✓ {chip}</span>
+              style={{ background: '#fff7ed', color: '#c95516', border: '1px solid #ffd4ba' }}>✓ {chip}</span>
           ))}
         </div>
 
         <div className="flex items-center gap-1.5 mb-2">
-          <div className="w-1.5 h-1.5 rounded-full" style={{ background: urgent ? '#f97316' : '#08BD80' }} />
-          <span className="text-[11px] font-semibold" style={{ color: urgent ? '#c2410c' : '#0f766e' }}>{seatsText}</span>
+          <div className="w-1.5 h-1.5 rounded-full" style={{ background: urgent ? '#f97316' : '#f77420' }} />
+          <span className="text-[11px] font-semibold" style={{ color: urgent ? '#c2410c' : '#c95516' }}>{seatsText}</span>
         </div>
 
         <div className="flex-1" />
@@ -128,7 +128,7 @@ function BatchCard({ batch }: { batch: Batch }) {
                 <span className="text-lg font-black" style={{ color: '#0D1837' }}>{batch.fee}</span>
                 {batch.originalFee && <span className="text-xs line-through" style={{ color: '#9CA3AF' }}>{batch.originalFee}</span>}
               </div>
-              {batch.offer && <p className="text-[10px] font-bold" style={{ color: '#08BD80' }}>🎉 {batch.offer}</p>}
+              {batch.offer && <p className="text-[10px] font-bold" style={{ color: '#f77420' }}>🎉 {batch.offer}</p>}
             </div>
             <a href={`/courses/${batch.courseSlug}/${batch.slug}`}
               className="px-3.5 py-2 rounded-xl text-xs font-black text-white hover:opacity-90 transition-opacity flex-shrink-0"
@@ -182,10 +182,10 @@ function CoursePanels({ categoryKey, courses, batches }: { categoryKey: string; 
                 onClick={() => setSelectedSlug(course.slug)}
                 className="w-full text-left flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-150"
                 style={isActive
-                  ? { background: '#E6FAF4', border: '1.5px solid #08BD80', boxShadow: '0 2px 12px rgba(8,189,128,0.15)' }
+                  ? { background: '#fff1e8', border: '1.5px solid #f77420', boxShadow: '0 2px 12px rgba(247,116,32,0.15)' }
                   : { background: 'white', border: '1.5px solid #E9EEF2' }}
                 onMouseEnter={(e) => {
-                  if (!isActive) (e.currentTarget as HTMLElement).style.borderColor = '#08BD80';
+                  if (!isActive) (e.currentTarget as HTMLElement).style.borderColor = '#f77420';
                 }}
                 onMouseLeave={(e) => {
                   if (!isActive) (e.currentTarget as HTMLElement).style.borderColor = '#E9EEF2';
@@ -193,23 +193,23 @@ function CoursePanels({ categoryKey, courses, batches }: { categoryKey: string; 
               >
                 {/* Icon */}
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
-                  style={{ background: isActive ? '#C6F3E4' : course.bg }}>
+                  style={{ background: isActive ? '#ffd4ba' : course.bg }}>
                   {course.icon}
                 </div>
                 {/* Text */}
                 <div className="flex-1 min-w-0">
                   <p className="font-bold text-sm leading-snug truncate"
-                    style={{ color: isActive ? '#08BD80' : '#0D1837' }}>
+                    style={{ color: isActive ? '#f77420' : '#0D1837' }}>
                     {course.title}
                   </p>
                   <p className="text-[11px] mt-0.5 font-semibold"
-                    style={{ color: isActive ? '#0f766e' : '#9CA3AF' }}>
+                    style={{ color: isActive ? '#c95516' : '#9CA3AF' }}>
                     {batchCount} {batchCount === 1 ? 'Batch' : 'Batches'}
                   </p>
                 </div>
                 {/* Active arrow */}
                 {isActive && (
-                  <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#08BD80">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#f77420">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
                 )}
@@ -225,7 +225,7 @@ function CoursePanels({ categoryKey, courses, batches }: { categoryKey: string; 
           <p className="text-white/50 text-[11px] mb-3">Talk to our expert counsellors — free!</p>
           <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
             className="block py-2 rounded-xl text-xs font-black text-white transition-opacity hover:opacity-90"
-            style={{ background: '#25D366' }}>
+            style={{ background: '#f77420' }}>
             💬 Free Counselling
           </a>
         </div>
@@ -246,7 +246,7 @@ function CoursePanels({ categoryKey, courses, batches }: { categoryKey: string; 
                 <a
                   href={`/courses/${selectedCourse.slug}`}
                   className="inline-flex px-5 py-3 rounded-xl text-sm font-black text-white hover:opacity-90 transition-opacity"
-                  style={{ background: '#08BD80' }}
+                  style={{ background: '#f77420' }}
                 >
                   Open Detail Page →
                 </a>
@@ -282,14 +282,14 @@ function MobileBatchCard({ batch }: { batch: Batch }) {
               <div style={{ display: 'flex', gap: '5px', marginBottom: '6px', flexWrap: 'wrap' }}>
                 <span style={{ fontSize: '9px', fontWeight: 700, padding: '2px 8px', borderRadius: '20px', background: typeStyle.bg, color: typeStyle.color }}>{batch.batchType}</span>
                 <span style={{ fontSize: '9px', fontWeight: 700, padding: '2px 8px', borderRadius: '20px', background: '#FEF9C3', color: '#92400E' }}>{batch.language}</span>
-                {batch.status === 'upcoming' && <span style={{ fontSize: '9px', fontWeight: 800, padding: '2px 8px', borderRadius: '20px', background: '#E6FAF4', color: '#08BD80' }}>✦ NEW</span>}
+                {batch.status === 'upcoming' && <span style={{ fontSize: '9px', fontWeight: 800, padding: '2px 8px', borderRadius: '20px', background: '#fff1e8', color: '#f77420' }}>✦ NEW</span>}
                 {batch.status === 'filling-fast' && <span style={{ fontSize: '9px', fontWeight: 800, padding: '2px 8px', borderRadius: '20px', background: '#FFF0E6', color: '#f97316' }}>🔥 HOT</span>}
               </div>
               <div style={{ fontWeight: 800, fontSize: '13px', color: '#0D1837', lineHeight: 1.3, marginBottom: '5px' }}>{batch.name}</div>
               <div style={{ fontSize: '10px', color: '#9CA3AF', marginBottom: '6px' }}>📅 {batch.startDate} – {batch.endDate}</div>
               <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
                 {batch.chips.slice(0, 3).map(chip => (
-                  <span key={chip} style={{ fontSize: '9px', fontWeight: 600, padding: '2px 6px', borderRadius: '6px', background: '#F0FDF9', color: '#0f766e', border: '1px solid #C6F3E4' }}>✓ {chip}</span>
+                  <span key={chip} style={{ fontSize: '9px', fontWeight: 600, padding: '2px 6px', borderRadius: '6px', background: '#fff7ed', color: '#c95516', border: '1px solid #ffd4ba' }}>✓ {chip}</span>
                 ))}
               </div>
             </div>
@@ -297,7 +297,7 @@ function MobileBatchCard({ batch }: { batch: Batch }) {
               <div style={{ fontWeight: 900, fontSize: '15px', color: '#0D1837' }}>{batch.fee}</div>
               {batch.originalFee && <div style={{ fontSize: '9px', textDecoration: 'line-through', color: '#9CA3AF' }}>{batch.originalFee}</div>}
               <div style={{ marginTop: '8px', background: 'linear-gradient(135deg, #060d1f, #0D1837)', color: 'white', fontWeight: 800, fontSize: '11px', padding: '6px 10px', borderRadius: '10px', textAlign: 'center' }}>Enroll →</div>
-              <div style={{ marginTop: '5px', fontSize: '9px', fontWeight: 600, color: urgent ? '#c2410c' : '#08BD80' }}>{seatsText}</div>
+              <div style={{ marginTop: '5px', fontSize: '9px', fontWeight: 600, color: urgent ? '#c2410c' : '#f77420' }}>{seatsText}</div>
             </div>
           </div>
         </div>
@@ -359,15 +359,15 @@ function CoursesPageInner() {
         {/* ── Hero ──────────────────────────────────────────────── */}
         <div className="relative overflow-hidden py-10 md:py-20"
           style={{ background: 'linear-gradient(135deg, #060d1f 0%, #0D1837 100%)' }}>
-          <div className="absolute top-10 left-1/4 w-64 h-64 rounded-full opacity-10 blur-3xl" style={{ background: '#08BD80' }} />
+          <div className="absolute top-10 left-1/4 w-64 h-64 rounded-full opacity-10 blur-3xl" style={{ background: '#f77420' }} />
           <div className="relative max-w-6xl mx-auto px-4 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4"
-              style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.3)' }}>
+              style={{ background: 'rgba(247,116,32,0.15)', color: '#f77420', border: '1px solid rgba(247,116,32,0.3)' }}>
               ✦ India&apos;s Best Law Entrance Coaching
             </div>
             <h1 className="text-2xl md:text-5xl font-black text-white leading-tight">
               All Courses &amp;{' '}
-              <span style={{ background: 'linear-gradient(90deg, #08BD80, #06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              <span style={{ background: 'linear-gradient(90deg, #f77420, #06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                 Programs
               </span>
             </h1>
@@ -378,7 +378,7 @@ function CoursesPageInner() {
               {[{ v: '15,000+', l: 'Students' }, { v: '1,000+', l: 'NLU Selections' }, { v: '98%', l: 'Success Rate' }].map(s => (
                 <div key={s.l} className="px-4 md:px-5 py-2 md:py-2.5 rounded-2xl text-center"
                   style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <div className="text-base md:text-lg font-black" style={{ color: '#08BD80' }}>{s.v}</div>
+                  <div className="text-base md:text-lg font-black" style={{ color: '#f77420' }}>{s.v}</div>
                   <div className="text-[10px] md:text-[11px]" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.l}</div>
                 </div>
               ))}
@@ -400,9 +400,9 @@ function CoursesPageInner() {
                     onClick={() => selectTab(tab.key)}
                     className="flex items-center gap-1.5 md:gap-2 px-4 md:px-6 py-3.5 md:py-4 text-xs md:text-sm font-bold whitespace-nowrap transition-all flex-shrink-0 border-b-2 -mb-0.5"
                     style={isActive
-                      ? { color: '#08BD80', borderBottomColor: '#08BD80' }
+                      ? { color: '#f77420', borderBottomColor: '#f77420' }
                       : { color: '#6B7280', borderBottomColor: 'transparent' }}
-                    onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#08BD80'; }}
+                    onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#f77420'; }}
                     onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#6B7280'; }}
                   >
                     <span className="text-sm md:text-base">{tab.icon}</span>
@@ -410,7 +410,7 @@ function CoursesPageInner() {
                     <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
                     <span className="text-[9px] md:text-[10px] font-black px-1.5 py-0.5 rounded-full"
                       style={isActive
-                        ? { background: '#E6FAF4', color: '#08BD80' }
+                        ? { background: '#fff1e8', color: '#f77420' }
                         : { background: '#F3F4F6', color: '#9CA3AF' }}>
                       {count}
                     </span>
@@ -438,9 +438,9 @@ function CoursesPageInner() {
                   const isActive = course.slug === mobileSlug;
                   return (
                     <button key={course.slug} onClick={() => setMobileSlug(course.slug)}
-                      style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 14px', borderRadius: '99px', border: `1.5px solid ${isActive ? '#08BD80' : '#E9EEF2'}`, background: isActive ? '#E6FAF4' : 'white', cursor: 'pointer' }}>
+                      style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 14px', borderRadius: '99px', border: `1.5px solid ${isActive ? '#f77420' : '#E9EEF2'}`, background: isActive ? '#fff1e8' : 'white', cursor: 'pointer' }}>
                       <span style={{ fontSize: '16px' }}>{course.icon}</span>
-                      <span style={{ fontSize: '12px', fontWeight: 700, color: isActive ? '#08BD80' : '#0D1837', whiteSpace: 'nowrap' }}>{course.title}</span>
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: isActive ? '#f77420' : '#0D1837', whiteSpace: 'nowrap' }}>{course.title}</span>
                     </button>
                   );
                 })}
@@ -458,7 +458,7 @@ function CoursesPageInner() {
                   <p style={{ fontWeight: 600, color: '#9CA3AF', fontSize: '13px' }}>Batches coming soon</p>
                   {mobileCourse && (
                     <a href={`/courses/${mobileCourse.slug}`}
-                      style={{ display: 'inline-flex', marginTop: '14px', padding: '11px 16px', borderRadius: '12px', background: '#08BD80', color: 'white', fontWeight: 800, fontSize: '12px', textDecoration: 'none' }}>
+                      style={{ display: 'inline-flex', marginTop: '14px', padding: '11px 16px', borderRadius: '12px', background: '#f77420', color: 'white', fontWeight: 800, fontSize: '12px', textDecoration: 'none' }}>
                       Open Detail Page →
                     </a>
                   )}
@@ -474,7 +474,7 @@ function CoursesPageInner() {
                 <p style={{ color: 'white', fontSize: '13px', fontWeight: 700, marginBottom: '4px' }}>Need Help Choosing?</p>
                 <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '11px', marginBottom: '12px' }}>Talk to our expert counsellors — free!</p>
                 <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
-                  style={{ display: 'block', padding: '12px', borderRadius: '12px', background: '#25D366', color: 'white', fontWeight: 800, fontSize: '13px', textDecoration: 'none' }}>
+                  style={{ display: 'block', padding: '12px', borderRadius: '12px', background: '#f77420', color: 'white', fontWeight: 800, fontSize: '13px', textDecoration: 'none' }}>
                   💬 Free Counselling
                 </a>
               </div>
@@ -486,7 +486,7 @@ function CoursesPageInner() {
         <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
           <div className="relative overflow-hidden rounded-3xl p-6 md:p-12 text-center"
             style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
-            <div className="absolute top-0 left-1/3 w-64 h-32 rounded-full opacity-20 blur-3xl" style={{ background: '#08BD80' }} />
+            <div className="absolute top-0 left-1/3 w-64 h-32 rounded-full opacity-20 blur-3xl" style={{ background: '#f77420' }} />
             <div className="relative">
               <h2 className="text-xl md:text-3xl font-black text-white mb-2 md:mb-3">Not Sure Which Course Is Right?</h2>
               <p className="text-white/60 text-sm max-w-md mx-auto mb-5 md:mb-7">
@@ -495,7 +495,7 @@ function CoursesPageInner() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
                 <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
                   className="px-7 py-3 rounded-xl font-bold text-white text-sm hover:opacity-90 transition-opacity text-center"
-                  style={{ background: '#25D366' }}>💬 WhatsApp Us Free</a>
+                  style={{ background: '#f77420' }}>💬 WhatsApp Us Free</a>
                 <a href="tel:8507700177"
                   className="px-7 py-3 rounded-xl font-bold text-sm text-center"
                   style={{ color: 'white', border: '1.5px solid rgba(255,255,255,0.2)' }}>📞 8507700177</a>

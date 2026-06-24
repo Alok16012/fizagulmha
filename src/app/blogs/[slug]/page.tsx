@@ -50,7 +50,7 @@ function renderContent(content: string) {
         <ul key={`ul-${i}`} className="space-y-1.5 my-3">
           {items.map((item, j) => (
             <li key={j} className="flex items-start gap-2 text-gray-600 text-sm">
-              <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: '#08BD80' }} />
+              <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: '#f77420' }} />
               {item}
             </li>
           ))}
@@ -68,7 +68,7 @@ function renderContent(content: string) {
           {items.map((item, j) => (
             <li key={j} className="flex items-start gap-3 text-sm text-gray-600">
               <span className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
-                style={{ background: '#08BD80' }}>
+                style={{ background: '#f77420' }}>
                 {j + 1}
               </span>
               {item}
@@ -159,7 +159,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 <div className="flex flex-wrap gap-2 mt-6">
                   {(blog.tags ?? []).map((t) => (
                     <span key={t} className="px-3 py-1.5 rounded-full text-xs font-semibold"
-                      style={{ background: (blog.categoryColor || '#08BD80') + '15', color: blog.categoryColor || '#08BD80' }}>
+                      style={{ background: (blog.categoryColor || '#f77420') + '15', color: blog.categoryColor || '#f77420' }}>
                       #{t}
                     </span>
                   ))}
@@ -177,7 +177,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                   Expert coaching, 150+ mock tests, and personalized mentorship. Join 5000+ successful students.
                 </p>
                 <div className="flex gap-3 flex-wrap">
-                  <a href="/courses/online" style={{ background: '#08BD80' }}
+                  <a href="/courses/online" style={{ background: '#f77420' }}
                     className="px-6 py-2.5 rounded-xl font-bold text-white text-sm">
                     Enroll Now →
                   </a>
@@ -203,13 +203,13 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                       className="block text-center py-3 rounded-xl font-bold text-white text-sm">
                       Offline Course
                     </a>
-                    <a href="/courses/online" style={{ background: '#08BD80' }}
+                    <a href="/courses/online" style={{ background: '#f77420' }}
                       className="block text-center py-3 rounded-xl font-bold text-white text-sm">
                       Online Course
                     </a>
                     <a href="/courses/mock-tests"
                       className="block text-center py-3 rounded-xl font-bold text-sm border-2"
-                      style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+                      style={{ borderColor: '#f77420', color: '#f77420' }}>
                       Mock Test Series
                     </a>
                   </div>
@@ -227,12 +227,12 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                         className="block group">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-[10px] font-bold px-2 py-0.5 rounded-full text-white"
-                            style={{ background: rb.categoryColor || '#08BD80' }}>
+                            style={{ background: rb.categoryColor || '#f77420' }}>
                             {rb.category}
                           </span>
                           <span className="text-[10px] text-gray-400">{rb.readTime}</span>
                         </div>
-                        <p className="text-xs font-semibold text-gray-800 leading-snug group-hover:text-green-700 transition-colors">
+                        <p className="text-xs font-semibold text-gray-800 leading-snug group-hover:text-orange-700 transition-colors">
                           {rb.title}
                         </p>
                       </a>
@@ -246,7 +246,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                   <div className="text-2xl mb-2">🔮</div>
                   <h3 className="font-bold text-white text-sm mb-1">College Predictor</h3>
                   <p className="text-white/60 text-xs mb-3">Know your NLU chances based on expected rank.</p>
-                  <a href="/college-predictor" style={{ background: '#08BD80' }}
+                  <a href="/college-predictor" style={{ background: '#f77420' }}
                     className="block text-center py-2.5 rounded-xl font-bold text-white text-xs">
                     Try Free Predictor
                   </a>

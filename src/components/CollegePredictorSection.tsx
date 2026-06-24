@@ -17,14 +17,14 @@ export default function CollegePredictorSection() {
                 'Curated by expert faculty',
               ].map(f => (
                 <span key={f} className="flex items-center gap-1.5 text-sm" style={{ color: '#7A8B94' }}>
-                  <span style={{ color: '#08BD80' }}>✓</span> {f}
+                  <span style={{ color: '#f77420' }}>✓</span> {f}
                 </span>
               ))}
             </div>
           </div>
           <a href="/courses/offline"
             className="flex-shrink-0 px-7 py-3.5 rounded-lg font-bold text-white text-sm transition-opacity hover:opacity-90 whitespace-nowrap"
-            style={{ background: '#08BD80' }}>
+            style={{ background: '#f77420' }}>
             View All Courses →
           </a>
         </div>
@@ -33,7 +33,7 @@ export default function CollegePredictorSection() {
         <div className="grid md:grid-cols-2 gap-10 items-center">
           {/* Left */}
           <div>
-            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#08BD80' }}>AI-Powered Tool</p>
+            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: '#f77420' }}>AI-Powered Tool</p>
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4" style={{ color: '#3C4852' }}>
               NLU College Predictor
             </h2>
@@ -49,14 +49,14 @@ export default function CollegePredictorSection() {
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2 text-sm" style={{ color: '#5a6a75' }}>
                   <span className="w-5 h-5 rounded-full flex items-center justify-center text-white text-xs flex-shrink-0"
-                    style={{ background: '#08BD80' }}>✓</span>
+                    style={{ background: '#f77420' }}>✓</span>
                   {item}
                 </li>
               ))}
             </ul>
             <a href="/college-predictor"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-bold text-white text-sm transition-opacity hover:opacity-90"
-              style={{ background: '#08BD80' }}>
+              style={{ background: '#f77420' }}>
               🔮 Try Predictor Free →
             </a>
           </div>
@@ -65,10 +65,10 @@ export default function CollegePredictorSection() {
           <div className="rounded-2xl border p-6 shadow-sm" style={{ background: 'white', borderColor: '#E9EEF2' }}>
             <div className="flex items-center gap-2 mb-6">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center text-lg"
-                style={{ background: '#E6FAF4' }}>🔮</div>
+                style={{ background: '#fff1e8' }}>🔮</div>
               <h3 className="font-bold" style={{ color: '#3C4852' }}>College Predictor</h3>
               <span className="ml-auto text-xs font-bold px-2.5 py-1 rounded-full text-white"
-                style={{ background: '#08BD80' }}>AI-Powered</span>
+                style={{ background: '#f77420' }}>AI-Powered</span>
             </div>
 
             <div className="space-y-4">

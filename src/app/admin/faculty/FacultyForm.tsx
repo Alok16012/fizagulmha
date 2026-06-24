@@ -125,7 +125,7 @@ export default function FacultyForm({ member, isNew }: { member: FacultyMember; 
                       onClick={() => fileRef.current?.click()}
                       disabled={uploading}
                       className="px-3 py-2 rounded-lg text-xs font-bold text-white disabled:opacity-60"
-                      style={{ background: '#08BD80' }}
+                      style={{ background: '#f77420' }}
                     >
                       {uploading ? 'Uploading...' : 'Upload Image'}
                     </button>
@@ -156,7 +156,7 @@ export default function FacultyForm({ member, isNew }: { member: FacultyMember; 
               <div className="flex gap-2 items-center">
                 <input type="color" value={data.color} onChange={(e) => set('color', e.target.value)}
                   className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer" />
-                <TextInput value={data.color} onChange={(v) => set('color', v)} placeholder="#08BD80" />
+                <TextInput value={data.color} onChange={(v) => set('color', v)} placeholder="#f77420" />
               </div>
             </FieldGroup>
           </div>
@@ -198,7 +198,7 @@ export default function FacultyForm({ member, isNew }: { member: FacultyMember; 
             <button type="button"
               onClick={() => set('expertise', [...data.expertise, { area: '', level: 80 }])}
               className="text-sm font-semibold px-3 py-1.5 rounded-lg border-2 border-dashed"
-              style={{ borderColor: '#08BD80', color: '#08BD80' }}>
+              style={{ borderColor: '#f77420', color: '#f77420' }}>
               + Add Expertise
             </button>
           </div>

@@ -34,7 +34,7 @@ export default function LeadsExport({ leads }: { leads: Lead[] }) {
       disabled={leads.length === 0}
       className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-opacity"
       style={{
-        background: leads.length === 0 ? '#e5e7eb' : '#08BD80',
+        background: leads.length === 0 ? '#e5e7eb' : '#f77420',
         color: leads.length === 0 ? '#9ca3af' : 'white',
         cursor: leads.length === 0 ? 'not-allowed' : 'pointer',
       }}

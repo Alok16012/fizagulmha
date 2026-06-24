@@ -18,14 +18,14 @@ export default function BlogsScrollSection() {
         <div className="flex items-center justify-between">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full"
-              style={{ background: '#E6FAF4', color: '#08BD80' }}>
+              style={{ background: '#fff1e8', color: '#f77420' }}>
               The CLATians Journal
             </span>
             <h2 className="mt-2 font-black text-xl md:text-3xl" style={{ color: '#0D1837' }}>
               Read &amp; Learn
             </h2>
           </div>
-          <a href="/blogs" className="text-sm font-bold" style={{ color: '#08BD80' }}>
+          <a href="/blogs" className="text-sm font-bold" style={{ color: '#f77420' }}>
             See All →
           </a>
         </div>

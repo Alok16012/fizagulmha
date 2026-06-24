@@ -56,20 +56,20 @@ export default function ClatNavigatorLeadForm() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-3">
-        <input name="name" required placeholder="Student Name" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-green-500" />
-        <input name="phone" required placeholder="Mobile Number" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-green-500" />
-        <input name="email" type="email" placeholder="Email Address" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-green-500" />
-        <input name="city" placeholder="City" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-green-500" />
-        <select name="classLevel" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-green-500 bg-white">
+        <input name="name" required placeholder="Student Name" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-orange-500" />
+        <input name="phone" required placeholder="Mobile Number" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-orange-500" />
+        <input name="email" type="email" placeholder="Email Address" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-orange-500" />
+        <input name="city" placeholder="City" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-orange-500" />
+        <select name="classLevel" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-orange-500 bg-white">
           {classes.map((item) => <option key={item}>{item}</option>)}
         </select>
-        <select name="prepMode" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-green-500 bg-white">
+        <select name="prepMode" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-orange-500 bg-white">
           {prepModes.map((item) => <option key={item}>{item}</option>)}
         </select>
-        <select name="targetYear" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-green-500 bg-white">
+        <select name="targetYear" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-orange-500 bg-white">
           {years.map((item) => <option key={item}>{item}</option>)}
         </select>
-        <select name="preferredMode" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-green-500 bg-white">
+        <select name="preferredMode" className="px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-orange-500 bg-white">
           {modes.map((item) => <option key={item}>{item}</option>)}
         </select>
       </div>
@@ -78,12 +78,12 @@ export default function ClatNavigatorLeadForm() {
         type="submit"
         disabled={loading}
         className="w-full py-3.5 rounded-xl font-black text-white text-sm disabled:opacity-60"
-        style={{ background: '#08BD80' }}
+        style={{ background: '#f77420' }}
       >
         {loading ? 'Submitting...' : 'Book My Mentorship Session'}
       </button>
 
-      {status === 'success' && <p className="text-sm font-semibold text-green-700">Request received. Our team will contact you shortly.</p>}
+      {status === 'success' && <p className="text-sm font-semibold text-orange-700">Request received. Our team will contact you shortly.</p>}
       {status === 'error' && <p className="text-sm font-semibold text-red-600">Could not submit right now. Please call 8507700177.</p>}
     </form>
   );

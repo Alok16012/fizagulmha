@@ -17,7 +17,7 @@ export default async function AdminExams() {
         </div>
         <Link href="/admin/exams/new"
           className="px-5 py-2.5 rounded-xl font-bold text-white text-sm"
-          style={{ background: '#08BD80' }}>
+          style={{ background: '#f77420' }}>
           + New Exam
         </Link>
       </div>
@@ -40,7 +40,7 @@ export default async function AdminExams() {
                 </Link>
                 <Link href={`/admin/exams/${exam.slug}`}
                   className="text-xs font-semibold px-3 py-1.5 rounded-lg"
-                  style={{ background: '#E6FAF4', color: '#08BD80' }}>
+                  style={{ background: '#fff1e8', color: '#f77420' }}>
                   Edit
                 </Link>
               </div>

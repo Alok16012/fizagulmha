@@ -109,11 +109,11 @@ export default function ContactPage() {
         >
           <div
             className="absolute"
-            style={{ width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(8,189,128,0.12), transparent)', top: -60, right: -60, pointerEvents: 'none' }}
+            style={{ width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(247,116,32,0.12), transparent)', top: -60, right: -60, pointerEvents: 'none' }}
           />
           <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-4"
-              style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80' }}>
+              style={{ background: 'rgba(247,116,32,0.15)', color: '#f77420' }}>
               <span>📞</span> Free Counselling Available
             </div>
             <h1 className="text-2xl md:text-5xl font-black text-white mb-3">Get in Touch</h1>
@@ -123,11 +123,11 @@ export default function ContactPage() {
             {/* Mobile quick action buttons */}
             <div className="md:hidden flex gap-3 mt-5 justify-center">
               <a href="tel:8507700177"
-                style={{ flex: 1, maxWidth: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 16px', borderRadius: '16px', background: '#08BD80', color: 'white', fontWeight: 800, fontSize: '13px', textDecoration: 'none' }}>
+                style={{ flex: 1, maxWidth: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 16px', borderRadius: '16px', background: '#f77420', color: 'white', fontWeight: 800, fontSize: '13px', textDecoration: 'none' }}>
                 📞 Call Now
               </a>
               <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
-                style={{ flex: 1, maxWidth: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 16px', borderRadius: '16px', background: '#25D366', color: 'white', fontWeight: 800, fontSize: '13px', textDecoration: 'none' }}>
+                style={{ flex: 1, maxWidth: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 16px', borderRadius: '16px', background: '#f77420', color: 'white', fontWeight: 800, fontSize: '13px', textDecoration: 'none' }}>
                 💬 WhatsApp
               </a>
             </div>
@@ -138,7 +138,7 @@ export default function ContactPage() {
         <div className="md:hidden px-4 py-5" style={{ background: '#F8FAFC' }}>
           <div style={{ overflowX: 'auto', display: 'flex', gap: '12px', paddingBottom: '4px' }} className="scrollbar-none">
             {[
-              { icon: '📞', title: 'Call Us', sub: 'Mon–Sat 9AM–7PM', href: 'tel:8507700177', bg: '#E6FAF4', color: '#08BD80' },
+              { icon: '📞', title: 'Call Us', sub: 'Mon–Sat 9AM–7PM', href: 'tel:8507700177', bg: '#fff1e8', color: '#f77420' },
               { icon: '📍', title: 'Visit Us', sub: 'Boring Rd, Patna', href: 'https://maps.google.com/?q=Gangotri+Palace+Boring+Road+Patna', bg: '#EEF2FF', color: '#6366F1' },
               { icon: '💬', title: 'WhatsApp', sub: '9AM–9PM', href: 'https://wa.me/918507700177', bg: '#F0FFF4', color: '#22C55E' },
               { icon: '🌐', title: 'Social', sub: 'Daily updates', href: '#', bg: '#FFF7ED', color: '#F97316' },
@@ -166,11 +166,11 @@ export default function ContactPage() {
                 { icon: '🌐', title: 'Social Media', lines: ['Follow us for daily updates', 'GK, tips & success stories'], href: '#', cta: 'Follow CLATians' },
               ].map((c) => (
                 <div key={c.title} className="bg-white rounded-2xl p-5" style={{ border: '1.5px solid #f0f0f0', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl mb-3" style={{ background: 'rgba(8,189,128,0.1)' }}>{c.icon}</div>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl mb-3" style={{ background: 'rgba(247,116,32,0.1)' }}>{c.icon}</div>
                   <h3 className="font-bold text-gray-900 mb-1 text-sm">{c.title}</h3>
                   {c.lines.map((l, i) => <p key={i} className="text-xs text-gray-500">{l}</p>)}
                   <a href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="mt-3 inline-block text-xs font-semibold" style={{ color: '#08BD80' }}>
+                    className="mt-3 inline-block text-xs font-semibold" style={{ color: '#f77420' }}>
                     {c.cta} →
                   </a>
                 </div>
@@ -188,13 +188,13 @@ export default function ContactPage() {
                   <div className="flex flex-col items-center justify-center py-12 text-center">
                     <div
                       className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
-                      style={{ background: 'rgba(8,189,128,0.12)' }}
+                      style={{ background: 'rgba(247,116,32,0.12)' }}
                     >
                       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                        <circle cx="20" cy="20" r="20" fill="#08BD80" fillOpacity="0.15" />
+                        <circle cx="20" cy="20" r="20" fill="#f77420" fillOpacity="0.15" />
                         <path
                           d="M12 20.5L17.5 26L28 14"
-                          stroke="#08BD80"
+                          stroke="#f77420"
                           strokeWidth="2.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -213,7 +213,7 @@ export default function ContactPage() {
                     <button
                       onClick={() => setStatus('idle')}
                       className="px-6 py-2.5 rounded-xl text-sm font-semibold text-white"
-                      style={{ background: '#08BD80' }}
+                      style={{ background: '#f77420' }}
                     >
                       Send Another Message
                     </button>
@@ -251,7 +251,7 @@ export default function ContactPage() {
                             placeholder="Your name"
                             required
                             style={inputStyle}
-                            onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = '#08BD80'; }}
+                            onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = '#f77420'; }}
                             onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = '#e5e7eb'; }}
                           />
                         </div>
@@ -275,7 +275,7 @@ export default function ContactPage() {
                               borderColor: phoneError ? '#dc2626' : '#e5e7eb',
                             }}
                             onFocus={(e) => {
-                              if (!phoneError) (e.target as HTMLInputElement).style.borderColor = '#08BD80';
+                              if (!phoneError) (e.target as HTMLInputElement).style.borderColor = '#f77420';
                             }}
                             onBlur={(e) => {
                               if (!phoneError) (e.target as HTMLInputElement).style.borderColor = '#e5e7eb';
@@ -301,7 +301,7 @@ export default function ContactPage() {
                           onChange={handleChange}
                           placeholder="your@email.com"
                           style={inputStyle}
-                          onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = '#08BD80'; }}
+                          onFocus={(e) => { (e.target as HTMLInputElement).style.borderColor = '#f77420'; }}
                           onBlur={(e) => { (e.target as HTMLInputElement).style.borderColor = '#e5e7eb'; }}
                         />
                       </div>
@@ -319,7 +319,7 @@ export default function ContactPage() {
                             value={form.program}
                             onChange={handleChange}
                             style={inputStyle}
-                            onFocus={(e) => { (e.target as HTMLSelectElement).style.borderColor = '#08BD80'; }}
+                            onFocus={(e) => { (e.target as HTMLSelectElement).style.borderColor = '#f77420'; }}
                             onBlur={(e) => { (e.target as HTMLSelectElement).style.borderColor = '#e5e7eb'; }}
                           >
                             {PROGRAMS.map((p) => (
@@ -342,7 +342,7 @@ export default function ContactPage() {
                             value={form.exam}
                             onChange={handleChange}
                             style={inputStyle}
-                            onFocus={(e) => { (e.target as HTMLSelectElement).style.borderColor = '#08BD80'; }}
+                            onFocus={(e) => { (e.target as HTMLSelectElement).style.borderColor = '#f77420'; }}
                             onBlur={(e) => { (e.target as HTMLSelectElement).style.borderColor = '#e5e7eb'; }}
                           >
                             {EXAMS.map((ex) => (
@@ -368,7 +368,7 @@ export default function ContactPage() {
                           rows={4}
                           placeholder="Tell us about your preparation, doubts, or questions..."
                           style={{ ...inputStyle, resize: 'none' }}
-                          onFocus={(e) => { (e.target as HTMLTextAreaElement).style.borderColor = '#08BD80'; }}
+                          onFocus={(e) => { (e.target as HTMLTextAreaElement).style.borderColor = '#f77420'; }}
                           onBlur={(e) => { (e.target as HTMLTextAreaElement).style.borderColor = '#e5e7eb'; }}
                         />
                       </div>
@@ -406,14 +406,14 @@ export default function ContactPage() {
               className="absolute"
               style={{
                 width: 200, height: 200, borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(8,189,128,0.15), transparent)',
+                background: 'radial-gradient(circle, rgba(247,116,32,0.15), transparent)',
                 top: -40, right: -40, pointerEvents: 'none',
               }}
             />
             <div className="relative z-10">
               <div
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-4"
-                style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80' }}
+                style={{ background: 'rgba(247,116,32,0.2)', color: '#f77420' }}
               >
                 Free Session
               </div>
@@ -427,12 +427,12 @@ export default function ContactPage() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a href="tel:8507700177"
                   className="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-white text-sm text-center"
-                  style={{ background: '#08BD80' }}>
+                  style={{ background: '#f77420' }}>
                   📞 Call 8507700177
                 </a>
                 <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
                   className="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold text-white text-sm text-center"
-                  style={{ background: '#25D366' }}>
+                  style={{ background: '#f77420' }}>
                   💬 WhatsApp Us
                 </a>
               </div>

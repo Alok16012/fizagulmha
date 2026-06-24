@@ -6,8 +6,8 @@ import type { FacultyMember } from '@/data/faculty';
 
 const emptyMember: FacultyMember = {
   slug: '', name: '', designation: '', subject: '', specialization: '',
-  rating: 4.5, students: '', experience: '', avatar: '', color: '#08BD80',
-  photo: '', bg: '#E6FAF4', tags: [''], bio: '', education: [''], achievements: [''],
+  rating: 4.5, students: '', experience: '', avatar: '', color: '#f77420',
+  photo: '', bg: '#fff1e8', tags: [''], bio: '', education: [''], achievements: [''],
   courses: [''], expertise: [{ area: '', level: 80 }],
 };
 

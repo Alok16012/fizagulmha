@@ -21,7 +21,7 @@ export default function CourseTabsAdmin({
   const [deletingSlug, setDeletingSlug] = useState<string | null>(null);
   const [deletingCategory, setDeletingCategory] = useState<string | null>(null);
   const [showCategoryForm, setShowCategoryForm] = useState(false);
-  const [categoryForm, setCategoryForm] = useState({ label: '', icon: '📚', color: '#0D1837', accent: '#08BD80', bg: '#E6FAF4' });
+  const [categoryForm, setCategoryForm] = useState({ label: '', icon: '📚', color: '#0D1837', accent: '#f77420', bg: '#fff1e8' });
   const [savingCategory, setSavingCategory] = useState(false);
   const cat = categories.find(c => c.key === active) || categories[0];
   const filtered = courses.filter(c => c.category === active);
@@ -50,7 +50,7 @@ export default function CourseTabsAdmin({
     else {
       setCategories((prev) => [...prev, body]);
       setActive(body.key);
-      setCategoryForm({ label: '', icon: '📚', color: '#0D1837', accent: '#08BD80', bg: '#E6FAF4' });
+      setCategoryForm({ label: '', icon: '📚', color: '#0D1837', accent: '#f77420', bg: '#fff1e8' });
       setShowCategoryForm(false);
     }
     setSavingCategory(false);
@@ -79,7 +79,7 @@ export default function CourseTabsAdmin({
             <p className="text-xs text-gray-400 mt-0.5">Add a new course tab or remove an empty category.</p>
           </div>
           <button type="button" onClick={() => setShowCategoryForm((value) => !value)}
-            className="px-4 py-2 rounded-xl text-sm font-bold text-white" style={{ background: '#08BD80' }}>
+            className="px-4 py-2 rounded-xl text-sm font-bold text-white" style={{ background: '#f77420' }}>
             {showCategoryForm ? 'Cancel' : '+ Add Category'}
           </button>
         </div>
@@ -208,8 +208,8 @@ export default function CourseTabsAdmin({
                   {openBatches.length > 0 && (
                     <>
                       <div className="text-xs text-gray-400">·</div>
-                      <div className="flex items-center gap-1 text-xs font-semibold" style={{ color: '#16a34a' }}>
-                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
+                      <div className="flex items-center gap-1 text-xs font-semibold" style={{ color: '#f77420' }}>
+                        <span className="w-1.5 h-1.5 rounded-full bg-orange-500 inline-block" />
                         {openBatches.length} open
                       </div>
                     </>
@@ -245,7 +245,7 @@ export default function CourseTabsAdmin({
                   </Link>
                   <Link href={`/admin/batches/new?courseSlug=${c.slug}`}
                     className="flex-1 text-center text-xs font-bold py-2 rounded-xl transition-colors"
-                    style={{ background: '#F0FDF4', color: '#16a34a', border: '1.5px solid #bbf7d0' }}>
+                    style={{ background: '#fff7ed', color: '#f77420', border: '1.5px solid #ffd4ba' }}>
                     + Batch
                   </Link>
                   <button

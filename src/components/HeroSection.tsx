@@ -149,11 +149,11 @@ export default function HeroSection() {
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div
             className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10"
-            style={{ background: '#08BD80' }}
+            style={{ background: '#f77420' }}
           />
           <div
             className="absolute bottom-0 -left-20 w-72 h-72 rounded-full opacity-5"
-            style={{ background: '#08BD80' }}
+            style={{ background: '#f77420' }}
           />
           <div
             className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full opacity-5"
@@ -177,7 +177,7 @@ export default function HeroSection() {
             <div className="inline-flex items-center gap-2 mb-6">
               <span
                 className="text-xs font-bold px-3 py-1.5 rounded-full text-white"
-                style={{ background: 'rgba(8,189,128,0.2)', border: '1px solid rgba(8,189,128,0.4)' }}
+                style={{ background: 'rgba(247,116,32,0.2)', border: '1px solid rgba(247,116,32,0.4)' }}
               >
                 {slide.pill}
               </span>
@@ -191,7 +191,7 @@ export default function HeroSection() {
             >
               {slide.heading}
               <br />
-              <span style={{ color: '#08BD80' }}>{slide.highlight}</span>
+              <span style={{ color: '#f77420' }}>{slide.highlight}</span>
             </h1>
 
             <p
@@ -206,7 +206,7 @@ export default function HeroSection() {
               <a
                 href={slide.ctaLink}
                 className="px-7 py-3.5 rounded-xl font-bold text-white text-base shadow-lg hover:opacity-90 transition-all duration-200"
-                style={{ background: '#08BD80' }}
+                style={{ background: '#f77420' }}
               >
                 {slide.cta} →
               </a>
@@ -243,7 +243,7 @@ export default function HeroSection() {
             <div className="rounded-2xl p-5" style={{ background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.15)' }}>
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-white font-bold text-sm">🏆 Recent Toppers</h3>
-                <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.3)' }}>CLAT 2024</span>
+                <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: 'rgba(247,116,32,0.2)', color: '#f77420', border: '1px solid rgba(247,116,32,0.3)' }}>CLAT 2024</span>
               </div>
               {[
                 { name: 'Aman Deep Singh', rank: 'AIR 23', college: 'NLU Delhi', avatar: 'AD', color: '#6366f1' },
@@ -257,7 +257,7 @@ export default function HeroSection() {
                     <div className="text-white text-xs font-bold truncate">{t.name}</div>
                     <div className="text-[10px]" style={{ color: 'rgba(255,255,255,0.5)' }}>{t.college}</div>
                   </div>
-                  <span className="text-[10px] font-black px-2 py-0.5 rounded-full flex-shrink-0" style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80' }}>{t.rank}</span>
+                  <span className="text-[10px] font-black px-2 py-0.5 rounded-full flex-shrink-0" style={{ background: 'rgba(247,116,32,0.2)', color: '#f77420' }}>{t.rank}</span>
                 </div>
               ))}
             </div>
@@ -268,12 +268,12 @@ export default function HeroSection() {
                 {examPills.map((exam) => (
                   <a key={exam} href={`/exams/${exam.toLowerCase().replace(' law','').replace('-law','')}`}
                     className="text-center py-2 rounded-lg text-[11px] font-bold transition-all"
-                    style={{ background: exam === slides[current].pill ? '#08BD80' : 'rgba(255,255,255,0.08)', color: 'white', border: `1px solid ${exam === slides[current].pill ? '#08BD80' : 'rgba(255,255,255,0.1)'}` }}>
+                    style={{ background: exam === slides[current].pill ? '#f77420' : 'rgba(255,255,255,0.08)', color: 'white', border: `1px solid ${exam === slides[current].pill ? '#f77420' : 'rgba(255,255,255,0.1)'}` }}>
                     {exam}
                   </a>
                 ))}
               </div>
-              <a href="/admission" className="mt-3 block text-center py-2.5 rounded-xl font-bold text-white text-xs hover:opacity-90 transition-all" style={{ background: '#08BD80' }}>
+              <a href="/admission" className="mt-3 block text-center py-2.5 rounded-xl font-bold text-white text-xs hover:opacity-90 transition-all" style={{ background: '#f77420' }}>
                 Get Free Counselling →
               </a>
             </div>
@@ -290,7 +290,7 @@ export default function HeroSection() {
               style={{
                 width: i === current ? '28px' : '8px',
                 height: '8px',
-                background: i === current ? '#08BD80' : 'rgba(255,255,255,0.3)',
+                background: i === current ? '#f77420' : 'rgba(255,255,255,0.3)',
               }}
             />
           ))}
@@ -300,7 +300,7 @@ export default function HeroSection() {
       {/* ─── Mobile Hero — App Style ─────────────────────────── */}
       <div className="md:hidden" style={{ background: '#0D1837' }}>
         {/* Gradient bg blobs */}
-        <div className="absolute top-14 right-0 w-56 h-56 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle,rgba(8,189,128,0.18) 0%,transparent 70%)', transform: 'translate(20%,-10%)' }} />
+        <div className="absolute top-14 right-0 w-56 h-56 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle,rgba(247,116,32,0.18) 0%,transparent 70%)', transform: 'translate(20%,-10%)' }} />
 
         <div className="relative z-10 px-4 pt-5 pb-5">
 
@@ -312,9 +312,9 @@ export default function HeroSection() {
                 style={{
                   fontSize: '9px',
                   fontWeight: 700,
-                  background: exam === slide.pill || (exam === 'MH-CET' && slide.pill === 'MH-CET') ? '#08BD80' : 'rgba(255,255,255,0.1)',
+                  background: exam === slide.pill || (exam === 'MH-CET' && slide.pill === 'MH-CET') ? '#f77420' : 'rgba(255,255,255,0.1)',
                   color: 'white',
-                  border: `1.5px solid ${exam === slide.pill || (exam === 'MH-CET' && slide.pill === 'MH-CET') ? 'rgba(8,189,128,0.6)' : 'rgba(255,255,255,0.08)'}`,
+                  border: `1.5px solid ${exam === slide.pill || (exam === 'MH-CET' && slide.pill === 'MH-CET') ? 'rgba(247,116,32,0.6)' : 'rgba(255,255,255,0.08)'}`,
                 }}>
                 {exam}
               </a>
@@ -326,13 +326,13 @@ export default function HeroSection() {
             style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)' }}>
             <div className="flex items-center gap-2 mb-3">
               <span className="text-[10px] font-bold px-2.5 py-1 rounded-full"
-                style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80', border: '1px solid rgba(8,189,128,0.35)' }}>
+                style={{ background: 'rgba(247,116,32,0.2)', color: '#f77420', border: '1px solid rgba(247,116,32,0.35)' }}>
                 {slide.tag}
               </span>
             </div>
             <h1 className="font-black text-white leading-tight mb-2" style={{ fontSize: '1.7rem', lineHeight: '1.2' }}>
               {slide.heading}<br />
-              <span style={{ color: '#08BD80' }}>{slide.highlight}</span>
+              <span style={{ color: '#f77420' }}>{slide.highlight}</span>
             </h1>
             <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.55)' }}>
               {slide.sub}
@@ -342,7 +342,7 @@ export default function HeroSection() {
             <div className="flex gap-2.5">
               <a href={slide.ctaLink}
                 className="flex-1 text-center py-3.5 rounded-2xl font-black text-white text-sm shadow-lg"
-                style={{ background: 'linear-gradient(135deg,#08BD80,#06a870)', boxShadow: '0 8px 20px rgba(8,189,128,0.4)' }}>
+                style={{ background: 'linear-gradient(135deg,#f77420,#d95f18)', boxShadow: '0 8px 20px rgba(247,116,32,0.4)' }}>
                 Start Prep →
               </a>
               <a href="/admission"
@@ -374,7 +374,7 @@ export default function HeroSection() {
           <div className="rounded-2xl overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
             <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
               <span className="text-xs font-bold text-white">🏆 Recent Toppers</span>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(8,189,128,0.15)', color: '#08BD80' }}>CLAT 2024</span>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: 'rgba(247,116,32,0.15)', color: '#f77420' }}>CLAT 2024</span>
             </div>
             <div className="flex overflow-x-auto gap-3 px-4 py-3" style={{ scrollbarWidth: 'none' }}>
               {[
@@ -386,7 +386,7 @@ export default function HeroSection() {
                 <div key={t.name} className="flex-shrink-0 flex flex-col items-center gap-1.5" style={{ width: '68px' }}>
                   <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[11px] font-black" style={{ background: t.color }}>{t.avatar}</div>
                   <div className="text-[10px] font-bold text-white text-center leading-tight">{t.name}</div>
-                  <div className="text-[9px] font-black px-2 py-0.5 rounded-full" style={{ background: 'rgba(8,189,128,0.2)', color: '#08BD80' }}>{t.rank}</div>
+                  <div className="text-[9px] font-black px-2 py-0.5 rounded-full" style={{ background: 'rgba(247,116,32,0.2)', color: '#f77420' }}>{t.rank}</div>
                 </div>
               ))}
             </div>
@@ -397,7 +397,7 @@ export default function HeroSection() {
             {slides.map((_, i) => (
               <button key={i} onClick={() => goTo(i)}
                 className="rounded-full transition-all duration-300"
-                style={{ width: i === current ? '20px' : '6px', height: '6px', background: i === current ? '#08BD80' : 'rgba(255,255,255,0.2)', border: 'none' }} />
+                style={{ width: i === current ? '20px' : '6px', height: '6px', background: i === current ? '#f77420' : 'rgba(255,255,255,0.2)', border: 'none' }} />
             ))}
           </div>
         </div>

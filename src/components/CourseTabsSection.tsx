@@ -13,21 +13,21 @@ const tabs: { key: CatKey; label: string; icon: string }[] = [
 ];
 
 const cardPalettes: Record<string, { from: string; to: string; avatarBg: string }> = {
-  'Target Batch':     { from: '#0f3460', to: '#1a6b5c', avatarBg: '#08BD80' },
+  'Target Batch':     { from: '#0f3460', to: '#1a6b5c', avatarBg: '#f77420' },
   'Foundation Batch': { from: '#1e3a5f', to: '#2563eb', avatarBg: '#3b82f6' },
   'Dream Batch':      { from: '#3b1f6b', to: '#7c3aed', avatarBg: '#8b5cf6' },
   'Crash Course':     { from: '#7c1d1d', to: '#c2410c', avatarBg: '#f97316' },
-  'Starter Pack':     { from: '#134e2c', to: '#15803d', avatarBg: '#22c55e' },
+  'Starter Pack':     { from: '#7a3412', to: '#c95516', avatarBg: '#f77420' },
   'Pro Pack':         { from: '#1e3a8a', to: '#1d4ed8', avatarBg: '#3b82f6' },
   'Ultimate Pack':    { from: '#78350f', to: '#b45309', avatarBg: '#f59e0b' },
 };
 
 const batchTypeColors: Record<string, { bg: string; color: string }> = {
-  'Target Batch':     { bg: '#ccfbf1', color: '#0f766e' },
+  'Target Batch':     { bg: '#ccfbf1', color: '#c95516' },
   'Foundation Batch': { bg: '#dbeafe', color: '#1d4ed8' },
   'Dream Batch':      { bg: '#ede9fe', color: '#6d28d9' },
   'Crash Course':     { bg: '#ffedd5', color: '#c2410c' },
-  'Starter Pack':     { bg: '#dcfce7', color: '#15803d' },
+  'Starter Pack':     { bg: '#fff1e8', color: '#c95516' },
   'Pro Pack':         { bg: '#dbeafe', color: '#1d4ed8' },
   'Ultimate Pack':    { bg: '#fef3c7', color: '#b45309' },
 };
@@ -64,7 +64,7 @@ function BatchCard({ batch }: { batch: Batch }) {
         const el = e.currentTarget as HTMLElement;
         el.style.boxShadow  = '0 12px 40px rgba(0,0,0,0.12)';
         el.style.transform  = 'translateY(-4px)';
-        el.style.borderColor = '#08BD80';
+        el.style.borderColor = '#f77420';
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLElement;
@@ -91,7 +91,7 @@ function BatchCard({ batch }: { batch: Batch }) {
           </div>
         </div>
         <div className="flex flex-col items-end gap-1 pb-1">
-          {batch.status === 'upcoming'     && <span className="text-[9px] font-black px-2 py-0.5 rounded-full text-white" style={{ background: 'rgba(8,189,128,0.9)' }}>NEW</span>}
+          {batch.status === 'upcoming'     && <span className="text-[9px] font-black px-2 py-0.5 rounded-full text-white" style={{ background: 'rgba(247,116,32,0.9)' }}>NEW</span>}
           {batch.status === 'filling-fast' && <span className="text-[9px] font-black px-2 py-0.5 rounded-full text-white" style={{ background: 'rgba(249,115,22,0.9)' }}>🔥 HOT</span>}
         </div>
       </div>
@@ -115,13 +115,13 @@ function BatchCard({ batch }: { batch: Batch }) {
         <div className="flex flex-wrap gap-1 mb-2.5">
           {batch.chips.slice(0, 3).map((chip) => (
             <span key={chip} className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
-              style={{ background: '#F0FDF9', color: '#0f766e', border: '1px solid #C6F3E4' }}>✓ {chip}</span>
+              style={{ background: '#fff7ed', color: '#c95516', border: '1px solid #ffd4ba' }}>✓ {chip}</span>
           ))}
         </div>
 
         <div className="flex items-center gap-1.5 mb-2">
-          <div className="w-1.5 h-1.5 rounded-full" style={{ background: urgent ? '#f97316' : '#08BD80' }} />
-          <span className="text-[11px] font-semibold" style={{ color: urgent ? '#c2410c' : '#0f766e' }}>{seatsText}</span>
+          <div className="w-1.5 h-1.5 rounded-full" style={{ background: urgent ? '#f97316' : '#f77420' }} />
+          <span className="text-[11px] font-semibold" style={{ color: urgent ? '#c2410c' : '#c95516' }}>{seatsText}</span>
         </div>
 
         <div className="flex-1" />
@@ -133,7 +133,7 @@ function BatchCard({ batch }: { batch: Batch }) {
                 <span className="text-lg font-black" style={{ color: '#0D1837' }}>{batch.fee}</span>
                 {batch.originalFee && <span className="text-xs line-through" style={{ color: '#9CA3AF' }}>{batch.originalFee}</span>}
               </div>
-              {batch.offer && <p className="text-[10px] font-bold" style={{ color: '#08BD80' }}>🎉 {batch.offer}</p>}
+              {batch.offer && <p className="text-[10px] font-bold" style={{ color: '#f77420' }}>🎉 {batch.offer}</p>}
             </div>
             <a href={`/courses/${batch.courseSlug}/${batch.slug}`}
               className="px-3.5 py-2 rounded-xl text-xs font-black text-white hover:opacity-90 transition-opacity flex-shrink-0"
@@ -165,14 +165,14 @@ function MobileBatchCard({ batch }: { batch: Batch }) {
               <div style={{ display: 'flex', gap: '5px', marginBottom: '6px', flexWrap: 'wrap' }}>
                 <span style={{ fontSize: '9px', fontWeight: 700, padding: '2px 8px', borderRadius: '20px', background: typeStyle.bg, color: typeStyle.color }}>{batch.batchType}</span>
                 <span style={{ fontSize: '9px', fontWeight: 700, padding: '2px 8px', borderRadius: '20px', background: '#FEF9C3', color: '#92400E' }}>{batch.language}</span>
-                {batch.status === 'upcoming'     && <span style={{ fontSize: '9px', fontWeight: 800, padding: '2px 8px', borderRadius: '20px', background: '#E6FAF4', color: '#08BD80' }}>✦ NEW</span>}
+                {batch.status === 'upcoming'     && <span style={{ fontSize: '9px', fontWeight: 800, padding: '2px 8px', borderRadius: '20px', background: '#fff1e8', color: '#f77420' }}>✦ NEW</span>}
                 {batch.status === 'filling-fast' && <span style={{ fontSize: '9px', fontWeight: 800, padding: '2px 8px', borderRadius: '20px', background: '#FFF0E6', color: '#f97316' }}>🔥 HOT</span>}
               </div>
               <div style={{ fontWeight: 800, fontSize: '13px', color: '#0D1837', lineHeight: 1.3, marginBottom: '5px' }}>{batch.name}</div>
               <div style={{ fontSize: '10px', color: '#9CA3AF', marginBottom: '6px' }}>📅 {batch.startDate} – {batch.endDate}</div>
               <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
                 {batch.chips.slice(0, 3).map((chip) => (
-                  <span key={chip} style={{ fontSize: '9px', fontWeight: 600, padding: '2px 6px', borderRadius: '6px', background: '#F0FDF9', color: '#0f766e', border: '1px solid #C6F3E4' }}>✓ {chip}</span>
+                  <span key={chip} style={{ fontSize: '9px', fontWeight: 600, padding: '2px 6px', borderRadius: '6px', background: '#fff7ed', color: '#c95516', border: '1px solid #ffd4ba' }}>✓ {chip}</span>
                 ))}
               </div>
             </div>
@@ -180,7 +180,7 @@ function MobileBatchCard({ batch }: { batch: Batch }) {
               <div style={{ fontWeight: 900, fontSize: '15px', color: '#0D1837' }}>{batch.fee}</div>
               {batch.originalFee && <div style={{ fontSize: '9px', textDecoration: 'line-through', color: '#9CA3AF' }}>{batch.originalFee}</div>}
               <div style={{ marginTop: '8px', background: 'linear-gradient(135deg, #060d1f, #0D1837)', color: 'white', fontWeight: 800, fontSize: '11px', padding: '6px 10px', borderRadius: '10px', textAlign: 'center' }}>Enroll →</div>
-              <div style={{ marginTop: '5px', fontSize: '9px', fontWeight: 600, color: urgent ? '#c2410c' : '#08BD80' }}>{seatsText}</div>
+              <div style={{ marginTop: '5px', fontSize: '9px', fontWeight: 600, color: urgent ? '#c2410c' : '#f77420' }}>{seatsText}</div>
             </div>
           </div>
         </div>
@@ -223,25 +223,25 @@ function CoursePanels({ categoryKey, courses, batches }: { categoryKey: CatKey; 
               <button key={course.slug} onClick={() => setSelectedSlug(course.slug)}
                 className="w-full text-left flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-150"
                 style={isActive
-                  ? { background: '#E6FAF4', border: '1.5px solid #08BD80', boxShadow: '0 2px 12px rgba(8,189,128,0.15)' }
+                  ? { background: '#fff1e8', border: '1.5px solid #f77420', boxShadow: '0 2px 12px rgba(247,116,32,0.15)' }
                   : { background: 'white', border: '1.5px solid #E9EEF2' }}
-                onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.borderColor = '#08BD80'; }}
+                onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.borderColor = '#f77420'; }}
                 onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.borderColor = '#E9EEF2'; }}
               >
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
-                  style={{ background: isActive ? '#C6F3E4' : course.bg }}>
+                  style={{ background: isActive ? '#ffd4ba' : course.bg }}>
                   {course.icon}
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="font-bold text-sm leading-snug truncate"
-                    style={{ color: isActive ? '#08BD80' : '#0D1837' }}>{course.title}</p>
+                    style={{ color: isActive ? '#f77420' : '#0D1837' }}>{course.title}</p>
                   <p className="text-[11px] mt-0.5 font-semibold"
-                    style={{ color: isActive ? '#0f766e' : '#9CA3AF' }}>
+                    style={{ color: isActive ? '#c95516' : '#9CA3AF' }}>
                     {batchCount} {batchCount === 1 ? 'Batch' : 'Batches'}
                   </p>
                 </div>
                 {isActive && (
-                  <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#08BD80">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#f77420">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
                 )}
@@ -257,7 +257,7 @@ function CoursePanels({ categoryKey, courses, batches }: { categoryKey: CatKey; 
           <p className="text-white/50 text-[11px] mb-3">Talk to our expert counsellors — free!</p>
           <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
             className="block py-2 rounded-xl text-xs font-black text-white transition-opacity hover:opacity-90"
-            style={{ background: '#25D366' }}>
+            style={{ background: '#f77420' }}>
             💬 Free Counselling
           </a>
         </div>
@@ -294,8 +294,8 @@ function CoursePanels({ categoryKey, courses, batches }: { categoryKey: CatKey; 
         <div className="mt-5 text-center">
           <a href={`/courses?cat=${categoryKey}`}
             className="inline-flex items-center gap-2 text-sm font-bold px-5 py-2.5 rounded-xl border-2 transition-all"
-            style={{ color: '#08BD80', borderColor: '#08BD80' }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#E6FAF4'; }}
+            style={{ color: '#f77420', borderColor: '#f77420' }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#fff1e8'; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}>
             View All Batches →
           </a>
@@ -343,9 +343,9 @@ export default function CourseTabsSection() {
               <button key={tab.key} onClick={() => setActiveTab(tab.key)}
                 className="flex items-center gap-1.5 md:gap-2 px-4 md:px-6 py-3.5 md:py-4 text-xs md:text-sm font-bold whitespace-nowrap transition-all flex-shrink-0 border-b-2 -mb-0.5"
                 style={isActive
-                  ? { color: '#08BD80', borderBottomColor: '#08BD80' }
+                  ? { color: '#f77420', borderBottomColor: '#f77420' }
                   : { color: '#6B7280', borderBottomColor: 'transparent' }}
-                onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#08BD80'; }}
+                onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#f77420'; }}
                 onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#6B7280'; }}
               >
                 <span className="text-sm md:text-base">{tab.icon}</span>
@@ -353,7 +353,7 @@ export default function CourseTabsSection() {
                 <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
                 <span className="text-[9px] md:text-[10px] font-black px-1.5 py-0.5 rounded-full"
                   style={isActive
-                    ? { background: '#E6FAF4', color: '#08BD80' }
+                    ? { background: '#fff1e8', color: '#f77420' }
                     : { background: '#F3F4F6', color: '#9CA3AF' }}>
                   {count}
                 </span>
@@ -376,9 +376,9 @@ export default function CourseTabsSection() {
             const isActive = course.slug === mobileSlug;
             return (
               <button key={course.slug} onClick={() => setMobileSlug(course.slug)}
-                style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 14px', borderRadius: '99px', border: `1.5px solid ${isActive ? '#08BD80' : '#E9EEF2'}`, background: isActive ? '#E6FAF4' : 'white', cursor: 'pointer' }}>
+                style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 14px', borderRadius: '99px', border: `1.5px solid ${isActive ? '#f77420' : '#E9EEF2'}`, background: isActive ? '#fff1e8' : 'white', cursor: 'pointer' }}>
                 <span style={{ fontSize: '16px' }}>{course.icon}</span>
-                <span style={{ fontSize: '12px', fontWeight: 700, color: isActive ? '#08BD80' : '#0D1837', whiteSpace: 'nowrap' }}>{course.title}</span>
+                <span style={{ fontSize: '12px', fontWeight: 700, color: isActive ? '#f77420' : '#0D1837', whiteSpace: 'nowrap' }}>{course.title}</span>
               </button>
             );
           })}
@@ -415,7 +415,7 @@ export default function CourseTabsSection() {
         {/* View all */}
         <div style={{ marginTop: '4px' }}>
           <a href={`/courses?cat=${activeTab}`}
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '14px', borderRadius: '16px', fontWeight: 700, fontSize: '14px', background: '#E6FAF4', color: '#08BD80', border: '1.5px solid #C6F3E4', textDecoration: 'none' }}>
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '14px', borderRadius: '16px', fontWeight: 700, fontSize: '14px', background: '#fff1e8', color: '#f77420', border: '1.5px solid #ffd4ba', textDecoration: 'none' }}>
             See All Batches →
           </a>
         </div>
