@@ -92,13 +92,16 @@ export default function HomeContentForm({ initialContent }: { initialContent: Ho
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error('Failed to save home content');
+      if (!res.ok) {
+        const payload = await res.json().catch(() => null) as { error?: string } | null;
+        throw new Error(payload?.error || 'Failed to save home content');
+      }
       const saved = (await res.json()) as HomeContent;
       setData(saved);
       showToast('Home page saved!', 'success');
       router.refresh();
-    } catch {
-      showToast('Error saving home page', 'error');
+    } catch (error) {
+      showToast(error instanceof Error ? error.message : 'Error saving home page', 'error');
     }
     setLoading(false);
   }
