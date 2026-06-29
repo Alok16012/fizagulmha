@@ -2,6 +2,7 @@ import { getBlogs } from '@/lib/getData';
 import { supabaseAdmin, CATEGORY_COLUMNS, isSupabaseConfigured } from '@/lib/supabase';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ManagedPageBanner from '@/components/ManagedPageBanner';
 import BlogsList from './BlogsList';
 import type { Metadata } from 'next';
 
@@ -29,6 +30,7 @@ export default async function BlogsPage() {
   return (
     <>
       <Navbar />
+      <ManagedPageBanner pageKey="blogs" />
       <main className="pb-20 md:pb-0">
 
         {/* Hero */}

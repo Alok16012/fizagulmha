@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ManagedPageBanner from '@/components/ManagedPageBanner';
 
 const nlus = [
   { name: 'NLSIU Bangalore', city: 'Bangalore', rank: 1, generalCutoff: 50, state: 'Karnataka' },
@@ -42,6 +43,7 @@ export default function CollegePredictorPage() {
   return (
     <>
       <Navbar />
+      <ManagedPageBanner pageKey="college-predictor" />
       <main className="pb-20 md:pb-0">
 
         {/* Hero */}

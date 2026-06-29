@@ -267,6 +267,7 @@ function mergeHomeContent(content: Partial<HomeContent> | null | undefined): Hom
   return {
     ...defaultHomeContent,
     ...content,
+    site: { ...defaultHomeContent.site, ...(content.site || {}) },
     hero: { ...defaultHomeContent.hero, ...(content.hero || {}) },
     courses: { ...defaultHomeContent.courses, ...(content.courses || {}) },
     testimonials: { ...defaultHomeContent.testimonials, ...(content.testimonials || {}) },

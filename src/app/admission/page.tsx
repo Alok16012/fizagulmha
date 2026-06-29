@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AdmissionPage from '@/components/AdmissionPage';
+import ManagedPageBanner from '@/components/ManagedPageBanner';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export default function Admission() {
   return (
     <>
       <Navbar />
+      <ManagedPageBanner pageKey="admission" />
       <AdmissionPage />
       <Footer />
     </>

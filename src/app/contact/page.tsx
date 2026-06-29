@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ManagedPageBanner from '@/components/ManagedPageBanner';
 
 const PROGRAMS = [
   'Select a program',
@@ -100,6 +101,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
+      <ManagedPageBanner pageKey="contact" />
       <main className="pb-20 md:pb-0">
 
         {/* Hero */}

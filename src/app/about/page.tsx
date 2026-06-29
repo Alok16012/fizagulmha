@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AboutPage from '@/components/AboutPage';
+import ManagedPageBanner from '@/components/ManagedPageBanner';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export default function About() {
   return (
     <>
       <Navbar />
+      <ManagedPageBanner pageKey="about" />
       <AboutPage />
       <Footer />
     </>

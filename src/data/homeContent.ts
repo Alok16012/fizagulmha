@@ -130,7 +130,58 @@ export type HomePredictorContent = {
   footnote: string;
 };
 
+export type SiteLink = {
+  label: string;
+  href: string;
+  icon?: string;
+  color?: string;
+  children?: SiteLink[];
+};
+
+export type SiteSocial = {
+  label: string;
+  href: string;
+  icon: string;
+  color: string;
+  bg: string;
+};
+
+export type SitePageBanner = {
+  key: string;
+  enabled: boolean;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  ctaLabel: string;
+  ctaHref: string;
+};
+
+export type SiteSettings = {
+  logoSrc: string;
+  logoAlt: string;
+  phone: string;
+  whatsapp: string;
+  desktopNav: SiteLink[];
+  mobileMenu: SiteLink[];
+  mobileBottomNav: SiteLink[];
+  desktopCtas: SiteLink[];
+  mobilePredictorLabel: string;
+  mobilePredictorHref: string;
+  footerDescription: string;
+  footerMobileDescription: string;
+  footerCopyright: string;
+  footerCoursesTitle: string;
+  footerExamsTitle: string;
+  footerQuickLinksTitle: string;
+  footerCourses: SiteLink[];
+  footerExams: SiteLink[];
+  footerQuickLinks: SiteLink[];
+  socials: SiteSocial[];
+  pageBanners: SitePageBanner[];
+};
+
 export type HomeContent = {
+  site: SiteSettings;
   hero: HomeHeroContent;
   stats: HomeStatCard[];
   courses: HomeCoursesHeader;
@@ -140,6 +191,103 @@ export type HomeContent = {
 };
 
 export const defaultHomeContent: HomeContent = {
+  site: {
+    logoSrc: '/logo.png',
+    logoAlt: 'CLATians',
+    phone: '8507700177',
+    whatsapp: '918507700177',
+    desktopNav: [
+      { label: 'Home', href: '/' },
+      {
+        label: 'Courses',
+        href: '/courses',
+        children: [
+          { label: '🏫 Offline Course', href: '/courses?cat=offline' },
+          { label: '💻 Online Course', href: '/courses?cat=online' },
+          { label: '🎯 Mentorship', href: '/courses?cat=mentorship' },
+          { label: '📝 Mock Tests', href: '/courses?cat=mock' },
+        ],
+      },
+      {
+        label: 'Exams',
+        href: '/exams/clat',
+        children: [
+          { label: '🏛️ CLAT', href: '/exams/clat' },
+          { label: '⚖️ AILET', href: '/exams/ailet' },
+          { label: '📍 MH-CET Law', href: '/exams/mh-cet-law' },
+          { label: '🎓 CUET', href: '/exams/cuet' },
+          { label: '🎖️ AIL-LET', href: '/exams/ail-let' },
+          { label: '🌐 LSAT India', href: '/exams/lsat' },
+        ],
+      },
+      { label: 'Admission', href: '/admission' },
+      { label: 'The CLATians Journal', href: '/blogs' },
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+    ],
+    mobileMenu: [
+      { label: 'Courses', href: '/courses', icon: '📚' },
+      { label: 'Exams', href: '/exams/clat', icon: '🏛️' },
+      { label: 'Admission', href: '/admission', icon: '🎓' },
+      { label: 'The CLATians Journal', href: '/blogs', icon: '✍️' },
+      { label: 'About', href: '/about', icon: '👥' },
+      { label: 'Contact', href: '/contact', icon: '📞' },
+    ],
+    mobileBottomNav: [
+      { label: 'Home', href: '/', icon: 'home', color: '#06b6d4' },
+      { label: 'Courses', href: '/courses', icon: 'courses', color: '#8b5cf6' },
+      { label: 'Exams', href: '/exams/clat', icon: 'exams', color: '#f59e0b' },
+      { label: 'Admission', href: '/admission', icon: 'admission', color: '#f97316' },
+      { label: 'More', href: '/about', icon: 'more', color: '#ec4899' },
+    ],
+    desktopCtas: [
+      { label: 'College Predictor', href: '/college-predictor' },
+      { label: 'Admission 2026', href: '/admission' },
+    ],
+    mobilePredictorLabel: '🔮 Predictor',
+    mobilePredictorHref: '/college-predictor',
+    footerDescription: 'Your trusted institute for CLAT, AILET, and all major law entrance exams. Expert guidance by NLU alumni and advocates.',
+    footerMobileDescription: "India's #1 CLAT coaching — 1.25L+ students, 5000+ NLU selections since 2012.",
+    footerCopyright: '© 2026 CLATians – All rights reserved.',
+    footerCoursesTitle: 'Courses',
+    footerExamsTitle: 'Exams',
+    footerQuickLinksTitle: 'Quick Links',
+    footerCourses: [
+      { label: 'Offline Course', href: '/courses?cat=offline' },
+      { label: 'Online Course', href: '/courses?cat=online' },
+      { label: 'CLAT Navigator™', href: '/courses/clat-mentorship-program/clat-navigator' },
+      { label: 'Mock Tests', href: '/courses?cat=mock' },
+    ],
+    footerExams: [
+      { label: 'CLAT', href: '/exams/clat' },
+      { label: 'AILET', href: '/exams/ailet' },
+      { label: 'MH-CET Law', href: '/exams/mh-cet-law' },
+      { label: 'CUET', href: '/exams/cuet' },
+      { label: 'AIL-LET', href: '/exams/ail-let' },
+      { label: 'LSAT', href: '/exams/lsat' },
+    ],
+    footerQuickLinks: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Faculty', href: '/faculty' },
+      { label: 'Admission', href: '/admission' },
+      { label: 'The CLATians Journal', href: '/blogs' },
+      { label: 'College Predictor', href: '/college-predictor' },
+    ],
+    socials: [
+      { label: 'Facebook', href: '#', icon: 'f', color: '#1877f2', bg: 'rgba(24,119,242,0.15)' },
+      { label: 'YouTube', href: '#', icon: '▶', color: '#ff0000', bg: 'rgba(255,0,0,0.12)' },
+      { label: 'Instagram', href: '#', icon: '📷', color: '#e1306c', bg: 'rgba(225,48,108,0.12)' },
+      { label: 'LinkedIn', href: '#', icon: 'in', color: '#0a66c2', bg: 'rgba(10,102,194,0.15)' },
+    ],
+    pageBanners: [
+      { key: 'about', enabled: false, eyebrow: 'About CLATians', title: 'Learn, Practice, Achieve', subtitle: 'Add a custom about page announcement or intro from admin.', ctaLabel: 'Explore Courses', ctaHref: '/courses' },
+      { key: 'admission', enabled: false, eyebrow: 'Admission Open', title: 'Start your CLAT journey', subtitle: 'Add a custom admission message from admin.', ctaLabel: 'Call Now', ctaHref: 'tel:8507700177' },
+      { key: 'contact', enabled: false, eyebrow: 'Contact CLATians', title: 'Speak to our counsellors', subtitle: 'Add contact page instructions or offer text from admin.', ctaLabel: 'WhatsApp Us', ctaHref: 'https://wa.me/918507700177' },
+      { key: 'college-predictor', enabled: false, eyebrow: 'College Predictor', title: 'Check your NLU chances', subtitle: 'Add predictor page copy from admin.', ctaLabel: 'Try Now', ctaHref: '/college-predictor' },
+      { key: 'blogs', enabled: false, eyebrow: 'CLATians Journal', title: 'Latest preparation insights', subtitle: 'Add blog page intro or announcement from admin.', ctaLabel: 'View Courses', ctaHref: '/courses' },
+      { key: 'faculty', enabled: false, eyebrow: 'Faculty', title: 'Meet our mentors', subtitle: 'Add faculty page intro or announcement from admin.', ctaLabel: 'Get Counselling', ctaHref: '/admission' },
+    ],
+  },
   hero: {
     slides: [
       {

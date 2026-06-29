@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ManagedPageBanner from '@/components/ManagedPageBanner';
 import { getFaculty } from '@/lib/getData';
 
 export const dynamic = 'force-dynamic';
@@ -21,6 +22,7 @@ export default async function FacultyListPage() {
   return (
     <>
       <Navbar />
+      <ManagedPageBanner pageKey="faculty" />
       <main style={{ background: '#F8FAFC' }}>
         <section className="py-10 md:py-16" style={{ background: 'linear-gradient(135deg, #060d1f, #0D1837)' }}>
           <div className="max-w-7xl mx-auto px-4">

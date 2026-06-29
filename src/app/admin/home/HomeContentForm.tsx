@@ -9,6 +9,9 @@ import type {
   HomeHeroSlide,
   HomeHeroStat,
   HomeRankBadge,
+  SitePageBanner,
+  SiteLink,
+  SiteSocial,
   HomeStatCard,
   HomeTestimonial,
   HomeTopper,
@@ -48,6 +51,32 @@ function RemoveButton({ onClick }: { onClick: () => void }) {
   );
 }
 
+function JsonTextarea<T>({ label, value, onChange }: { label: string; value: T; onChange: (value: T) => void }) {
+  const [draft, setDraft] = useState(() => JSON.stringify(value, null, 2));
+  const [error, setError] = useState('');
+
+  function applyDraft() {
+    try {
+      onChange(JSON.parse(draft) as T);
+      setError('');
+    } catch {
+      setError('Invalid JSON. Fix this field before saving.');
+    }
+  }
+
+  return (
+    <FieldGroup label={label} hint="Advanced list editor. Keep valid JSON format.">
+      <TextareaInput value={draft} onChange={setDraft} rows={8} />
+      <div className="mt-2 flex items-center gap-3">
+        <button type="button" onClick={applyDraft} className="text-xs font-bold px-3 py-1.5 rounded-lg text-white" style={{ background: '#0D1837' }}>
+          Apply JSON
+        </button>
+        {error && <span className="text-xs font-semibold text-red-500">{error}</span>}
+      </div>
+    </FieldGroup>
+  );
+}
+
 export default function HomeContentForm({ initialContent }: { initialContent: HomeContent }) {
   const router = useRouter();
   const [data, setData] = useState<HomeContent>(initialContent);
@@ -77,6 +106,10 @@ export default function HomeContentForm({ initialContent }: { initialContent: Ho
 
   function setPredictor<K extends keyof HomeContent['predictor']>(key: K, value: HomeContent['predictor'][K]) {
     setData((current) => ({ ...current, predictor: { ...current.predictor, [key]: value } }));
+  }
+
+  function setSite<K extends keyof HomeContent['site']>(key: K, value: HomeContent['site'][K]) {
+    setData((current) => ({ ...current, site: { ...current.site, [key]: value } }));
   }
 
   function updateList<T>(items: T[], index: number, nextItem: T): T[] {
@@ -175,6 +208,63 @@ export default function HomeContentForm({ initialContent }: { initialContent: Ho
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6 max-w-6xl">
+        <SectionCard title="Global Website Settings">
+          <div className="rounded-xl border border-orange-100 bg-orange-50 px-4 py-3 text-sm font-semibold text-orange-800">
+            These settings update shared website items like navbar, footer, phone number, WhatsApp number, logo, social links and global CTAs.
+          </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            <FieldGroup label="Logo URL">
+              <TextInput value={data.site.logoSrc} onChange={(v) => setSite('logoSrc', v)} placeholder="/logo.png" />
+            </FieldGroup>
+            <FieldGroup label="Logo alt text">
+              <TextInput value={data.site.logoAlt} onChange={(v) => setSite('logoAlt', v)} placeholder="CLATians" />
+            </FieldGroup>
+            <FieldGroup label="Phone">
+              <TextInput value={data.site.phone} onChange={(v) => setSite('phone', v)} placeholder="8507700177" />
+            </FieldGroup>
+            <FieldGroup label="WhatsApp with country code">
+              <TextInput value={data.site.whatsapp} onChange={(v) => setSite('whatsapp', v)} placeholder="918507700177" />
+            </FieldGroup>
+            <FieldGroup label="Mobile predictor label">
+              <TextInput value={data.site.mobilePredictorLabel} onChange={(v) => setSite('mobilePredictorLabel', v)} placeholder="🔮 Predictor" />
+            </FieldGroup>
+            <FieldGroup label="Mobile predictor link">
+              <TextInput value={data.site.mobilePredictorHref} onChange={(v) => setSite('mobilePredictorHref', v)} placeholder="/college-predictor" />
+            </FieldGroup>
+          </div>
+          <FieldGroup label="Footer desktop description">
+            <TextareaInput value={data.site.footerDescription} onChange={(v) => setSite('footerDescription', v)} rows={3} />
+          </FieldGroup>
+          <FieldGroup label="Footer mobile description">
+            <TextareaInput value={data.site.footerMobileDescription} onChange={(v) => setSite('footerMobileDescription', v)} rows={3} />
+          </FieldGroup>
+          <div className="grid md:grid-cols-4 gap-4">
+            <FieldGroup label="Footer copyright">
+              <TextInput value={data.site.footerCopyright} onChange={(v) => setSite('footerCopyright', v)} />
+            </FieldGroup>
+            <FieldGroup label="Footer courses title">
+              <TextInput value={data.site.footerCoursesTitle} onChange={(v) => setSite('footerCoursesTitle', v)} />
+            </FieldGroup>
+            <FieldGroup label="Footer exams title">
+              <TextInput value={data.site.footerExamsTitle} onChange={(v) => setSite('footerExamsTitle', v)} />
+            </FieldGroup>
+            <FieldGroup label="Footer quick links title">
+              <TextInput value={data.site.footerQuickLinksTitle} onChange={(v) => setSite('footerQuickLinksTitle', v)} />
+            </FieldGroup>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <JsonTextarea<SiteLink[]> label="Desktop Navbar Links" value={data.site.desktopNav} onChange={(v) => setSite('desktopNav', v)} />
+            <JsonTextarea<SiteLink[]> label="Desktop CTA Buttons" value={data.site.desktopCtas} onChange={(v) => setSite('desktopCtas', v)} />
+            <JsonTextarea<SiteLink[]> label="Mobile Menu Links" value={data.site.mobileMenu} onChange={(v) => setSite('mobileMenu', v)} />
+            <JsonTextarea<SiteLink[]> label="Mobile Bottom Nav" value={data.site.mobileBottomNav} onChange={(v) => setSite('mobileBottomNav', v)} />
+            <JsonTextarea<SiteLink[]> label="Footer Course Links" value={data.site.footerCourses} onChange={(v) => setSite('footerCourses', v)} />
+            <JsonTextarea<SiteLink[]> label="Footer Exam Links" value={data.site.footerExams} onChange={(v) => setSite('footerExams', v)} />
+            <JsonTextarea<SiteLink[]> label="Footer Quick Links" value={data.site.footerQuickLinks} onChange={(v) => setSite('footerQuickLinks', v)} />
+            <JsonTextarea<SiteSocial[]> label="Social Links" value={data.site.socials} onChange={(v) => setSite('socials', v)} />
+            <JsonTextarea<SitePageBanner[]> label="Managed Page Banners" value={data.site.pageBanners} onChange={(v) => setSite('pageBanners', v)} />
+          </div>
+        </SectionCard>
+
         <SectionCard title="Hero Slides">
           <div className="grid md:grid-cols-2 gap-4">
             <FieldGroup label="Topper card title">
