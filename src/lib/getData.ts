@@ -19,7 +19,7 @@ import type { Exam } from '@/data/exams';
 import type { FacultyMember } from '@/data/faculty';
 import type { Blog } from '@/data/blogs';
 import type { CourseCategory } from '@/data/courseCategories';
-import type { HomeContent } from '@/data/homeContent';
+import type { AdmissionContent, HomeContent } from '@/data/homeContent';
 
 export async function getCourseCategories(): Promise<CourseCategory[]> {
   if (isSupabaseConfigured()) {
@@ -268,11 +268,32 @@ function mergeHomeContent(content: Partial<HomeContent> | null | undefined): Hom
     ...defaultHomeContent,
     ...content,
     site: { ...defaultHomeContent.site, ...(content.site || {}) },
+    admission: mergeAdmissionContent(content.admission),
     hero: { ...defaultHomeContent.hero, ...(content.hero || {}) },
     courses: { ...defaultHomeContent.courses, ...(content.courses || {}) },
     testimonials: { ...defaultHomeContent.testimonials, ...(content.testimonials || {}) },
     faq: { ...defaultHomeContent.faq, ...(content.faq || {}) },
     predictor: { ...defaultHomeContent.predictor, ...(content.predictor || {}) },
+  };
+}
+
+function mergeAdmissionContent(content: Partial<AdmissionContent> | undefined): AdmissionContent {
+  const base = defaultHomeContent.admission;
+  if (!content) return base;
+  return {
+    ...base,
+    ...content,
+    hero: { ...base.hero, ...(content.hero || {}) },
+    batchSection: { ...base.batchSection, ...(content.batchSection || {}) },
+    processSection: { ...base.processSection, ...(content.processSection || {}) },
+    formSection: { ...base.formSection, ...(content.formSection || {}) },
+    trustSection: { ...base.trustSection, ...(content.trustSection || {}) },
+    testimonialsSection: { ...base.testimonialsSection, ...(content.testimonialsSection || {}) },
+    scholarship: { ...base.scholarship, ...(content.scholarship || {}) },
+    freeResources: { ...base.freeResources, ...(content.freeResources || {}) },
+    faq: { ...base.faq, ...(content.faq || {}) },
+    finalCta: { ...base.finalCta, ...(content.finalCta || {}) },
+    stickyBar: { ...base.stickyBar, ...(content.stickyBar || {}) },
   };
 }
 

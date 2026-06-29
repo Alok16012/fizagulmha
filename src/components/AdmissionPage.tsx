@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import CourseTabsSection from '@/components/CourseTabsSection';
+import { defaultHomeContent, type AdmissionContent, type AdmissionTestimonial } from '@/data/homeContent';
 
 /* ─── useReveal hook ────────────────────────────────── */
 function useReveal(threshold = 0.12) {
@@ -173,31 +174,39 @@ const applySteps = [
 ];
 
 /* ─── Live Enrollment Toast ─────────────────────────── */
-function EnrollmentToast() {
+function EnrollmentToast({ enrollments }: { enrollments: AdmissionContent['enrollments'] }) {
   const [current, setCurrent] = useState<number | null>(null);
   const [visible, setVisible] = useState(false);
   const idxRef = useRef(0);
 
   const showNext = useCallback(() => {
+    if (!enrollments.length) return undefined;
     const idx = idxRef.current % enrollments.length;
     idxRef.current += 1;
     setCurrent(idx);
     setVisible(true);
     const hideTimer = setTimeout(() => setVisible(false), 4000);
     return hideTimer;
-  }, []);
+  }, [enrollments]);
 
   useEffect(() => {
+    if (!enrollments.length) return;
+    let hideTimer: ReturnType<typeof setTimeout> | undefined;
+    let interval: ReturnType<typeof setInterval> | undefined;
+    const runToast = () => {
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = showNext();
+    };
     const delay = setTimeout(() => {
-      const hideTimer = showNext();
-      const interval = setInterval(() => {
-        clearTimeout(hideTimer);
-        showNext();
-      }, 5000);
-      return () => clearInterval(interval);
+      runToast();
+      interval = setInterval(runToast, 5000);
     }, 2000);
-    return () => clearTimeout(delay);
-  }, [showNext]);
+    return () => {
+      clearTimeout(delay);
+      if (hideTimer) clearTimeout(hideTimer);
+      if (interval) clearInterval(interval);
+    };
+  }, [showNext, enrollments.length]);
 
   if (current === null) return null;
   const enroll = enrollments[current];
@@ -257,7 +266,7 @@ function EnrollmentToast() {
 }
 
 /* ─── Main Component ─────────────────────────────────── */
-export default function AdmissionPage() {
+export default function AdmissionPage({ content = defaultHomeContent.admission }: { content?: AdmissionContent }) {
   const heroReveal = useReveal(0.1);
   const urgencyReveal = useReveal(0.1);
   const programsReveal = useReveal(0.1);
@@ -279,15 +288,8 @@ export default function AdmissionPage() {
     if (error) setError('');
   }
 
-  const PROGRAM_LABELS: Record<string, string> = {
-    offline: 'Offline Batch — ₹75,000',
-    online: 'Online Batch — ₹45,000',
-    mentorship: 'Mentorship — ₹1,20,000',
-    mock: 'Mock Test Series — ₹8,999',
-  };
-  const CLASS_LABELS: Record<string, string> = {
-    '11': 'Class 11', '12': 'Class 12', dropper: 'Dropper / Repeat', graduate: 'Graduate',
-  };
+  const PROGRAM_LABELS = Object.fromEntries(content.formSection.programOptions.map((item) => [item.value, item.label]));
+  const CLASS_LABELS = Object.fromEntries(content.formSection.classOptions.map((item) => [item.value, item.label]));
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -329,7 +331,7 @@ export default function AdmissionPage() {
   return (
     <>
       {/* Live Enrollment Toast */}
-      <EnrollmentToast />
+      <EnrollmentToast enrollments={content.enrollments} />
 
       {/* ── HERO ── */}
       <section
@@ -364,7 +366,7 @@ export default function AdmissionPage() {
             }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f77420', animation: 'pulse 2s infinite' }} />
               <span style={{ color: '#f77420', fontSize: '12px', fontWeight: 700, letterSpacing: '0.05em' }}>
-                ADMISSIONS OPEN — 2026 BATCH
+                {content.hero.eyebrow}
               </span>
             </div>
 
@@ -372,18 +374,18 @@ export default function AdmissionPage() {
               color: 'white', fontWeight: 900, fontSize: 'clamp(28px, 4vw, 48px)',
               lineHeight: 1.15, marginBottom: '16px',
             }}>
-              Secure Your NLU Seat.<br />
-              <span style={{ color: '#f77420' }}>Apply for CLATians 2026</span>
+              {content.hero.title}<br />
+              <span style={{ color: '#f77420' }}>{content.hero.highlight}</span>
             </h1>
 
             <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', marginBottom: '28px', lineHeight: 1.6 }}>
-              <span style={{ color: '#f59e0b', fontWeight: 700 }}>⚡ Offline batch: Only 8 seats left.</span>{' '}
-              Online enrollment open. Join 5000+ NLU qualifiers.
+              <span style={{ color: '#f59e0b', fontWeight: 700 }}>{content.hero.descriptionPrefix}</span>{' '}
+              {content.hero.descriptionSuffix}
             </p>
 
             {/* Trust badges */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '32px' }}>
-              {['✅ 5000+ NLU Selections', '✅ 12+ Years', '✅ AIR 1 Multiple Times', '✅ EMI Available'].map(badge => (
+              {content.hero.badges.map(badge => (
                 <span key={badge} style={{
                   background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)',
                   borderRadius: '8px', padding: '6px 12px',
@@ -396,13 +398,13 @@ export default function AdmissionPage() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3">
-              <a href="tel:8507700177"
+              <a href={content.hero.primaryHref}
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#f77420', color: 'white', fontWeight: 700, fontSize: '14px', padding: '14px 24px', borderRadius: '12px', textDecoration: 'none', boxShadow: '0 4px 20px rgba(247,116,32,0.4)' }}>
-                📞 Call Now — 8507700177
+                {content.hero.primaryCta}
               </a>
-              <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer"
+              <a href={content.hero.secondaryHref} target="_blank" rel="noopener noreferrer"
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#075E54', color: 'white', fontWeight: 700, fontSize: '14px', padding: '14px 24px', borderRadius: '12px', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.2)' }}>
-                💬 WhatsApp Us
+                {content.hero.secondaryCta}
               </a>
             </div>
           </div>
@@ -420,14 +422,14 @@ export default function AdmissionPage() {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f77420' }} />
-              <span style={{ color: 'white', fontWeight: 700, fontSize: '13px' }}>Recent Enrollments</span>
+              <span style={{ color: 'white', fontWeight: 700, fontSize: '13px' }}>{content.hero.cardTitle}</span>
               <span style={{ marginLeft: 'auto', background: 'rgba(247,116,32,0.2)', color: '#f77420', fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '99px' }}>
-                LIVE
+                {content.hero.cardBadge}
               </span>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {recentStudents.map((s) => (
+              {content.recentStudents.map((s) => (
                 <div key={s.name} style={{
                   display: 'flex', alignItems: 'center', gap: '10px',
                   background: 'rgba(255,255,255,0.06)', borderRadius: '12px', padding: '10px 12px',
@@ -449,12 +451,12 @@ export default function AdmissionPage() {
             </div>
 
             <div style={{ marginTop: '14px', textAlign: 'center' }}>
-              <a href="#form" style={{
+              <a href={content.hero.cardButtonHref} style={{
                 display: 'block', background: '#f77420', color: 'white',
                 fontWeight: 700, fontSize: '13px', padding: '10px',
                 borderRadius: '10px', textDecoration: 'none',
               }}>
-                Apply Now →
+                {content.hero.cardButton}
               </a>
             </div>
           </div>
@@ -477,32 +479,26 @@ export default function AdmissionPage() {
           flexWrap: 'wrap', gap: '8px',
         }}>
           <span style={{ color: 'white', fontWeight: 700, fontSize: '13px', textAlign: 'center', padding: '0 16px' }}>
-            🔥 Offline Batch 2026 — 22 of 30 seats filled
-            <span style={{ margin: '0 12px', opacity: 0.6 }}>·</span>
-            Online Enrollment Open
-            <span style={{ margin: '0 12px', opacity: 0.6 }}>·</span>
-            Admissions Close Dec 31
-            <span style={{ margin: '0 12px', opacity: 0.6 }}>·</span>
-            📞 8507700177
+            {content.urgencyText}
           </span>
         </div>
       </div>
 
       {/* ── CSAT 2026 SCHOLARSHIP TEST ── */}
-      <CsatSection />
+      {content.scholarship.enabled && <CsatSection scholarship={content.scholarship} />}
 
       {/* ── REAL BATCHES ── */}
       <section style={{ background: '#F8FAFC', padding: '60px 0' }}>
         <div className="max-w-7xl mx-auto px-4 md:px-10">
           <div style={{ textAlign: 'center', marginBottom: '32px' }}>
             <span style={{ background: '#fff1e8', color: '#f77420', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '10px' }}>
-              CHOOSE YOUR BATCH
+              {content.batchSection.eyebrow}
             </span>
             <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 34px)', marginBottom: '8px' }}>
-              Available Batches — 2026 / 2027
+              {content.batchSection.title}
             </h2>
             <p style={{ color: '#6B7280', fontSize: '15px', maxWidth: '500px', margin: '0 auto' }}>
-              Real batches, real seats. Click any batch to view full details and enroll.
+              {content.batchSection.subtitle}
             </p>
           </div>
           <CourseTabsSection />
@@ -525,19 +521,19 @@ export default function AdmissionPage() {
                 background: '#EFF6FF', color: '#3b82f6', fontSize: '12px', fontWeight: 700,
                 padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '12px',
               }}>
-                HOW TO APPLY
+                {content.processSection.eyebrow}
               </span>
               <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(24px, 3vw, 36px)', marginBottom: '10px' }}>
-                Simple 4-Step Admission Process
+                {content.processSection.title}
               </h2>
-              <p style={{ color: '#6B7280', fontSize: '15px' }}>From inquiry to enrollment — done in under 24 hours.</p>
+              <p style={{ color: '#6B7280', fontSize: '15px' }}>{content.processSection.subtitle}</p>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px', position: 'relative' }}>
-              {applySteps.map((step, idx) => (
+              {content.processSection.steps.map((step, idx) => (
                 <div key={step.num} style={{ textAlign: 'center', position: 'relative' }}>
                   {/* Dashed connector */}
-                  {idx < applySteps.length - 1 && (
+                  {idx < content.processSection.steps.length - 1 && (
                     <div style={{
                       position: 'absolute', top: '28px', left: 'calc(50% + 32px)',
                       width: 'calc(100% - 64px)', height: '2px',
@@ -602,13 +598,13 @@ export default function AdmissionPage() {
                 background: '#fff1e8', color: '#f77420', fontSize: '12px', fontWeight: 700,
                 padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '16px',
               }}>
-                FREE COUNSELLING
+                {content.formSection.eyebrow}
               </span>
               <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(22px, 2.5vw, 30px)', marginBottom: '8px' }}>
-                Apply for CLATians 2026
+                {content.formSection.title}
               </h2>
               <p style={{ color: '#6B7280', fontSize: '14px', marginBottom: '28px' }}>
-                Fill your details — our counsellor will call within 2 hours. 100% free.
+                {content.formSection.subtitle}
               </p>
 
               {submitted ? (
@@ -618,10 +614,10 @@ export default function AdmissionPage() {
                 }}>
                   <div style={{ fontSize: '40px', marginBottom: '12px' }}>🎉</div>
                   <h3 style={{ color: '#7a3412', fontWeight: 800, fontSize: '18px', marginBottom: '6px' }}>
-                    Application Received!
+                    {content.formSection.successTitle}
                   </h3>
                   <p style={{ color: '#374151', fontSize: '13px' }}>
-                    Our counsellor will call you at {formData.mobile} within 2 hours. Thank you!
+                    {content.formSection.successText} {formData.mobile ? `(${formData.mobile})` : ''}
                   </p>
                 </div>
               ) : (
@@ -742,10 +738,9 @@ export default function AdmissionPage() {
                       onBlur={e => (e.target.style.borderColor = '#E9EEF2')}
                     >
                       <option value="">Select program</option>
-                      <option value="offline">Offline Batch — ₹75,000</option>
-                      <option value="online">Online Batch — ₹45,000</option>
-                      <option value="mentorship">Mentorship — ₹1,20,000</option>
-                      <option value="mock">Mock Test Series — ₹8,999</option>
+                      {content.formSection.programOptions.map((option) => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                      ))}
                     </select>
                   </div>
 
@@ -769,10 +764,9 @@ export default function AdmissionPage() {
                       onBlur={e => (e.target.style.borderColor = '#E9EEF2')}
                     >
                       <option value="">Select</option>
-                      <option value="11">Class 11</option>
-                      <option value="12">Class 12</option>
-                      <option value="dropper">Dropper / Repeat</option>
-                      <option value="graduate">Graduate</option>
+                      {content.formSection.classOptions.map((option) => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                      ))}
                     </select>
                   </div>
 
@@ -829,13 +823,13 @@ export default function AdmissionPage() {
                       (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 20px rgba(247,116,32,0.35)';
                     }}
                   >
-                    {submitting ? 'Submitting…' : 'Get Free Counselling →'}
+                    {submitting ? content.formSection.submittingLabel : content.formSection.submitLabel}
                   </button>
 
                   <p style={{ textAlign: 'center', fontSize: '12px', color: '#6B7280', marginTop: '4px' }}>
-                    📞 Or call directly: <a href="tel:8507700177" style={{ color: '#f77420', fontWeight: 700, textDecoration: 'none' }}>8507700177</a>
+                    {content.formSection.directCallText} <a href={content.trustSection.callHref} style={{ color: '#f77420', fontWeight: 700, textDecoration: 'none' }}>{content.trustSection.callHref.replace('tel:', '')}</a>
                     <span style={{ margin: '0 6px', color: '#D1D5DB' }}>·</span>
-                    Avg response time: &lt; 2 hours
+                    {content.formSection.responseText}
                   </p>
                 </form>
               )}
@@ -854,17 +848,17 @@ export default function AdmissionPage() {
                 padding: '20px 24px',
               }}>
                 <h3 style={{ color: 'white', fontWeight: 800, fontSize: '17px', marginBottom: '4px' }}>
-                  Why 1.25 Lakh Students Trust CLATians
+                  {content.trustSection.title}
                 </h3>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px' }}>
-                  12+ years of NLU selections. Proven results.
+                  {content.trustSection.subtitle}
                 </p>
               </div>
 
               <div style={{ padding: '20px 24px' }}>
                 {/* Trust points */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '20px' }}>
-                  {trustPoints.map((tp) => (
+                  {content.trustSection.points.map((tp) => (
                     <div key={tp.title} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                       <span style={{ fontSize: '20px', flexShrink: 0, lineHeight: 1.3 }}>{tp.icon}</span>
                       <div>
@@ -882,10 +876,10 @@ export default function AdmissionPage() {
                   marginBottom: '16px',
                 }}>
                   <div style={{ fontSize: '11px', fontWeight: 700, color: '#6B7280', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                    Recent Toppers
+                    {content.trustSection.toppersTitle}
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {toppers.map((t) => (
+                    {content.trustSection.toppers.map((t) => (
                       <div key={t.name} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <div style={{
                           width: '30px', height: '30px', borderRadius: '50%',
@@ -913,14 +907,14 @@ export default function AdmissionPage() {
                   background: '#FFFBEB', borderRadius: '12px', marginBottom: '14px',
                   border: '1px solid #FDE68A',
                 }}>
-                  <div style={{ fontSize: '18px', marginBottom: '2px' }}>⭐⭐⭐⭐⭐</div>
-                  <div style={{ fontWeight: 800, fontSize: '16px', color: '#92400e' }}>4.9 / 5</div>
-                  <div style={{ fontSize: '11px', color: '#78716c', marginTop: '2px' }}>2,400+ verified reviews</div>
+                  <div style={{ fontSize: '18px', marginBottom: '2px' }}>{content.trustSection.ratingStars}</div>
+                  <div style={{ fontWeight: 800, fontSize: '16px', color: '#92400e' }}>{content.trustSection.ratingScore}</div>
+                  <div style={{ fontSize: '11px', color: '#78716c', marginTop: '2px' }}>{content.trustSection.ratingText}</div>
                 </div>
 
                 {/* Call button */}
                 <a
-                  href="tel:8507700177"
+                  href={content.trustSection.callHref}
                   style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
                     background: 'linear-gradient(135deg, #f77420, #d95f18)',
@@ -929,10 +923,10 @@ export default function AdmissionPage() {
                     boxShadow: '0 3px 12px rgba(247,116,32,0.3)',
                   }}
                 >
-                  📞 Call us FREE — 8507700177
+                  {content.trustSection.callLabel}
                 </a>
                 <p style={{ textAlign: 'center', fontSize: '11px', color: '#9CA3AF', marginTop: '6px' }}>
-                  Mon–Sat · 9 AM–7 PM · No spam, guaranteed
+                  {content.trustSection.note}
                 </p>
               </div>
             </div>
@@ -941,10 +935,10 @@ export default function AdmissionPage() {
       </section>
 
       {/* ── FREE RESOURCES ── */}
-      <FreeResourcesSection />
+      <FreeResourcesSection resources={content.freeResources} />
 
       {/* ── FAQ ── */}
-      <FaqSection />
+      <FaqSection faq={content.faq} />
 
       {/* ── TESTIMONIALS ── */}
       <section style={{ background: 'white', padding: '72px 0' }}>
@@ -962,18 +956,18 @@ export default function AdmissionPage() {
                 background: '#FEF3C7', color: '#92400e', fontSize: '12px', fontWeight: 700,
                 padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '12px',
               }}>
-                STUDENT REVIEWS
+                {content.testimonialsSection.eyebrow}
               </span>
               <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(24px, 3vw, 36px)', marginBottom: '10px' }}>
-                Real Students, Real NLU Selections
+                {content.testimonialsSection.title}
               </h2>
               <p style={{ color: '#6B7280', fontSize: '15px' }}>
-                Their success is our greatest achievement.
+                {content.testimonialsSection.subtitle}
               </p>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-              {testimonials.map((t) => (
+              {content.testimonialsSection.testimonials.map((t) => (
                 <TestimonialCard key={t.name} t={t} />
               ))}
             </div>
@@ -1004,20 +998,20 @@ export default function AdmissionPage() {
             borderRadius: '99px', padding: '6px 14px', marginBottom: '20px',
           }}>
             <span style={{ fontSize: '12px', color: '#fca5a5', fontWeight: 700 }}>
-              🔥 Only 8 offline seats remaining
+              {content.finalCta.eyebrow}
             </span>
           </div>
 
           <h2 style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(26px, 4vw, 44px)', marginBottom: '14px' }}>
-            Ready to Join CLATians 2026?
+            {content.finalCta.title}
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', maxWidth: '500px', margin: '0 auto 36px', lineHeight: 1.6 }}>
-            Offline batch fills up every year. Secure your seat today — call us or fill the form above.
+            {content.finalCta.subtitle}
           </p>
 
           <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <a
-              href="tel:8507700177"
+              href={content.finalCta.primaryHref}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
                 background: '#f77420', color: 'white', fontWeight: 700, fontSize: '15px',
@@ -1025,10 +1019,10 @@ export default function AdmissionPage() {
                 boxShadow: '0 4px 20px rgba(247,116,32,0.4)',
               }}
             >
-              📞 Call Now — 8507700177
+              {content.finalCta.primaryLabel}
             </a>
             <a
-              href="#form"
+              href={content.finalCta.secondaryHref}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
                 background: 'rgba(255,255,255,0.1)', color: 'white', fontWeight: 700, fontSize: '15px',
@@ -1036,12 +1030,12 @@ export default function AdmissionPage() {
                 border: '1px solid rgba(255,255,255,0.2)',
               }}
             >
-              📋 Fill Application Form
+              {content.finalCta.secondaryLabel}
             </a>
           </div>
 
           <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '12px', marginTop: '20px' }}>
-            No commitment required · Free counselling session · EMI available
+            {content.finalCta.note}
           </p>
         </div>
       </section>
@@ -1057,17 +1051,17 @@ export default function AdmissionPage() {
         }}
       >
         <a
-          href="tel:8507700177"
+          href={content.stickyBar.callHref}
           style={{
             flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
             background: '#f77420', color: 'white', fontWeight: 700, fontSize: '14px',
             padding: '14px', textDecoration: 'none',
           }}
         >
-          📞 Call Now
+          {content.stickyBar.callLabel}
         </a>
         <a
-          href="https://wa.me/918507700177"
+          href={content.stickyBar.whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -1076,7 +1070,7 @@ export default function AdmissionPage() {
             padding: '14px', textDecoration: 'none',
           }}
         >
-          💬 WhatsApp
+          {content.stickyBar.whatsappLabel}
         </a>
       </div>
 
@@ -1087,7 +1081,7 @@ export default function AdmissionPage() {
 }
 
 /* ─── Testimonial Card ───────────────────────────────── */
-type Testimonial = typeof testimonials[number];
+type Testimonial = AdmissionTestimonial;
 
 function TestimonialCard({ t }: { t: Testimonial }) {
   const [hovered, setHovered] = useState(false);
@@ -1164,8 +1158,8 @@ const scholarshipSlabs = [
   { marks: 'Up to 15', discount: '15%', bg: '#fafafa', color: '#374151', badge: '' },
 ];
 
-function CsatSection() {
-  const target = new Date('2026-07-20T10:00:00');
+function CsatSection({ scholarship }: { scholarship: AdmissionContent['scholarship'] }) {
+  const target = new Date(scholarship.date);
   const { days, hours, mins, secs } = useCountdown(target);
 
   return (
@@ -1178,15 +1172,15 @@ function CsatSection() {
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: '99px', padding: '6px 16px', marginBottom: '16px' }}>
             <span style={{ fontSize: '14px' }}>🎓</span>
-            <span style={{ color: '#fbbf24', fontSize: '12px', fontWeight: 700, letterSpacing: '0.06em' }}>CSAT 2026 — SCHOLARSHIP TEST</span>
+            <span style={{ color: '#fbbf24', fontSize: '12px', fontWeight: 700, letterSpacing: '0.06em' }}>{scholarship.eyebrow}</span>
           </div>
           <h2 style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(24px, 3.5vw, 40px)', marginBottom: '10px', lineHeight: 1.2 }}>
-            Reward Your Merit with<br />
-            <span style={{ background: 'linear-gradient(90deg,#f59e0b,#fbbf24)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Up to 100% Fee Waiver</span>
+            {scholarship.title}<br />
+            <span style={{ background: 'linear-gradient(90deg,#f59e0b,#fbbf24)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{scholarship.highlight}</span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '15px', maxWidth: '480px', margin: '0 auto' }}>
-            Appear for our Scholarship Test and get major discounts on your CLATians program fee.
-            <br /><span style={{ color: '#fbbf24', fontWeight: 700 }}>Limited to first 200 students.</span>
+            {scholarship.subtitle}
+            <br /><span style={{ color: '#fbbf24', fontWeight: 700 }}>{scholarship.note}</span>
           </p>
         </div>
 
@@ -1214,9 +1208,9 @@ function CsatSection() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px', alignItems: 'start' }}>
           {/* Scholarship Slabs */}
           <div>
-            <h3 style={{ color: 'white', fontWeight: 800, fontSize: '17px', marginBottom: '16px' }}>📊 Scholarship Slabs</h3>
+            <h3 style={{ color: 'white', fontWeight: 800, fontSize: '17px', marginBottom: '16px' }}>{scholarship.slabsTitle}</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {scholarshipSlabs.map((slab) => (
+              {scholarship.slabs.map((slab) => (
                 <div key={slab.marks} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(255,255,255,0.06)', borderRadius: '12px', padding: '10px 16px', border: '1px solid rgba(255,255,255,0.08)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px', fontWeight: 600, minWidth: '70px' }}>{slab.marks} marks</span>
@@ -1230,26 +1224,26 @@ function CsatSection() {
 
           {/* CTA Card */}
           <div style={{ background: 'rgba(255,255,255,0.06)', border: '1.5px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '28px' }}>
-            <div style={{ fontSize: '40px', marginBottom: '12px' }}>🎯</div>
-            <h3 style={{ color: 'white', fontWeight: 800, fontSize: '20px', marginBottom: '8px' }}>Register for CSAT 2026</h3>
+            <div style={{ fontSize: '40px', marginBottom: '12px' }}>{scholarship.cardIcon}</div>
+            <h3 style={{ color: 'white', fontWeight: 800, fontSize: '20px', marginBottom: '8px' }}>{scholarship.cardTitle}</h3>
             <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '13px', lineHeight: 1.6, marginBottom: '20px' }}>
-              50 MCQ questions · 60 minutes · CLAT pattern (English, LR, GK, Legal Aptitude). Conducted at Patna centre.
+              {scholarship.cardText}
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
-              {['Free to appear — no registration fee', 'Results declared within 48 hours', 'Scholarship valid for 2026–27 batch', 'Both Offline & Online students eligible'].map(pt => (
+              {scholarship.cardPoints.map(pt => (
                 <div key={pt} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <span style={{ color: '#f77420', fontWeight: 700 }}>✓</span>
                   <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: '13px' }}>{pt}</span>
                 </div>
               ))}
             </div>
-            <a href="tel:8507700177" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: 'linear-gradient(135deg,#f59e0b,#d97706)', color: 'white', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '12px', textDecoration: 'none', marginBottom: '10px' }}>
-              📞 Call to Register — 8507700177
+            <a href={scholarship.primaryHref} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: 'linear-gradient(135deg,#f59e0b,#d97706)', color: 'white', fontWeight: 700, fontSize: '14px', padding: '14px', borderRadius: '12px', textDecoration: 'none', marginBottom: '10px' }}>
+              {scholarship.primaryLabel}
             </a>
-            <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: 'rgba(255,255,255,0.08)', color: 'white', fontWeight: 600, fontSize: '13px', padding: '12px', borderRadius: '12px', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.15)' }}>
-              💬 WhatsApp to Register
+            <a href={scholarship.secondaryHref} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: 'rgba(255,255,255,0.08)', color: 'white', fontWeight: 600, fontSize: '13px', padding: '12px', borderRadius: '12px', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.15)' }}>
+              {scholarship.secondaryLabel}
             </a>
-            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: '11px', marginTop: '12px' }}>Test Date: July 20, 2026 · Patna Centre</p>
+            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontSize: '11px', marginTop: '12px' }}>{scholarship.footnote}</p>
           </div>
         </div>
       </div>
@@ -1264,17 +1258,17 @@ const freeResources = [
   { icon: '🤝', title: 'Free Strategy Session', desc: '1-on-1 session with our expert mentors. Get a personalised study plan based on your current level and target NLU.', cta: 'Book Free Session', href: 'https://wa.me/918507700177?text=I want a free strategy session', color: '#f77420', bg: '#fff1e8' },
 ];
 
-function FreeResourcesSection() {
+function FreeResourcesSection({ resources }: { resources: AdmissionContent['freeResources'] }) {
   return (
     <section style={{ background: '#F8FAFC', padding: '60px 0' }}>
       <div className="max-w-7xl mx-auto px-4 md:px-10">
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <span style={{ background: '#fff1e8', color: '#f77420', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '12px' }}>FREE FOR EVERYONE</span>
-          <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 34px)', marginBottom: '8px' }}>Boost Your Prep — Free</h2>
-          <p style={{ color: '#6B7280', fontSize: '15px', maxWidth: '440px', margin: '0 auto' }}>No payment needed. Get these resources to kickstart your CLAT preparation today.</p>
+          <span style={{ background: '#fff1e8', color: '#f77420', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '12px' }}>{resources.eyebrow}</span>
+          <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 34px)', marginBottom: '8px' }}>{resources.title}</h2>
+          <p style={{ color: '#6B7280', fontSize: '15px', maxWidth: '440px', margin: '0 auto' }}>{resources.subtitle}</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px' }}>
-          {freeResources.map((r) => (
+          {resources.items.map((r) => (
             <div key={r.title} style={{ background: 'white', borderRadius: '20px', border: '1.5px solid #E9EEF2', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ background: r.bg, padding: '28px 24px 20px', textAlign: 'center' }}>
                 <div style={{ fontSize: '44px', marginBottom: '8px' }}>{r.icon}</div>
@@ -1305,35 +1299,35 @@ const faqs = [
   { q: 'Can I switch from Online to Offline mid-session?', a: 'Yes, subject to seat availability. Any fee difference will need to be paid. Contact our admissions team at 8507700177 to initiate the switch.' },
 ];
 
-function FaqSection() {
+function FaqSection({ faq }: { faq: AdmissionContent['faq'] }) {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <section style={{ background: 'white', padding: '60px 0' }}>
       <div className="max-w-4xl mx-auto px-4 md:px-10">
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <span style={{ background: '#EFF6FF', color: '#3b82f6', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '12px' }}>FAQ</span>
-          <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 34px)', marginBottom: '8px' }}>Got Questions? We Have Answers.</h2>
-          <p style={{ color: '#6B7280', fontSize: '15px' }}>Everything you need to know about admissions, programs and fees.</p>
+          <span style={{ background: '#EFF6FF', color: '#3b82f6', fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '99px', display: 'inline-block', marginBottom: '12px' }}>{faq.eyebrow}</span>
+          <h2 style={{ color: '#0D1837', fontWeight: 900, fontSize: 'clamp(22px, 3vw, 34px)', marginBottom: '8px' }}>{faq.title}</h2>
+          <p style={{ color: '#6B7280', fontSize: '15px' }}>{faq.subtitle}</p>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {faqs.map((faq, i) => (
-            <div key={i} style={{ background: open === i ? '#fff7ed' : 'white', border: `1.5px solid ${open === i ? '#f77420' : '#E9EEF2'}`, borderRadius: '16px', overflow: 'hidden', transition: 'all .2s ease' }}>
+          {faq.items.map((item, i) => (
+            <div key={item.q} style={{ background: open === i ? '#fff7ed' : 'white', border: `1.5px solid ${open === i ? '#f77420' : '#E9EEF2'}`, borderRadius: '16px', overflow: 'hidden', transition: 'all .2s ease' }}>
               <button onClick={() => setOpen(open === i ? null : i)}
                 style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '18px 20px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
-                <span style={{ fontWeight: 700, fontSize: '14px', color: open === i ? '#f77420' : '#0D1837', lineHeight: 1.4 }}>{faq.q}</span>
+                <span style={{ fontWeight: 700, fontSize: '14px', color: open === i ? '#f77420' : '#0D1837', lineHeight: 1.4 }}>{item.q}</span>
                 <span style={{ color: open === i ? '#f77420' : '#9CA3AF', fontSize: '20px', flexShrink: 0, transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform .2s ease', lineHeight: 1 }}>+</span>
               </button>
               {open === i && (
-                <div style={{ padding: '0 20px 18px', color: '#374151', fontSize: '13px', lineHeight: 1.7, borderTop: '1px solid #ffd4ba' }}>{faq.a}</div>
+                <div style={{ padding: '0 20px 18px', color: '#374151', fontSize: '13px', lineHeight: 1.7, borderTop: '1px solid #ffd4ba' }}>{item.a}</div>
               )}
             </div>
           ))}
         </div>
         <div style={{ marginTop: '32px', textAlign: 'center', padding: '24px', background: '#F8FAFC', borderRadius: '16px', border: '1.5px solid #E9EEF2' }}>
-          <p style={{ color: '#374151', fontWeight: 600, fontSize: '14px', marginBottom: '12px' }}>Still have questions? Talk to our counsellors directly.</p>
+          <p style={{ color: '#374151', fontWeight: 600, fontSize: '14px', marginBottom: '12px' }}>{faq.bottomText}</p>
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="tel:8507700177" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#f77420', color: 'white', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '10px', textDecoration: 'none' }}>📞 Call 8507700177</a>
-            <a href="https://wa.me/918507700177" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#075E54', color: 'white', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '10px', textDecoration: 'none' }}>💬 WhatsApp Us</a>
+            <a href={faq.primaryHref} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#f77420', color: 'white', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '10px', textDecoration: 'none' }}>{faq.primaryLabel}</a>
+            <a href={faq.secondaryHref} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#075E54', color: 'white', fontWeight: 700, fontSize: '13px', padding: '10px 20px', borderRadius: '10px', textDecoration: 'none' }}>{faq.secondaryLabel}</a>
           </div>
         </div>
       </div>

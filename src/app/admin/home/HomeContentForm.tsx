@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { adminFetch } from '@/lib/adminFetch';
 import type {
+  AdmissionContent,
   HomeContent,
   HomeFaqItem,
   HomeHeroSlide,
@@ -110,6 +111,10 @@ export default function HomeContentForm({ initialContent }: { initialContent: Ho
 
   function setSite<K extends keyof HomeContent['site']>(key: K, value: HomeContent['site'][K]) {
     setData((current) => ({ ...current, site: { ...current.site, [key]: value } }));
+  }
+
+  function setAdmission(value: AdmissionContent) {
+    setData((current) => ({ ...current, admission: value }));
   }
 
   function updateList<T>(items: T[], index: number, nextItem: T): T[] {
@@ -263,6 +268,17 @@ export default function HomeContentForm({ initialContent }: { initialContent: Ho
             <JsonTextarea<SiteSocial[]> label="Social Links" value={data.site.socials} onChange={(v) => setSite('socials', v)} />
             <JsonTextarea<SitePageBanner[]> label="Managed Page Banners" value={data.site.pageBanners} onChange={(v) => setSite('pageBanners', v)} />
           </div>
+        </SectionCard>
+
+        <SectionCard title="Admission Page Content">
+          <div className="rounded-xl border border-orange-100 bg-orange-50 px-4 py-3 text-sm font-semibold text-orange-800">
+            This updates the full Admission page: hero text, live enrollment popups, form options, scholarship section, FAQs, testimonials, free resources, final CTA and mobile sticky buttons.
+          </div>
+          <JsonTextarea<AdmissionContent>
+            label="Admission Page Full Content"
+            value={data.admission}
+            onChange={setAdmission}
+          />
         </SectionCard>
 
         <SectionCard title="Hero Slides">
