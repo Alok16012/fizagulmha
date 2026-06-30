@@ -50,3 +50,5 @@ next-env.d.ts
 # but keep the app favicon/icon assets
 !src/app/icon.png
 !src/app/apple-icon.png
+!public/gulemaah/
+!public/gulemaah/*.png
