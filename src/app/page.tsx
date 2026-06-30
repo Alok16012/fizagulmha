@@ -3,7 +3,18 @@ import Image from 'next/image';
 
 const whatsappNumber = '919171316681';
 const orderMessage = encodeURIComponent(
-  'Hi Gulemaah, mujhe custom gift/flower order karna hai. Please details share kar dijiye.'
+  [
+    'Hi Gulemaah, I want to place a custom gift/flower order.',
+    '',
+    'Occasion:',
+    'Date needed:',
+    'Budget:',
+    'Delivery or pickup:',
+    'Preferred colours/theme:',
+    'Reference idea/photo:',
+    '',
+    'Please share available options and pricing.',
+  ].join('\n')
 );
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${orderMessage}`;
 const instagramLink = 'https://www.instagram.com/gulemaah?igsh=MTV5NDl4bGNrYWU4Zg==';
@@ -161,9 +172,9 @@ export default function Home() {
             <p className="text-[11px] font-extrabold uppercase tracking-[0.24em] text-[#eac098]">Order process</p>
             <h2 className="mt-1 text-2xl font-extrabold">3 steps, done.</h2>
             <div className="mt-4 grid gap-3 text-sm font-semibold leading-6 text-[#f4ddc5]">
-              <p>1. WhatsApp par occasion, date, budget, and reference photo bhejein.</p>
-              <p>2. Colour theme, items, pickup/delivery, and final quote confirm karein.</p>
-              <p>3. Advance confirm hote hi your custom piece goes into making.</p>
+              <p>1. Send your occasion, date, budget, and reference photo on WhatsApp.</p>
+              <p>2. Confirm the colour theme, items, pickup/delivery timing, and final quote.</p>
+              <p>3. Once the advance is confirmed, your custom piece goes into making.</p>
             </div>
           </div>
         </section>
